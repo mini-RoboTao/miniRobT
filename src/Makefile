@@ -4,7 +4,7 @@ HEADERS						=					include/minirt.h
 ######################## PATHS ###############################
 PATH_OBJ					=					objs/
 PATH_INCLUDES				=					include/
-PATH_LIBFT					=					libft/
+PATH_LIBFT					=					libs/libft/
 ######################## SRCS ################################
 SRC							=					minirt.c
 OBJ							=					$(SRC:%.c=%.o)
