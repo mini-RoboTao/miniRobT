@@ -26,8 +26,9 @@ libft:
 
 clean:
 	@			rm -rf $(OBJ)
-
+	@			$(MAKE) -s -C $(PATH_LIBFT) clean
 fclean: clean
 	@			rm -rf $(NAME)
+	@			$(MAKE) -s -C $(PATH_LIBFT) fclean
 
 re: fclean all
