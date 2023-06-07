@@ -31,7 +31,7 @@ RC							= \e[0m
 all: $(NAME)
 
 $(PATH_OBJ)/%.o:	%.c
-	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) $(FLAG_MLX) -I$(PATH_INCLUDES) -c $< -o $@
+	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) -I$(PATH_INCLUDES) -c $< -o $@
 	@			printf "."
 
 $(PATH_OBJ):
@@ -40,7 +40,7 @@ $(PATH_OBJ):
 $(NAME): $(PATH_OBJ) $(OBJ)
 	@			printf "\n$(YELLOW)Creating LIBFT$(RC)\n"
 	@			$(MAKE) -s -C $(PATH_LIBFT)
-	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) $(FLAG_MLX) -I$(PATH_INCLUDES) $(OBJ) -o $(NAME)
+	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) -I$(PATH_INCLUDES) $(OBJ) $(FLAG_MLX) -o $(NAME)
 	@			printf "$(GREEN)$(NAME) created$(RC)\n"
 
 -include $(DEP)
