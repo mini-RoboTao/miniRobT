@@ -21,6 +21,7 @@
 *.a
 *.la
 *.lo
+!libmlx.a
 
 # Shared objects (inc. Windows DLLs)
 *.dll
@@ -36,6 +37,7 @@
 *.x86_64
 *.hex
 minirt
+a.out
 
 # Debug files
 *.dSYM/
