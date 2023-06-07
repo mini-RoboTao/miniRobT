@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/07 17:17:59 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/06/07 20:09:28 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,32 @@ void	ft_create_screen(t_data *data)
 
 int	ft_render_minirt(t_data *data)
 {
+	int x;
+	int y;
+	for (int i = 190; i < 290; i++)
+		ft_mlx_pixel_put(data, 30, i, 0x00FF0000);
+	x = 30;
+	y = 190;
+	while (y < 240)
+		ft_mlx_pixel_put(data, x++, y++, 0x00FF0000);
+	while (y > 190)
+		ft_mlx_pixel_put(data, x++, y--, 0x00FF0000);
+	for (int i = 190; i < 290; i++)
+		ft_mlx_pixel_put(data, x, i, 0x00FF0000);
+	for (int i = 190; i < 290; i++)
+		ft_mlx_pixel_put(data, x + 20, i, 0x00FF0000);
+	for (int i = 190; i < 290; i++)
+		ft_mlx_pixel_put(data, x + 40, i, 0x00FF0000);
+	x = 170;
+	while (y < 290)
+	{
+		ft_mlx_pixel_put(data, x, y++, 0x00FF0000);
+		ft_mlx_pixel_put(data, x++, y++, 0x00FF0000);
+	}
+	for (int i = 190; i < 290; i++)
+		ft_mlx_pixel_put(data, x, i, 0x00FF0000);
+	for (int i = 190; i < 290; i++)
+		ft_mlx_pixel_put(data, x + 20, i, 0x00FF0000);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.ptr, 0, 0);
 	return (0);
 }
