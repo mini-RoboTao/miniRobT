@@ -19,7 +19,8 @@ ifeq ($(UNAME_S), Linux)
 	FLAG_MLX				=					-lXext -lX11 -lmlx
 endif
 ifeq ($(UNAME_S), Darwin)
-	FLAG_MLX				=					-Llibs/mlx_mac -lmlx -framework OpenGL -framework AppKit -Ilibs/mlx_mac
+	FLAG_MLX				=					-Llibs/mlx_mac -lmlx -framework OpenGL -framework AppKit
+	INCLUDE_MLX				=					-Ilibs/mlx_mac
 endif
 ######################## COLORS ##############################
 RED							= \e[91m
@@ -31,7 +32,7 @@ RC							= \e[0m
 all: $(NAME)
 
 $(PATH_OBJ)/%.o:	%.c
-	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) $(FLAG_MLX) -I$(PATH_INCLUDES) -c $< -o $@
+	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) $(INCLUDE_MLX) -I$(PATH_INCLUDES) -c $< -o $@
 	@			printf "."
 
 $(PATH_OBJ):
@@ -40,7 +41,7 @@ $(PATH_OBJ):
 $(NAME): $(PATH_OBJ) $(OBJ)
 	@			printf "\n$(YELLOW)Creating LIBFT$(RC)\n"
 	@			$(MAKE) -s -C $(PATH_LIBFT)
-	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) -I$(PATH_INCLUDES) $(OBJ) $(FLAG_MLX) -o $(NAME)
+	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) -I$(PATH_INCLUDES) $(OBJ) $(FLAG_MLX) $(INCLUDE_MLX) -o $(NAME)
 	@			printf "$(GREEN)$(NAME) created$(RC)\n"
 
 -include $(DEP)
