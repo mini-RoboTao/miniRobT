@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/06 22:31:29 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:17:59 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_close_win(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img.ptr);
-	// mlx_destroy_display(data->mlx);
+	// mlx_destroy_display(data->mlx); //comment when run in mac, because this function doesn't exist in mlx for mac. Also this function is used to clean display and memory on linux.
 	free(data->mlx);
 	exit(0);
 	return (0);
