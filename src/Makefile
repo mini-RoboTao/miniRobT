@@ -31,7 +31,7 @@ RC							= \e[0m
 all: $(NAME)
 
 $(PATH_OBJ)/%.o:	%.c
-	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) -I$(PATH_INCLUDES) -c $< -o $@
+	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) $(FLAG_MLX) -I$(PATH_INCLUDES) -c $< -o $@
 	@			printf "."
 
 $(PATH_OBJ):
