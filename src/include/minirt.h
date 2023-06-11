@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:38:20 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/07 16:30:23 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:14:46 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@
 # include <math.h>
 # include "defines.h"
 # include "structs.h"
+# include "enums.h"
 
 #endif

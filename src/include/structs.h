@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/07 01:15:34 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:09:09 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,13 @@ typedef struct s_data {
 	t_img		img;
 	t_screen	screen;
 }	t_data;
+
+
+
+typedef struct s_input_data {
+	void		*next;
+	void		*content;
+	t_type		;
+}	t_input_data;
 
 #endif
