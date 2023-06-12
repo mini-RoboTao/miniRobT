@@ -16,11 +16,13 @@ DEP							=					$(patsubst %.c, $(PATH_OBJ)/%.d, $(SRC))
 ############## CONDITIONAL COMPILER FLAGS ####################
 UNAME_S						:=					$(shell uname -s)
 ifeq ($(UNAME_S), Linux)
-	FLAG_MLX				=					-lXext -lX11 -lmlx
+	FLAG_MLX				=					-L../external_libs/mlx_linux -lmlx -lX11 -lXext
+	INCLUDE_MLX				=					-I../external_libs/mlx_linux
+#	FLAG_MLX				=					-lXext -lX11 -lmlx
 endif
 ifeq ($(UNAME_S), Darwin)
-	FLAG_MLX				=					-Llibs/mlx_mac -lmlx -framework OpenGL -framework AppKit
-	INCLUDE_MLX				=					-Ilibs/mlx_mac
+	FLAG_MLX				=					-L../external_libs/mlx_mac -lmlx -framework OpenGL -framework AppKit
+	INCLUDE_MLX				=					-I../external_libs/mlx_mac
 endif
 ######################## COLORS ##############################
 RED							= \e[91m

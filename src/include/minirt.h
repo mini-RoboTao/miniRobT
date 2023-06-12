@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:38:20 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/11 13:14:46 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:50:10 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # ifdef __APPLE__
 # include "mlx.h" // delete before close the project
 # elif __linux__
-# include <mlx.h> // needed to run in 42's linux
+# include "mlx.h"
+// # include <mlx.h> // needed to run in 42's linux
 # include <X11/X.h> // needed to run in 42's linux
 # include <X11/keysym.h> // needed to run in 42's linux
 # endif
