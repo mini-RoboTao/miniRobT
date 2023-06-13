@@ -36,6 +36,8 @@ Makefile.gen
 *.a
 *.la
 *.lo
+!libmlx.a
+!libmlx_Linux.a
 
 # Shared objects (inc. Windows DLLs)
 *.dll

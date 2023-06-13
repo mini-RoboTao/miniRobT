@@ -22,6 +22,8 @@
 *.la
 *.lo
 !libmlx.a
+!libmlx_Linux.a
+!external_libs/mlx_linux/libmlx.a
 
 # Shared objects (inc. Windows DLLs)
 *.dll
