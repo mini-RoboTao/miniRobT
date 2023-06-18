@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/11 13:42:32 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/06/18 19:22:05 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,15 @@ typedef struct s_data {
 	t_screen	screen;
 }	t_data;
 
-
-
-typedef struct s_input_data {
-	void		*next;
+typedef struct s_object {
 	void		*content;
 	int			content_type;
-}	t_input_data;
+}	t_object;
+
+void	ft_draw_letter_m(t_data *data, int *x, int *y);
+void	ft_draw_letter_i(t_data *data, int x);
+void	ft_draw_letter_n(t_data *data, int *x, int *y);
+int		ft_render_minirt(t_data *data);
+void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif
