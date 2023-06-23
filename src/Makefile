@@ -4,15 +4,17 @@ NAME						=					minirt
 PATH_OBJ					=					objs/
 PATH_INCLUDES				=					include/
 PATH_LIBFT					=					libs/libft/
-VPATH						=					./srcs
+VPATH						=					./srcs:linked_list			
 ######################## FLAGS ###############################
 FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
 FLAG_EXTRA					=					-g3 -O3 -MMD -MP
 ######################## SRCS ################################
-SRC							=					minirt.c
-OBJ							=					$(patsubst %.c, $(PATH_OBJ)/%.o, $(SRC))
-DEP							=					$(patsubst %.c, $(PATH_OBJ)/%.d, $(SRC))
+SRC							=					minirt.c draw_mini.c
+SRC_LINKED_LST				=					ft_lstnew.c ft_lstsize.c ft_lstlast.c \
+												ft_lstclean.c ft_lstadd_back.c 
+OBJ							=					$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC) $(SRC_LINKED_LST))
+DEP							=					$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 ############## CONDITIONAL COMPILER FLAGS ####################
 UNAME_S						:=					$(shell uname -s)
 ifeq ($(UNAME_S), Linux)
@@ -33,9 +35,9 @@ RC							= \e[0m
 ####################### RECIPES ##############################
 all: $(NAME)
 
-$(PATH_OBJ)/%.o:	%.c
+$(PATH_OBJ)%.o:	%.c
 	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) $(INCLUDE_MLX) -I$(PATH_INCLUDES) -c $< -o $@
-	@			printf "."
+	@			printf "$(GREEN).$(RC)"
 
 $(PATH_OBJ):
 	@			mkdir $@
@@ -43,7 +45,7 @@ $(PATH_OBJ):
 $(NAME): $(PATH_OBJ) $(OBJ)
 	@			printf "\n$(YELLOW)Creating LIBFT$(RC)\n"
 	@			$(MAKE) -s -C $(PATH_LIBFT)
-				echo $(PWD)
+	@			echo $(PWD)
 	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) -I$(PATH_INCLUDES) $(OBJ) $(FLAG_MLX) $(INCLUDE_MLX) -o $(NAME)
 	@			printf "$(GREEN)$(NAME) created$(RC)\n"
 
