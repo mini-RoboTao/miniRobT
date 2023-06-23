@@ -1,0 +1,21 @@
+name: norminette-check
+on: [push]
+jobs:
+  norminette:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip setuptools
+        python -m pip install norminette
+    - name: Run the norm checks
+      run: |
+        norminette
