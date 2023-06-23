@@ -6,14 +6,14 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 16:33:34 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/06/18 16:36:37 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/06/23 11:41:58 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int	ft_signdetect(int c, int *pos)
-{	
+{
 	if (c == '-')
 		return (*pos += 1, -1);
 	else if (c == '+')
