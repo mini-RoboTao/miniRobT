@@ -12,5 +12,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: print env vars
       run: env
+    - name: Create Criterion test suit
+      run: make
     - name: Run Criterion test suit
       run: make
