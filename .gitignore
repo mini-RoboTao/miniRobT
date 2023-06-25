@@ -30,6 +30,9 @@
 *.so
 *.so.*
 *.dylib
+!libcriterion.so
+!libcriterion.so.3
+!libcriterion.so.3.2.0
 
 # Executables
 *.exe
@@ -58,3 +61,4 @@ dkms.conf
 
 # Env var
 .env
+outs/
