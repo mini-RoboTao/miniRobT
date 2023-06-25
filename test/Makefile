@@ -9,8 +9,8 @@ L_GREEN			=			\033[0;32m
 L_GREENB		=			\033[1;32m
 ################ CONFIG	TESTS	##################
 #DIR				=			../srcs/
-DIR_OUTS		=			./outs/
-EXEC_OUTS		=			$(wildcard $(DIR_OUTS)*)
+DIR_OUTS		=			outs
+# EXEC_OUTS		=			$(wildcard $(DIR_OUTS)*)
 #YOUR_FILES		=			# Add your files with the function you can test
 TESTS			=			sample_test1 sample_test2
 HEADERS_TEST 	= 			-Icriterion-2.4.2/include/criterion
@@ -30,7 +30,7 @@ all: $(TESTS)
 
 $(TESTS):
 	@mkdir -p $(DIR_OUTS)
-	@$(CC) $(FLAGS) $(HEADERS_TEST) $(LIB_CRITERION)	-g $(addsuffix .c, $@) $(YOUR_FILES) -o $(addprefix $(DIR_OUTS), $@)
+	@$(CC) $(FLAGS) $(HEADERS_TEST) $(LIB_CRITERION)	-g $(addsuffix .c, $@) $(YOUR_FILES) -o $(addprefix ./$(DIR_OUTS)/, $@)
 
 clean:
 #	@rm			-f $(SRCS:.c=.o)

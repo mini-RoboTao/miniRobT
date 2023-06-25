@@ -1,4 +1,4 @@
-name: norminette-check
+name: Criterion tests
 on: [push]
 jobs:
   norminette:
@@ -10,5 +10,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Export Dynamic Lib
       run: source export_env.sh
+    - name: print env vars
+      run: env
     - name: Run Criterion test suit
       run: make
