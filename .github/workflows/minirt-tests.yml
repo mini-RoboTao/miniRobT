@@ -1,7 +1,7 @@
 name: Criterion tests
 on: [push]
 jobs:
-  norminette:
+  criterion-tests:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Export Dynamic Lib
-      run: source export_env.sh
+      run: export LD_LIBRARY_PATH=$PWD/criterion-2.4.2/lib
     - name: print env vars
       run: env
     - name: Run Criterion test suit
