@@ -55,6 +55,7 @@ Run with `./minirt {file.rt}`, where `{file.rt}` is the file with information ab
 
 - https://harm-smits.github.io/42docs/libs/minilibx
 - The Ray Tracer Challenge: A Test-Driven Guide to Your First 3D Renderer, by Jamis Buck
+- https://github.com/Snaipe/Criterion
 
 ## What's is 42?
 
