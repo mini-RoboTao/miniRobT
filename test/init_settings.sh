@@ -8,3 +8,5 @@ else
     # echo "exist"
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/criterion-2.4.2/lib
 fi
+
+cp ../git_hooks/pre-commit ../.git/hooks
