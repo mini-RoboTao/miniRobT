@@ -1,5 +1,7 @@
 name: Criterion tests
 on: [push]
+env:
+  LD_LIBRARY_PATH: ./criterion-2.4.2/lib
 jobs:
   criterion-tests:
     runs-on: ubuntu-latest
@@ -8,8 +10,6 @@ jobs:
         working-directory: test
     steps:
     - uses: actions/checkout@v2
-    - name: Export Dynamic Lib
-      run: export LD_LIBRARY_PATH=$PWD/criterion-2.4.2/lib
     - name: print env vars
       run: env
     - name: Run Criterion test suit
