@@ -10,27 +10,32 @@ L_GREENB		=			\033[1;32m
 ################ CONFIG	TESTS	##################
 #DIR				=			../srcs/
 DIR_OUTS		=			outs
-# EXEC_OUTS		=			$(wildcard $(DIR_OUTS)*)
+EXEC_OUTS		=			$(wildcard $(DIR_OUTS)/*)
 #YOUR_FILES		=			# Add your files with the function you can test
 TESTS			=			sample_test1 sample_test2
 HEADERS_TEST 	= 			-Icriterion-2.4.2/include/criterion
 LIB_CRITERION	=			-Lcriterion-2.4.2/lib -lcriterion
-
-PWD				=			$$PWD
 ################ CONFIG YOUR PROJECT #############
 FLAGS 			= 			-Wall -Werror -Wextra
 ################ RULES		######################
 
-all: $(TESTS)
+all: create_outs_dir $(TESTS) $(EXEC_OUTS)
+
+bypass: create_outs_dir $(TESTS)
 	@echo
 	-@for name in $(TESTS); do \
-		echo "$(L_YELLOWB)$${name}$(L_WHITE)"; \
+		echo "$(L_YELLOWB)$${name}: $(L_WHITE)"; \
 		./$(DIR_OUTS)/$${name}; echo ; \
 	done
 
-$(TESTS):
+create_outs_dir:
 	@mkdir -p $(DIR_OUTS)
-	@$(CC) $(FLAGS) $(HEADERS_TEST) $(LIB_CRITERION)	-g $(addsuffix .c, $@) $(YOUR_FILES) -o $(addprefix ./$(DIR_OUTS)/, $@)
+
+$(TESTS):
+	@$(CC) $(FLAGS) $(HEADERS_TEST) $(LIB_CRITERION) -g $(addsuffix .c, $@) $(YOUR_FILES) -o $(addprefix ./$(DIR_OUTS)/, $@)
+
+$(EXEC_OUTS):
+	@echo "$(L_YELLOWB)$@: $(L_WHITE)" && ./$@;
 
 clean:
 #	@rm			-f $(SRCS:.c=.o)
