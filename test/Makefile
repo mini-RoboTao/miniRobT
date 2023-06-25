@@ -12,7 +12,7 @@ L_GREENB		=			\033[1;32m
 DIR_OUTS		=			outs
 EXEC_OUTS		=			$(wildcard $(DIR_OUTS)/*)
 #YOUR_FILES		=			# Add your files with the function you can test
-TESTS			=			sample_test1 sample_test2
+TESTS			=			sample_test1 sample_test2 sample_test3
 HEADERS_TEST 	= 			-Icriterion-2.4.2/include/criterion
 LIB_CRITERION	=			-Lcriterion-2.4.2/lib -lcriterion
 ################ CONFIG YOUR PROJECT #############
