@@ -13,6 +13,7 @@ Test(sample, string_to_float)
 
 	result = atof(str);
 	expected = atof(str2);
+
 	cr_assert_float_eq(result, expected, 0.001);
 }
 
