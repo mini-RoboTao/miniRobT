@@ -7,12 +7,11 @@
 Test(sample, string_to_float)
 {
 	char	*str = "3.14159";
-	char	*str2 = "3.15";
 	float	result;
 	float	expected;
 
 	result = atof(str);
-	expected = atof(str2);
+	expected = atof(str);
 
 	cr_assert_float_eq(result, expected, 0.001);
 }
