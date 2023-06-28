@@ -11,8 +11,9 @@ L_GREENB		=			\033[1;32m
 #DIR				=			../srcs/
 DIR_OUTS		=			outs
 EXEC_OUTS		=			$(wildcard $(DIR_OUTS)/*)
+SRCS			=			../src/object_feature/create_object.c
 #YOUR_FILES		=			# Add your files with the function you can test
-TESTS			=			sample_test1 sample_test2 sample_test3
+TESTS			=			sample_test1 sample_test2 sample_test3 object_feature_test
 HEADERS_TEST 	= 			-Icriterion-2.4.2/include/criterion
 LIB_CRITERION	=			-Lcriterion-2.4.2/lib -lcriterion
 ################ CONFIG YOUR PROJECT #############
@@ -32,7 +33,7 @@ create_outs_dir:
 	@mkdir -p $(DIR_OUTS)
 
 $(TESTS):
-	@$(CC) $(FLAGS) $(HEADERS_TEST) $(LIB_CRITERION) -g $(addsuffix .c, $@) $(YOUR_FILES) -o $(addprefix ./$(DIR_OUTS)/, $@)
+	@$(CC) $(FLAGS) $(HEADERS_TEST) $(SRCS) $(LIB_CRITERION) -g $(addsuffix .c, $@) $(YOUR_FILES) -o $(addprefix ./$(DIR_OUTS)/, $@)
 
 $(EXEC_OUTS):
 	@echo "$(L_YELLOWB)$@: $(L_WHITE)" && ./$@;
