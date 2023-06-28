@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/18 19:22:05 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:04:54 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ typedef struct s_object {
 	void		*content;
 	int			content_type;
 }	t_object;
+
+typedef struct s_obj {
+	double		x;
+	double		y;
+	double		z;
+	double		w;
+}	t_obj;
 
 void	ft_draw_letter_m(t_data *data, int *x, int *y);
 void	ft_draw_letter_i(t_data *data, int x);
