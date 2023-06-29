@@ -38,7 +38,6 @@ RC							= \e[0m
 all: $(NAME)
 
 $(PATH_OBJ)%.o:	%.c
-	@echo		$<
 	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) $(INCLUDE_MLX) -I$(PATH_INCLUDES) -c $< -o $@
 	@			printf "$(GREEN).$(RC)"
 
