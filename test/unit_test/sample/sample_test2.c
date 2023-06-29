@@ -1,5 +1,4 @@
-#include "criterion-2.4.2/include/criterion/criterion.h"
-#include "criterion-2.4.2/include/criterion/new/assert.h"
+#include "../unit_test.h"
 #include <string.h>
 // #include <criterion/new/criterion.h>
 // #include <criterion/new/assert.h>
