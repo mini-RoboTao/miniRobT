@@ -27,7 +27,7 @@ PATH_OBJ						=			objs/
 DIR_OUTS						=			outs/
 OBJS_PROJECT					=			../src/objs/
 UNIT_PATH						=			./unit_test/
-VPATH							=			./unit_test/sample/
+VPATH							=			./unit_test/object_feature_test
 ######################## PROJECT FILES ##############################
 SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 											draw_mini.o							\
@@ -35,8 +35,8 @@ SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 											$(wildcard $(OBJS_PROJECT)*.o))
 ######################## TEST SOURCES ###############################
-SRC_SAMPLE						=			sample_test1.c sample_test2.c sample_test3.c
-SRC								=			$(SRC_SAMPLE)
+SRC_OBJ_FEATURE					=			create_object_test.c object_arithmetic_test.c
+SRC								=			$(SRC_OBJ_FEATURE)
 OBJ								=			$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP								=			$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)

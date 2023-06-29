@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:38:20 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/23 11:42:52 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/06/28 20:09:15 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@
 # include "defines.h"
 # include "structs.h"
 # include "enums.h"
+# include "object_feature.h"
 #endif
