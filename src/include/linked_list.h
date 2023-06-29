@@ -6,13 +6,14 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 17:01:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/06/18 18:17:23 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/06/28 21:21:52 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LINKED_LIST_H
 # define LINKED_LIST_H
-# include "structs.h"
+
+# include "minirt.h"
 
 typedef struct a_lst {
 	t_object		*obj;

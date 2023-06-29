@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_object.c                                    :+:      :+:    :+:   */
+/*   object_arithmetic.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 19:02:45 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/06/28 20:47:06 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/06/28 16:18:48 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/06/29 00:11:27 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object_feature.h"
 
-t_obj	*create_object(double x, double y, double z, double w)
+t_obj	*sum_objects(t_obj *o_one, t_obj *o_two)
 {
 	t_obj	*o;
 
 	o = malloc(sizeof(t_obj));
-	if (!o)
+	if (!o_one || !o_two)
 		return (NULL);
-	o->x = x;
-	o->y = y;
-	o->z = z;
-	o->w = w;
+	if (!o || (o_one->w == 1 && o_two->w == 1))
+		return (NULL);
+	o->x = o_one->x + o_two->x;
+	o->y = o_one->y + o_two->y;
+	o->z = o_one->z + o_two->z;
+	o->w = o_one->w + o_two->w;
 	return (o);
 }
 
-t_obj	*create_point(double x, double y, double z)
+t_obj	*subtract_objects(t_obj *o_one, t_obj *o_two)
 {
-	return (create_object(x, y, z, 1));
-}
+	t_obj	*o;
 
-t_obj	*create_vector(double x, double y, double z)
-{
-	return (create_object(x, y, z, 0));
+	o = malloc(sizeof(t_obj));
+	if (!o || !o_one || !o_two)
+		return (NULL);
+	o->x = o_one->x - o_two->x;
+	o->y = o_one->y - o_two->y;
+	o->z = o_one->z - o_two->z;
+	o->w = o_one->w - o_two->w;
+	return (o);
 }

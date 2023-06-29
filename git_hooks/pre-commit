@@ -31,7 +31,6 @@ else
 fi
 
 make -C test/
-make -C test/
 if [ $? != 0 ]
 then
 	echo "\n${L_REDB}unit tests error!${L_RC}"
@@ -47,7 +46,6 @@ else
 	# Initial commit: diff against an empty tree object
 	against=$(git hash-object -t tree /dev/null)
 fi
-
 # If you want to allow non-ASCII filenames set this variable to true.
 allownonascii=$(git config --bool hooks.allownonascii)
 

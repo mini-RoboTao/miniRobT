@@ -62,3 +62,6 @@ dkms.conf
 # Env var
 .env
 outs/
+objs/
+*.d
+*.o
