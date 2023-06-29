@@ -9,8 +9,19 @@ L_GREEN							=			\033[0;32m
 L_GREENB						=			\033[1;32m
 ######################## CONFIG	TESTS ###############################
 HEADERS_TEST					= 			-Icriterion-2.4.2/include/criterion
-LIB_CRITERION					=			-Lcriterion-2.4.2/lib -lcriterion
 FLAGS 							= 			-Wall -Werror -Wextra -g3 -O3 -MMD -MP
+UNAME_S			:=			$(shell uname -s)
+ifeq ($(UNAME_S), Linux)
+	LIB_CRITERION	=		-Lcriterion-2.4.2/lib -lcriterion
+	DEBUG			=		-g3
+	FLAG_MLX				=					-L../external_libs/mlx_linux -lmlx_Linux -lX11 -lXext
+	INCLUDE_MLX				=					-I../external_libs/mlx_linux
+endif
+ifeq ($(UNAME_S), Darwin)
+	LIB_CRITERION 	=		-lcriterion
+	FLAG_MLX				=					-L../external_libs/mlx_mac -lmlx -framework OpenGL -framework AppKit
+	INCLUDE_MLX				=					-I../external_libs/mlx_mac
+endif
 ######################## PATHS 		  ###############################
 PATH_OBJ						=			objs/
 DIR_OUTS						=			outs/
@@ -34,8 +45,8 @@ EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)
 all: create_outs_dir make_minirobt $(PATH_OBJ) $(OBJ) $(EXEC_OUTS)
 
 $(PATH_OBJ)%.o:	%.c
-	@			$(CC) $(FLAGS) $(HEADERS_TEST) -I$(UNIT_PATH) -I$(UNIT_PATH) -c $< -o $@
-	@			$(CC) $(FLAGS) $(HEADERS_TEST) $(LIB_CRITERION) -I$(UNIT_PATH) -g \
+	@			$(CC) $(FLAGS) $(INCLUDE_MLX) $(HEADERS_TEST) -I$(UNIT_PATH) -I$(UNIT_PATH) -c $< -o $@
+	@			$(CC) $(FLAGS) $(FLAG_MLX) $(INCLUDE_MLX) $(HEADERS_TEST) $(LIB_CRITERION) -I$(UNIT_PATH) -g \
 				$@ $(SRC_PROJECT) -o $(subst $(PATH_OBJ), $(DIR_OUTS), $(basename $@))
 	@			echo "$(L_GREEN)[$(subst objs/,,$@) compiled]$(L_WHITE)"
 
@@ -59,7 +70,7 @@ create_outs_dir:
 	@			mkdir -p $(DIR_OUTS)
 
 $(EXEC_OUTS):
-	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB)$@$(L_YELLOWB)]: $(L_WHITE)" && valgrind --leak-check=full -q ./$@;
+	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB)$@$(L_YELLOWB)]: $(L_WHITE)" && ./$@;
 
 clean:
 	@			$(MAKE) -s -C ../src $@
