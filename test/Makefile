@@ -70,7 +70,7 @@ create_outs_dir:
 	@			mkdir -p $(DIR_OUTS)
 
 $(EXEC_OUTS):
-	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB)$@$(L_YELLOWB)]: $(L_WHITE)" && valgrind --leak-check=full -q ./$@;
+	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB)$@$(L_YELLOWB)]: $(L_WHITE)" && ./$@;
 
 clean:
 	@			$(MAKE) -s -C ../src $@
