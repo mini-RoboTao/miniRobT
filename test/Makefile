@@ -1,25 +1,48 @@
-################  COLORS	######################
-L_RED			=			\033[0;31m
-L_REDB			=			\033[1;31m
-L_WHITE			=			\033[0;37m
-L_WHITEB		=			\033[1;37m
-L_YELLOW		=			\033[0;33m
-L_YELLOWB		=			\033[1;33m
-L_GREEN			=			\033[0;32m
-L_GREENB		=			\033[1;32m
-################ CONFIG	TESTS	##################
-#DIR				=			../srcs/
-DIR_OUTS		=			outs
-EXEC_OUTS		=			$(wildcard $(DIR_OUTS)/*)
-#YOUR_FILES		=			# Add your files with the function you can test
-TESTS			=			sample_test1 sample_test2 sample_test3
-HEADERS_TEST 	= 			-Icriterion-2.4.2/include/criterion
-LIB_CRITERION	=			-Lcriterion-2.4.2/lib -lcriterion
-################ CONFIG YOUR PROJECT #############
-FLAGS 			= 			-Wall -Werror -Wextra
-################ RULES		######################
+######################## COLORS	      ###############################
+L_RED							=			\033[0;31m
+L_REDB							=			\033[1;31m
+L_WHITE							=			\033[0;37m
+L_WHITEB						=			\033[1;37m
+L_YELLOW						=			\033[0;33m
+L_YELLOWB						=			\033[1;33m
+L_GREEN							=			\033[0;32m
+L_GREENB						=			\033[1;32m
+######################## CONFIG	TESTS ###############################
+HEADERS_TEST					= 			-Icriterion-2.4.2/include/criterion
+LIB_CRITERION					=			-Lcriterion-2.4.2/lib -lcriterion
+FLAGS 							= 			-Wall -Werror -Wextra -g3 -O3 -MMD -MP
+######################## PATHS 		  ###############################
+PATH_OBJ						=			objs/
+DIR_OUTS						=			outs/
+OBJS_PROJECT					=			../src/objs/
+UNIT_PATH						=			./unit_test/
+VPATH							=			./unit_test/sample/
+######################## PROJECT FILES ##############################
+SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
+											draw_mini.o							\
+											minirt.o)
+SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
+											$(wildcard $(OBJS_PROJECT)*.o))
+######################## TEST SOURCES ###############################
+SRC_SAMPLE						=			sample_test1.c sample_test2.c sample_test3.c
+SRC								=			$(SRC_SAMPLE)
+OBJ								=			$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
+DEP								=			$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
+EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)
+######################## RULES		  ###############################
 
-all: create_outs_dir $(TESTS) $(EXEC_OUTS)
+all: create_outs_dir make_minirobt $(PATH_OBJ) $(OBJ) $(EXEC_OUTS)
+
+$(PATH_OBJ)%.o:	%.c
+	@			$(CC) $(FLAGS) $(HEADERS_TEST) -I$(UNIT_PATH) -I$(UNIT_PATH) -c $< -o $@
+	@			$(CC) $(FLAGS) $(HEADERS_TEST) $(LIB_CRITERION) -I$(UNIT_PATH) -g \
+				$@ $(SRC_PROJECT) -o $(subst $(PATH_OBJ), $(DIR_OUTS), $(basename $@))
+	@			echo "$(L_GREEN)[$(subst objs/,,$@) compiled]$(L_WHITE)"
+
+$(PATH_OBJ):
+	@			mkdir $@
+
+-include $(DEP)
 
 bypass: create_outs_dir $(TESTS)
 	@echo
@@ -28,22 +51,25 @@ bypass: create_outs_dir $(TESTS)
 		./$(DIR_OUTS)/$${name}; echo ; \
 	done
 
-create_outs_dir:
-	@mkdir -p $(DIR_OUTS)
+make_minirobt:
+	@			$(MAKE) -s -C ../src
+	@			echo "$(L_YELLOWB)[Make MiniRobT Objects]$(L_WHITE)"
 
-$(TESTS):
-	@$(CC) $(FLAGS) $(HEADERS_TEST) $(LIB_CRITERION) -g $(addsuffix .c, $@) $(YOUR_FILES) -o $(addprefix ./$(DIR_OUTS)/, $@)
+create_outs_dir:
+	@			mkdir -p $(DIR_OUTS)
 
 $(EXEC_OUTS):
-	@echo "$(L_YELLOWB)$@: $(L_WHITE)" && ./$@;
+	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB)$@$(L_YELLOWB)]: $(L_WHITE)" && valgrind --leak-check=full -q ./$@;
 
 clean:
-#	@rm			-f $(SRCS:.c=.o)
-#	@cd 		$(DIR) && $(MAKE) $@
+	@			$(MAKE) -s -C ../src $@
+	@			rm -rf objs
+	@			echo "$(L_RED)[$(L_YELLOW)Objects Removed! $(L_RED)$(OBJ)]$(L_WHITE)"
 
-fclean:			clean
-	@rm 		-rf $(DIR_OUTS)
-#	@cd 		$(DIR) && $(MAKE) $@
+fclean: clean
+	@			$(MAKE) -s -C ../src $@
+	@			rm -rf outs
+	@			echo "$(L_RED)[$(L_YELLOW)Removed! $(L_RED)$(EXEC_OUTS)]$(L_WHITE)"
 
 re: fclean all
 
