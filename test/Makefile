@@ -14,7 +14,14 @@ EXEC_OUTS		=			$(wildcard $(DIR_OUTS)/*)
 #YOUR_FILES		=			# Add your files with the function you can test
 TESTS			=			sample_test1 sample_test2 sample_test3
 HEADERS_TEST 	= 			-Icriterion-2.4.2/include/criterion
-LIB_CRITERION	=			-Lcriterion-2.4.2/lib -lcriterion
+UNAME_S			:=			$(shell uname -s)
+ifeq ($(UNAME_S), Linux)
+	LIB_CRITERION	=		-Lcriterion-2.4.2/lib -lcriterion
+	DEBUG			=		-g3
+endif
+ifeq ($(UNAME_S), Darwin)
+	LIB_CRITERION 	=		-lcriterion
+endif
 ################ CONFIG YOUR PROJECT #############
 FLAGS 			= 			-Wall -Werror -Wextra
 ################ RULES		######################
@@ -32,7 +39,7 @@ create_outs_dir:
 	@mkdir -p $(DIR_OUTS)
 
 $(TESTS):
-	@$(CC) $(FLAGS) $(HEADERS_TEST) $(LIB_CRITERION) -g $(addsuffix .c, $@) $(YOUR_FILES) -o $(addprefix ./$(DIR_OUTS)/, $@)
+	@$(CC) $(FLAGS) $(HEADERS_TEST) $(LIB_CRITERION) $(DEBUG) $(addsuffix .c, $@) $(YOUR_FILES) -o $(addprefix ./$(DIR_OUTS)/, $@)
 
 $(EXEC_OUTS):
 	@echo "$(L_YELLOWB)$@: $(L_WHITE)" && ./$@;
