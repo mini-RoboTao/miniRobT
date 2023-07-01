@@ -40,7 +40,7 @@ RC							= \e[0m
 all: $(NAME)
 
 $(PATH_OBJ)%.o:	%.c
-	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) $(INCLUDE_MLX) -I$(PATH_INCLUDES) -c $< -o $@
+	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) $(INCLUDE_MLX) -I$(PATH_INCLUDES) -c $< -o $@ -lm
 	@			printf "$(GREEN).$(RC)"
 
 $(PATH_OBJ):
@@ -50,7 +50,7 @@ $(NAME): $(PATH_OBJ) $(OBJ)
 	@			printf "\n$(YELLOW)Creating LIBFT$(RC)\n"
 	@			$(MAKE) -s -C $(PATH_LIBFT)
 	@			echo $(PWD)
-	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) -I$(PATH_INCLUDES) $(OBJ) $(FLAG_MLX) $(INCLUDE_MLX) -o $(NAME)
+	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) -I$(PATH_INCLUDES) $(OBJ) $(FLAG_MLX) $(INCLUDE_MLX) -o $(NAME) -lm
 	@			printf "$(GREEN)$(NAME) created$(RC)\n"
 
 -include $(DEP)
