@@ -8,9 +8,9 @@ VPATH						=					./srcs:./linked_list:./object_feature
 ######################## FLAGS ###############################
 FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
-FLAG_EXTRA					=					-g3 -O3 -MMD -MP
+FLAG_EXTRA					=					-lm -g3 -O3 -MMD -MP
 ######################## SRCS ################################
-SRC_OBJECT_FEATURE			=					create_object.c object_arithmetic.c
+SRC_OBJECT_FEATURE			=					create_object.c object_arithmetic.c handle_object.c
 SRC_LINKED_LST				=					ft_lstnew.c ft_lstsize.c ft_lstlast.c \
 												ft_lstclean.c ft_lstadd_back.c 
 SRC							=					minirt.c draw_mini.c \

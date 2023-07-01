@@ -1,9 +1,9 @@
 #ifndef UNIT_TEST_H
 # define UNIT_TEST_H
 
-# include "../../src/include/minirt.h"
-# include "../criterion-2.4.2/include/criterion/criterion.h"
-# include "../criterion-2.4.2/include/criterion/new/assert.h"
+# include "minirt.h"
+# include "criterion.h"
+# include "new/assert.h"
 
 void	clean_obj(t_obj *o)
 {

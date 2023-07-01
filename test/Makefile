@@ -10,6 +10,7 @@ L_GREENB						=			\033[1;32m
 ######################## CONFIG	TESTS ###############################
 HEADERS_TEST					= 			-Icriterion-2.4.2/include/criterion
 FLAGS 							= 			-Wall -Werror -Wextra -g3 -O3 -MMD -MP
+MINIROBT_LIB					=			-I../src/include
 UNAME_S			:=			$(shell uname -s)
 ifeq ($(UNAME_S), Linux)
 	LIB_CRITERION	=		-Lcriterion-2.4.2/lib -lcriterion
@@ -35,7 +36,8 @@ SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 											$(wildcard $(OBJS_PROJECT)*.o))
 ######################## TEST SOURCES ###############################
-SRC_OBJ_FEATURE					=			create_object_test.c object_arithmetic_test.c
+SRC_OBJ_FEATURE					=			create_object_test.c object_arithmetic_test.c \
+											handle_object_test.c
 SRC								=			$(SRC_OBJ_FEATURE)
 OBJ								=			$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP								=			$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
@@ -45,8 +47,8 @@ EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)
 all: create_outs_dir make_minirobt $(PATH_OBJ) $(OBJ) $(EXEC_OUTS)
 
 $(PATH_OBJ)%.o:	%.c
-	@			$(CC) $(FLAGS) $(INCLUDE_MLX) $(HEADERS_TEST) -I$(UNIT_PATH) -I$(UNIT_PATH) -c $< -o $@
-	@			$(CC) $(FLAGS) $(FLAG_MLX) $(INCLUDE_MLX) $(HEADERS_TEST) $(LIB_CRITERION) -I$(UNIT_PATH) -g \
+	@			$(CC)  $(FLAGS) $(MINIROBT_LIB) $(INCLUDE_MLX) $(HEADERS_TEST) -I$(UNIT_PATH) -I$(UNIT_PATH) -c $< -o $@
+	@			$(CC) -lm $(FLAGS) $(MINIROBT_LIB) $(FLAG_MLX) $(INCLUDE_MLX) $(HEADERS_TEST) $(LIB_CRITERION) -I$(UNIT_PATH) -g \
 				$@ $(SRC_PROJECT) -o $(subst $(PATH_OBJ), $(DIR_OUTS), $(basename $@))
 	@			echo "$(L_GREEN)[$(subst objs/,,$@) compiled]$(L_WHITE)"
 
