@@ -27,7 +27,7 @@ PATH_OBJ						=			objs/
 DIR_OUTS						=			outs/
 OBJS_PROJECT					=			../src/objs/
 UNIT_PATH						=			./unit_test/
-VPATH							=			./unit_test/object_feature_test ./unit_test/color_feature_test
+VPATH							=			./unit_test/object_feature_test ./unit_test/color_feature_test ./unit_test/canva_feature_test
 ######################## PROJECT FILES ##############################
 SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 											draw_mini.o							\
@@ -35,7 +35,7 @@ SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 											$(wildcard $(OBJS_PROJECT)*.o))
 ######################## TEST SOURCES ###############################
-SRC_OBJ_FEATURE					=			create_object_test.c object_arithmetic_test.c cap2_color_tests.c
+SRC_OBJ_FEATURE					=			create_object_test.c object_arithmetic_test.c cap2_color_tests.c cap2_canva_tests.c
 SRC								=			$(SRC_OBJ_FEATURE)
 OBJ								=			$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP								=			$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
