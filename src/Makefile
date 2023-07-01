@@ -4,17 +4,18 @@ NAME						=					minirt
 PATH_OBJ					=					objs/
 PATH_INCLUDES				=					include/
 PATH_LIBFT					=					libs/libft/
-VPATH						=					./srcs:./linked_list:./object_feature
+VPATH						=					./srcs:./linked_list:./object_feature:./object_colors
 ######################## FLAGS ###############################
 FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
 FLAG_EXTRA					=					-g3 -O3 -MMD -MP
 ######################## SRCS ################################
 SRC_OBJECT_FEATURE			=					create_object.c object_arithmetic.c
+SRC_COLORS_FEATURE			=					object_colors.c
 SRC_LINKED_LST				=					ft_lstnew.c ft_lstsize.c ft_lstlast.c \
 												ft_lstclean.c ft_lstadd_back.c 
 SRC							=					minirt.c draw_mini.c \
-												$(SRC_LINKED_LST) $(SRC_OBJECT_FEATURE)
+												$(SRC_LINKED_LST) $(SRC_OBJECT_FEATURE) $(SRC_COLORS_FEATURE)
 OBJ							=					$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP							=					$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 ############## CONDITIONAL COMPILER FLAGS ####################

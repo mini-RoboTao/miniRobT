@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/27 19:04:54 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/01 16:06:01 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ typedef struct s_obj {
 	double		z;
 	double		w;
 }	t_obj;
+
+typedef struct s_color
+{
+	double		red;
+	double		green;
+	double		blue;
+}	t_color;
 
 void	ft_draw_letter_m(t_data *data, int *x, int *y);
 void	ft_draw_letter_i(t_data *data, int x);
