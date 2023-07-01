@@ -55,3 +55,8 @@ Test(Canvas, writing_float_pixel_to_a_canvas)
 
 	cr_expect(c->canvas[2][3].red == 0.8 && c->canvas[2][3].green == 0.8 && c->canvas[2][3].blue == 0.8);
 }
+
+Test(Squareroot, testing_square_root)
+{
+	cr_expect(square_root(4) == 2);
+}
