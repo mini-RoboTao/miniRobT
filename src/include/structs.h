@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/01 18:38:11 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/02 18:36:24 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,18 @@ typedef struct s_obj {
 	double		z;
 	double		w;
 }	t_obj;
+
+typedef struct s_projectile
+{
+	t_obj		*position;
+	t_obj		*velocity;
+}				t_projectile;
+
+typedef struct s_environment
+{
+	t_obj		*gravity;
+	t_obj		*wind;
+}				t_environment;
 
 typedef struct s_color
 {

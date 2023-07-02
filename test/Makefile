@@ -37,9 +37,9 @@ SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 											$(wildcard $(OBJS_PROJECT)*.o))
 ######################## TEST SOURCES ###############################
 SRC_OBJ_FEATURE					=			create_object_test.c object_arithmetic_test.c handle_object_test.c 
-SRC_COLORS_FEATURE      =     cap2_color_tests.c
-SRC_CANVAS_FEATURE      =     cap2_canva_tests.c
-SRC								=			$(SRC_OBJ_FEATURE)
+SRC_COLORS_FEATURE      		=     		cap2_color_tests.c
+SRC_CANVAS_FEATURE      		=     		cap2_canva_tests.c
+SRC								=			$(SRC_OBJ_FEATURE) $(SRC_CANVAS_FEATURE) $(SRC_COLORS_FEATURE)
 OBJ								=			$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP								=			$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)
