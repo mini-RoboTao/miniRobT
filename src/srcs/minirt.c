@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/29 18:16:21 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/02 00:43:00 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,36 +44,12 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	ft_create_screen(t_data *data)
-{
-	int	i;
-
-	i = 1;
-	data->screen.passx = 3.0 / data->screen.zoom / 640.0;
-	data->screen.x[0] = (data->screen.initx);
-	data->screen.y[0] = (data->screen.inity);
-	while (i < WIDTH)
-	{
-		data->screen.x[i] = data->screen.x[i - 1] + data->screen.passx;
-		i++;
-	}
-	i = 1;
-	while (i < HEIGHT)
-	{
-		data->screen.y[i] = data->screen.y[i - 1] - data->screen.passx;
-		i++;
-	}
-}
-
 // mlx_mouse_hook(data.win, &ft_mouse_hook, &data);
 /* Add on before mlx_loop */
 int	main(int ac, char **av)
 {
 	t_data	data;
 
-	data.screen.initx = -2.0;
-	data.screen.inity = 1.15;
-	data.screen.zoom = 1.0;
 	data.win_w = WIDTH;
 	data.win_h = HEIGHT;
 	data.win_name = "Mini-RobT";
