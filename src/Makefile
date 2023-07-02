@@ -8,9 +8,9 @@ VPATH						=					./srcs:./linked_list:./object_feature
 ######################## FLAGS ###############################
 FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
-FLAG_EXTRA					=					-g3 -O3 -MMD -MP
+FLAG_EXTRA					=					 -g3 -O3 -MMD -MP
 ######################## SRCS ################################
-SRC_OBJECT_FEATURE			=					create_object.c object_arithmetic.c
+SRC_OBJECT_FEATURE			=					create_object.c object_arithmetic.c handle_object.c
 SRC_LINKED_LST				=					ft_lstnew.c ft_lstsize.c ft_lstlast.c \
 												ft_lstclean.c ft_lstadd_back.c 
 SRC							=					minirt.c draw_mini.c \
@@ -48,7 +48,7 @@ $(NAME): $(PATH_OBJ) $(OBJ)
 	@			printf "\n$(YELLOW)Creating LIBFT$(RC)\n"
 	@			$(MAKE) -s -C $(PATH_LIBFT)
 	@			echo $(PWD)
-	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) -I$(PATH_INCLUDES) $(OBJ) $(FLAG_MLX) $(INCLUDE_MLX) -o $(NAME)
+	@			$(CC)	$(FLAGS_W) $(FLAG_EXTRA) -I$(PATH_INCLUDES) $(OBJ) $(FLAG_MLX) $(INCLUDE_MLX) -o $(NAME) -lm
 	@			printf "$(GREEN)$(NAME) created$(RC)\n"
 
 -include $(DEP)
