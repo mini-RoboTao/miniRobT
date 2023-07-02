@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/18 19:24:49 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:16:21 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ clean display and memory on linux.
 */
 int	ft_close_win(t_data *data)
 {
+	printf("Look the Robotão!\n");
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img.ptr);
 	free(data->mlx);
@@ -85,6 +86,5 @@ int	main(int ac, char **av)
 	mlx_hook(data.win, 2, 1L << 0, &ft_key_hook, &data);
 	mlx_hook(data.win, 17, 0, &ft_close_win, &data);
 	mlx_loop(data.mlx);
-	printf("Look the Robotão!\n");
 	return (0);
 }
