@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 16:30:41 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/01 19:28:29 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/02 21:36:58 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ t_canvas	*generate_canvas(int width, int height)
 	return (canvas);
 }
 
-void	write_pixel(t_canvas *canvas, int x, int y, t_color color)
+int	write_pixel(t_canvas *canvas, int x, int y, t_color color)
 {
+	if (x > canvas->width || y > canvas->height || x < 0 || y < 0)
+		return (1);
 	canvas->canvas[x][y] = color;
+	return (0);
 }
