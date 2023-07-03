@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/01 18:38:11 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:13:12 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,6 @@ typedef struct s_screen
 	double	passy;
 }	t_screen;
 
-typedef struct s_data {
-	void		*mlx;
-	void		*win;
-	char		*win_name;
-	int			win_w;
-	int			win_h;
-	t_img		img;
-	t_screen	screen;
-}	t_data;
-
-typedef struct s_object {
-	void		*content;
-	int			content_type;
-}	t_object;
-
-typedef struct s_obj {
-	double		x;
-	double		y;
-	double		z;
-	double		w;
-}	t_obj;
-
 typedef struct s_color
 {
 	double		red;
@@ -70,6 +48,29 @@ typedef struct s_canvas
 	int			height;
 	t_color		**canvas;
 }	t_canvas;
+
+typedef struct s_data {
+	void		*mlx;
+	void		*win;
+	char		*win_name;
+	int			win_w;
+	int			win_h;
+	t_img		img;
+	t_screen	screen;
+	t_canvas	*canvas;
+}	t_data;
+
+typedef struct s_object {
+	void		*content;
+	int			content_type;
+}	t_object;
+
+typedef struct s_obj {
+	double		x;
+	double		y;
+	double		z;
+	double		w;
+}	t_obj;
 
 void	ft_draw_letter_m(t_data *data, int *x, int *y);
 void	ft_draw_letter_i(t_data *data, int x);

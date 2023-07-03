@@ -51,8 +51,8 @@ all: create_outs_dir make_minirobt $(PATH_OBJ) $(OBJ) $(EXEC_OUTS)
 
 $(PATH_OBJ)%.o:	%.c
 	@			$(CC)  $(FLAGS) $(MINIROBT_LIB) -I$(LIBFT_PATH) $(INCLUDE_MLX) $(HEADERS_TEST) -I$(UNIT_PATH) -c $< -o $@
-	@			$(CC)  $(FLAGS) $(MINIROBT_LIB) $(FLAG_MLX) $(INCLUDE_MLX) $(HEADERS_TEST) -L$(LIBFT_PATH) -lft $(LIB_CRITERION) -I$(UNIT_PATH) -g \
-				$@ $(SRC_PROJECT) -o $(subst $(PATH_OBJ), $(DIR_OUTS), $(basename $@)) -lm
+	@			$(CC)  $(FLAGS) $(MINIROBT_LIB) $(FLAG_MLX) $(INCLUDE_MLX) $(HEADERS_TEST) -L$(LIBFT_PATH) $(LIB_CRITERION) -I$(UNIT_PATH) -g \
+				$@ $(SRC_PROJECT) -o $(subst $(PATH_OBJ), $(DIR_OUTS), $(basename $@)) -lm -lft
 	@			echo "$(L_GREEN)[$(subst objs/,,$@) compiled]$(L_WHITE)"
 
 $(PATH_OBJ):

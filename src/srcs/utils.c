@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 00:33:12 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/02 20:46:40 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/03 18:15:09 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*float_to_hex(double dbl_value)
 	int_value = dbl_value * 255;
 	i = 0;
 	if (int_value == 0)
-		return ("00");
+		return (ft_strdup("00"));
 	while (int_value != 0)
 	{
 		remain = int_value % 16;
@@ -64,29 +64,36 @@ char	*float_to_hex(double dbl_value)
 	return (result);
 }
 
+char	*generate_color_string(double color, char *str)
+{
+	char	*rgb;
+	char	*hex;
+
+	rgb = NULL;
+	hex = NULL;
+	if (color > 1)
+		hex = float_to_hex(1);
+	else if (color < 0)
+		hex = float_to_hex(0);
+	else
+		hex = float_to_hex(color);
+	rgb = ft_strjoin(str, hex);
+	if (hex)
+		free(hex);
+	if (str)
+		free(str);
+	return (rgb);
+}
+
 char	*join_rgb_colors(t_color color)
 {
-	char	*result;
+	char	*rgb;
 
-	if (color.red > 1)
-		result = ft_strjoin("", float_to_hex(1));
-	else if (color.red < 0)
-		result = ft_strjoin("", float_to_hex(0));
-	else
-		result = ft_strjoin("", float_to_hex(color.red));
-	if (color.green > 1)
-		result = ft_strjoin(result, float_to_hex(1));
-	else if (color.green < 0)
-		result = ft_strjoin(result, float_to_hex(0));
-	else
-		result = ft_strjoin(result, float_to_hex(color.green));
-	if (color.blue > 1)
-		result = ft_strjoin(result, float_to_hex(1));
-	else if (color.blue < 0)
-		result = ft_strjoin(result, float_to_hex(0));
-	else
-		result = ft_strjoin(result, float_to_hex(color.blue));
-	return (result);
+	rgb = NULL;
+	rgb = generate_color_string(color.red, ft_strdup(""));
+	rgb = generate_color_string(color.green, rgb);
+	rgb = generate_color_string(color.blue, rgb);
+	return (rgb);
 }
 
 int	hex_to_int(char *hex)
@@ -112,5 +119,7 @@ int	hex_to_int(char *hex)
 		}
 		i--;
 	}
+	if (hex)
+		free(hex);
 	return (dec);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mini.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 19:02:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/02 20:48:05 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:13:27 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,9 @@ void	ft_draw_letter_n(t_data *data, int *x, int *y)
 
 int	ft_render_minirt(t_data *data)
 {
-	t_canvas	*canvas;
 	int			i;
 	int			j;
 
-	canvas = generate_canvas(WIDTH, HEIGHT);
 	i = 0;
 	while (i < WIDTH)
 	{
@@ -82,7 +80,7 @@ int	ft_render_minirt(t_data *data)
 		while (j < HEIGHT)
 		{
 			ft_mlx_pixel_put(data, i, j,
-				hex_to_int(join_rgb_colors(canvas->canvas[i][j])));
+				hex_to_int(join_rgb_colors(data->canvas->canvas[i][j])));
 			j++;
 		}
 		i++;

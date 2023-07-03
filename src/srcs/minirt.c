@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/02 00:43:00 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/03 18:25:57 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,29 @@ comment when run in mac, because this function doesn't
 exist in mlx for mac. Also this function is used to
 clean display and memory on linux.
 */
+
+void	clean_data(t_canvas *canvas)
+{
+	int	i;
+
+	i = 0;
+	while (i < WIDTH)
+	{
+		free(canvas->canvas[i]);
+		i++;
+	}
+	if (canvas->canvas)
+		free(canvas->canvas);
+	if (canvas)
+		free(canvas);
+}
+
 int	ft_close_win(t_data *data)
 {
 	printf("Look the Robotão!\n");
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img.ptr);
+	clean_data(data->canvas);
 	free(data->mlx);
 	exit(0);
 	return (0);
@@ -46,6 +64,7 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 // mlx_mouse_hook(data.win, &ft_mouse_hook, &data);
 /* Add on before mlx_loop */
+
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -53,6 +72,7 @@ int	main(int ac, char **av)
 	data.win_w = WIDTH;
 	data.win_h = HEIGHT;
 	data.win_name = "Mini-RobT";
+	data.canvas = generate_canvas(WIDTH, HEIGHT);
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, data.win_w, data.win_h, data.win_name);
 	data.img.ptr = mlx_new_image(data.mlx, data.win_w, data.win_h);
