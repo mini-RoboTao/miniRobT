@@ -72,6 +72,32 @@ typedef struct s_obj {
 	double		w;
 }	t_obj;
 
+typedef struct s_projectile
+{
+	t_obj		*position;
+	t_obj		*velocity;
+}				t_projectile;
+
+typedef struct s_environment
+{
+	t_obj		*gravity;
+	t_obj		*wind;
+}				t_environment;
+
+typedef struct s_color
+{
+	double		red;
+	double		green;
+	double		blue;
+}	t_color;
+
+typedef struct s_canvas
+{
+	int			width;
+	int			height;
+	t_color		**canvas;
+}	t_canvas;
+
 void	ft_draw_letter_m(t_data *data, int *x, int *y);
 void	ft_draw_letter_i(t_data *data, int x);
 void	ft_draw_letter_n(t_data *data, int *x, int *y);
