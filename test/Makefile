@@ -39,7 +39,10 @@ SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 											$(wildcard $(OBJS_PROJECT)*.o))
 ######################## TEST SOURCES ###############################
-SRC_OBJ_FEATURE					=			create_object_test.c object_arithmetic_test.c handle_object_test.c 
+SRC_OBJ_FEATURE					=			create_object_test.c 				\
+											object_arithmetic_test.c 			\
+											handle_object_test.c			 	\
+											object_actions_test.c
 SRC_COLORS_FEATURE				=			cap2_color_tests.c
 SRC_CANVAS_FEATURE				=			cap2_canva_tests.c
 SRC_UTILS						=			float_to_hex_test.c join_rgb_colors_test.c
@@ -47,19 +50,22 @@ SRC								=			$(SRC_OBJ_FEATURE) $(SRC_COLORS_FEATURE) $(SRC_CANVAS_FEATURE) $(
 OBJ								=			$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP								=			$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)
+ONE_TEST						=			$(patsubst %.c, $(PATH_OBJ)%.o, $(TEST_NAME))
 ######################## RULES		  ###############################
 
 all: create_outs_dir make_minirobt $(PATH_OBJ) $(OBJ) $(EXEC_OUTS)
 
-run-test: create_outs_dir make_minirobt $(PATH_OBJ) $(TEST_NAME%.c=%.o)
-	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB) $(TEST_NAME) $(L_YELLOWB)]: $(L_WHITE)"
-	@			$(VALGRIND_FLAG) $(addprefix ./outs/, $(notdir $(basename $(TEST_NAME))))
 
 $(PATH_OBJ)%.o:	%.c
 	@			$(CC)  $(FLAGS) $(MINIROBT_LIB) -I$(LIBFT_PATH) $(INCLUDE_MLX) $(HEADERS_TEST) -I$(UNIT_PATH) -c $< -o $@
 	@			$(CC)  $(FLAGS) $(MINIROBT_LIB) $(FLAG_MLX) $(INCLUDE_MLX) $(HEADERS_TEST) -L$(LIBFT_PATH) $(LIB_CRITERION) -I$(UNIT_PATH) -g \
 				$@ $(SRC_PROJECT) -o $(subst $(PATH_OBJ), $(DIR_OUTS), $(basename $@)) -lm -lft
 	@			echo "$(L_GREEN)[$(subst objs/,,$@) compiled]$(L_WHITE)"
+
+run-test: create_outs_dir make_minirobt $(PATH_OBJ) $(ONE_TEST)
+	@			echo $(ONE_TEST%)
+	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB) $(TEST_NAME) $(L_YELLOWB)]: $(L_WHITE)"
+	@			$(VALGRIND_FLAG) $(addprefix ./outs/, $(notdir $(basename $(TEST_NAME))))
 
 $(PATH_OBJ):
 	@			mkdir $@

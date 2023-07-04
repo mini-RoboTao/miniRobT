@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/03 19:26:42 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:31:55 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,32 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+void	put_together(t_data *d)
+{
+	t_environment	*e;
+	t_projectile	*p;
+	t_projectile	*tmp;
+
+	p = create_proj(create_point(0, 1, 0), \
+	multiply_object(object_normalize(create_vector(0.1, 0.4, 0)), 3.2));
+	e = create_env(create_vector(0.4, -0.1, 0), create_vector(-0.01, 0, 0));
+	while (1)
+	{
+		tmp = p;
+		p = tick(e, p);
+		clean_proj(tmp);
+		if (p->position->y <= 0)
+			break ;
+		write_pixel(d->canvas, (int)p->position->x, \
+		HEIGHT - (int)p->position->y, fill_color(231, 0, 0));
+		usleep(100);
+	}
+	clean_proj(p);
+	clean_env(e);
+}
+
 // mlx_mouse_hook(data.win, &ft_mouse_hook, &data);
 /* Add on before mlx_loop */
-
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -57,6 +80,7 @@ int	main(int ac, char **av)
 	data.win_h = HEIGHT;
 	data.win_name = "Mini-RobT";
 	data.canvas = generate_canvas(WIDTH, HEIGHT);
+	put_together(&data);
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, data.win_w, data.win_h, data.win_name);
 	data.img.ptr = mlx_new_image(data.mlx, data.win_w, data.win_h);
