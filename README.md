@@ -15,6 +15,7 @@
   - [Functions](#functions)
   - [Render](#render)
   - [How to compile and run](#how-to-compile-and-run)
+  - [How to run tests](#how-to-run-tests)
   - [References](#references)
 - [What is 42?](#whats-is-42)
 - [About the authors](#about-the-authors)
@@ -50,6 +51,37 @@ We must use MLX library to render images.
 Use `make` to compile the program.
 
 Run with `./minirt {file.rt}`, where `{file.rt}` is the file with information about objects in the scene.
+
+### How to run tests
+To execute the tests, follow the steps below:
+
+1. Run the script that will install the libcriterion library:
+    ```shell
+    source init_settings.sh
+    ```
+    > If you don't have execution permissions, change the permissions of the file using the following command:
+    ```shell
+    chmod <permission number> init_settings.sh
+
+    # Example
+    chmod 700 init_settings.sh
+    ```
+
+2. Run the `make` command to execute all the tests:
+    ```shell
+    make
+    ```
+
+3. Run the `make run-test` command to execute a specific test.
+    > Replace `<test_folder>` with the test directory and `<test_name.c>` with the name of the test file:
+
+    ```shell
+    make run-test TEST_NAME=./unit_test/<test_folder>/<test_name.c>
+
+    # Example
+    make run-test TEST_NAME=./unit_test/utils_test/join_rgb_colors_test.c
+    ```
+
 
 ### References
 

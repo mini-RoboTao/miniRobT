@@ -5,15 +5,6 @@
 # include "criterion.h"
 # include "new/assert.h"
 
-void	clean_obj(t_obj *o)
-{
-	if (o)
-	{
-		free(o);
-		o = NULL;
-	}
-}
-
 int cr_object_eq(t_obj *a, t_obj *b)
 {
     return	(fabs(a->x - b->x) < EPSILON && \

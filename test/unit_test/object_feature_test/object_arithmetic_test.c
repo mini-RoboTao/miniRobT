@@ -11,8 +11,8 @@ Test(object_operations, test_sums_two_objects_one_of_type_vector_and_one_type_po
 	cr_assert(cr_object_eq(result, expected));
 	clean_obj(obj1);
 	clean_obj(obj2);
-	clean_obj(expected);
 	clean_obj(result);
+	clean_obj(expected);
 }
 
 Test(object_operations, test_sums_two_objects_of_type_vector_should_be_a_vector)
@@ -26,8 +26,8 @@ Test(object_operations, test_sums_two_objects_of_type_vector_should_be_a_vector)
 	cr_assert(cr_object_eq(result, expected));
 	clean_obj(obj1);
 	clean_obj(obj2);
-	clean_obj(expected);
 	clean_obj(result);
+	clean_obj(expected);
 }
 
 Test(object_operations, test_sums_two_objects_of_type_point_should_be_NULL)
@@ -68,8 +68,8 @@ Test(object_operations, test_subtractions_two_objects_of_type_point_should_be_a_
 	cr_assert(cr_object_eq(result, expected));
 	clean_obj(obj1);
 	clean_obj(obj2);
-	clean_obj(expected);
 	clean_obj(result);
+	clean_obj(expected);
 }
 
 Test(object_operations, test_subtractions_two_objects_one_of_type_point_minus_a_type_vector_should_be_a_point)
@@ -83,8 +83,8 @@ Test(object_operations, test_subtractions_two_objects_one_of_type_point_minus_a_
 	cr_assert(cr_object_eq(result, expected));
 	clean_obj(obj1);
 	clean_obj(obj2);
-	clean_obj(expected);
 	clean_obj(result);
+	clean_obj(expected);
 }
 
 Test(object_operations, test_subtractions_two_objects_of_type_vector_should_be_a_vector)
@@ -98,8 +98,8 @@ Test(object_operations, test_subtractions_two_objects_of_type_vector_should_be_a
 	cr_assert(cr_object_eq(result, expected));
 	clean_obj(obj1);
 	clean_obj(obj2);
-	clean_obj(expected);
 	clean_obj(result);
+	clean_obj(expected);
 }
 
 Test(object_operations, test_subtractions_two_objects_one_of_type_vector_minus_a_type_point_should_be_NULL)

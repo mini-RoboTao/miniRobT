@@ -2,68 +2,123 @@
 
 Test(Join_RGB_Colors, red_0_green_0_blue_0)
 {
+    char    *rgb;
     t_color color = fill_color(0, 0, 0);
-    cr_expect(eq(str, join_rgb_colors(color), "000000"));
+
+    rgb = join_rgb_colors(color);
+    cr_expect(eq(str, rgb, "000000"));
+    if (rgb)
+        free(rgb);
 }
 
 Test(Join_RGB_Colors, red_1_green_0_blue_0)
 {
+    char    *rgb;
     t_color color = fill_color(1, 0, 0);
-    cr_expect(eq(str, join_rgb_colors(color), "FF0000"));
+
+    rgb = join_rgb_colors(color);
+    cr_expect(eq(str, rgb, "FF0000"));
+    if (rgb)
+        free(rgb);
 }
 
 Test(Join_RGB_Colors, red_0_green_1_blue_0)
 {
+    char    *rgb;
     t_color color = fill_color(0, 1, 0);
-    cr_expect(eq(str, join_rgb_colors(color), "00FF00"));
+
+    rgb = join_rgb_colors(color);
+    cr_expect(eq(str, rgb, "00FF00"));
+    if (rgb)
+        free(rgb);
 }
 
 Test(Join_RGB_Colors, red_0_green_0_blue_1)
 {
+    char    *rgb;
     t_color color = fill_color(0, 0, 1);
-    cr_expect(eq(str, join_rgb_colors(color), "0000FF"));
+
+    rgb = join_rgb_colors(color);
+    cr_expect(eq(str, rgb, "0000FF"));
+    if (rgb)
+        free(rgb);
 }
 
 Test(Join_RGB_Colors, red_1_green_1_blue_1)
 {
+    char    *rgb;
     t_color color = fill_color(1, 1, 1);
-    cr_expect(eq(str, join_rgb_colors(color), "FFFFFF"));
+
+    rgb = join_rgb_colors(color);
+    cr_expect(eq(str, rgb, "FFFFFF"));
+    if (rgb)
+        free(rgb);
 }
 
 Test(Join_RGB_Colors, red_2_green_1_blue_1)
 {
+    char    *rgb;
     t_color color = fill_color(2, 1, 1);
-    cr_expect(eq(str, join_rgb_colors(color), "FFFFFF"));
+
+    rgb = join_rgb_colors(color);
+    cr_expect(eq(str, rgb, "FFFFFF"));
+    if (rgb)
+        free(rgb);
 }
 
 Test(Join_RGB_Colors, red_1_green_2_blue_1)
 {
+    char    *rgb;
     t_color color = fill_color(1, 2, 1);
-    cr_expect(eq(str, join_rgb_colors(color), "FFFFFF"));
+
+    rgb = join_rgb_colors(color);
+    cr_expect(eq(str, rgb, "FFFFFF"));
+    if (rgb)
+        free(rgb);
 }
 
 Test(Join_RGB_Colors, red_1_green_1_blue_2)
 {
+    char    *rgb;
     t_color color = fill_color(1, 1, 2);
-    cr_expect(eq(str, join_rgb_colors(color), "FFFFFF"));
+
+    rgb = join_rgb_colors(color);
+    cr_expect(eq(str, rgb, "FFFFFF"));
+    if (rgb)
+        free(rgb);
 }
 
 Test(Join_RGB_Colors, red_minus_1_green_1_blue_2)
 {
+    char    *rgb;
     t_color color = fill_color(-1, 1, 2);
-    cr_expect(eq(str, join_rgb_colors(color), "00FFFF"));
+
+    rgb = join_rgb_colors(color);
+    cr_expect(eq(str, rgb, "00FFFF"));
+    if (rgb)
+        free(rgb);
 }
 
 Test(Join_RGB_Colors, red_minus_1_green_minus_1_blue_2)
 {
+    char    *rgb;
     t_color color = fill_color(-1, -1, 2);
-    cr_expect(eq(str, join_rgb_colors(color), "0000FF"));
+
+    rgb = join_rgb_colors(color);
+    cr_expect(eq(str, rgb, "0000FF"));
+    if (rgb)
+        free(rgb);
 }
 
 Test(Join_RGB_Colors, red_minus_1_green_minus_1_blue_minus_1)
 {
+    char    *rgb;
     t_color color = fill_color(-1, -1, -1);
-    cr_expect(eq(str, join_rgb_colors(color), "000000"));
+
+    rgb = join_rgb_colors(color);
+    cr_expect(eq(str, rgb, "000000"));
+    if (rgb)
+        free(rgb);
 }
 
 Test(Test, white_to_int)

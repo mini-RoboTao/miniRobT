@@ -14,12 +14,14 @@ MINIROBT_LIB					=			-I../src/include
 LIBFT_PATH						=			../src/libs/libft
 UNAME_S							:=			$(shell uname -s)
 ifeq ($(UNAME_S), Linux)
+	VALGRIND_FLAG				=			valgrind --trace-children=yes --leak-check=full -q
 	LIB_CRITERION				=			-Lcriterion-2.4.2/lib -lcriterion
 	DEBUG						=			-g3
 	FLAG_MLX					=			-L../external_libs/mlx_linux -lmlx_Linux -lX11 -lXext
 	INCLUDE_MLX					=			-I../external_libs/mlx_linux
 endif
 ifeq ($(UNAME_S), Darwin)
+	VALGRIND_FLAG				=			""
 	LIB_CRITERION 				=			-lcriterion
 	FLAG_MLX					=			-L../external_libs/mlx_mac -lmlx -framework OpenGL -framework AppKit
 	INCLUDE_MLX					=			-I../external_libs/mlx_mac
@@ -49,6 +51,10 @@ EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)
 
 all: create_outs_dir make_minirobt $(PATH_OBJ) $(OBJ) $(EXEC_OUTS)
 
+run-test: create_outs_dir make_minirobt $(PATH_OBJ) $(TEST_NAME%.c=%.o)
+	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB) $(TEST_NAME) $(L_YELLOWB)]: $(L_WHITE)"
+	@			$(VALGRIND_FLAG) $(addprefix ./outs/, $(notdir $(basename $(TEST_NAME))))
+
 $(PATH_OBJ)%.o:	%.c
 	@			$(CC)  $(FLAGS) $(MINIROBT_LIB) -I$(LIBFT_PATH) $(INCLUDE_MLX) $(HEADERS_TEST) -I$(UNIT_PATH) -c $< -o $@
 	@			$(CC)  $(FLAGS) $(MINIROBT_LIB) $(FLAG_MLX) $(INCLUDE_MLX) $(HEADERS_TEST) -L$(LIBFT_PATH) $(LIB_CRITERION) -I$(UNIT_PATH) -g \
@@ -75,7 +81,7 @@ create_outs_dir:
 	@			mkdir -p $(DIR_OUTS)
 
 $(EXEC_OUTS):
-	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB)$@$(L_YELLOWB)]: $(L_WHITE)" && ./$@;
+	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB)$@$(L_YELLOWB)]: $(L_WHITE)" && $(VALGRIND_FLAG) ./$@;
 
 clean:
 	@			$(MAKE) -s -C ../src $@
