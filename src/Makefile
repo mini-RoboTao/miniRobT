@@ -10,7 +10,7 @@ FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
 FLAG_EXTRA					=					 -g3 -O3 -MMD -MP
 ######################## SRCS ################################
-SRC_OBJECT_FEATURE			=					create_object.c object_arithmetic.c handle_object.c
+SRC_OBJECT_FEATURE			=					create_object.c object_arithmetic.c handle_object.c object_actions.c
 SRC_COLORS_FEATURE			=					object_colors.c
 SRC_CANVAS_FEATURE			=					canvas.c
 SRC_LINKED_LST				=					ft_lstnew.c ft_lstsize.c ft_lstlast.c \
