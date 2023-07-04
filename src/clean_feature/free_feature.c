@@ -1,23 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   free_feature.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 21:44:14 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/03 17:09:44 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/07/03 19:16:00 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/07/03 20:18:02 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_H
-# define DEFINES_H
+#include "minirt.h"
 
-# include "minirt.h"
+void	clean_obj(t_obj *o)
+{
+	if (o)
+	{
+		free(o);
+		o = NULL;
+	}
+}
 
-# define WIDTH 640
-# define HEIGHT 480
+void	clean_canvas(t_canvas *c)
+{
+	int	x;
 
-# define EPSILON 0.0001
-
-#endif
+	x = 0;
+	if (c)
+	{
+		if (c->canvas)
+		{
+			while (x < c->width)
+			{
+				if (c->canvas[x])
+					free(c->canvas[x]);
+				x++;
+			}
+			free(c->canvas);
+		}
+		free(c);
+	}
+}

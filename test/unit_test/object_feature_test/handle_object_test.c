@@ -128,8 +128,10 @@ Test(handle_object, test_cross_product_of_a_vector_a_x1_y2_z3_and_a_vector_b_x2_
 
     result = object_cross_product(&vector_a, &vector_b);
 	cr_assert(cr_object_eq(result, &expected_a_b));
+    clean_obj(result);
     result = object_cross_product(&vector_b, &vector_a);
 	cr_assert(cr_object_eq(result, &expected_b_a));
+    clean_obj(result);
 }
 
 Test(handle_object, test_cross_product_of_a_vector_NULL_and_a_vector_x2_y3_z4_should_be_NULL)
@@ -141,6 +143,8 @@ Test(handle_object, test_cross_product_of_a_vector_NULL_and_a_vector_x2_y3_z4_sh
 
     result = object_cross_product(vector_a, &vector_b);
 	cr_assert(eq(result, expected));
+    clean_obj(result);
     result = object_cross_product(&vector_b, vector_a);
 	cr_assert(eq(result, expected));
+    clean_obj(result);
 }

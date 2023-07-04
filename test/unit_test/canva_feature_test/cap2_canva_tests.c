@@ -18,6 +18,7 @@ Test(Canvas, creating_a_canvas)
 			cr_expect(c->canvas[w][h].blue != 1);
 		}
 	}
+	clean_canvas(c);
 }
 
 Test(Canvas, writing_red_pixel_to_a_canvas)
@@ -27,6 +28,7 @@ Test(Canvas, writing_red_pixel_to_a_canvas)
 	write_pixel(c, 2, 3, red);
 
 	cr_expect(c->canvas[2][3].red == 1 && c->canvas[2][3].green == 0 && c->canvas[2][3].blue == 0);
+	clean_canvas(c);
 }
 
 Test(Canvas, writing_green_pixel_to_a_canvas)
@@ -36,6 +38,7 @@ Test(Canvas, writing_green_pixel_to_a_canvas)
 	write_pixel(c, 2, 3, green);
 
 	cr_expect(c->canvas[2][3].red == 0 && c->canvas[2][3].green == 1 && c->canvas[2][3].blue == 0);
+	clean_canvas(c);
 }
 
 Test(Canvas, writing_white_pixel_to_a_canvas)
@@ -45,6 +48,7 @@ Test(Canvas, writing_white_pixel_to_a_canvas)
 	write_pixel(c, 2, 3, white);
 
 	cr_expect(c->canvas[2][3].red == 1 && c->canvas[2][3].green == 1 && c->canvas[2][3].blue == 1);
+	clean_canvas(c);
 }
 
 Test(Canvas, writing_float_pixel_to_a_canvas)
@@ -54,4 +58,5 @@ Test(Canvas, writing_float_pixel_to_a_canvas)
 	write_pixel(c, 2, 3, gray);
 
 	cr_expect(c->canvas[2][3].red == 0.8 && c->canvas[2][3].green == 0.8 && c->canvas[2][3].blue == 0.8);
+	clean_canvas(c);
 }

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   object_colors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:45:34 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/01 15:51:26 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:24:09 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-#include <string.h>
 
 t_color	fill_color(double red, double green, double blue)
 {

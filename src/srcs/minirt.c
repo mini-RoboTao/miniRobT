@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/29 18:16:21 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:26:42 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ comment when run in mac, because this function doesn't
 exist in mlx for mac. Also this function is used to
 clean display and memory on linux.
 */
+
 int	ft_close_win(t_data *data)
 {
 	printf("Look the Robotão!\n");
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img.ptr);
+	clean_canvas(data->canvas);
 	free(data->mlx);
 	exit(0);
 	return (0);
@@ -44,39 +46,17 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	ft_create_screen(t_data *data)
-{
-	int	i;
-
-	i = 1;
-	data->screen.passx = 3.0 / data->screen.zoom / 640.0;
-	data->screen.x[0] = (data->screen.initx);
-	data->screen.y[0] = (data->screen.inity);
-	while (i < WIDTH)
-	{
-		data->screen.x[i] = data->screen.x[i - 1] + data->screen.passx;
-		i++;
-	}
-	i = 1;
-	while (i < HEIGHT)
-	{
-		data->screen.y[i] = data->screen.y[i - 1] - data->screen.passx;
-		i++;
-	}
-}
-
 // mlx_mouse_hook(data.win, &ft_mouse_hook, &data);
 /* Add on before mlx_loop */
+
 int	main(int ac, char **av)
 {
 	t_data	data;
 
-	data.screen.initx = -2.0;
-	data.screen.inity = 1.15;
-	data.screen.zoom = 1.0;
 	data.win_w = WIDTH;
 	data.win_h = HEIGHT;
 	data.win_name = "Mini-RobT";
+	data.canvas = generate_canvas(WIDTH, HEIGHT);
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, data.win_w, data.win_h, data.win_name);
 	data.img.ptr = mlx_new_image(data.mlx, data.win_w, data.win_h);
