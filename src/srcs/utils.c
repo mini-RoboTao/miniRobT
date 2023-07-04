@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 00:33:12 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/03 18:15:09 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/03 20:19:21 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ char	*float_to_hex(double dbl_value)
 	int		remain;
 	int		i;
 
+	int_value = dbl_value * 255;
+	if (int_value == 0)
+		return (ft_strdup("00"));
+	i = 0;
 	result = malloc(sizeof(char) * 3);
 	if (!result)
 		return (NULL);
-	int_value = dbl_value * 255;
-	i = 0;
-	if (int_value == 0)
-		return (ft_strdup("00"));
 	while (int_value != 0)
 	{
 		remain = int_value % 16;

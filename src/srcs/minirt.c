@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/03 18:25:57 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:26:42 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,12 @@ exist in mlx for mac. Also this function is used to
 clean display and memory on linux.
 */
 
-void	clean_data(t_canvas *canvas)
-{
-	int	i;
-
-	i = 0;
-	while (i < WIDTH)
-	{
-		free(canvas->canvas[i]);
-		i++;
-	}
-	if (canvas->canvas)
-		free(canvas->canvas);
-	if (canvas)
-		free(canvas);
-}
-
 int	ft_close_win(t_data *data)
 {
 	printf("Look the Robotão!\n");
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img.ptr);
-	clean_data(data->canvas);
+	clean_canvas(data->canvas);
 	free(data->mlx);
 	exit(0);
 	return (0);
