@@ -1,7 +1,15 @@
 <div align="center" >
   <img src="./img/minirobt.png" alt="minirt" width="175" height="175">
   <h1>&#128679; MiniRobT</h1>
-  <h3>Ray Tracing</h3>
+  <h3>in progress...</h3>
+</div>
+
+<div align="center" >
+  
+[![TESTS CHECK](https://github.com/mini-RoboTao/miniRobT/actions/workflows/minirt-tests.yml/badge.svg)](https://github.com/mini-RoboTao/miniRobT/actions/workflows/minirt-tests.yml)
+[![NORM CHECK](https://github.com/mini-RoboTao/miniRobT/actions/workflows/norminette-check.yml/badge.svg)](https://github.com/mini-RoboTao/miniRobT/actions/workflows/norminette-check.yml)
+[![COMPILE CHECK](https://github.com/mini-RoboTao/miniRobT/actions/workflows/minirt.yml/badge.svg)](https://github.com/mini-RoboTao/miniRobT/actions/workflows/minirt.yml)
+
 </div>
 
 ***
@@ -22,7 +30,11 @@
 
 ## The project
 
-Lorep ipsum...
+The Minirt project at School 42 is a challenging journey aimed at enhancing skills in C programming and 3D graphics. Through the implementation of an image renderer using ray tracing, participants dive into the world of ray intersection, shading, reflection, and refraction.
+
+Ray tracing is an advanced algorithm used in realistic image rendering. It simulates the behavior of light by tracing rays through a virtual scene and calculating their interaction with objects. This results in precise shading, reflections, and refractions, delivering impressive visual quality.
+
+In the Minirt project, students also explore the Whitted algorithm, developed by Turner Whitted in 1980. This algorithm introduced the concept of recursive rays, enabling the creation of multiple reflections and soft shadows. Combined with acceleration techniques like the Bounding Volume Hierarchy (BVH) data structure, the Whitted algorithm provides even more realistic and efficient visual results.
 
 ### Concept
 
@@ -76,10 +88,10 @@ To execute the tests, follow the steps below:
     > Replace `<test_folder>` with the test directory and `<test_name.c>` with the name of the test file:
 
     ```shell
-    make run-test TEST_NAME=./unit_test/<test_folder>/<test_name.c>
+    make run-test TEST_NAME=<test_name.c>
 
     # Example
-    make run-test TEST_NAME=./unit_test/utils_test/join_rgb_colors_test.c
+    make run-test TEST_NAME=join_rgb_colors_test.c
     ```
 
 
