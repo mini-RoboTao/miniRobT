@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_arithmetic.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 16:18:48 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/06/29 10:47:30 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/03 19:02:12 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ t_obj	*sum_objects(t_obj *o_one, t_obj *o_two)
 {
 	t_obj	*o;
 
-	o = malloc(sizeof(t_obj));
-	if (!o_one || !o_two)
+	if (!o_one || !o_two || (o_one->w == 1 && o_two->w == 1))
 		return (NULL);
-	if (!o || (o_one->w == 1 && o_two->w == 1))
+	o = malloc(sizeof(t_obj));
+	if (!o)
 		return (NULL);
 	o->x = o_one->x + o_two->x;
 	o->y = o_one->y + o_two->y;
@@ -32,10 +32,10 @@ t_obj	*subtract_objects(t_obj *o_one, t_obj *o_two)
 {
 	t_obj	*o;
 
-	o = malloc(sizeof(t_obj));
-	if (!o_one || !o_two)
+	if (!o_one || !o_two || (o_one->w == 0 && o_two->w == 1))
 		return (NULL);
-	if (!o || (o_one->w == 0 && o_two->w == 1))
+	o = malloc(sizeof(t_obj));
+	if (!o)
 		return (NULL);
 	o->x = o_one->x - o_two->x;
 	o->y = o_one->y - o_two->y;

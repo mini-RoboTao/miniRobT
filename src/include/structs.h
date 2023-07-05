@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/02 18:36:24 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/03 21:50:46 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,20 @@ typedef struct s_screen
 	double	passy;
 }	t_screen;
 
+typedef struct s_color
+{
+	double		red;
+	double		green;
+	double		blue;
+}	t_color;
+
+typedef struct s_canvas
+{
+	int			width;
+	int			height;
+	t_color		**canvas;
+}	t_canvas;
+
 typedef struct s_data {
 	void		*mlx;
 	void		*win;
@@ -43,6 +57,7 @@ typedef struct s_data {
 	int			win_h;
 	t_img		img;
 	t_screen	screen;
+	t_canvas	*canvas;
 }	t_data;
 
 typedef struct s_object {
@@ -68,20 +83,6 @@ typedef struct s_environment
 	t_obj		*gravity;
 	t_obj		*wind;
 }				t_environment;
-
-typedef struct s_color
-{
-	double		red;
-	double		green;
-	double		blue;
-}	t_color;
-
-typedef struct s_canvas
-{
-	int			width;
-	int			height;
-	t_color		**canvas;
-}	t_canvas;
 
 void	ft_draw_letter_m(t_data *data, int *x, int *y);
 void	ft_draw_letter_i(t_data *data, int x);

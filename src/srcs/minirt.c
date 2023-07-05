@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/29 18:16:21 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:31:55 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ comment when run in mac, because this function doesn't
 exist in mlx for mac. Also this function is used to
 clean display and memory on linux.
 */
+
 int	ft_close_win(t_data *data)
 {
 	printf("Look the Robotão!\n");
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img.ptr);
+	clean_canvas(data->canvas);
 	free(data->mlx);
 	exit(0);
 	return (0);
@@ -44,25 +46,28 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	ft_create_screen(t_data *data)
+void	put_together(t_data *d)
 {
-	int	i;
+	t_environment	*e;
+	t_projectile	*p;
+	t_projectile	*tmp;
 
-	i = 1;
-	data->screen.passx = 3.0 / data->screen.zoom / 640.0;
-	data->screen.x[0] = (data->screen.initx);
-	data->screen.y[0] = (data->screen.inity);
-	while (i < WIDTH)
+	p = create_proj(create_point(0, 1, 0), \
+	multiply_object(object_normalize(create_vector(0.1, 0.4, 0)), 3.2));
+	e = create_env(create_vector(0.4, -0.1, 0), create_vector(-0.01, 0, 0));
+	while (1)
 	{
-		data->screen.x[i] = data->screen.x[i - 1] + data->screen.passx;
-		i++;
+		tmp = p;
+		p = tick(e, p);
+		clean_proj(tmp);
+		if (p->position->y <= 0)
+			break ;
+		write_pixel(d->canvas, (int)p->position->x, \
+		HEIGHT - (int)p->position->y, fill_color(231, 0, 0));
+		usleep(100);
 	}
-	i = 1;
-	while (i < HEIGHT)
-	{
-		data->screen.y[i] = data->screen.y[i - 1] - data->screen.passx;
-		i++;
-	}
+	clean_proj(p);
+	clean_env(e);
 }
 
 // mlx_mouse_hook(data.win, &ft_mouse_hook, &data);
@@ -71,12 +76,11 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	data.screen.initx = -2.0;
-	data.screen.inity = 1.15;
-	data.screen.zoom = 1.0;
 	data.win_w = WIDTH;
 	data.win_h = HEIGHT;
 	data.win_name = "Mini-RobT";
+	data.canvas = generate_canvas(WIDTH, HEIGHT);
+	put_together(&data);
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, data.win_w, data.win_h, data.win_name);
 	data.img.ptr = mlx_new_image(data.mlx, data.win_w, data.win_h);

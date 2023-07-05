@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mini.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 19:02:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/06/18 19:25:20 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:13:27 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,36 @@ void	ft_draw_letter_n(t_data *data, int *x, int *y)
 
 int	ft_render_minirt(t_data *data)
 {
-	int	x;
-	int	y;
+	int			i;
+	int			j;
 
-	x = 0;
-	y = 0;
-	ft_draw_letter_m(data, &x, &y);
-	ft_draw_letter_i(data, x);
-	ft_draw_letter_n(data, &x, &y);
-	ft_draw_letter_i(data, x);
+	i = 0;
+	while (i < WIDTH)
+	{
+		j = 0;
+		while (j < HEIGHT)
+		{
+			ft_mlx_pixel_put(data, i, j,
+				hex_to_int(join_rgb_colors(data->canvas->canvas[i][j])));
+			j++;
+		}
+		i++;
+	}
 	mlx_put_image_to_window(data->mlx, data->win, data->img.ptr, 0, 0);
 	return (0);
 }
+
+// int	ft_render_minirt(t_data *data)
+// {
+// 	int	x;
+// 	int	y;
+
+// 	x = 0;
+// 	y = 0;
+// 	ft_draw_letter_m(data, &x, &y);
+// 	ft_draw_letter_i(data, x);
+// 	ft_draw_letter_n(data, &x, &y);
+// 	ft_draw_letter_i(data, x);
+// 	mlx_put_image_to_window(data->mlx, data->win, data->img.ptr, 0, 0);
+// 	return (0);
+// }

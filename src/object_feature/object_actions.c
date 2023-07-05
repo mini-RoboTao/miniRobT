@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 18:41:56 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/02 19:37:34 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:25:24 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_projectile	*create_proj(t_obj *point_p, t_obj *vector_v)
 {
 	t_projectile	*p;
 
+	if (!point_p || !vector_v)
+		return (NULL);
 	p = malloc(sizeof(t_projectile));
 	if (!p)
 		return (NULL);
@@ -29,6 +31,8 @@ t_environment	*create_env(t_obj *vector_g, t_obj *vector_w)
 {
 	t_environment	*e;
 
+	if (!vector_g || !vector_w)
+		return (NULL);
 	e = malloc(sizeof(t_environment));
 	if (!e)
 		return (NULL);
