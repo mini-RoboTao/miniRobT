@@ -43,7 +43,10 @@ SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 											$(wildcard $(OBJS_PROJECT)*.o))
 ######################## TEST SOURCES ###############################
-SRC_MATRIX_FEATURE				=			handle_matrix_test.c
+SRC_MATRIX_FEATURE				=			handle_matrix_test.c 				\
+											matrix_operations_test.c			\
+											inverting_matrix_test.c				\
+											matrix_utils_test.c
 SRC_OBJ_FEATURE					=			create_object_test.c 				\
 											object_arithmetic_test.c 			\
 											handle_object_test.c			 	\

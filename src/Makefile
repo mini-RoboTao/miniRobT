@@ -10,7 +10,7 @@ FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
 FLAG_EXTRA					=					 -g3 -O3 -MMD -MP
 ######################## SRCS ################################
-SRC_MATRIX_FEATURE			=					handle_matrix.c matrix_operations.c
+SRC_MATRIX_FEATURE			=					handle_matrix.c matrix_operations.c inverting_matrix.c matrix_utils.c
 SRC_CLEAN_FEATURE			=					free_feature.c
 SRC_OBJECT_FEATURE			=					create_object.c object_arithmetic.c handle_object.c object_actions.c
 SRC_COLORS_FEATURE			=					object_colors.c
