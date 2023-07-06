@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 23:31:49 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/06/18 16:49:38 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/05 22:10:01 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct s_atof
+{
+	double		nbr;
+	double		j;
+	int			negative;
+	int			dot;
+}				t_atof;
 
 // Base Functions
 int		ft_isalnum(int c);
@@ -37,6 +45,7 @@ void	ft_putstr_fd(char *s, int fd);
 int		ft_atoi(const char *str);
 long	ft_atol(const char *nptr);
 char	*ft_itoa(int n);
+double	ft_atof(const char *s);
 // Handle memory
 void	ft_bzero(void *b, size_t n);
 void	*ft_calloc(size_t n, size_t size);

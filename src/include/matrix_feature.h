@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_feature.h                                    :+:      :+:    :+:   */
+/*   matrix_feature.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 19:17:03 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/06 00:55:42 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/07/05 19:20:25 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/07/06 03:41:05 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLEAN_FEATURE_H
-# define CLEAN_FEATURE_H
+#ifndef MATRIX_FEATURE_H
+# define MATRIX_FEATURE_H
 
 # include "minirt.h"
 
-// free feature
-void	clean_obj(t_obj *o);
-void	clean_canvas(t_canvas *c);
-void	clean_env(t_environment *c);
-void	clean_proj(t_projectile *c);
-void	*clean_matrix(t_matrix *m);
+// handle matrix
+t_matrix	*alloc_matrix(int col, int row);
+t_matrix	*create_matrix(char **values, int x, int y);
+int			matrix_cmp(t_matrix *a, t_matrix *b);
+
+// Matrix operations
+t_matrix	*multiply_matrix(t_matrix *ma, t_matrix *mb, int nrow, int ncol);
+t_obj		*multiply_matrix_by_obj(t_matrix *m, t_obj *obj, int col, int row);
+t_matrix	*transpose_matrix(t_matrix *ma);
 
 #endif

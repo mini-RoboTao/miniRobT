@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/03 21:50:46 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:14:21 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,13 @@ typedef struct s_environment
 	t_obj		*gravity;
 	t_obj		*wind;
 }				t_environment;
+
+typedef struct s_matrix
+{
+	int		x;
+	int		y;
+	double	**node;
+}				t_matrix;
 
 void	ft_draw_letter_m(t_data *data, int *x, int *y);
 void	ft_draw_letter_i(t_data *data, int x);
