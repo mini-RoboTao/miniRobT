@@ -21,7 +21,7 @@ ifeq ($(UNAME_S), Linux)
 	INCLUDE_MLX					=			-I../external_libs/mlx_linux
 endif
 ifeq ($(UNAME_S), Darwin)
-	VALGRIND_FLAG				=			""
+	VALGRIND_FLAG				=
 	LIB_CRITERION 				=			-lcriterion
 	FLAG_MLX					=			-L../external_libs/mlx_mac -lmlx -framework OpenGL -framework AppKit
 	INCLUDE_MLX					=			-I../external_libs/mlx_mac
