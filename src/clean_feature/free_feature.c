@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:16:00 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/04 17:31:38 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/06 00:55:24 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,26 @@ void	clean_proj(t_projectile *c)
 			free(c->velocity);
 		free(c);
 	}
+}
+
+void	*clean_matrix(t_matrix *m)
+{
+	int	i;
+
+	i = 0;
+	if (m)
+	{
+		if (m->node)
+		{
+			while (i < m->y)
+			{
+				if (m->node[i])
+					free(m->node[i]);
+				i++;
+			}
+			free(m->node);
+		}
+		free(m);
+	}
+	return (NULL);
 }

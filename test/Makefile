@@ -31,7 +31,11 @@ PATH_OBJ						=			objs/
 DIR_OUTS						=			outs/
 OBJS_PROJECT					=			../src/objs/
 UNIT_PATH						=			./unit_test/
-VPATH							=			./unit_test/object_feature_test ./unit_test/color_feature_test ./unit_test/canva_feature_test ./unit_test/utils_test
+VPATH							=			./unit_test/object_feature_test 	\
+											./unit_test/color_feature_test 		\
+											./unit_test/canva_feature_test 		\
+											./unit_test/utils_test				\
+											./unit_test/matrix_feature_test
 ######################## PROJECT FILES ##############################
 SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 											draw_mini.o							\
@@ -39,6 +43,10 @@ SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 											$(wildcard $(OBJS_PROJECT)*.o))
 ######################## TEST SOURCES ###############################
+SRC_MATRIX_FEATURE				=			handle_matrix_test.c 				\
+											matrix_operations_test.c			\
+											inverting_matrix_test.c				\
+											matrix_utils_test.c
 SRC_OBJ_FEATURE					=			create_object_test.c 				\
 											object_arithmetic_test.c 			\
 											handle_object_test.c			 	\
@@ -46,7 +54,11 @@ SRC_OBJ_FEATURE					=			create_object_test.c 				\
 SRC_COLORS_FEATURE				=			cap2_color_tests.c
 SRC_CANVAS_FEATURE				=			cap2_canva_tests.c
 SRC_UTILS						=			float_to_hex_test.c join_rgb_colors_test.c
-SRC								=			$(SRC_OBJ_FEATURE) $(SRC_COLORS_FEATURE) $(SRC_CANVAS_FEATURE) $(SRC_UTILS)
+SRC								=			$(SRC_OBJ_FEATURE) 					\
+											$(SRC_COLORS_FEATURE) 				\
+											$(SRC_CANVAS_FEATURE) 				\
+											$(SRC_UTILS)						\
+											$(SRC_MATRIX_FEATURE)
 OBJ								=			$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP								=			$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)
@@ -62,10 +74,13 @@ $(PATH_OBJ)%.o:	%.c
 				$@ $(SRC_PROJECT) -o $(subst $(PATH_OBJ), $(DIR_OUTS), $(basename $@)) -lm -lft
 	@			echo "$(L_GREEN)[$(subst objs/,,$@) compiled]$(L_WHITE)"
 
-run-test: create_outs_dir make_minirobt $(PATH_OBJ) $(ONE_TEST)
+run-test: rm-obj create_outs_dir make_minirobt $(PATH_OBJ) $(ONE_TEST)
 	@			echo $(ONE_TEST%)
 	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB) $(TEST_NAME) $(L_YELLOWB)]: $(L_WHITE)"
 	@			$(VALGRIND_FLAG) $(addprefix ./outs/, $(notdir $(basename $(TEST_NAME))))
+
+rm-obj:
+	@			rm -rf objs
 
 $(PATH_OBJ):
 	@			mkdir $@

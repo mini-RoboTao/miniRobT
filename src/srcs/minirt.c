@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/04 17:31:55 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:28:52 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	put_together(t_data *d)
 	t_projectile	*tmp;
 
 	p = create_proj(create_point(0, 1, 0), \
-	multiply_object(object_normalize(create_vector(0.1, 0.4, 0)), 3.2));
-	e = create_env(create_vector(0.4, -0.1, 0), create_vector(-0.01, 0, 0));
+	multiply_object(object_normalize(create_vector(0.1, 0.4, 0)), 10.2));
+	e = create_env(create_vector(0.8, -0.1, 0), create_vector(-0.01, 0, 0));
 	while (1)
 	{
 		tmp = p;

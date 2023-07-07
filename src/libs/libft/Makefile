@@ -35,7 +35,10 @@ SRCS =	ft_atoi.c \
 		ft_strtrim.c \
 		ft_substr.c \
 		ft_tolower.c \
-		ft_toupper.c
+		ft_toupper.c \
+		ft_atof.c	\
+		ft_islower.c \
+		ft_isupper.c
 
 OBJS = ${SRCS:.c=.o}
 

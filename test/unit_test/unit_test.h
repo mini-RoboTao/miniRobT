@@ -13,4 +13,28 @@ int cr_object_eq(t_obj *a, t_obj *b)
 			a->w == b->w);
 }
 
+// cast items for a char []
+# define STRITEM(I1, I2, I3, I4) (char []){I1}, (char []){I2}, (char []){I3}, (char []){I4}
+
+int cr_matrix_eq(t_matrix *a, t_matrix *b)
+{
+	int	i = 0;
+	int	j = 0;
+
+	while (i < a->y && i < b->y)
+	{
+		j = 0;
+		while (j < a->x && j < b->x)
+		{
+			if (fabs(a->node[i][j] - b->node[i][j]) > EPSILON)
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	if (a->y == i && a->x == j && b->y == i && b->x == j)
+		return (1);
+	return (0);
+}
+
 #endif
