@@ -103,7 +103,9 @@ To execute the tests, follow the steps below:
 
 ## What's is 42?
 
-Lorep ipsum...
+École 42 is one of the most innovative educational institutions in the world, surpassing schools like Harvard, Cambridge, and Oxford, as mentioned in the [2022 Global Top 100 ranking](https://www.wuri.world/%EB%B3%B5%EC%A0%9C-2022-global-top-100). It is also the [top-ranked institution in ethical values](https://www.wuri.world/%EB%B3%B5%EC%A0%9C-2022-top-50-ethical-value). École 42 offers a disruptive approach to programming education, with no traditional classes or teachers. Instead, it is based on practical and collaborative learning among students.
+
+Through challenging projects, students at École 42 develop technical skills, problem-solving abilities, and teamwork. This approach promotes a self-learning mindset, encouraging the pursuit of knowledge and the sharing of skills.
 
 ## About the authors
 
