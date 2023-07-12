@@ -79,12 +79,15 @@ Test(Matrix_translations, Translation_does_not_affect_vector)
 {
 	t_matrix	*transformation;
 	t_obj		*vector;
+	t_obj		*result;
 
 	transformation = alloc_matrix(4, 4);
 	translation(transformation, 5, -3, 2);
 	vector = create_vector(-3, 4, 5);
-	cr_assert(cr_object_eq(multiply_matrix_by_obj(transformation, vector, 4,4), vector));
+	result = multiply_matrix_by_obj(transformation, vector, 4,4);
+	cr_assert(cr_object_eq(result, vector));
 
 	clean_obj(vector);
+	clean_obj(result);
 	clean_matrix(transformation);
 }

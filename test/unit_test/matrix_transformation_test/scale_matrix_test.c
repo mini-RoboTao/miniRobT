@@ -66,15 +66,18 @@ Test(Matrix_scale, A_scalling_matrix_applied_to_a_vector)
 {
 	t_matrix	*transformation;
 	t_obj		*vector;
+	t_obj		*result;
 	t_obj		*result_reference;
 
 	transformation = alloc_matrix(4, 4);
 	scaling(transformation, 2, 3, 4);
 	vector = create_vector(-4, 6, 8);
+	result = multiply_matrix_by_obj(transformation, vector, 4,4);
 	result_reference = create_vector(-8, 18, 32);
-	cr_assert(cr_object_eq(multiply_matrix_by_obj(transformation, vector, 4,4), result_reference));
+	cr_assert(cr_object_eq(result, result_reference));
 
 	clean_obj(vector);
+	clean_obj(result);
 	clean_obj(result_reference);
 	clean_matrix(transformation);
 }
@@ -83,15 +86,18 @@ Test(Matrix_reflection, Reflection_is_scalling_by_a_negative_value)
 {
 	t_matrix	*transformation;
 	t_obj		*point;
+	t_obj		*result;
 	t_obj		*result_reference;
 
 	transformation = alloc_matrix(4, 4);
 	scaling(transformation, -1, 1, 1);
 	point = create_point(2, 3, 4);
+	result = multiply_matrix_by_obj(transformation, point, 4,4);
 	result_reference = create_point(-2, 3, 4);
-	cr_assert(cr_object_eq(multiply_matrix_by_obj(transformation, point, 4,4), result_reference));
+	cr_assert(cr_object_eq(result, result_reference));
 
 	clean_obj(point);
+	clean_obj(result);
 	clean_obj(result_reference);
 	clean_matrix(transformation);
 }
