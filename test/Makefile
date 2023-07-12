@@ -35,7 +35,8 @@ VPATH							=			./unit_test/object_feature_test 	\
 											./unit_test/color_feature_test 		\
 											./unit_test/canva_feature_test 		\
 											./unit_test/utils_test				\
-											./unit_test/matrix_feature_test
+											./unit_test/matrix_feature_test		\
+											./unit_test/matrix_transformation_test
 ######################## PROJECT FILES ##############################
 SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 											draw_mini.o							\
@@ -43,6 +44,8 @@ SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 											$(wildcard $(OBJS_PROJECT)*.o))
 ######################## TEST SOURCES ###############################
+SRC_MATRIX_TRANSFORMATION		=			translation_matrix_test.c			\
+											scale_matrix_test.c
 SRC_MATRIX_FEATURE				=			handle_matrix_test.c 				\
 											matrix_operations_test.c			\
 											inverting_matrix_test.c				\
@@ -58,7 +61,8 @@ SRC								=			$(SRC_OBJ_FEATURE) 					\
 											$(SRC_COLORS_FEATURE) 				\
 											$(SRC_CANVAS_FEATURE) 				\
 											$(SRC_UTILS)						\
-											$(SRC_MATRIX_FEATURE)
+											$(SRC_MATRIX_FEATURE)				\
+											$(SRC_MATRIX_TRANSFORMATION)
 OBJ								=			$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP								=			$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)
