@@ -45,7 +45,8 @@ SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 											$(wildcard $(OBJS_PROJECT)*.o))
 ######################## TEST SOURCES ###############################
 SRC_MATRIX_TRANSFORMATION		=			translation_matrix_test.c			\
-											scale_matrix_test.c
+											scale_matrix_test.c					\
+											rotation_matrix_test.c
 SRC_MATRIX_FEATURE				=			handle_matrix_test.c 				\
 											matrix_operations_test.c			\
 											inverting_matrix_test.c				\
