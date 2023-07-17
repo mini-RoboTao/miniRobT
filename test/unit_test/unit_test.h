@@ -13,6 +13,14 @@ int cr_object_eq(t_obj *a, t_obj *b)
 			a->w == b->w);
 }
 
+int cr_sphere_eq(t_sphere *a, t_sphere *b)
+{
+    return	(fabs(a->x - b->x) < EPSILON && \
+			fabs(a->y - b->y) < EPSILON && \
+			fabs(a->z - b->z) < EPSILON && \
+			fabs(a->radius - b->radius) < EPSILON);
+}
+
 // cast items for a char []
 # define STRITEM(I1, I2, I3, I4) (char []){I1}, (char []){I2}, (char []){I3}, (char []){I4}
 

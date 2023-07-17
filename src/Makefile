@@ -4,14 +4,22 @@ NAME						=					minirt
 PATH_OBJ					=					objs/
 PATH_INCLUDES				=					include/
 PATH_LIBFT					=					libs/libft/
-VPATH						=					./srcs:./linked_list:./object_feature:./object_colors:./canvas:./clean_feature:./matrix_feature
+VPATH						=					./srcs					\
+												./linked_list			\
+												./object_feature		\
+												./object_colors			\
+												./canvas				\
+												./clean_feature 		\
+												./matrix_feature		\
+												./ray_feature
 ######################## FLAGS ###############################
 FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
 FLAG_EXTRA					=					 -g3 -O3 -MMD -MP
 ######################## SRCS ################################
+SRC_RAY_FEATURE				=					handle_ray.c intersections.c
 SRC_MATRIX_FEATURE			=					handle_matrix.c matrix_operations.c inverting_matrix.c matrix_utils.c
-SRC_CLEAN_FEATURE			=					free_feature.c
+SRC_CLEAN_FEATURE			=					free_feature.c free_objects.c
 SRC_OBJECT_FEATURE			=					create_object.c object_arithmetic.c handle_object.c object_actions.c
 SRC_COLORS_FEATURE			=					object_colors.c
 SRC_CANVAS_FEATURE			=					canvas.c
@@ -23,7 +31,8 @@ SRC							=					minirt.c draw_mini.c utils.c \
 												$(SRC_COLORS_FEATURE) 								\
 												$(SRC_CANVAS_FEATURE)								\
 												$(SRC_CLEAN_FEATURE)								\
-												$(SRC_MATRIX_FEATURE)
+												$(SRC_MATRIX_FEATURE)								\
+												$(SRC_RAY_FEATURE)
 OBJ							=					$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP							=					$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 ############## CONDITIONAL COMPILER FLAGS ####################

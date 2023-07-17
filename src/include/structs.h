@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/05 19:14:21 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/12 12:56:42 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,35 @@ typedef struct s_matrix
 	int		y;
 	double	**node;
 }				t_matrix;
+
+typedef struct s_ray
+{
+	t_obj		*position;
+	t_obj		*direction;
+}				t_ray;
+
+typedef struct s_sphere
+{
+	double	x;
+	double	y;
+	double	z;
+	double	radius;
+}				t_sphere;
+
+typedef struct s_intersect
+{
+	int		amount;
+	double	collision[2];
+}				t_intersect;
+
+typedef struct s_intersection
+{
+	double		t;
+	union {
+		t_sphere	*sphere;
+		void		*v;
+	};
+}				t_intersection;
 
 void	ft_draw_letter_m(t_data *data, int *x, int *y);
 void	ft_draw_letter_i(t_data *data, int x);
