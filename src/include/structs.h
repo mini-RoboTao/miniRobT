@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/12 12:56:42 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:37:59 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,15 @@ typedef struct s_intersection
 		void		*v;
 	};
 }				t_intersection;
+typedef struct s_shearing
+{
+	double	x_to_y;
+	double	x_to_z;
+	double	y_to_x;
+	double	y_to_z;
+	double	z_to_x;
+	double	z_to_y;
+}				t_shearing;
 
 void	ft_draw_letter_m(t_data *data, int *x, int *y);
 void	ft_draw_letter_i(t_data *data, int x);

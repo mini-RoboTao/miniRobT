@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:38:20 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/11 09:42:02 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/17 13:37:41 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@
 # include "functions.h"
 # include "matrix_feature.h"
 # include "ray_feature.h"
+# include "matrix_transformations.h"
 #endif
