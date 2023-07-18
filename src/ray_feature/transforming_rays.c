@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_feature.h                                    :+:      :+:    :+:   */
+/*   transforming_rays.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 19:17:03 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/18 00:01:51 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/07/17 23:06:15 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/07/18 01:34:08 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLEAN_FEATURE_H
-# define CLEAN_FEATURE_H
+#include "minirt.h"
 
-# include "minirt.h"
+t_ray	*transform(t_ray *r, t_matrix *m)
+{
+	return (create_ray(multiply_matrix_by_obj(m, r->position, 4, 4), \
+	multiply_matrix_by_obj(m, r->direction, 4, 4)));
+}
 
-// free feature
-void	clean_obj(t_obj *o);
-void	clean_canvas(t_canvas *c);
-void	clean_env(t_environment *c);
-void	clean_proj(t_projectile *c);
-void	*clean_matrix(t_matrix *m);
-void	clean_ray(t_ray *r);
-void	clean_sphere(t_sphere *s);
-
-#endif
+void	set_transform(t_sphere *s, t_matrix *t)
+{
+	if (s->transform)
+		clean_matrix(s->transform);
+	s->transform = t;
+}

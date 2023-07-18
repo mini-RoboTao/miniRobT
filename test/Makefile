@@ -47,7 +47,8 @@ SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 											$(wildcard $(OBJS_PROJECT)*.o))
 ######################## TEST SOURCES ###############################
 SRC_RAY_FEATURE					=			handle_ray_test.c 					\
-											intersections_test.c
+											intersections_test.c				\
+											transforming_rays_test.c
 SRC_MATRIX_TRANSFORMATION		=			translation_matrix_test.c			\
 											scale_matrix_test.c					\
 											rotation_matrix_test.c				\

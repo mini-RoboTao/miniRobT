@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 19:20:25 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/06 19:02:32 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/17 23:55:02 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 // handle matrix
 t_matrix	*alloc_matrix(int col, int row);
 t_matrix	*create_matrix(char **values, int x, int y);
+t_matrix	*create_identity_matrix(void);
 int			matrix_cmp(t_matrix *a, t_matrix *b);
 
 // Matrix operations

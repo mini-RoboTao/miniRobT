@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 11:07:36 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/12 11:08:02 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/18 00:02:16 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,14 @@ void	clean_proj(t_projectile *c)
 		if (c->velocity)
 			free(c->velocity);
 		free(c);
+	}
+}
+
+void	clean_sphere(t_sphere *s)
+{
+	if (s)
+	{
+		clean_matrix(s->transform);
+		free(s);
 	}
 }
