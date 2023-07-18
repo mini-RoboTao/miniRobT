@@ -4,8 +4,8 @@ Test(Matrix_scale, Create_matrix_scaling)
 {
 	t_matrix *res;
 
-	res = alloc_matrix(4, 4);
-	cr_assert(scaling(res, 0.1, 0.2, 0.3) != -1);
+	res = scaling(0.1, 0.2, 0.3);
+	cr_assert(res != NULL);
 	cr_assert(eq(res->node[0][0], 0.1));
 	cr_assert(eq(res->node[1][1], 0.2));
 	cr_assert(eq(res->node[2][2], 0.3));
@@ -20,8 +20,7 @@ Test(Matrix_scale, A_scalling_matrix_applied_to_a_point)
 	t_obj		*result_reference;
 	t_obj		*result;
 
-	transformation = alloc_matrix(4, 4);
-	scaling(transformation, 2, 3, 4);
+	transformation = scaling(2, 3, 4);
 	cr_assert(eq(transformation->node[0][0], 2));
 	cr_assert(eq(transformation->node[1][1], 3));
 	cr_assert(eq(transformation->node[2][2], 4));
@@ -46,8 +45,7 @@ Test(Matrix_scale, Multiplying_by_the_inverse_of_a_scaling_matrix)
 	t_obj		*result_reference;
 	t_obj		*result;
 
-	transformation = alloc_matrix(4, 4);
-	scaling(transformation, 2, 3, 4);
+	transformation = scaling(2, 3, 4);
 	inverse_mtx = inverse_matrix(transformation);
 
 	vector = create_vector(-4, 6, 8);
@@ -69,8 +67,7 @@ Test(Matrix_scale, A_scalling_matrix_applied_to_a_vector)
 	t_obj		*result;
 	t_obj		*result_reference;
 
-	transformation = alloc_matrix(4, 4);
-	scaling(transformation, 2, 3, 4);
+	transformation = scaling(2, 3, 4);
 	vector = create_vector(-4, 6, 8);
 	result = multiply_matrix_by_obj(transformation, vector, 4,4);
 	result_reference = create_vector(-8, 18, 32);
@@ -89,8 +86,7 @@ Test(Matrix_reflection, Reflection_is_scalling_by_a_negative_value)
 	t_obj		*result;
 	t_obj		*result_reference;
 
-	transformation = alloc_matrix(4, 4);
-	scaling(transformation, -1, 1, 1);
+	transformation = scaling(-1, 1, 1);
 	point = create_point(2, 3, 4);
 	result = multiply_matrix_by_obj(transformation, point, 4,4);
 	result_reference = create_point(-2, 3, 4);
