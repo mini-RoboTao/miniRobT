@@ -14,13 +14,9 @@ Test(Chaining_transformations, Individual_transformations_are_applied_in_sequenc
 	t_obj		*result_reference_after_translation;
 
 	point = create_point(1, 0, 1);
-	rotation_matrix = alloc_matrix(4, 4);
-	scaling_matrix = alloc_matrix(4, 4);
-	translation_matrix = alloc_matrix(4, 4);
-
-	rotation_x(rotation_matrix, M_PI/2);
-	scaling(scaling_matrix, 5, 5, 5);
-	translation(translation_matrix, 10, 5, 7);
+	rotation_matrix = rotation_x(M_PI/2);
+	scaling_matrix = scaling(5, 5, 5);
+	translation_matrix = translation(10, 5, 7);
 
 	result_rotation = multiply_matrix_by_obj(rotation_matrix, point, 4, 4);
 	result_reference_after_rotation = create_point(1, -1, 0);
@@ -58,14 +54,11 @@ Test(Chaining_transformations, Chained_transformations_must_be_applied_in_revers
 	t_obj		*result_reference;
 
 	point = create_point(1, 0, 1);
-	rotation_matrix = alloc_matrix(4, 4);
-	scaling_matrix = alloc_matrix(4, 4);
-	translation_matrix = alloc_matrix(4, 4);
-	result_reference = create_point(15, 0, 7);
+	rotation_matrix = rotation_x(M_PI/2);
+	scaling_matrix = scaling(5, 5, 5);
+	translation_matrix = translation(10, 5, 7);
 
-	rotation_x(rotation_matrix, M_PI/2);
-	scaling(scaling_matrix, 5, 5, 5);
-	translation(translation_matrix, 10, 5, 7);
+	result_reference = create_point(15, 0, 7);
 
 	result_matrix_after_one_operation = multiply_matrix(translation_matrix, scaling_matrix, 4, 4);
 	result_matrix = multiply_matrix(result_matrix_after_one_operation, rotation_matrix, 4, 4);

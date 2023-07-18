@@ -5,8 +5,6 @@ Test(Matrix_shearing, Create_matrix_shearing)
 	t_matrix 	*res;
 	t_shearing	shearing_points;
 
-	res = alloc_matrix(4, 4);
-
 	shearing_points.x_to_y = 2;
 	shearing_points.x_to_z = 3;
 	shearing_points.y_to_x = 4;
@@ -14,7 +12,8 @@ Test(Matrix_shearing, Create_matrix_shearing)
 	shearing_points.z_to_x = 6;
 	shearing_points.z_to_y = 7;
 
-	cr_assert(shearing(res, shearing_points) != -1);
+	res = shearing(shearing_points);
+	cr_assert(res != NULL);
 	cr_assert(eq(res->node[0][0], 1));
 	cr_assert(eq(res->node[1][1], 1));
 	cr_assert(eq(res->node[2][2], 1));
@@ -37,15 +36,13 @@ Test(Matrix_shearing, A_shearing_transformation_movex_x_in_proportion_to_y)
 	t_obj		*result;
 	t_shearing	shearing_points;
 
-	transformation = alloc_matrix(4, 4);
 	shearing_points.x_to_y = 1;
 	shearing_points.x_to_z = 0;
 	shearing_points.y_to_x = 0;
 	shearing_points.y_to_z = 0;
 	shearing_points.z_to_x = 0;
 	shearing_points.z_to_y = 0;
-
-	shearing(transformation, shearing_points);
+	transformation = shearing(shearing_points);
 
 	cr_assert(eq(transformation->node[0][1], 1));
 	cr_assert(eq(transformation->node[0][0], 1));
@@ -72,7 +69,6 @@ Test(Matrix_shearing, A_shearing_transformation_movex_x_in_proportion_to_z)
 	t_obj		*result;
 	t_shearing	shearing_points;
 
-	transformation = alloc_matrix(4, 4);
 	shearing_points.x_to_y = 0;
 	shearing_points.x_to_z = 1;
 	shearing_points.y_to_x = 0;
@@ -80,7 +76,7 @@ Test(Matrix_shearing, A_shearing_transformation_movex_x_in_proportion_to_z)
 	shearing_points.z_to_x = 0;
 	shearing_points.z_to_y = 0;
 
-	shearing(transformation, shearing_points);
+	transformation = shearing(shearing_points);
 
 	cr_assert(eq(transformation->node[0][2], 1));
 	cr_assert(eq(transformation->node[0][0], 1));
@@ -107,7 +103,6 @@ Test(Matrix_shearing, A_shearing_transformation_movex_y_in_proportion_to_x)
 	t_obj		*result;
 	t_shearing	shearing_points;
 
-	transformation = alloc_matrix(4, 4);
 	shearing_points.x_to_y = 0;
 	shearing_points.x_to_z = 0;
 	shearing_points.y_to_x = 1;
@@ -115,7 +110,7 @@ Test(Matrix_shearing, A_shearing_transformation_movex_y_in_proportion_to_x)
 	shearing_points.z_to_x = 0;
 	shearing_points.z_to_y = 0;
 
-	shearing(transformation, shearing_points);
+	transformation = shearing(shearing_points);
 
 	cr_assert(eq(transformation->node[1][0], 1));
 	cr_assert(eq(transformation->node[0][0], 1));
@@ -142,7 +137,6 @@ Test(Matrix_shearing, A_shearing_transformation_movex_y_in_proportion_to_z)
 	t_obj		*result;
 	t_shearing	shearing_points;
 
-	transformation = alloc_matrix(4, 4);
 	shearing_points.x_to_y = 0;
 	shearing_points.x_to_z = 0;
 	shearing_points.y_to_x = 0;
@@ -150,7 +144,7 @@ Test(Matrix_shearing, A_shearing_transformation_movex_y_in_proportion_to_z)
 	shearing_points.z_to_x = 0;
 	shearing_points.z_to_y = 0;
 
-	shearing(transformation, shearing_points);
+	transformation = shearing(shearing_points);
 
 	cr_assert(eq(transformation->node[1][2], 1));
 	cr_assert(eq(transformation->node[0][0], 1));
@@ -177,7 +171,6 @@ Test(Matrix_shearing, A_shearing_transformation_movex_z_in_proportion_to_x)
 	t_obj		*result;
 	t_shearing	shearing_points;
 
-	transformation = alloc_matrix(4, 4);
 	shearing_points.x_to_y = 0;
 	shearing_points.x_to_z = 0;
 	shearing_points.y_to_x = 0;
@@ -185,7 +178,7 @@ Test(Matrix_shearing, A_shearing_transformation_movex_z_in_proportion_to_x)
 	shearing_points.z_to_x = 1;
 	shearing_points.z_to_y = 0;
 
-	shearing(transformation, shearing_points);
+	transformation = shearing(shearing_points);
 
 	cr_assert(eq(transformation->node[2][0], 1));
 	cr_assert(eq(transformation->node[0][0], 1));
@@ -212,7 +205,6 @@ Test(Matrix_shearing, A_shearing_transformation_movex_z_in_proportion_to_y)
 	t_obj		*result;
 	t_shearing	shearing_points;
 
-	transformation = alloc_matrix(4, 4);
 	shearing_points.x_to_y = 0;
 	shearing_points.x_to_z = 0;
 	shearing_points.y_to_x = 0;
@@ -220,7 +212,7 @@ Test(Matrix_shearing, A_shearing_transformation_movex_z_in_proportion_to_y)
 	shearing_points.z_to_x = 0;
 	shearing_points.z_to_y = 1;
 
-	shearing(transformation, shearing_points);
+	transformation = shearing(shearing_points);
 
 	cr_assert(eq(transformation->node[2][1], 1));
 	cr_assert(eq(transformation->node[0][0], 1));
