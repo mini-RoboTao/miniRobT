@@ -50,7 +50,8 @@ SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 SRC_LIGHT_AND_SHADING			=			computing_the_normal_on_a_sphere_test.c \
 											reflecting_vectors_test.c
 SRC_RAY_FEATURE					=			handle_ray_test.c 					\
-											intersections_test.c
+											intersections_test.c				\
+											transforming_rays_test.c
 SRC_MATRIX_TRANSFORMATION		=			translation_matrix_test.c			\
 											scale_matrix_test.c					\
 											rotation_matrix_test.c				\

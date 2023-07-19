@@ -21,6 +21,15 @@ int cr_sphere_eq(t_sphere *a, t_sphere *b)
 			fabs(a->radius - b->radius) < EPSILON);
 }
 
+int cr_intersection_eq(t_intersection *a, t_intersection *b)
+{
+    return	(fabs(a->sphere->x - b->sphere->x) < EPSILON && \
+			fabs(a->sphere->y - b->sphere->y) < EPSILON && \
+			fabs(a->sphere->z - b->sphere->z) < EPSILON && \
+			fabs(a->sphere->radius - b->sphere->radius) < EPSILON &&
+			fabs(a->t - b->t) < EPSILON);
+}
+
 // cast items for a char []
 # define STRITEM(I1, I2, I3, I4) (char []){I1}, (char []){I2}, (char []){I3}, (char []){I4}
 
