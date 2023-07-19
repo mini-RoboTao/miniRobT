@@ -6,35 +6,22 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:49:11 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/18 01:35:25 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/19 14:24:41 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_sphere	*new_sphere(void)
+static double	calculate_discriminat(double *abc, t_ray *ray, t_sphere *s)
 {
-	t_sphere	*s;
-
-	s = malloc(sizeof(t_sphere));
-	if (!s)
-		return (NULL);
-	s->x = 0.0;
-	s->y = 0.0;
-	s->z = 0.0;
-	s->radius = 1.0;
-	s->transform = create_identity_matrix();
-	return (s);
-}
-
-t_intersections	intersect(t_sphere *s, t_ray *r)
-{
-	double			abc[3];
+	t_ray			*r;
 	t_obj			*s_ray;
+	t_matrix		*m;
 	double			discriminat;
-	t_intersections	xs;
 
-	xs = (t_intersections){0};
+	m = inverse_matrix(s->transform);
+	r = transform(ray, m);
+	clean_matrix(m);
 	s_ray = subtract_objects(r->position, &(t_obj){0, 0, 0, 1});
 	abc[0] = object_dot(r->direction, r->direction);
 	abc[1] = 2 * object_dot(r->direction, s_ray);
@@ -42,10 +29,20 @@ t_intersections	intersect(t_sphere *s, t_ray *r)
 	discriminat = pow(abc[1], 2) - 4 * abc[0] * abc[2];
 	if (s_ray)
 		free(s_ray);
+	clean_ray(r);
+	return (discriminat);
+}
+
+t_intersections	intersect(t_sphere *s, t_ray *ray)
+{
+	double			abc[3];
+	double			discriminat;
+	t_intersections	xs;
+
+	xs = (t_intersections){0};
+	discriminat = calculate_discriminat(abc, ray, s);
 	if (discriminat < 0)
-	{
 		return ((t_intersections){0});
-	}
 	intersections(&xs, \
 	intersection((-abc[1] - (sqrt(discriminat))) / (2 * abc[0]), s), \
 	intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), s));

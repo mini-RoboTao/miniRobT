@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:48:49 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/11 20:50:00 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/19 14:23:45 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,19 @@ t_obj	*cat_position(t_ray *ray, double t)
 	if (!o)
 		return (NULL);
 	return (o);
+}
+
+t_sphere	*new_sphere(void)
+{
+	t_sphere	*s;
+
+	s = malloc(sizeof(t_sphere));
+	if (!s)
+		return (NULL);
+	s->x = 0.0;
+	s->y = 0.0;
+	s->z = 0.0;
+	s->radius = 1.0;
+	s->transform = create_identity_matrix();
+	return (s);
 }
