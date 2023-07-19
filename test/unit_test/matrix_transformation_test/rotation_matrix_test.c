@@ -6,8 +6,8 @@ Test(Matrix_rotation_x, Create_matrix_rotation_x)
 {
 	t_matrix *res;
 
-	res = alloc_matrix(4, 4);
-	cr_assert(rotation_x(res, M_PI / 4) != -1);
+	res = rotation_x(M_PI / 4);
+	cr_assert(res != NULL);
 
 	cr_assert(eq(res->node[0][0], 1));
 	cr_assert(eq(res->node[1][1], cos(M_PI / 4)));
@@ -26,8 +26,7 @@ Test(Matrix_rotation_x, Rotating_a_point_around_x_axis_half_quarter)
 	t_obj		*result_reference_half_quarter;
 	t_obj		*result_half_quarter;
 
-	half_quarter = alloc_matrix(4, 4);
-	rotation_x(half_quarter, M_PI / 4);
+	half_quarter = rotation_x(M_PI / 4);
 
 	point = create_point(0, 1, 0);
 
@@ -47,8 +46,7 @@ Test(Matrix_rotation_x, Rotating_a_point_around_x_axis_full_quarter)
 	t_obj		*result_reference_full_quarter;
 	t_obj		*result_full_quarter;
 
-	full_quarter = alloc_matrix(4, 4);
-	rotation_x(full_quarter, M_PI / 2);
+	full_quarter = rotation_x(M_PI / 2);
 
 	point = create_point(0, 1, 0);
 
@@ -70,8 +68,7 @@ Test(Matrix_rotation_x, The_inverse_of_an_x_rotation_rotates_in_the_opposite_dir
 	t_obj		*result_reference;
 	t_obj		*result;
 
-	transformation = alloc_matrix(4, 4);
-	rotation_x(transformation, M_PI / 4);
+	transformation = rotation_x(M_PI / 4);
 	inverse_mtx = inverse_matrix(transformation);
 
 	point = create_point(0, 1, 0);
@@ -92,8 +89,8 @@ Test(Matrix_rotation_y, Create_matrix_rotation_y)
 {
 	t_matrix *res;
 
-	res = alloc_matrix(4, 4);
-	cr_assert(rotation_y(res, M_PI / 4) != -1);
+	res = rotation_y(M_PI / 4);
+	cr_assert(res != NULL);
 
 	cr_assert(eq(res->node[0][0], cos(M_PI / 4)));
 	cr_assert(eq(res->node[0][2], sin(M_PI / 4)));
@@ -112,8 +109,7 @@ Test(Matrix_rotation_y, Rotating_a_point_around_y_axis_half_quarter)
 	t_obj		*result_reference_half_quarter;
 	t_obj		*result_half_quarter;
 
-	half_quarter = alloc_matrix(4, 4);
-	rotation_y(half_quarter, M_PI / 4);
+	half_quarter = rotation_y(M_PI / 4);
 
 	point = create_point(0, 0, 1);
 
@@ -134,8 +130,7 @@ Test(Matrix_rotation_y, Rotating_a_point_around_y_axis_full_quarter)
 	t_obj		*result_reference_full_quarter;
 	t_obj		*result_full_quarter;
 
-	full_quarter = alloc_matrix(4, 4);
-	rotation_y(full_quarter, M_PI / 2);
+	full_quarter = rotation_y(M_PI / 2);
 
 	point = create_point(0, 0, 1);
 
@@ -155,8 +150,8 @@ Test(Matrix_rotation_z, Create_matrix_rotation_z)
 {
 	t_matrix *res;
 
-	res = alloc_matrix(4, 4);
-	cr_assert(rotation_z(res, M_PI / 4) != -1);
+	res = rotation_z(M_PI / 4);
+	cr_assert(res != NULL);
 
 	cr_assert(eq(res->node[0][0], cos(M_PI / 4)));
 	cr_assert(eq(res->node[0][1], sin(M_PI / 4) * -1));
@@ -175,8 +170,7 @@ Test(Matrix_rotation_z, Rotating_a_point_around_y_axis_half_quarter)
 	t_obj		*result_reference_half_quarter;
 	t_obj		*result_half_quarter;
 
-	half_quarter = alloc_matrix(4, 4);
-	rotation_z(half_quarter, M_PI / 4);
+	half_quarter = rotation_z(M_PI / 4);
 
 	point = create_point(0, 1, 0);
 
@@ -197,8 +191,7 @@ Test(Matrix_rotation_z, Rotating_a_point_around_y_axis_full_quarter)
 	t_obj		*result_reference_full_quarter;
 	t_obj		*result_full_quarter;
 
-	full_quarter = alloc_matrix(4, 4);
-	rotation_z(full_quarter, M_PI / 2);
+	full_quarter = rotation_z(M_PI / 2);
 
 	point = create_point(0, 1, 0);
 

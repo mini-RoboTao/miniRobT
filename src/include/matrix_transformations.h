@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 11:19:10 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/13 00:15:27 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:49:31 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 # include "minirt.h"
 
 // TRANSLATION
-int	translation(t_matrix *matrix, double x, double y, double z);
+t_matrix	*translation(double x, double y, double z);
 
 // SCALING
-int	scaling(t_matrix *matrix, double x, double y, double z);
+t_matrix	*scaling(double x, double y, double z);
 
 // ROTATION
-int	rotation_x(t_matrix *matrix, double r);
-int	rotation_y(t_matrix *matrix, double r);
-int	rotation_z(t_matrix *matrix, double r);
+t_matrix	*rotation_x(double r);
+t_matrix	*rotation_y(double r);
+t_matrix	*rotation_z(double r);
 
 // SHEARING
-int	shearing(t_matrix *matrix, t_shearing shearing_points);
+t_matrix	*shearing(t_shearing shearing_points);
 
 #endif
