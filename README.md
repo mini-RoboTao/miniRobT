@@ -93,6 +93,15 @@ To execute the tests, follow the steps below:
     # Example
     make run-test TEST_NAME=join_rgb_colors_test.c
     ```
+    **Another method**
+    ```shell
+    export TEST_NAME=<test_name.c>
+    make run-test
+
+    # Example
+    export TEST_NAME="join_rgb_colors_test.c intersections_test.c"
+    make run-test
+    ```
 
 
 ### References

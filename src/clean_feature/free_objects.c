@@ -1,65 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_feature.c                                     :+:      :+:    :+:   */
+/*   free_objects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 19:16:00 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/12 11:07:58 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/07/12 11:07:36 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/07/18 00:02:16 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	clean_obj(t_obj *o)
+void	clean_env(t_environment *c)
 {
-	if (o)
-	{
-		free(o);
-		o = NULL;
-	}
-}
-
-void	clean_canvas(t_canvas *c)
-{
-	int	x;
-
-	x = 0;
 	if (c)
 	{
-		if (c->canvas)
-		{
-			while (x < c->width)
-			{
-				if (c->canvas[x])
-					free(c->canvas[x]);
-				x++;
-			}
-			free(c->canvas);
-		}
+		if (c->gravity)
+			free(c->gravity);
+		if (c->wind)
+			free(c->wind);
 		free(c);
 	}
 }
 
-void	*clean_matrix(t_matrix *m)
+void	clean_ray(t_ray *r)
 {
-	int	i;
-
-	i = 0;
-	if (m)
+	if (r)
 	{
-		if (m->node)
-		{
-			while (i < m->y)
-			{
-				if (m->node[i])
-					free(m->node[i]);
-				i++;
-			}
-			free(m->node);
-		}
-		free(m);
+		if (r->position)
+			free(r->position);
+		if (r->direction)
+			free(r->direction);
+		free(r);
 	}
-	return (NULL);
+}
+
+void	clean_proj(t_projectile *c)
+{
+	if (c)
+	{
+		if (c->position)
+			free(c->position);
+		if (c->velocity)
+			free(c->velocity);
+		free(c);
+	}
+}
+
+void	clean_sphere(t_sphere *s)
+{
+	if (s)
+	{
+		clean_matrix(s->transform);
+		free(s);
+	}
 }

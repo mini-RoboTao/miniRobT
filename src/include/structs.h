@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/12 23:57:22 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/18 01:29:58 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,46 @@ typedef struct s_matrix
 	int		y;
 	double	**node;
 }				t_matrix;
+
+///// Ray intersection structs
+typedef struct s_ray
+{
+	t_obj		*position;
+	t_obj		*direction;
+}				t_ray;
+
+typedef struct s_sphere
+{
+	double		x;
+	double		y;
+	double		z;
+	double		radius;
+	t_matrix	*transform;
+}				t_sphere;
+
+typedef struct s_intersect
+{
+	int			amount;
+	double		collision[2];
+}				t_intersect;
+
+typedef struct s_intersection
+{
+	double					t;
+	union {
+		t_sphere			*sphere;
+		void				*v;
+	};
+	struct s_intersection	*next;
+}				t_intersection;
+
+typedef struct s_intersections
+{
+	int				amount;
+	void			*shape;
+	t_intersection	*i;
+}				t_intersections;
+////////////////////////////////
 
 typedef struct s_shearing
 {

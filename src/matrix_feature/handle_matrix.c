@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 19:19:46 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/06 18:53:16 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/18 01:31:14 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,19 @@ t_matrix	*create_matrix(char **values, int col, int row)
 		i++;
 	}
 	return (m);
+}
+
+t_matrix	*create_identity_matrix(void)
+{
+	char	**values;
+
+	values = (char *[]){\
+		(char []){"1"}, (char []){"0"}, (char []){"0"}, (char []){"0"}, \
+		(char []){"0"}, (char []){"1"}, (char []){"0"}, (char []){"0"}, \
+		(char []){"0"}, (char []){"0"}, (char []){"1"}, (char []){"0"}, \
+		(char []){"0"}, (char []){"0"}, (char []){"0"}, (char []){"1"}, \
+		NULL};
+	return (create_matrix(values, 4, 4));
 }
 
 int	matrix_cmp(t_matrix *a, t_matrix *b)
