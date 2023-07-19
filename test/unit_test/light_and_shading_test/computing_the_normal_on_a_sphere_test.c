@@ -9,8 +9,7 @@ Test(Normal_on_a_sphere, The_normal_on_a_sphere_at_a_point_on_the_x_axis)
 
 	cr_assert(cr_object_eq(n, vector));
 
-	if (s)
-		free(s);
+	clean_sphere(s);
 	clean_obj(point);
 	clean_obj(vector);
 	clean_obj(n);
@@ -25,8 +24,7 @@ Test(Normal_on_a_sphere, The_normal_on_a_sphere_at_a_point_on_the_y_axis)
 
 	cr_assert(cr_object_eq(n, vector));
 
-	if (s)
-		free(s);
+	clean_sphere(s);
 	clean_obj(point);
 	clean_obj(vector);
 	clean_obj(n);
@@ -41,8 +39,7 @@ Test(Normal_on_a_sphere, The_normal_on_a_sphere_at_a_point_on_the_z_axis)
 
 	cr_assert(cr_object_eq(n, vector));
 
-	if (s)
-		free(s);
+	clean_sphere(s);
 	clean_obj(point);
 	clean_obj(vector);
 	clean_obj(n);
@@ -57,8 +54,7 @@ Test(Normal_on_a_sphere, The_normal_on_a_sphere_at_a_nonaxial_point)
 
 	cr_assert(cr_object_eq(n, vector));
 
-	if (s)
-		free(s);
+	clean_sphere(s);
 	clean_obj(point);
 	clean_obj(vector);
 	clean_obj(n);
@@ -72,8 +68,7 @@ Test(Normal_on_a_sphere, The_normal_is_a_normalized_vector)
 
 	cr_assert(cr_object_eq(n, object_normalize(n)));
 
-	if (s)
-		free(s);
+	clean_sphere(s);
 	clean_obj(point);
 	clean_obj(n);
 }
@@ -87,10 +82,9 @@ Test(Normal_on_a_sphere, The_normal_is_a_normalized_vector)
 // 	t_obj		*vector = create_vector(0, 0.70711, -0.70711);
 // 	t_obj		*n = normal_at(s, point);
 
-// 	cr_assert(cr_object_eq(n, vector));
+// 	cr_expect(cr_object_eq(n, vector));
 
-// 	if (s)
-// 		free(s);
+// 	clean_sphere(s);
 // 	clean_matrix(translated);
 // 	clean_obj(point);
 // 	clean_obj(vector);
