@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/20 18:59:58 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/20 19:45:48 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,27 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->img.addr + (y * data->img.line_lenght + x
 			* (data->img.bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+int	ft_render_minirt(t_data *data)
+{
+	int			i;
+	int			j;
+
+	i = 0;
+	while (i < WIDTH)
+	{
+		j = 0;
+		while (j < HEIGHT)
+		{
+			ft_mlx_pixel_put(data, i, j,
+				hex_to_int(join_rgb_colors(data->canvas->canvas[i][j])));
+			j++;
+		}
+		i++;
+	}
+	mlx_put_image_to_window(data->mlx, data->win, data->img.ptr, 0, 0);
+	return (0);
 }
 
 // mlx_mouse_hook(data.win, &ft_mouse_hook, &data);
