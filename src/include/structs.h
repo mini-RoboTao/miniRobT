@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/18 01:29:58 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/20 19:44:28 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,9 +141,25 @@ typedef struct s_shearing
 	double	z_to_y;
 }				t_shearing;
 
-void	ft_draw_letter_m(t_data *data, int *x, int *y);
-void	ft_draw_letter_i(t_data *data, int x);
-void	ft_draw_letter_n(t_data *data, int *x, int *y);
+typedef struct s_put_together
+{
+	double			wall_size;
+	double			pixel_size;
+	double			half;
+	double			w_y;
+	double			w_x;
+	double			w_z;
+	t_color			color;
+	t_obj			*ray_origin;
+	t_sphere		*s;
+	t_obj			*position;
+	t_ray			*ray;
+	int				x;
+	int				y;
+	t_intersections	xs;
+}				t_put_together;
+
+void	put_together(t_data *d);
 int		ft_render_minirt(t_data *data);
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 

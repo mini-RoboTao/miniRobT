@@ -29,7 +29,7 @@ SRC_COLORS_FEATURE			=					object_colors.c
 SRC_CANVAS_FEATURE			=					canvas.c
 SRC_LINKED_LST				=					ft_lstnew.c ft_lstsize.c ft_lstlast.c \
 												ft_lstclean.c ft_lstadd_back.c 
-SRC							=					minirt.c draw_mini.c utils.c \
+SRC							=					minirt.c utils.c put_together.c\
 												$(SRC_LINKED_LST) 									\
 												$(SRC_OBJECT_FEATURE) 								\
 												$(SRC_COLORS_FEATURE) 								\
