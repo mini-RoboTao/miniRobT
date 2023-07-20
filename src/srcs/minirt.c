@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/04 18:28:52 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:59:58 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,30 +44,6 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->img.addr + (y * data->img.line_lenght + x
 			* (data->img.bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
-}
-
-void	put_together(t_data *d)
-{
-	t_environment	*e;
-	t_projectile	*p;
-	t_projectile	*tmp;
-
-	p = create_proj(create_point(0, 1, 0), \
-	multiply_object(object_normalize(create_vector(0.1, 0.4, 0)), 10.2));
-	e = create_env(create_vector(0.8, -0.1, 0), create_vector(-0.01, 0, 0));
-	while (1)
-	{
-		tmp = p;
-		p = tick(e, p);
-		clean_proj(tmp);
-		if (p->position->y <= 0)
-			break ;
-		write_pixel(d->canvas, (int)p->position->x, \
-		HEIGHT - (int)p->position->y, fill_color(231, 0, 0));
-		usleep(100);
-	}
-	clean_proj(p);
-	clean_env(e);
 }
 
 // mlx_mouse_hook(data.win, &ft_mouse_hook, &data);
