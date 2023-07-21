@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/21 07:04:07 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/21 08:03:03 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,24 @@ t_material	new_material(void)
 	return (material);
 }
 
-static void	calculate_diffuse_specular(t_lighting_data *data, t_lighting *lig,
-	t_obj *lightv)
+static void	calculate_diffuse_specular(t_lighting_data *data,
+		t_lighting *lig, t_obj *lightv)
 {
-	t_obj	*neglightv;
 	t_obj	*reflectv;
 
 	data->diffuse = multiply_scalar_colors(data->eff_color,
 			(lig->material.diffuse * data->light_dot_normal));
-	neglightv = multiply_object(lightv, -1);
-	reflectv = reflect(neglightv, lig->normalv);
+	lightv = multiply_object(lightv, -1);
+	reflectv = reflect(lightv, lig->normalv);
 	data->reflect_dot_eye = object_dot(reflectv, lig->eyev);
 	if (data->reflect_dot_eye <= 0)
-		data->specular = fill_color(0, 0, 0);
+			data->specular = fill_color(0, 0, 0);
 	else
 	{
-		data->factor = pow(data->reflect_dot_eye, lig->material.shininess);
-		data->specular = multiply_scalar_colors(lig->light->intensity,
+			data->factor = pow(data->reflect_dot_eye, lig->material.shininess);
+			data->specular = multiply_scalar_colors(lig->light->intensity,
 				(lig->material.specular * data->factor));
 	}
-	clean_obj(neglightv);
 	clean_obj(reflectv);
 }
 
@@ -63,11 +61,10 @@ t_color	lighting(t_lighting lig)
 {
 	t_lighting_data	data;
 	t_obj			*lightv;
-	t_obj			*light_pos_minus_point;
 
 	data.eff_color = multiply_colors(lig.material.color, lig.light->intensity);
-	light_pos_minus_point = subtract_objects(lig.light->position, lig.point);
-	lightv = object_normalize(light_pos_minus_point);
+	lightv = subtract_objects(lig.light->position, lig.point);
+	lightv = object_normalize(lightv);
 	data.ambient = multiply_scalar_colors(data.eff_color, lig.material.ambient);
 	data.light_dot_normal = object_dot(lightv, lig.normalv);
 	if (data.light_dot_normal < 0)
@@ -77,5 +74,6 @@ t_color	lighting(t_lighting lig)
 	}
 	else
 		calculate_diffuse_specular(&data, &lig, lightv);
+	clean_obj(lightv);
 	return (sum_colors(sum_colors(data.ambient, data.diffuse), data.specular));
 }

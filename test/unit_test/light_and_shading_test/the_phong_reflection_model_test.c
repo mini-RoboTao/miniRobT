@@ -142,25 +142,25 @@ Test(The_Phong_Reflection, Lighting_with_eye_in_the_path_of_the_reflection_vecto
 	free(lighting_s.light);
 }
 
-// Test(The_Phong_Reflection, Lighting_with_the_light_behind_the_surface)
-// {
-// 	t_lighting	lighting_s;
-// 	lighting_s.material = new_material();
-// 	lighting_s.point = create_point(0, 0, 0);
-// 	lighting_s.eyev = create_vector(0, 0, -1);
-// 	lighting_s.normalv = create_vector(0, 0, -1);
-// 	t_color		color = fill_color(1, 1, 1);
-// 	t_obj		*point = create_point(0, 0, 10);
-// 	lighting_s.light = point_light(point, color);
-// 	t_color		res_color = fill_color(0.1, 0.1, 0.1);
+Test(The_Phong_Reflection, Lighting_with_the_light_behind_the_surface)
+{
+	t_lighting	lighting_s;
+	lighting_s.material = new_material();
+	lighting_s.point = create_point(0, 0, 0);
+	lighting_s.eyev = create_vector(0, 0, -1);
+	lighting_s.normalv = create_vector(0, 0, -1);
+	t_color		color = fill_color(1, 1, 1);
+	t_obj		*point = create_point(0, 0, 10);
+	lighting_s.light = point_light(point, color);
+	t_color		res_color = fill_color(0.1, 0.1, 0.1);
 
-// 	t_color	res = lighting(lighting_s);
+	t_color	res = lighting(lighting_s);
 
-// 	cr_assert(cr_color_eq(res, res_color));
+	cr_assert(cr_color_eq(res, res_color));
 
-// 	clean_obj(lighting_s.point);
-// 	clean_obj(lighting_s.eyev);
-// 	clean_obj(lighting_s.normalv);
-// 	clean_obj(point);
-// 	free(lighting_s.light);
-// }
+	clean_obj(lighting_s.point);
+	clean_obj(lighting_s.eyev);
+	clean_obj(lighting_s.normalv);
+	clean_obj(point);
+	free(lighting_s.light);
+}
