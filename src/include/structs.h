@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/21 07:04:18 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/21 13:22:18 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,24 +151,6 @@ typedef struct s_shearing
 	double	z_to_y;
 }				t_shearing;
 
-typedef struct s_put_together
-{
-	double			wall_size;
-	double			pixel_size;
-	double			half;
-	double			w_y;
-	double			w_x;
-	double			w_z;
-	t_color			color;
-	t_obj			*ray_origin;
-	t_sphere		*s;
-	t_obj			*position;
-	t_ray			*ray;
-	int				x;
-	int				y;
-	t_intersections	xs;
-}				t_put_together;
-
 typedef struct s_normal_at
 {
 	t_obj		*object_point;
@@ -204,6 +186,27 @@ typedef struct s_lighting_data
 	t_color	diffuse;
 	t_color	specular;
 }				t_lighting_data;
+
+typedef struct s_put_together
+{
+	double			wall_size;
+	double			pixel_size;
+	double			half;
+	double			w_y;
+	double			w_x;
+	double			w_z;
+	t_color			color;
+	t_obj			*ray_origin;
+	t_sphere		*s;
+	t_obj			*position;
+	t_ray			*ray;
+	int				x;
+	int				y;
+	t_intersections	xs;
+	t_light			*light;
+	t_lighting		lig;
+	t_intersection	*hit;
+}				t_put_together;
 
 void	put_together(t_data *d);
 int		ft_render_minirt(t_data *data);
