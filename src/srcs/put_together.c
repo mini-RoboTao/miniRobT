@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/21 13:50:39 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/21 14:14:05 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_put_together	set_put_together(void)
 	pt.half = pt.wall_size / 2;
 	pt.ray_origin = create_point(0, 0, -5);
 	pt.w_z = 10;
-	pt.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
+	pt.light = point_light(create_point(0, 5, -15), fill_color(1, 1, 1));
 	pt.lig.light = pt.light;
 	pt.lig.material = pt.s->material;
 	return (pt);
@@ -54,7 +54,8 @@ void	put_in_canvas(t_put_together *pt, t_data *d)
 		{
 			pt->lig.point = cat_position(pt->ray, pt->hit->t);
 			pt->lig.normalv = normal_at(pt->hit->v, pt->lig.point);
-			pt->lig.eyev = negating_object(pt->ray->direction);
+			pt->lig.eyev = object_normalize(pt->ray->direction);
+			pt->lig.eyev = negating_object(pt->lig.eyev);
 			color = lighting(pt->lig);
 			write_pixel(d->canvas, pt->x, pt->y, color);
 		}
