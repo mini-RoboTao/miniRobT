@@ -73,43 +73,40 @@ Test(Normal_on_a_sphere, The_normal_is_a_normalized_vector)
 	clean_obj(n);
 }
 
-// Test(Normal_on_a_sphere, Computing_the_normal_on_a_translated_sphere)
-// {
-// 	t_sphere	*s = new_sphere();
-// 	t_matrix	*translated = translation(0, 1, 0);
-// 	t_obj		*point = create_point(0, 1.70711, -0.70711);
-// 	// set_transform(s, point);
-// 	t_obj		*vector = create_vector(0, 0.70711, -0.70711);
-// 	t_obj		*n = normal_at(s, point);
+Test(Normal_on_a_sphere, Computing_the_normal_on_a_translated_sphere)
+{
+	t_sphere	*s = new_sphere();
+	t_matrix	*translated = translation(0, 1, 0);
+	t_obj		*point = create_point(0, 1.70711, -0.70711);
+	set_transform(s, translated);
+	t_obj		*vector = create_vector(0, 0.70711, -0.70711);
+	t_obj		*n = normal_at(s, point);
 
-// 	cr_expect(cr_object_eq(n, vector));
+	cr_expect(cr_object_eq(n, vector));
 
-// 	clean_sphere(s);
-// 	clean_matrix(translated);
-// 	clean_obj(point);
-// 	clean_obj(vector);
-// 	clean_obj(n);
-// }
+	clean_obj(point);
+	clean_obj(vector);
+	clean_obj(n);
+	clean_sphere(s);
+}
 
-// Test(Normal_on_a_sphere, Computing_the_normal_on_a_transformed_sphere)
-// {
-// 	t_sphere	*s = new_sphere();
-// 	t_matrix	*scaled = scaling(1, 0.5, 1);
-// 	t_matrix	*z_rotated = rotation_z(M_PI/5);
-// 	t_matrix	*res_matrix = multiply_matrix(scaled, z_rotated, 4, 4);
-// 	t_obj		*point = create_point(0, sqrt(2)/2, -sqrt(2)/2);
-// 	// set_transform(s, res_matrix);
-// 	t_obj		*vector = create_vector(0, 0.97014, -0.24254);
-// 	t_obj		*n = normal_at(s, point);
+Test(Normal_on_a_sphere, Computing_the_normal_on_a_transformed_sphere)
+{
+	t_sphere	*s = new_sphere();
+	t_matrix	*scaled = scaling(1, 0.5, 1);
+	t_matrix	*z_rotated = rotation_z(M_PI/5);
+	t_matrix	*res_matrix = multiply_matrix(scaled, z_rotated, 4, 4);
+	t_obj		*point = create_point(0, sqrt(2)/2, -sqrt(2)/2);
+	set_transform(s, res_matrix);
+	t_obj		*vector = create_vector(0, 0.97014, -0.24254);
+	t_obj		*n = normal_at(s, point);
 
-// 	cr_assert(cr_object_eq(n, vector));
+	cr_expect(cr_object_eq(n, vector));
 
-// 	if (s)
-// 		free(s);
-// 	clean_matrix(scaled);
-// 	clean_matrix(z_rotated);
-// 	clean_matrix(res_matrix);
-// 	clean_obj(point);
-// 	clean_obj(vector);
-// 	clean_obj(n);
-// }
+	clean_matrix(scaled);
+	clean_matrix(z_rotated);
+	clean_obj(point);
+	clean_obj(vector);
+	clean_obj(n);
+	clean_sphere(s);
+}
