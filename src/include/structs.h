@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/20 19:44:28 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/21 01:20:03 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,16 @@ typedef struct s_put_together
 	int				y;
 	t_intersections	xs;
 }				t_put_together;
+
+typedef struct s_normal_at
+{
+	t_obj		*object_point;
+	t_obj		*object_normal;
+	t_obj		*world_normal;
+	t_matrix	*inverse;
+	t_matrix	*transpose;
+	t_obj		*point;
+}				t_normal_at;
 
 void	put_together(t_data *d);
 int		ft_render_minirt(t_data *data);
