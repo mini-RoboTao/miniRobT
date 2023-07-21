@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/21 04:35:56 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/21 07:04:18 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,17 @@ typedef struct s_lighting
 	t_obj		*eyev;
 	t_obj		*normalv;
 }				t_lighting;
+
+typedef struct s_lighting_data
+{
+	double	light_dot_normal;
+	double	reflect_dot_eye;
+	double	factor;
+	t_color	eff_color;
+	t_color	ambient;
+	t_color	diffuse;
+	t_color	specular;
+}				t_lighting_data;
 
 void	put_together(t_data *d);
 int		ft_render_minirt(t_data *data);

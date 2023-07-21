@@ -50,7 +50,99 @@ Test(The_Phong_Reflection, A_sphere_may_be_assigned_a_material)
 	clean_sphere(s);
 }
 
-// Test(The_Phong_Reflection, Lighting_with_the_eye_between_the_light_and_the_surface)
+Test(The_Phong_Reflection, Lighting_with_the_eye_between_the_light_and_the_surface)
+{
+	t_lighting	lighting_s;
+	lighting_s.material = new_material();
+	lighting_s.point = create_point(0, 0, 0);
+	lighting_s.eyev = create_vector(0, 0, -1);
+	lighting_s.normalv = create_vector(0, 0, -1);
+	t_color		color = fill_color(1, 1, 1);
+	t_obj		*point = create_point(0, 0, -10);
+	lighting_s.light = point_light(point, color);
+	t_color		res_color = fill_color(1.9, 1.9, 1.9);
+
+	t_color	res = lighting(lighting_s);
+
+	cr_assert(cr_color_eq(res, res_color));
+
+	clean_obj(lighting_s.point);
+	clean_obj(lighting_s.eyev);
+	clean_obj(lighting_s.normalv);
+	clean_obj(point);
+	free(lighting_s.light);
+}
+
+Test(The_Phong_Reflection, Lighting_with_the_eye_between_light_and_surface__eye_offset_45)
+{
+	t_lighting	lighting_s;
+	lighting_s.material = new_material();
+	lighting_s.point = create_point(0, 0, 0);
+	lighting_s.eyev = create_vector(0, sqrt(2)/2, sqrt(2)/2 * -1);
+	lighting_s.normalv = create_vector(0, 0, -1);
+	t_color		color = fill_color(1, 1, 1);
+	t_obj		*point = create_point(0, 0, -10);
+	lighting_s.light = point_light(point, color);
+	t_color		res_color = fill_color(1, 1, 1);
+
+	t_color	res = lighting(lighting_s);
+
+	cr_assert(cr_color_eq(res, res_color));
+
+	clean_obj(lighting_s.point);
+	clean_obj(lighting_s.eyev);
+	clean_obj(lighting_s.normalv);
+	clean_obj(point);
+	free(lighting_s.light);
+}
+
+Test(The_Phong_Reflection, Lighting_with_eye_opposite_surface__light_offset_45)
+{
+	t_lighting	lighting_s;
+	lighting_s.material = new_material();
+	lighting_s.point = create_point(0, 0, 0);
+	lighting_s.eyev = create_vector(0, 0, -1);
+	lighting_s.normalv = create_vector(0, 0, -1);
+	t_color		color = fill_color(1, 1, 1);
+	t_obj		*point = create_point(0, 10, -10);
+	lighting_s.light = point_light(point, color);
+	t_color		res_color = fill_color(0.7364, 0.7364, 0.7364);
+
+	t_color	res = lighting(lighting_s);
+
+	cr_assert(cr_color_eq(res, res_color));
+
+	clean_obj(lighting_s.point);
+	clean_obj(lighting_s.eyev);
+	clean_obj(lighting_s.normalv);
+	clean_obj(point);
+	free(lighting_s.light);
+}
+
+Test(The_Phong_Reflection, Lighting_with_eye_in_the_path_of_the_reflection_vector)
+{
+	t_lighting	lighting_s;
+	lighting_s.material = new_material();
+	lighting_s.point = create_point(0, 0, 0);
+	lighting_s.eyev = create_vector(0, sqrt(2)/2 * -1, sqrt(2)/2 * -1);
+	lighting_s.normalv = create_vector(0, 0, -1);
+	t_color		color = fill_color(1, 1, 1);
+	t_obj		*point = create_point(0, 10, -10);
+	lighting_s.light = point_light(point, color);
+	t_color		res_color = fill_color(1.6364, 1.6364, 1.6364);
+
+	t_color	res = lighting(lighting_s);
+
+	cr_assert(cr_color_eq(res, res_color));
+
+	clean_obj(lighting_s.point);
+	clean_obj(lighting_s.eyev);
+	clean_obj(lighting_s.normalv);
+	clean_obj(point);
+	free(lighting_s.light);
+}
+
+// Test(The_Phong_Reflection, Lighting_with_the_light_behind_the_surface)
 // {
 // 	t_lighting	lighting_s;
 // 	lighting_s.material = new_material();
@@ -58,107 +150,17 @@ Test(The_Phong_Reflection, A_sphere_may_be_assigned_a_material)
 // 	lighting_s.eyev = create_vector(0, 0, -1);
 // 	lighting_s.normalv = create_vector(0, 0, -1);
 // 	t_color		color = fill_color(1, 1, 1);
-// 	t_obj		*point = create_point(0, 0, -10);
+// 	t_obj		*point = create_point(0, 0, 10);
 // 	lighting_s.light = point_light(point, color);
-// 	t_color		res_color = fill_color(1.9, 1.9, 1.9);
+// 	t_color		res_color = fill_color(0.1, 0.1, 0.1);
 
 // 	t_color	res = lighting(lighting_s);
 
-// 	printf("%f %f %f\n", res.red, res.green, res.blue);
-
 // 	cr_assert(cr_color_eq(res, res_color));
 
-// 	// clean_obj(position);
-// 	// clean_obj(eyev);
-// 	// clean_obj(normalv);
-// 	// clean_obj(point);
-// 	// free(light);
-// }
-
-// Test(The_Phong_Reflection, Lighting_with_the_eye_between_light_and_surface__eye_offset_45)
-// {
-// 	t_material	material = new_material();
-// 	t_obj		*position = create_point(0, 0, 0);
-// 	t_obj		*eyev = create_vector(0, sqrt(2)/2, sqrt(2)/2 * -1);
-// 	t_obj		*normalv = create_vector(0, 0, -1);
-// 	t_color		color = fill_color(1, 1, 1);
-// 	t_obj		*point = create_point(0, 0, -10);
-// 	t_light		*light = point_light(point, color);
-// 	t_color		res_color = fill_color(1, 1, 1);
-
-// 	t_color	res = lighting(material, light, position, eyev, normalv);
-
-// 	cr_assert(cr_color_eq(res, res_color));
-
-// 	clean_obj(position);
-// 	clean_obj(eyev);
-// 	clean_obj(normalv);
+// 	clean_obj(lighting_s.point);
+// 	clean_obj(lighting_s.eyev);
+// 	clean_obj(lighting_s.normalv);
 // 	clean_obj(point);
-// 	free(light);
-// }
-
-// Test(The_Phong_Reflection, Lighting_with_eye_opposite_surface__light_offset_45)
-// {
-// 	t_material	material = new_material();
-// 	t_obj		*position = create_point(0, 0, 0);
-// 	t_obj		*eyev = create_vector(0, 0, -1);
-// 	t_obj		*normalv = create_vector(0, 0, -1);
-// 	t_color		color = fill_color(1, 1, 1);
-// 	t_obj		*point = create_point(0, 10, -10);
-// 	t_light		*light = point_light(point, color);
-// 	t_color		res_color = fill_color(0.7364, 0.7364, 0.7364);
-
-// 	t_color	res = lighting(material, light, position, eyev, normalv);
-
-// 	cr_assert(cr_color_eq(res, res_color));
-
-// 	clean_obj(position);
-// 	clean_obj(eyev);
-// 	clean_obj(normalv);
-// 	clean_obj(point);
-// 	free(light);
-// }
-
-// Test(The_Phong_Reflection, Lighting_with_eye_in_the_path_of_the_reflection_vector)
-// {
-// 	t_material	material = new_material();
-// 	t_obj		*position = create_point(0, 0, 0);
-// 	t_obj		*eyev = create_vector(0, sqrt(2)/2 * -1, sqrt(2)/2 * -1);
-// 	t_obj		*normalv = create_vector(0, 0, -1);
-// 	t_color		color = fill_color(1, 1, 1);
-// 	t_obj		*point = create_point(0, 10, -10);
-// 	t_light		*light = point_light(point, color);
-// 	t_color		res_color = fill_color(1.6364, 1.6364, 1.6364);
-
-// 	t_color	res = lighting(material, light, position, eyev, normalv);
-
-// 	cr_assert(cr_color_eq(res, res_color));
-
-// 	clean_obj(position);
-// 	clean_obj(eyev);
-// 	clean_obj(normalv);
-// 	clean_obj(point);
-// 	free(light);
-// }
-
-// Test(The_Phong_Reflection, Lighting_with_the_light_behind_the_surface)
-// {
-// 	t_material	material = new_material();
-// 	t_obj		*position = create_point(0, 0, 0);
-// 	t_obj		*eyev = create_vector(0, 0, -1);
-// 	t_obj		*normalv = create_vector(0, 0, -1);
-// 	t_color		color = fill_color(1, 1, 1);
-// 	t_obj		*point = create_point(0, 0, 10);
-// 	t_light		*light = point_light(point, color);
-// 	t_color		res_color = fill_color(0.1, 0.1, 0.1);
-
-// 	t_color	res = lighting(material, light, position, eyev, normalv);
-
-// 	cr_assert(cr_color_eq(res, res_color));
-
-// 	clean_obj(position);
-// 	clean_obj(eyev);
-// 	clean_obj(normalv);
-// 	clean_obj(point);
-// 	free(light);
+// 	free(lighting_s.light);
 // }
