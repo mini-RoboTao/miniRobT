@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_ray.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:48:49 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/20 17:54:30 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/21 03:27:29 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ t_sphere	*new_sphere(void)
 	s->z = 0.0;
 	s->radius = 1.0;
 	s->transform = create_identity_matrix();
+	s->material = new_material();
 	return (s);
 }

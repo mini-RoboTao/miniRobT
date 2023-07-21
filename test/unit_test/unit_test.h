@@ -5,9 +5,26 @@
 # include "criterion.h"
 # include "new/assert.h"
 
+int	cr_color_eq(t_color a, t_color b)
+{
+	return	(fabs(a.blue - b.blue) < EPSILON && \
+			fabs(a.green - b.green) < EPSILON && \
+			fabs(a.red - b.red) < EPSILON);
+}
+
+int	cr_material_eq(t_material a, t_material b)
+{
+	if (!cr_color_eq(a.color, b.color))
+		return (0);
+	return	(fabs(a.ambient - b.ambient) < EPSILON && \
+			fabs(a.diffuse - b.diffuse) < EPSILON && \
+			fabs(a.shininess - b.shininess) < EPSILON && \
+			fabs(a.specular - b.specular) < EPSILON);
+}
+
 int cr_object_eq(t_obj *a, t_obj *b)
 {
-    return	(fabs(a->x - b->x) < EPSILON && \
+	return	(fabs(a->x - b->x) < EPSILON && \
 			fabs(a->y - b->y) < EPSILON && \
 			fabs(a->z - b->z) < EPSILON && \
 			a->w == b->w);
@@ -15,7 +32,7 @@ int cr_object_eq(t_obj *a, t_obj *b)
 
 int cr_sphere_eq(t_sphere *a, t_sphere *b)
 {
-    return	(fabs(a->x - b->x) < EPSILON && \
+	return	(fabs(a->x - b->x) < EPSILON && \
 			fabs(a->y - b->y) < EPSILON && \
 			fabs(a->z - b->z) < EPSILON && \
 			fabs(a->radius - b->radius) < EPSILON);
@@ -23,7 +40,7 @@ int cr_sphere_eq(t_sphere *a, t_sphere *b)
 
 int cr_intersection_eq(t_intersection *a, t_intersection *b)
 {
-    return	(fabs(a->sphere->x - b->sphere->x) < EPSILON && \
+	return	(fabs(a->sphere->x - b->sphere->x) < EPSILON && \
 			fabs(a->sphere->y - b->sphere->y) < EPSILON && \
 			fabs(a->sphere->z - b->sphere->z) < EPSILON && \
 			fabs(a->sphere->radius - b->sphere->radius) < EPSILON &&

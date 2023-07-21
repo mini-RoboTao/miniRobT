@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:38:20 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/17 18:55:51 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/19 19:45:49 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@
 # include "matrix_feature.h"
 # include "ray_feature.h"
 # include "matrix_transformations.h"
+# include "light_and_shading.h"
 #endif
