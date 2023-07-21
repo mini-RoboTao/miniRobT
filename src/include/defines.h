@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:44:14 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/20 19:15:28 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/21 13:39:07 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "minirt.h"
 
-# define WIDTH 100
-# define HEIGHT 100
+# define WIDTH 500
+# define HEIGHT 500
 
 # define EPSILON 0.0001
 
