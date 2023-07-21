@@ -46,12 +46,12 @@ static void	calculate_diffuse_specular(t_lighting_data *data,
 	lightv = multiply_object(lightv, -1);
 	reflectv = reflect(lightv, lig->normalv);
 	data->reflect_dot_eye = object_dot(reflectv, lig->eyev);
-	if (data->reflect_dot_eye <= 0)
+	if (data->reflect_dot_eye <= 0) \
 			data->specular = fill_color(0, 0, 0);
 	else
 	{
-			data->factor = pow(data->reflect_dot_eye, lig->material.shininess);
-			data->specular = multiply_scalar_colors(lig->light->intensity,
+		data->factor = pow(data->reflect_dot_eye, lig->material.shininess);
+		data->specular = multiply_scalar_colors(lig->light->intensity, \
 				(lig->material.specular * data->factor));
 	}
 	clean_obj(reflectv);
