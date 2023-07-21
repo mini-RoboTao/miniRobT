@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light_and_shading.h                                :+:      :+:    :+:   */
+/*   reflect.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 21:50:03 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/21 02:24:04 by rotakesh         ###   ########.fr       */
+/*   Created: 2023/07/21 02:17:04 by rotakesh          #+#    #+#             */
+/*   Updated: 2023/07/21 02:34:07 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHT_AND_SHADING_H
-# define LIGHT_AND_SHADING_H
+#include "minirt.h"
 
-# include "minirt.h"
+t_obj	*reflect(t_obj *in, t_obj *normal)
+{
+	double	dot_times_two;
+	t_obj	*normal_multiplied;
+	t_obj	*res;
 
-t_obj	*normal_at(t_sphere *sphere, t_obj *world_point);
-t_obj	*reflect(t_obj *in, t_obj *normal);
-
-#endif
+	dot_times_two = 2 * object_dot(in, normal);
+	normal_multiplied = multiply_object(normal, dot_times_two);
+	res = subtract_objects(in, normal_multiplied);
+	return (res);
+}
