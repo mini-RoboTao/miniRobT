@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/21 01:20:03 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/21 04:35:56 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,15 @@ typedef struct s_ray
 	t_obj		*direction;
 }				t_ray;
 
+typedef struct s_material
+{
+	t_color		color;
+	double		ambient;
+	double		diffuse;
+	double		specular;
+	double		shininess;
+}				t_material;
+
 typedef struct s_sphere
 {
 	double		x;
@@ -105,6 +114,7 @@ typedef struct s_sphere
 	double		z;
 	double		radius;
 	t_matrix	*transform;
+	t_material	material;
 }				t_sphere;
 
 typedef struct s_intersect
@@ -168,6 +178,21 @@ typedef struct s_normal_at
 	t_matrix	*transpose;
 	t_obj		*point;
 }				t_normal_at;
+
+typedef struct s_light
+{
+	t_color		intensity;
+	t_obj		*position;
+}				t_light;
+
+typedef struct s_lighting
+{
+	t_material	material;
+	t_light		*light;
+	t_obj		*point;
+	t_obj		*eyev;
+	t_obj		*normalv;
+}				t_lighting;
 
 void	put_together(t_data *d);
 int		ft_render_minirt(t_data *data);
