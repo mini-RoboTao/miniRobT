@@ -74,6 +74,8 @@ Test(transforming_rays, intersecting_a_scaled_sphere_with_a_ray)
 	clean_intersection_lst(&xs.i);
 	if (s)
 		free(s);
+	if (xs.shape)
+		free(xs.shape);
 }
 
 Test(transforming_rays, intersecting_a_translation_sphere_with_a_ray)

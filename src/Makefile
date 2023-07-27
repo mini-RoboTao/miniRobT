@@ -13,12 +13,14 @@ VPATH						=					./srcs					\
 												./matrix_feature		\
 												./ray_feature			\
 												./matrix_transformations\
-												./light_and_shading
+												./light_and_shading		\
+												./world_feature
 ######################## FLAGS ###############################
 FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
 FLAG_EXTRA					=					 -g3 -O3 -MMD -MP
 ######################## SRCS ################################
+SRC_WORLD_FEATURE			=					handle_world.c view_transformation.c camera.c
 SRC_LIGHT_AND_SHADING		=					normal_at.c reflect.c the_phong_reflection.c
 SRC_RAY_FEATURE				=					handle_ray.c intersections.c transforming_rays.c
 SRC_MATRIX_TRANSFORMATION	=					translate_matrix.c scaling_matrix.c rotation_matrix.c shearing_matrix.c
@@ -38,7 +40,8 @@ SRC							=					minirt.c utils.c put_together.c\
 												$(SRC_MATRIX_FEATURE)								\
 												$(SRC_RAY_FEATURE)									\
 												$(SRC_LIGHT_AND_SHADING)							\
-												$(SRC_MATRIX_TRANSFORMATION)
+												$(SRC_MATRIX_TRANSFORMATION)						\
+												$(SRC_WORLD_FEATURE)
 OBJ							=					$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP							=					$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 ############## CONDITIONAL COMPILER FLAGS ####################

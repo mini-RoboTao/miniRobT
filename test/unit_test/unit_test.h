@@ -38,6 +38,21 @@ int cr_sphere_eq(t_sphere *a, t_sphere *b)
 			fabs(a->radius - b->radius) < EPSILON);
 }
 
+int cr_light_eq(t_light *a, t_light *b)
+{
+	return	(cr_color_eq(a->intensity, b->intensity) && \
+			cr_object_eq(a->position, b->position));
+}
+
+int cr_sphere_check_material_eq(t_sphere *a, t_sphere *b)
+{
+	return	(fabs(a->x - b->x) < EPSILON && \
+			fabs(a->y - b->y) < EPSILON && \
+			fabs(a->z - b->z) < EPSILON && \
+			fabs(a->radius - b->radius) < EPSILON && \
+			cr_material_eq(a->material, b->material));
+}
+
 int cr_intersection_eq(t_intersection *a, t_intersection *b)
 {
 	return	(fabs(a->sphere->x - b->sphere->x) < EPSILON && \
@@ -70,5 +85,12 @@ int cr_matrix_eq(t_matrix *a, t_matrix *b)
 		return (1);
 	return (0);
 }
+
+# define IDENTITY_MATRIX &(t_matrix){.node = (double *[]){ 		\
+							(double []){1, 0, 0, 0},				\
+							(double []){0, 1, 0, 0},				\
+							(double []){0, 0, 1, 0},				\
+							(double []){0, 0, 0, 1},				\
+							}, .x = 4, .y = 4}
 
 #endif
