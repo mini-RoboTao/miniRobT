@@ -5,6 +5,9 @@
 # include "criterion.h"
 # include "new/assert.h"
 
+# define T (t_bool)true
+# define F (t_bool)false
+
 int	cr_color_eq(t_color a, t_color b)
 {
 	return	(fabs(a.blue - b.blue) < EPSILON && \
