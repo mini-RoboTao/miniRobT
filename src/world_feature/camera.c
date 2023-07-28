@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:57:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 00:02:16 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/28 05:39:36 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ t_camera	camera(int hsize, int vsize, double fov)
 static t_ray	*calculate_ray_cam(t_camera *c, t_matrix *inv_trans, \
 									double wx, double wy)
 {
-	t_obj	*pixel;
-	t_obj	*origin;
-	t_obj	*direction;
+	t_obj	pixel;
+	t_obj	origin;
+	t_obj	direction;
 
-	pixel = multiply_matrix_by_obj(inv_trans, &(t_obj){wx, wy, -1, 1}, 4, 4);
-	origin = multiply_matrix_by_obj(inv_trans, &(t_obj){0, 0, 0, 1}, 4, 4);
+	pixel = multiply_matrix_by_obj(inv_trans, (t_obj){wx, wy, -1, 1}, 4, 4);
+	origin = multiply_matrix_by_obj(inv_trans, (t_obj){0, 0, 0, 1}, 4, 4);
 	direction = object_normalize(subtract_objects(pixel, origin));
-	clean_obj(pixel);
+	// clean_obj(pixel);
 	clean_matrix(inv_trans);
 	return (create_ray(origin, direction));
 }
@@ -95,7 +95,7 @@ t_canvas	*render(t_camera *c, t_world *w)
 		{
 			ray = ray_for_pixel(c, x, y);
 			color = color_at(w, ray);
-			clean_ray(ray);
+			// clean_ray(ray);
 			write_pixel(image, x, y, color);
 			x++;
 		}

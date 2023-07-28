@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/28 02:50:40 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/28 05:31:23 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ typedef struct s_obj {
 
 typedef struct s_projectile
 {
-	t_obj		*position;
-	t_obj		*velocity;
+	t_obj		position;
+	t_obj		velocity;
 }				t_projectile;
 
 typedef struct s_environment
 {
-	t_obj		*gravity;
-	t_obj		*wind;
+	t_obj		gravity;
+	t_obj		wind;
 }				t_environment;
 
 typedef struct s_matrix
@@ -94,8 +94,8 @@ typedef struct s_matrix
 ///// Ray intersection structs
 typedef struct s_ray
 {
-	t_obj		*position;
-	t_obj		*direction;
+	t_obj		position;
+	t_obj		direction;
 }				t_ray;
 
 typedef struct s_material
@@ -153,27 +153,27 @@ typedef struct s_shearing
 
 typedef struct s_normal_at
 {
-	t_obj		*object_point;
-	t_obj		*object_normal;
-	t_obj		*world_normal;
+	t_obj		object_point;
+	t_obj		object_normal;
+	t_obj		world_normal;
 	t_matrix	*inverse;
 	t_matrix	*transpose;
-	t_obj		*point;
+	t_obj		point;
 }				t_normal_at;
 
 typedef struct s_light
 {
 	t_color		intensity;
-	t_obj		*position;
+	t_obj		position;
 }				t_light;
 
 typedef struct s_lighting
 {
 	t_material	material;
 	t_light		*light;
-	t_obj		*point;
-	t_obj		*eyev;
-	t_obj		*normalv;
+	t_obj		point;
+	t_obj		eyev;
+	t_obj		normalv;
 	t_bool		in_shadow;
 }				t_lighting;
 
@@ -202,10 +202,10 @@ typedef struct s_precomp
 		t_sphere			*sphere;
 		void				*shape;
 	};
-	t_obj		*point;
-	t_obj		*over_point;
-	t_obj		*eyev;
-	t_obj		*normalv;
+	t_obj		point;
+	t_obj		over_point;
+	t_obj		eyev;
+	t_obj		normalv;
 	int			inside;
 }				t_precomp;
 
@@ -218,9 +218,9 @@ typedef struct s_put_together
 	double			w_x;
 	double			w_z;
 	t_color			color;
-	t_obj			*ray_origin;
+	t_obj			ray_origin;
 	t_sphere		*s;
-	t_obj			*position;
+	t_obj			position;
 	t_ray			*ray;
 	int				x;
 	int				y;

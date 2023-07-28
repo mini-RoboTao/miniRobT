@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 01:43:35 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/28 05:38:37 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_intersections	intersect_world(t_world *w, t_ray *ray)
 t_precomp	prepare_computations(t_intersection *i, t_ray *r)
 {
 	t_precomp	comps;
-	t_obj		*res_multiply;
+	t_obj		res_multiply;
 
 	comps = (t_precomp){0};
 	comps.t = i->t;
@@ -77,11 +77,11 @@ t_precomp	prepare_computations(t_intersection *i, t_ray *r)
 		comps.normalv = negating_object(object_normalize(comps.normalv));
 		comps.inside = 1;
 	}
-	res_multiply = create_object(comps.normalv->x, comps.normalv->y, \
-	comps.normalv->z, comps.normalv->w);
+	res_multiply = create_object(comps.normalv.x, comps.normalv.y, \
+	comps.normalv.z, comps.normalv.w);
 	multiply_object(res_multiply, EPSILON);
 	comps.over_point = sum_objects(comps.point, res_multiply);
-	clean_obj(res_multiply);
+	// clean_obj(res_multiply);
 	return (comps);
 }
 

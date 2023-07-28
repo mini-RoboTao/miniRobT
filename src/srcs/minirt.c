@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/20 19:45:48 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/28 05:40:11 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int ac, char **av)
 	data.win_h = HEIGHT;
 	data.win_name = "Mini-RobT";
 	data.canvas = generate_canvas(WIDTH, HEIGHT);
-	put_together(&data);
+	// put_together(&data);
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, data.win_w, data.win_h, data.win_name);
 	data.img.ptr = mlx_new_image(data.mlx, data.win_w, data.win_h);

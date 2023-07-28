@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 01:48:00 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/06 03:52:08 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/28 05:09:02 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,18 @@ t_matrix	*multiply_matrix(t_matrix *ma, t_matrix *mb, int nrow, int ncol)
 	return (m);
 }
 
-t_obj	*multiply_matrix_by_obj(t_matrix *m, t_obj *obj, int col, int row)
+t_obj	multiply_matrix_by_obj(t_matrix *m, t_obj obj, int col, int row)
 {
 	int		i;
 	double	o[4];
 
 	i = 0;
-	if (!m || !obj)
-		return (NULL);
 	while (i < row && i < col)
 	{
-		o[i] = m->node[i][0] * obj->x + \
-				m->node[i][1] * obj->y + \
-				m->node[i][2] * obj->z + \
-				m->node[i][3] * obj->w;
+		o[i] = m->node[i][0] * obj.x + \
+				m->node[i][1] * obj.y + \
+				m->node[i][2] * obj.z + \
+				m->node[i][3] * obj.w;
 		i++;
 	}
 	return (create_object(o[0], o[1], o[2], o[3]));

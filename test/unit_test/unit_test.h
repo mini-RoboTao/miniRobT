@@ -25,12 +25,12 @@ int	cr_material_eq(t_material a, t_material b)
 			fabs(a.specular - b.specular) < EPSILON);
 }
 
-int cr_object_eq(t_obj *a, t_obj *b)
+int cr_object_eq(t_obj a, t_obj b)
 {
-	return	(fabs(a->x - b->x) < EPSILON && \
-			fabs(a->y - b->y) < EPSILON && \
-			fabs(a->z - b->z) < EPSILON && \
-			a->w == b->w);
+	return	(fabs(a.x - b.x) < EPSILON && \
+			fabs(a.y - b.y) < EPSILON && \
+			fabs(a.z - b.z) < EPSILON && \
+			a.w == b.w);
 }
 
 int cr_sphere_eq(t_sphere *a, t_sphere *b)
