@@ -6,13 +6,13 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:49:11 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/20 18:20:24 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:49:02 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static double	calculate_discriminat(double *abc, t_ray *ray, t_sphere *s)
+double	calculate_discriminat(double *abc, t_ray *ray, t_sphere *s)
 {
 	t_ray			*r;
 	t_obj			*s_ray;
@@ -43,10 +43,11 @@ t_intersections	intersect(t_sphere *s, t_ray *ray)
 	discriminat = calculate_discriminat(abc, ray, s);
 	if (discriminat < 0)
 		return ((t_intersections){0});
+	xs.shape = malloc(sizeof(void *));
 	intersections(&xs, \
 	intersection((-abc[1] - (sqrt(discriminat))) / (2 * abc[0]), s), \
-	intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), s));
-	xs.shape = s;
+	intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), s), 0);
+	xs.shape[0] = s;
 	return (xs);
 }
 
@@ -64,10 +65,10 @@ t_intersection	*intersection(double t, void *shape)
 }
 
 void	intersections(t_intersections *xs, \
-		t_intersection *i1, t_intersection *i2)
+		t_intersection *i1, t_intersection *i2, int index)
 {
 	if (!xs->i)
-		xs->shape = i1->v;
+		xs->shape[index] = i1->v;
 	xs->amount += 2;
 	ft_lstrayadd_back(&xs->i, i1);
 	ft_lstrayadd_back(&xs->i, i2);
@@ -86,7 +87,7 @@ t_intersection	*hit(t_intersections xs)
 	minor_value = xs.i->t;
 	while (xs.i)
 	{
-		if (xs.i->t < minor_value && xs.i->t >= 0)
+		if ((xs.i->t < minor_value || minor_value < 0) && xs.i->t >= 0)
 		{
 			minor_value = xs.i->t;
 			pos = i;

@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/22 15:58:23 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/27 22:03:15 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ typedef struct s_intersection
 typedef struct s_intersections
 {
 	int				amount;
-	void			*shape;
+	void			**shape;
 	t_intersection	*i;
 }				t_intersections;
 ////////////////////////////////
@@ -188,6 +188,26 @@ typedef struct s_lighting_data
 	t_color	specular;
 }				t_lighting_data;
 
+typedef struct s_world
+{
+	int			amount_obj;
+	t_sphere	**sphere;
+	t_light		*light;
+}				t_world;
+
+typedef struct s_precomp
+{
+	double		t;
+	union {
+		t_sphere			*sphere;
+		void				*shape;
+	};
+	t_obj		*point;
+	t_obj		*eyev;
+	t_obj		*normalv;
+	int			inside;
+}				t_precomp;
+
 typedef struct s_put_together
 {
 	double			wall_size;
@@ -208,6 +228,17 @@ typedef struct s_put_together
 	t_lighting		lig;
 	t_intersection	*hit;
 }				t_put_together;
+
+typedef struct s_camera
+{
+	double		hsize;
+	double		vsize;
+	double		pixel_size;
+	double		half_width;
+	double		half_height;
+	double		field_of_view;
+	t_matrix	*transform;
+}				t_camera;
 
 void	put_together(t_data *d);
 int		ft_render_minirt(t_data *data);
