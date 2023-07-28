@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/27 23:57:15 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/28 02:50:40 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,8 +241,11 @@ typedef struct s_camera
 	t_matrix	*transform;
 }				t_camera;
 
-void	put_together(t_data *d);
-int		ft_render_minirt(t_data *data);
-void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
+t_sphere	*make_wall_right(void *v);
+t_sphere	*make_wall_left(void *v);
+t_sphere	*make_floor(void *v);
+void		put_together(t_data *d);
+int			ft_render_minirt(t_data *data);
+void		ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif
