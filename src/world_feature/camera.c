@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:57:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/27 20:20:27 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/28 00:02:16 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ t_canvas	*render(t_camera *c, t_world *w)
 
 	y = 0;
 	ray = NULL;
-	image = generate_canvas(c->vsize, c->hsize);
-	while (y < c->vsize)
+	image = generate_canvas(c->hsize, c->vsize);
+	while (y < c->vsize - 1)
 	{
 		x = 0;
-		while (x < c->hsize)
+		while (x < c->hsize - 1)
 		{
 			ray = ray_for_pixel(c, x, y);
 			color = color_at(w, ray);
