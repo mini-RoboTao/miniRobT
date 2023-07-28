@@ -78,6 +78,7 @@ Test(Rendering_shadows, Shade_hit_is_given_an_intersection_in_shadow)
 	// 	free(world.light->position);
 	// if (world.light)
 	// 	free(world.light);
+	free(world.light);
 	world.light = point_light(point, color);
 
 	t_matrix	*transformation = translation(0, 0, 10);
@@ -96,6 +97,7 @@ Test(Rendering_shadows, Shade_hit_is_given_an_intersection_in_shadow)
 	cr_assert(cr_color_eq(c, color_res));
 
 	clean_intersection_lst(&i);
+	free(ray);
 	// clean_ray(ray);
 	clean_world(world);
 	// clean_obj(comps.normalv);
@@ -117,6 +119,7 @@ Test(Rendering_shadows, The_hit_should_offset_the_point)
 
 	clean_intersection_lst(&i);
 	// clean_ray(ray);
+	free(ray);
 	// clean_obj(comps.normalv);
 	// clean_obj(comps.point);
 	// clean_obj(comps.over_point);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:49:11 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 06:08:11 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/28 19:28:55 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ double	calculate_discriminat(double *abc, t_ray *ray, t_sphere *s)
 	abc[1] = 2 * object_dot(r->direction, s_ray);
 	abc[2] = object_dot(s_ray, s_ray) - 1;
 	discriminat = pow(abc[1], 2) - 4 * abc[0] * abc[2];
+	free(r);
 	return (discriminat);
 }
 

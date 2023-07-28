@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadows.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:43:14 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/28 06:08:19 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/28 19:21:30 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_bool	is_shadowed(t_world *world, t_obj point)
 	if (!intersections.i)
 	{
 		free(intersections.shape);
+		free(ray);
 		return (false);
 	}
 	h = hit(intersections);

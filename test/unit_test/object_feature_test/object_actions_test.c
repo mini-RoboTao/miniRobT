@@ -17,8 +17,8 @@ Test(object_actions, test_create_environment_should_be_sucess)
     result = create_env(vector_g, vector_w);
 	cr_assert(cr_object_eq(result->gravity, expected.gravity));
 	cr_assert(cr_object_eq(result->wind, expected.wind));
-	// if (result)
-	// 	free(result);
+	if (result)
+		free(result);
 }
 
 // Test(object_actions, test_create_environment_with_null_obj_should_be_NULL)
@@ -43,8 +43,8 @@ Test(object_actions, test_create_projectile_should_be_sucess)
     result = create_proj(point_p, object_normalize(vector_v));
 	cr_assert(cr_object_eq(result->position, exp_res.position));
 	cr_assert(cr_object_eq(result->velocity, object_normalize(exp_res.velocity)));
-	// if (result)
-	// 	free(result);
+	if (result)
+		free(result);
 }
 
 // Test(object_actions, test_create_projectile_item_null_should_be_NULL)
