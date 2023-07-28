@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:43:14 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/28 05:33:47 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/28 06:08:19 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_bool	is_shadowed(t_world *world, t_obj point)
 	intersections = intersect_world(world, ray);
 	if (!intersections.i)
 	{
-		// clean_ray(ray);
 		free(intersections.shape);
 		return (false);
 	}

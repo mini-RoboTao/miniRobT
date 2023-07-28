@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 11:07:36 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 05:24:07 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/28 06:07:30 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	clean_sphere(t_sphere *s)
 	}
 }
 
+// clean_ray(ray);
 void	clean_ray_inter_shape(t_ray *ray, t_intersection **i, void **shape)
 {
-	// clean_ray(ray);
 	clean_intersection_lst(i);
 	free(shape);
 }

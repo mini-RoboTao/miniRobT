@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 05:38:37 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/28 06:00:42 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ t_precomp	prepare_computations(t_intersection *i, t_ray *r)
 	comps.normalv.z, comps.normalv.w);
 	multiply_object(res_multiply, EPSILON);
 	comps.over_point = sum_objects(comps.point, res_multiply);
-	// clean_obj(res_multiply);
 	return (comps);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/28 05:32:53 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/28 06:05:41 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static void	calculate_diffuse_specular(t_lighting_data *data,
 		data->specular = multiply_scalar_colors(lig->light->intensity, \
 			(lig->material.specular * data->factor));
 	}
-	// clean_obj(reflectv);
 }
 
 t_color	lighting(t_lighting lig)
@@ -74,7 +73,6 @@ t_color	lighting(t_lighting lig)
 	}
 	else
 		calculate_diffuse_specular(&data, &lig, lightv);
-	// clean_obj(lightv);
 	if (lig.in_shadow)
 		return (data.ambient);
 	return (sum_colors(sum_colors(data.ambient, data.diffuse), data.specular));

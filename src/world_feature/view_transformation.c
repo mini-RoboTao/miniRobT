@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:53:42 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 05:37:23 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/28 06:00:53 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,6 @@ t_matrix	*view_transformation(t_obj from, t_obj to, t_obj up)
 	left = object_cross_product(forward, normalize_up);
 	true_up = object_cross_product(left, forward);
 	m = run_transform(left, true_up, forward, from);
-	// clean_obj(normalize_up);
-	// clean_obj(forward);
-	// clean_obj(left);
-	// clean_obj(true_up);
 	return (m);
 }
 
@@ -78,8 +74,6 @@ t_color	color_at(t_world *w, t_ray *r)
 	{
 		comps = prepare_computations(i, r);
 		c = shade_hit(w, &comps);
-		// clean_obj(comps.point);
-		// clean_obj(comps.normalv);
 	}
 	if (xs.shape)
 		free(xs.shape);

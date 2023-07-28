@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 05:01:58 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/28 06:13:41 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@
 // 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
 // 	c = camera(1000, 500, M_PI / 3);
 // 	clean_matrix(c.transform);
-// 	c.transform = view_transformation(create_point(0, 1.5, -5), \
-// 								create_point(0, 1, 0), \
-// 								create_vector(0, 1, 1));
+// 	c.transform = view_transformation(create_point(0, 1.5, -5),
+//  create_point(0, 1, 0), create_vector(0, 1, 1));
 // 	d->canvas = render(&c, &w);
 // }
