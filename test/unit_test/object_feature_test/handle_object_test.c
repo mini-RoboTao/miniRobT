@@ -70,41 +70,40 @@ Test(handle_object, test_normalize_of_a_vector_x4_y0_z0_should_be_vector_x1_y0_z
 	cr_assert(cr_object_eq(result, expected));
 }
 
-// Test(handle_object, test_normalize_of_a_vector_x1_y2_z3_should_be_vector_x1_bksl_sqrt14_y2_bksl_sqrt14_z3_bksl_sqrt14)
-// {
-//     t_obj   vector      = (t_obj){.x=1, .y=2, .z=3, .w=0};
-//     t_obj   expected    = (t_obj){.x=0.26726, .y=0.53452, .z=0.80178, .w=0};
-//     double  exp         = 1;
-//     double  res;
-//     t_obj   result;
+Test(handle_object, test_normalize_of_a_vector_x1_y2_z3_should_be_vector_x1_bksl_sqrt14_y2_bksl_sqrt14_z3_bksl_sqrt14)
+{
+    t_obj   vector      = (t_obj){.x=1, .y=2, .z=3, .w=0};
+    t_obj   expected    = (t_obj){.x=0.26726, .y=0.53452, .z=0.80178, .w=0};
+    double  exp         = 1;
+    double  res;
+    t_obj   result;
 
-//     result = object_normalize(vector);
-// 	cr_assert(cr_object_eq(result, expected));
-//     res = object_magnitude(vector);
-//     printf("res: %f\n", res);
-// 	cr_assert(res == exp);
-// }
+    result = object_normalize(vector);
+	cr_assert(cr_object_eq(result, expected));
+    res = object_magnitude(result);
+	cr_assert(res == exp);
+}
 
 // Test(handle_object, test_normalize_of_a_vector_NULL_should_be_NULL)
 // {
-//     t_obj   *vector      = NULL;
-//     t_obj   *expected    = NULL;
-//     t_obj   *result;
+//     t_obj   vector      = NULL;
+//     t_obj   expected    = NULL;
+//     t_obj   result;
 
 //     result = object_normalize(vector);
 // 	cr_assert(eq(result, expected));
 // }
 
-// Test(handle_object, test_dot_of_a_vector_x1_y2_z3_and_a_vector_x2_y3_z4_should_be_20)
-// {
-//     t_obj   vector_a        = (t_obj){.x=1, .y=2, .z=3, .w=0};
-//     t_obj   vector_b        = (t_obj){.x=2, .y=3, .z=4, .w=0};
-//     double  expected        = 20;
-//     double  result;
+Test(handle_object, test_dot_of_a_vector_x1_y2_z3_and_a_vector_x2_y3_z4_should_be_20)
+{
+    t_obj   vector_a        = (t_obj){.x=1, .y=2, .z=3, .w=0};
+    t_obj   vector_b        = (t_obj){.x=2, .y=3, .z=4, .w=0};
+    double  expected        = 20;
+    double  result;
 
-//     result = object_dot(&vector_a, &vector_b);
-// 	cr_assert(eq(result, expected));
-// }
+    result = object_dot(vector_a, vector_b);
+	cr_assert(eq(result, expected));
+}
 
 // Test(handle_object, test_dot_of_a_vector_NULL_and_a_vector_x2_y3_z4_should_be_0)
 // {
@@ -119,33 +118,33 @@ Test(handle_object, test_normalize_of_a_vector_x4_y0_z0_should_be_vector_x1_y0_z
 // 	cr_assert(eq(result, expected));
 // }
 
-// Test(handle_object, test_cross_product_of_a_vector_a_x1_y2_z3_and_a_vector_b_x2_y3_z4)
-// {
-//     t_obj   vector_a        = (t_obj){.x=1, .y=2, .z=3, .w=0};
-//     t_obj   vector_b        = (t_obj){.x=2, .y=3, .z=4, .w=0};
-//     t_obj   expected_a_b    = (t_obj){.x=-1, .y=2, .z=-1, .w=0};
-//     t_obj   expected_b_a    = (t_obj){.x=1, .y=-2, .z=1, .w=0};
-//     t_obj   *result;
+Test(handle_object, test_cross_product_of_a_vector_a_x1_y2_z3_and_a_vector_b_x2_y3_z4)
+{
+    t_obj   vector_a        = (t_obj){.x=1, .y=2, .z=3, .w=0};
+    t_obj   vector_b        = (t_obj){.x=2, .y=3, .z=4, .w=0};
+    t_obj   expected_a_b    = (t_obj){.x=-1, .y=2, .z=-1, .w=0};
+    t_obj   expected_b_a    = (t_obj){.x=1, .y=-2, .z=1, .w=0};
+    t_obj   result;
 
-//     result = object_cross_product(&vector_a, &vector_b);
-// 	cr_assert(cr_object_eq(result, &expected_a_b));
-//     clean_obj(result);
-//     result = object_cross_product(&vector_b, &vector_a);
-// 	cr_assert(cr_object_eq(result, &expected_b_a));
-//     clean_obj(result);
-// }
+    result = object_cross_product(vector_a, vector_b);
+	cr_assert(cr_object_eq(result, expected_a_b));
+    // clean_obj(result);
+    result = object_cross_product(vector_b, vector_a);
+	cr_assert(cr_object_eq(result, expected_b_a));
+    // clean_obj(result);
+}
 
 // Test(handle_object, test_cross_product_of_a_vector_NULL_and_a_vector_x2_y3_z4_should_be_NULL)
 // {
-//     t_obj   *vector_a        = NULL;
+//     t_obj   vector_a        = NULL;
 //     t_obj   vector_b         = (t_obj){.x=2, .y=3, .z=4, .w=0};
-//     t_obj   *expected        = NULL;
-//     t_obj   *result;
+//     t_obj   expected        = NULL;
+//     t_obj   result;
 
-//     result = object_cross_product(vector_a, &vector_b);
+//     result = object_cross_product(vector_a, vector_b);
 // 	cr_assert(eq(result, expected));
 //     clean_obj(result);
-//     result = object_cross_product(&vector_b, vector_a);
+//     result = object_cross_product(vector_b, vector_a);
 // 	cr_assert(eq(result, expected));
 //     clean_obj(result);
 // }
