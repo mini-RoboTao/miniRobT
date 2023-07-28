@@ -49,7 +49,8 @@ SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 ######################## TEST SOURCES ###############################
 SRC_LIGHT_AND_SHADING			=			computing_the_normal_on_a_sphere_test.c \
 											reflecting_vectors_test.c			\
-											the_phong_reflection_model_test.c
+											the_phong_reflection_model_test.c	\
+											shadows_test.c
 SRC_RAY_FEATURE					=			handle_ray_test.c 					\
 											intersections_test.c				\
 											transforming_rays_test.c

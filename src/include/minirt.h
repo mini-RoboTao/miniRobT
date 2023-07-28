@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:38:20 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/19 19:45:49 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/22 15:58:36 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # include <math.h>
 # include "libft.h"
 # include "defines.h"
-# include "structs.h"
 # include "enums.h"
+# include "structs.h"
 # include "linked_list.h"
 # include "clean_feature.h"
 # include "object_feature.h"
