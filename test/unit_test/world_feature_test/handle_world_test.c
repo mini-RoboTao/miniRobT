@@ -9,17 +9,6 @@ Test(world_scene, create_a_world)
 	cr_assert(eq(w.light, NULL));
 }
 
-static void	clean_world(t_world w)
-{
-	clean_obj(w.light->position);
-	if (w.light)
-		free(w.light);
-	clean_sphere(w.sphere[0]);
-	clean_sphere(w.sphere[1]);
-	if (w.sphere)
-		free(w.sphere);
-}
-
 Test(world_scene, the_default_world)
 {
 	t_world w_exp = (t_world){0};
@@ -74,6 +63,7 @@ Test(world_scene, precomputing_the_state_of_an_intersection)
 	clean_sphere(shape);
 	clean_obj(comps.point);
 	clean_obj(comps.normalv);
+	clean_obj(comps.over_point);
 	clean_ray(r);
 }
 
@@ -88,6 +78,7 @@ Test(world_scene, the_hit_when_an_intersection_occurs_on_the_outside)
 	clean_sphere(shape);
 	clean_obj(comps.point);
 	clean_obj(comps.normalv);
+	clean_obj(comps.over_point);
 	clean_ray(r);
 }
 
@@ -105,6 +96,7 @@ Test(world_scene, the_hit_when_an_intersection_occurs_on_the_inside)
 	clean_sphere(shape);
 	clean_obj(comps.point);
 	clean_obj(comps.normalv);
+	clean_obj(comps.over_point);
 	clean_ray(r);
 }
 

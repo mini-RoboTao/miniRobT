@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_objects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 11:07:36 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/18 00:02:16 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/28 01:19:01 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,11 @@ void	clean_sphere(t_sphere *s)
 		clean_matrix(s->transform);
 		free(s);
 	}
+}
+
+void	clean_ray_inter_shape(t_ray *ray, t_intersection **i, void **shape)
+{
+	clean_ray(ray);
+	clean_intersection_lst(i);
+	free(shape);
 }

@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light_and_shading.h                                :+:      :+:    :+:   */
+/*   clean_world.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 21:50:03 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/28 01:21:45 by rotakesh         ###   ########.fr       */
+/*   Created: 2023/07/28 01:19:18 by rotakesh          #+#    #+#             */
+/*   Updated: 2023/07/28 01:19:41 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHT_AND_SHADING_H
-# define LIGHT_AND_SHADING_H
+#include "minirt.h"
 
-# include "minirt.h"
-
-t_obj		*normal_at(t_sphere *sphere, t_obj *world_point);
-t_obj		*reflect(t_obj *in, t_obj *normal);
-t_light		*point_light(t_obj *position, t_color intensity);
-t_material	new_material(void);
-t_color		lighting(t_lighting lig);
-t_bool		is_shadowed(t_world *world, t_obj *point);
-
-#endif
+void	clean_world(t_world w)
+{
+	clean_obj(w.light->position);
+	if (w.light)
+		free(w.light);
+	clean_sphere(w.sphere[0]);
+	clean_sphere(w.sphere[1]);
+	if (w.sphere)
+		free(w.sphere);
+}

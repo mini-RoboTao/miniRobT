@@ -1,16 +1,5 @@
 #include "unit_test.h"
 
-static void	clean_world(t_world w)
-{
-	clean_obj(w.light->position);
-	if (w.light)
-		free(w.light);
-	clean_sphere(w.sphere[0]);
-	clean_sphere(w.sphere[1]);
-	if (w.sphere)
-		free(w.sphere);
-}
-
 Test(camera, constructing_a_camera)
 {
 	int			hsize = 160;

@@ -52,7 +52,7 @@ Test(The_Phong_Reflection, A_sphere_may_be_assigned_a_material)
 
 Test(The_Phong_Reflection, Lighting_with_the_eye_between_the_light_and_the_surface)
 {
-	t_lighting	lighting_s;
+	t_lighting	lighting_s = (t_lighting){0};
 	lighting_s.material = new_material();
 	lighting_s.point = create_point(0, 0, 0);
 	lighting_s.eyev = create_vector(0, 0, -1);
@@ -75,7 +75,7 @@ Test(The_Phong_Reflection, Lighting_with_the_eye_between_the_light_and_the_surfa
 
 Test(The_Phong_Reflection, Lighting_with_the_eye_between_light_and_surface__eye_offset_45)
 {
-	t_lighting	lighting_s;
+	t_lighting	lighting_s = (t_lighting){0};
 	lighting_s.material = new_material();
 	lighting_s.point = create_point(0, 0, 0);
 	lighting_s.eyev = create_vector(0, sqrt(2)/2, sqrt(2)/2 * -1);
@@ -98,7 +98,7 @@ Test(The_Phong_Reflection, Lighting_with_the_eye_between_light_and_surface__eye_
 
 Test(The_Phong_Reflection, Lighting_with_eye_opposite_surface__light_offset_45)
 {
-	t_lighting	lighting_s;
+	t_lighting	lighting_s = (t_lighting){0};
 	lighting_s.material = new_material();
 	lighting_s.point = create_point(0, 0, 0);
 	lighting_s.eyev = create_vector(0, 0, -1);
@@ -121,7 +121,7 @@ Test(The_Phong_Reflection, Lighting_with_eye_opposite_surface__light_offset_45)
 
 Test(The_Phong_Reflection, Lighting_with_eye_in_the_path_of_the_reflection_vector)
 {
-	t_lighting	lighting_s;
+	t_lighting	lighting_s = (t_lighting){0};
 	lighting_s.material = new_material();
 	lighting_s.point = create_point(0, 0, 0);
 	lighting_s.eyev = create_vector(0, sqrt(2)/2 * -1, sqrt(2)/2 * -1);
@@ -144,7 +144,7 @@ Test(The_Phong_Reflection, Lighting_with_eye_in_the_path_of_the_reflection_vecto
 
 Test(The_Phong_Reflection, Lighting_with_the_light_behind_the_surface)
 {
-	t_lighting	lighting_s;
+	t_lighting	lighting_s = (t_lighting){0};
 	lighting_s.material = new_material();
 	lighting_s.point = create_point(0, 0, 0);
 	lighting_s.eyev = create_vector(0, 0, -1);

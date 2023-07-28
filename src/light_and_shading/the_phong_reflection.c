@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_phong_reflection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/21 13:47:34 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/07/22 16:06:13 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,7 @@ t_color	lighting(t_lighting lig)
 	else
 		calculate_diffuse_specular(&data, &lig, lightv);
 	clean_obj(lightv);
+	if (lig.in_shadow)
+		return (data.ambient);
 	return (sum_colors(sum_colors(data.ambient, data.diffuse), data.specular));
 }

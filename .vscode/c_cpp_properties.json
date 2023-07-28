@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/src/include",
-                "${workspaceFolder}/src/libs/mlx_mac"
+                "${workspaceFolder}/external_libs/mlx_mac"
             ],
             "defines": [],
             "macFrameworkPath": [
