@@ -1,5 +1,5 @@
 ######################## CONFIG ##############################
-NAME						=					minirt
+NAME						=					miniRT
 ######################## PATHS ###############################
 PATH_OBJ					=					objs/
 PATH_INCLUDES				=					include/
