@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 06:00:42 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/01 09:22:47 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_precomp	prepare_computations(t_intersection *i, t_ray *r)
 	}
 	res_multiply = create_object(comps.normalv.x, comps.normalv.y, \
 	comps.normalv.z, comps.normalv.w);
-	multiply_object(res_multiply, EPSILON);
+	res_multiply = multiply_object(res_multiply, EPSILON);
 	comps.over_point = sum_objects(comps.point, res_multiply);
 	return (comps);
 }

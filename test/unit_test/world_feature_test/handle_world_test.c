@@ -117,29 +117,27 @@ Test(world_scene, shading_an_intersection)
 }
 
 
-// THIS TESTS NEEDED ATENTION!
+// // THIS TESTS NEEDED ATENTION!
 
-// Test(world_scene, shading_an_intersection_from_the_inside)
-// {
-// 	t_world			w = default_world();
-// 	// clean_obj(w.light->position);
-// 	// if (w.light)
-// 	// 	free(w.light);
-// 	w.light	= point_light(create_point(0, 0.25, 0), fill_color(1, 1, 1));
-// 	t_ray			*r = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
-// 	// t_sphere		*shape = w.sphere[1];
-// 	t_intersection	*i = intersection(0.5, w.sphere[1]);
-// 	// t_intersection	*i = intersection(0.5, shape);
-// 	t_precomp		comps = prepare_computations(i, r);
-// 	t_color c = shade_hit(&w, &comps);
-// 	printf("%f %f %f\n", c.red, c.green, c.blue);
-// 	cr_assert(cr_color_eq(c, (t_color){0.90498, 0.90498, 0.90498}));
-// 	clean_intersection_lst(&i);
-// 	// clean_obj(comps.point);
-// 	// clean_obj(comps.normalv);
-// 	clean_world(w);
-// 	// clean_ray(r);
-// }
+Test(world_scene, shading_an_intersection_from_the_inside)
+{
+	t_world			w = default_world();
+	// clean_obj(w.light->position);
+	// if (w.light)
+	// 	free(w.light);
+	w.light	= point_light(create_point(0, 0.25, 0), fill_color(1, 1, 1));
+	t_ray			*r = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
+	t_sphere		*shape = w.sphere[1];
+	t_intersection	*i = intersection(0.5, shape);
+	t_precomp		comps = prepare_computations(i, r);
+	t_color c = shade_hit(&w, &comps);
+	cr_assert(cr_color_eq(c, (t_color){0.90498, 0.90498, 0.90498}));
+	clean_intersection_lst(&i);
+	// clean_obj(comps.point);
+	// clean_obj(comps.normalv);
+	clean_world(w);
+	// clean_ray(r);
+}
 
 Test(Supporting_multiple_light, the_color_when_a_ray_misses)
 {
