@@ -32,25 +32,25 @@ Test(camera, the_pixel_size_for_a_vertical_canvas)
 Test(camera, constructing_a_ray_through_the_center_of_the_canvas)
 {
 	t_camera	c = camera(201, 101, M_PI_2);
-	t_ray		*r = ray_for_pixel(&c, 100, 50);
-	cr_assert(cr_object_eq(r->position, (t_obj){0, 0, 0, 1}));
-	cr_assert(cr_object_eq(r->direction, (t_obj){0, 0, -1, 0}));
+	t_ray		r = ray_for_pixel(&c, 100, 50);
+	cr_assert(cr_object_eq(r.position, (t_obj){0, 0, 0, 1}));
+	cr_assert(cr_object_eq(r.direction, (t_obj){0, 0, -1, 0}));
 	clean_matrix(c.transform);
-	if(r)
-		free(r);
+	// if(r)
+	// 	free(r);
 	// clean_ray(r);
 }
 
 Test(camera, constructing_a_ray_through_a_corner_of_the_canvas)
 {
 	t_camera	c = camera(201, 101, M_PI_2);
-	t_ray		*r = ray_for_pixel(&c, 0, 0);
-	cr_assert(cr_object_eq(r->position, (t_obj){0, 0, 0, 1}));
-	cr_assert(cr_object_eq(r->direction, (t_obj){0.66519, 0.33259, -0.66851, 0}));
+	t_ray		r = ray_for_pixel(&c, 0, 0);
+	cr_assert(cr_object_eq(r.position, (t_obj){0, 0, 0, 1}));
+	cr_assert(cr_object_eq(r.direction, (t_obj){0.66519, 0.33259, -0.66851, 0}));
 	clean_matrix(c.transform);
 	// clean_ray(r);
-	if(r)
-		free(r);
+	// if(r)
+	// 	free(r);
 }
 
 Test(camera, constructing_a_ray_when_the_camera_is_transformed)
@@ -60,14 +60,14 @@ Test(camera, constructing_a_ray_when_the_camera_is_transformed)
 	t_matrix	*mry	= rotation_y(M_PI_4);
 	clean_matrix(c.transform);
 	c.transform 		= multiply_matrix(mry, mt, 4, 4);
-	t_ray		*r 		= ray_for_pixel(&c, 100, 50);
-	cr_assert(cr_object_eq(r->position, (t_obj){0, 2, -5, 1}));
-	cr_assert(cr_object_eq(r->direction, (t_obj){sqrt(2)/2, 0, -(sqrt(2)/2), 0}));
+	t_ray		r 		= ray_for_pixel(&c, 100, 50);
+	cr_assert(cr_object_eq(r.position, (t_obj){0, 2, -5, 1}));
+	cr_assert(cr_object_eq(r.direction, (t_obj){sqrt(2)/2, 0, -(sqrt(2)/2), 0}));
 	clean_matrix(c.transform);
 	clean_matrix(mt);
 	clean_matrix(mry);
-	if(r)
-		free(r);
+	// if(r)
+	// 	free(r);
 	// clean_ray(r);
 }
 

@@ -41,10 +41,10 @@ int cr_sphere_eq(t_sphere *a, t_sphere *b)
 			fabs(a->radius - b->radius) < EPSILON);
 }
 
-int cr_light_eq(t_light *a, t_light *b)
+int cr_light_eq(t_light a, t_light b)
 {
-	return	(cr_color_eq(a->intensity, b->intensity) && \
-			cr_object_eq(a->position, b->position));
+	return	(cr_color_eq(a.intensity, b.intensity) && \
+			cr_object_eq(a.position, b.position));
 }
 
 int cr_sphere_check_material_eq(t_sphere *a, t_sphere *b)

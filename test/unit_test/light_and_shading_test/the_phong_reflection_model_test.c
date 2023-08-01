@@ -4,14 +4,14 @@ Test(The_Phong_Reflection, A_point_has_a_position_and_intensity)
 {
 	t_color	intensity = fill_color(1, 1, 1);
 	t_obj	position = create_point(0, 0, 0);
-	t_light	*light = point_light(position, intensity);
+	t_light	light = point_light(position, intensity);
 
-	cr_assert(cr_object_eq(light->position, position));
-	cr_assert(light->intensity.red == 1);
-	cr_assert(light->intensity.green == 1);
-	cr_assert(light->intensity.blue == 1);
+	cr_assert(cr_object_eq(light.position, position));
+	cr_assert(light.intensity.red == 1);
+	cr_assert(light.intensity.green == 1);
+	cr_assert(light.intensity.blue == 1);
 
-	free(light);
+	// free(light);
 	// clean_obj(position);
 }
 
@@ -70,7 +70,7 @@ Test(The_Phong_Reflection, Lighting_with_the_eye_between_the_light_and_the_surfa
 	// clean_obj(lighting_s.eyev);
 	// clean_obj(lighting_s.normalv);
 	// clean_obj(point);
-	free(lighting_s.light);
+	// free(lighting_s.light);
 }
 
 Test(The_Phong_Reflection, Lighting_with_the_eye_between_light_and_surface__eye_offset_45)
@@ -93,7 +93,7 @@ Test(The_Phong_Reflection, Lighting_with_the_eye_between_light_and_surface__eye_
 	// clean_obj(lighting_s.eyev);
 	// clean_obj(lighting_s.normalv);
 	// clean_obj(point);
-	free(lighting_s.light);
+	// free(lighting_s.light);
 }
 
 Test(The_Phong_Reflection, Lighting_with_eye_opposite_surface__light_offset_45)
@@ -116,7 +116,7 @@ Test(The_Phong_Reflection, Lighting_with_eye_opposite_surface__light_offset_45)
 	// clean_obj(lighting_s.eyev);
 	// clean_obj(lighting_s.normalv);
 	// clean_obj(point);
-	free(lighting_s.light);
+	// free(lighting_s.light);
 }
 
 Test(The_Phong_Reflection, Lighting_with_eye_in_the_path_of_the_reflection_vector)
@@ -139,7 +139,7 @@ Test(The_Phong_Reflection, Lighting_with_eye_in_the_path_of_the_reflection_vecto
 	// clean_obj(lighting_s.eyev);
 	// clean_obj(lighting_s.normalv);
 	// clean_obj(point);
-	free(lighting_s.light);
+	// free(lighting_s.light);
 }
 
 Test(The_Phong_Reflection, Lighting_with_the_light_behind_the_surface)
@@ -162,5 +162,5 @@ Test(The_Phong_Reflection, Lighting_with_the_light_behind_the_surface)
 	// clean_obj(lighting_s.eyev);
 	// clean_obj(lighting_s.normalv);
 	// clean_obj(point);
-	free(lighting_s.light);
+	// free(lighting_s.light);
 }

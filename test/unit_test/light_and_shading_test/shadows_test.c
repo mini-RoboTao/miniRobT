@@ -22,7 +22,7 @@ Test(Shadows, Lighting_with_the_surface_in_shadow)
 	// clean_obj(data.point);
 	// clean_obj(data.eyev);
 	// clean_obj(data.normalv);
-	free(data.light);
+	// free(data.light);
 }
 
 Test(Shadows, There_is_no_shadow_when_nothing_is_collinear_with_point_and_light)
@@ -78,7 +78,7 @@ Test(Rendering_shadows, Shade_hit_is_given_an_intersection_in_shadow)
 	// 	free(world.light->position);
 	// if (world.light)
 	// 	free(world.light);
-	free(world.light);
+	// free(world.light);
 	world.light = point_light(point, color);
 
 	t_matrix	*transformation = translation(0, 0, 10);
@@ -86,7 +86,7 @@ Test(Rendering_shadows, Shade_hit_is_given_an_intersection_in_shadow)
 
 	t_obj	point2 = create_point(0, 0, 5);
 	t_obj	vector = create_vector(0, 0, 1);
-	t_ray	*ray = create_ray(point2, vector);
+	t_ray	ray = create_ray(point2, vector);
 
 	t_intersection	*i = intersection(4, world.sphere[1]);
 
@@ -97,7 +97,7 @@ Test(Rendering_shadows, Shade_hit_is_given_an_intersection_in_shadow)
 	cr_assert(cr_color_eq(c, color_res));
 
 	clean_intersection_lst(&i);
-	free(ray);
+	// free(ray);
 	// clean_ray(ray);
 	clean_world(world);
 	// clean_obj(comps.normalv);
@@ -108,7 +108,7 @@ Test(Rendering_shadows, The_hit_should_offset_the_point)
 {
 	t_obj	point = create_point(0, 0, -5);
 	t_obj	vector = create_vector(0, 0, 1);
-	t_ray	*ray = create_ray(point, vector);
+	t_ray	ray = create_ray(point, vector);
 	t_sphere	*shape = new_sphere();
 	t_matrix	*transformation = translation(0, 0, 1);
 	set_transform(shape, transformation);
@@ -119,7 +119,7 @@ Test(Rendering_shadows, The_hit_should_offset_the_point)
 
 	clean_intersection_lst(&i);
 	// clean_ray(ray);
-	free(ray);
+	// free(ray);
 	// clean_obj(comps.normalv);
 	// clean_obj(comps.point);
 	// clean_obj(comps.over_point);
