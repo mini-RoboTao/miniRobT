@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/28 05:31:23 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/01 23:22:18 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ typedef struct s_light
 typedef struct s_lighting
 {
 	t_material	material;
-	t_light		*light;
+	t_light		light;
 	t_obj		point;
 	t_obj		eyev;
 	t_obj		normalv;
@@ -192,7 +192,7 @@ typedef struct s_world
 {
 	int			amount_obj;
 	t_sphere	**sphere;
-	t_light		*light;
+	t_light		light;
 }				t_world;
 
 typedef struct s_precomp
@@ -221,11 +221,11 @@ typedef struct s_put_together
 	t_obj			ray_origin;
 	t_sphere		*s;
 	t_obj			position;
-	t_ray			*ray;
+	t_ray			ray;
 	int				x;
 	int				y;
 	t_intersections	xs;
-	t_light			*light;
+	t_light			light;
 	t_lighting		lig;
 	t_intersection	*hit;
 }				t_put_together;

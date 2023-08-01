@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:57:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/01 17:59:08 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/02 00:24:14 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_camera	camera(int hsize, int vsize, double fov)
 	return (c);
 }
 
-static t_ray	*calculate_ray_cam(t_camera *c, t_matrix *inv_trans, \
+static t_ray	calculate_ray_cam(t_camera *c, t_matrix *inv_trans, \
 									double wx, double wy)
 {
 	t_obj	pixel;
@@ -63,7 +63,7 @@ static t_ray	*calculate_ray_cam(t_camera *c, t_matrix *inv_trans, \
 	return (create_ray(origin, direction));
 }
 
-t_ray	*ray_for_pixel(t_camera *c, double px, double py)
+t_ray	ray_for_pixel(t_camera *c, double px, double py)
 {
 	double		world_x;
 	double		world_y;
@@ -80,12 +80,11 @@ t_canvas	*render(t_camera *c, t_world *w)
 {
 	int			y;
 	int			x;
-	t_ray		*ray;
+	t_ray		ray;
 	t_color		color;
 	t_canvas	*image;
 
 	y = 0;
-	ray = NULL;
 	image = generate_canvas(c->hsize, c->vsize);
 	while (y < c->vsize - 1)
 	{
@@ -96,8 +95,6 @@ t_canvas	*render(t_camera *c, t_world *w)
 			color = color_at(w, ray);
 			write_pixel(image, x, y, color);
 			x++;
-			if (ray)
-				free(ray);
 		}
 		y++;
 	}

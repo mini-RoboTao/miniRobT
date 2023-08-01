@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/01 09:22:47 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/01 23:43:50 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_world	default_world(void)
 	return (w);
 }
 
-t_intersections	intersect_world(t_world *w, t_ray *ray)
+t_intersections	intersect_world(t_world *w, t_ray ray)
 {
 	int				i;
 	double			abc[3];
@@ -61,7 +61,7 @@ t_intersections	intersect_world(t_world *w, t_ray *ray)
 	return (xs);
 }
 
-t_precomp	prepare_computations(t_intersection *i, t_ray *r)
+t_precomp	prepare_computations(t_intersection *i, t_ray r)
 {
 	t_precomp	comps;
 	t_obj		res_multiply;
@@ -70,7 +70,7 @@ t_precomp	prepare_computations(t_intersection *i, t_ray *r)
 	comps.t = i->t;
 	comps.shape = i->v;
 	comps.point = cat_position(r, comps.t);
-	comps.eyev = negating_object(object_normalize(r->direction));
+	comps.eyev = negating_object(object_normalize(r.direction));
 	comps.normalv = normal_at(comps.shape, comps.point);
 	if (object_dot(comps.normalv, comps.eyev) < 0)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view_transformation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:53:42 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 06:00:53 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/01 23:44:53 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_matrix	*view_transformation(t_obj from, t_obj to, t_obj up)
 	return (m);
 }
 
-t_color	color_at(t_world *w, t_ray *r)
+t_color	color_at(t_world *w, t_ray r)
 {
 	t_intersections	xs;
 	t_intersection	*i;
