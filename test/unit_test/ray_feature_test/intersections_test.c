@@ -1,10 +1,21 @@
 #include "unit_test.h"
 
-t_ray	*s_ray = &(t_ray){.position = (t_obj){.x= 0, .y= 0, .z= -5, .w= 1}, \
-						.direction = (t_obj){.x= 0, .y= 0, .z= 1, .w= 0}};
+static t_ray	*create_ray_res(void)
+{
+	t_ray	*res;
+
+	res = malloc(sizeof(t_ray));
+	res->position = create_object(0, 0, -5, 1);
+	res->direction = create_object(0, 0, 1, 0);
+	return (res);
+}
+
+// t_ray	*s_ray = create_ray_res();
+// t_ray	*s_ray = &(t_ray){.position = (t_obj){.x= 0, .y= 0, .z= -5, .w= 1}, .direction = (t_obj){.x= 0, .y= 0, .z= 1, .w= 0}};
 
 Test(intersections, a_ray_intersects_a_sphere_at_two_points)
 {
+	t_ray	*s_ray = create_ray_res();
 	t_sphere		*s = new_sphere();
 	t_intersections	xs = intersect(s, s_ray);
 
@@ -15,10 +26,12 @@ Test(intersections, a_ray_intersects_a_sphere_at_two_points)
 	clean_sphere(s);
 	if (xs.shape)
 		free(xs.shape);
+	free(s_ray);
 }
 
 Test(intersections, a_ray_intersects_a_sphere_at_a_tangent)
 {
+	t_ray	*s_ray = create_ray_res();
 	s_ray->position.y = 1;
 	t_sphere		*s = new_sphere();
 	t_intersections	xs = intersect(s, s_ray);
@@ -31,10 +44,12 @@ Test(intersections, a_ray_intersects_a_sphere_at_a_tangent)
 	clean_sphere(s);
 	if (xs.shape)
 		free(xs.shape);
+	free(s_ray);
 }
 
 Test(intersections, a_ray_misses_a_sphere)
 {
+	t_ray	*s_ray = create_ray_res();
 	s_ray->position.y = 2;
 	t_sphere		*s = new_sphere();
 	t_intersections	xs = intersect(s, s_ray);
@@ -45,10 +60,12 @@ Test(intersections, a_ray_misses_a_sphere)
 	clean_sphere(s);
 	if (xs.shape)
 		free(xs.shape);
+	free(s_ray);
 }
 
 Test(intersections, a_ray_originates_inside_a_sphere)
 {
+	t_ray	*s_ray = create_ray_res();
 	s_ray->position.y = 0;
 	s_ray->position.z = 0;
 	t_sphere		*s = new_sphere();
@@ -63,10 +80,12 @@ Test(intersections, a_ray_originates_inside_a_sphere)
 	clean_sphere(s);
 	if (xs.shape)
 		free(xs.shape);
+	free(s_ray);
 }
 
 Test(intersections, a_sphere_is_behind_a_ray)
 {
+	t_ray	*s_ray = create_ray_res();
 	s_ray->position.z = 5;
 	t_sphere	*s = new_sphere();
 	t_intersections	xs = intersect(s, s_ray);
@@ -79,10 +98,12 @@ Test(intersections, a_sphere_is_behind_a_ray)
 	clean_sphere(s);
 	if (xs.shape)
 		free(xs.shape);
+	free(s_ray);
 }
 
 Test(intersections, intersect_sets_the_object_on_the_intersection)
 {
+	t_ray	*s_ray = create_ray_res();
 	t_sphere		*s = new_sphere();
 	t_intersections	xs = intersect(s, s_ray);
 
@@ -93,6 +114,7 @@ Test(intersections, intersect_sets_the_object_on_the_intersection)
 	clean_sphere(s);
 	if (xs.shape)
 		free(xs.shape);
+	free(s_ray);
 }
 
 Test(intersections, an_intersection_encapsulates_t_and_shape)
