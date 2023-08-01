@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:57:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 06:08:34 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/01 17:59:08 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ t_canvas	*render(t_camera *c, t_world *w)
 			color = color_at(w, ray);
 			write_pixel(image, x, y, color);
 			x++;
+			if (ray)
+				free(ray);
 		}
 		y++;
 	}

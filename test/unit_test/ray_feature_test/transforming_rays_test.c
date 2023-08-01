@@ -12,6 +12,8 @@ Test(transforming_rays, translating_a_ray)
 	cr_assert(cr_object_eq(r2->direction, (t_obj){.x=0, .y=1, .z=0, .w=0}));
 	if (r)
 		free(r);
+	if (r2)
+		free(r2);
 	// clean_ray(r2);
 	clean_matrix(m);
 }
@@ -29,6 +31,8 @@ Test(transforming_rays, scaling_a_ray)
 	if (r)
 		free(r);
 	// clean_ray(r2);
+	if (r2)
+		free(r2);
 	clean_matrix(m);
 }
 

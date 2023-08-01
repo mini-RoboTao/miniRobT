@@ -36,6 +36,8 @@ Test(camera, constructing_a_ray_through_the_center_of_the_canvas)
 	cr_assert(cr_object_eq(r->position, (t_obj){0, 0, 0, 1}));
 	cr_assert(cr_object_eq(r->direction, (t_obj){0, 0, -1, 0}));
 	clean_matrix(c.transform);
+	if(r)
+		free(r);
 	// clean_ray(r);
 }
 
@@ -47,6 +49,8 @@ Test(camera, constructing_a_ray_through_a_corner_of_the_canvas)
 	cr_assert(cr_object_eq(r->direction, (t_obj){0.66519, 0.33259, -0.66851, 0}));
 	clean_matrix(c.transform);
 	// clean_ray(r);
+	if(r)
+		free(r);
 }
 
 Test(camera, constructing_a_ray_when_the_camera_is_transformed)
@@ -62,6 +66,8 @@ Test(camera, constructing_a_ray_when_the_camera_is_transformed)
 	clean_matrix(c.transform);
 	clean_matrix(mt);
 	clean_matrix(mry);
+	if(r)
+		free(r);
 	// clean_ray(r);
 }
 

@@ -45,6 +45,8 @@ Test(world_scene, Intersect_a_world_with_a_ray)
 	// clean_ray(r);
 	if (xs.shape)
 		free(xs.shape);
+	if (r)
+		free(r);
 }
 
 Test(world_scene, precomputing_the_state_of_an_intersection)
@@ -65,6 +67,8 @@ Test(world_scene, precomputing_the_state_of_an_intersection)
 	// clean_obj(comps.normalv);
 	// clean_obj(comps.over_point);
 	// clean_ray(r);
+	if (r)
+		free(r);
 }
 
 Test(world_scene, the_hit_when_an_intersection_occurs_on_the_outside)
@@ -80,6 +84,8 @@ Test(world_scene, the_hit_when_an_intersection_occurs_on_the_outside)
 	// clean_obj(comps.normalv);
 	// clean_obj(comps.over_point);
 	// clean_ray(r);
+	if (r)
+		free(r);
 }
 
 Test(world_scene, the_hit_when_an_intersection_occurs_on_the_inside)
@@ -98,6 +104,8 @@ Test(world_scene, the_hit_when_an_intersection_occurs_on_the_inside)
 	// clean_obj(comps.normalv);
 	// clean_obj(comps.over_point);
 	// clean_ray(r);
+	if (r)
+		free(r);
 }
 
 Test(world_scene, shading_an_intersection)
@@ -112,19 +120,18 @@ Test(world_scene, shading_an_intersection)
 	clean_intersection_lst(&i);
 	// clean_obj(comps.point);
 	// clean_obj(comps.normalv);
-	// clean_world(w);
+	clean_world(w);
 	// clean_ray(r);
+	if (r)
+		free(r);
 }
-
-
-// // THIS TESTS NEEDED ATENTION!
 
 Test(world_scene, shading_an_intersection_from_the_inside)
 {
 	t_world			w = default_world();
 	// clean_obj(w.light->position);
-	// if (w.light)
-	// 	free(w.light);
+	if (w.light)
+		free(w.light);
 	w.light	= point_light(create_point(0, 0.25, 0), fill_color(1, 1, 1));
 	t_ray			*r = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
 	t_sphere		*shape = w.sphere[1];
@@ -136,6 +143,8 @@ Test(world_scene, shading_an_intersection_from_the_inside)
 	// clean_obj(comps.point);
 	// clean_obj(comps.normalv);
 	clean_world(w);
+	if (r)
+		free(r);
 	// clean_ray(r);
 }
 
@@ -146,6 +155,8 @@ Test(Supporting_multiple_light, the_color_when_a_ray_misses)
 	t_color			c = color_at(&w, r);
 	cr_assert(cr_color_eq(c, fill_color(0, 0, 0)));
 	clean_world(w);
+	if (r)
+		free(r);
 	// clean_ray(r);
 }
 
@@ -156,6 +167,8 @@ Test(Supporting_multiple_light, the_color_when_a_ray_hits)
 	t_color			c = color_at(&w, r);
 	cr_assert(cr_color_eq(c, fill_color(0.38066, 0.47583, 0.2855)));
 	clean_world(w);
+	if (r)
+		free(r);
 	// clean_ray(r);
 }
 
@@ -168,6 +181,8 @@ Test(Supporting_multiple_light, the_color_with_an_intersection_behind_the_ray)
 	t_color			c = color_at(&w, r);
 	cr_assert(cr_color_eq(c, w.sphere[1]->material.color));
 	clean_world(w);
+	if (r)
+		free(r);
 	// clean_ray(r);
 	(void)c;
 }
