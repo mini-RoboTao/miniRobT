@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_ray.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:48:49 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 05:25:53 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/07/31 23:57:40 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ t_ray	*create_ray(t_obj point, t_obj vector)
 t_obj	cat_position(t_ray *ray, double t)
 {
 	t_obj	o;
+	t_obj	res;
 
-	multiply_object(ray->direction, t);
-	o = sum_objects(ray->position, ray->direction);
+	res = multiply_object(ray->direction, t);
+	o = sum_objects(ray->position, res);
 	return (o);
 }
 
