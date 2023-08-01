@@ -1,10 +1,10 @@
 #include "unit_test.h"
 
-const t_environment		expected	=	(t_environment){ \
+t_environment			expected	=	(t_environment){ \
 									.gravity = (t_obj){.w=0, .x=1, .y=2, .z=3}, \
 									.wind = (t_obj){.w=0, .x=1, .y=2, .z=3}};
 
-const	t_projectile	exp_res	=	(t_projectile){ \
+t_projectile			exp_res	=	(t_projectile){ \
 									.position = (t_obj){.w=1, .x=1, .y=2, .z=3}, \
 									.velocity = (t_obj){.w=0, .x=1, .y=2, .z=3}};
 
