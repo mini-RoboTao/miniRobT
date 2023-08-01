@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 01:51:41 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/31 23:38:43 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/01 09:50:08 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,7 @@ Test(matrix_operations, multiply_a_matrix4x4_by_a_obj_should_be_exp_obj)
 // {
 // 	t_obj		*exp_obj	=	NULL;
 // 	t_obj		*obj		=	NULL;
-// 	t_matrix	*ma			=	&(t_matrix){.node = (double *[]){ 		\
-// 								(double []){1, 2, 3, 4},				\
-// 								(double []){2, 4, 4, 2},				\
-// 								(double []){8, 6, 4, 1},				\
-// 								(double []){0, 0, 0, 1},				\
-// 								}, .x = 4, .y = 4};
+// 	t_matrix	*ma			=	&(t_matrix){.node = (double *[]){(double []){1, 2, 3, 4}, (double []){2, 4, 4, 2}, (double []){8, 6, 4, 1}, (double []){0, 0, 0, 1}, }, .x = 4, .y = 4};
 // 	t_obj		*result;
 
 // 	result = multiply_matrix_by_obj(ma, obj, 4, 4);
