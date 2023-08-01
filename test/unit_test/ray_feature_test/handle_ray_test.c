@@ -25,8 +25,7 @@ Test(handle_ray, creating_and_querying_a_ray)
 // 	cr_assert(eq(ray, NULL));
 // }
 
-t_ray	*d_ray = &(t_ray){.position = (t_obj){.x= 2, .y= 3, .z= 4, .w= 1}, \
-						.direction = (t_obj){.x= 1, .y= 0, .z= 0, .w= 0}};
+static t_ray	*d_ray = &(t_ray){.position = (t_obj){.x= 2, .y= 3, .z= 4, .w= 1}, .direction = (t_obj){.x= 1, .y= 0, .z= 0, .w= 0}};
 
 Test(handle_ray, computig_a_point_x2_y3_z4_w1_from_a_distance_0_should_be_a_point_x2_y3_z4_w1)
 {
