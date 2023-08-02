@@ -22,9 +22,9 @@ Test(Matrix_rotation_x, Create_matrix_rotation_x)
 Test(Matrix_rotation_x, Rotating_a_point_around_x_axis_half_quarter)
 {
 	t_matrix	*half_quarter;
-	t_obj		*point;
-	t_obj		*result_reference_half_quarter;
-	t_obj		*result_half_quarter;
+	t_obj		point;
+	t_obj		result_reference_half_quarter;
+	t_obj		result_half_quarter;
 
 	half_quarter = rotation_x(M_PI / 4);
 
@@ -34,17 +34,17 @@ Test(Matrix_rotation_x, Rotating_a_point_around_x_axis_half_quarter)
 	result_reference_half_quarter = create_point(0, sqrt(2) / 2, sqrt(2) / 2);
 	cr_assert(cr_object_eq(result_half_quarter, result_reference_half_quarter));
 
-	clean_obj(point);
-	clean_obj(result_half_quarter);
-	clean_obj(result_reference_half_quarter);
+	// clean_obj(point);
+	// clean_obj(result_half_quarter);
+	// clean_obj(result_reference_half_quarter);
 	clean_matrix(half_quarter);
 }
 Test(Matrix_rotation_x, Rotating_a_point_around_x_axis_full_quarter)
 {
 	t_matrix	*full_quarter;
-	t_obj		*point;
-	t_obj		*result_reference_full_quarter;
-	t_obj		*result_full_quarter;
+	t_obj		point;
+	t_obj		result_reference_full_quarter;
+	t_obj		result_full_quarter;
 
 	full_quarter = rotation_x(M_PI / 2);
 
@@ -54,9 +54,9 @@ Test(Matrix_rotation_x, Rotating_a_point_around_x_axis_full_quarter)
 	result_reference_full_quarter = create_point(0, 0, 1);
 	cr_assert(cr_object_eq(result_full_quarter, result_reference_full_quarter));
 
-	clean_obj(point);
-	clean_obj(result_full_quarter);
-	clean_obj(result_reference_full_quarter);
+	// clean_obj(point);
+	// clean_obj(result_full_quarter);
+	// clean_obj(result_reference_full_quarter);
 	clean_matrix(full_quarter);
 }
 
@@ -64,9 +64,9 @@ Test(Matrix_rotation_x, The_inverse_of_an_x_rotation_rotates_in_the_opposite_dir
 {
 	t_matrix	*transformation;
 	t_matrix	*inverse_mtx;
-	t_obj		*point;
-	t_obj		*result_reference;
-	t_obj		*result;
+	t_obj		point;
+	t_obj		result_reference;
+	t_obj		result;
 
 	transformation = rotation_x(M_PI / 4);
 	inverse_mtx = inverse_matrix(transformation);
@@ -76,9 +76,9 @@ Test(Matrix_rotation_x, The_inverse_of_an_x_rotation_rotates_in_the_opposite_dir
 	result_reference = create_point(0, sqrt(2) / 2, sqrt(2) / 2 * -1);
 	cr_assert(cr_object_eq(result, result_reference));
 
-	clean_obj(point);
-	clean_obj(result);
-	clean_obj(result_reference);
+	// clean_obj(point);
+	// clean_obj(result);
+	// clean_obj(result_reference);
 	clean_matrix(transformation);
 	clean_matrix(inverse_mtx);
 }
@@ -105,9 +105,9 @@ Test(Matrix_rotation_y, Create_matrix_rotation_y)
 Test(Matrix_rotation_y, Rotating_a_point_around_y_axis_half_quarter)
 {
 	t_matrix	*half_quarter;
-	t_obj		*point;
-	t_obj		*result_reference_half_quarter;
-	t_obj		*result_half_quarter;
+	t_obj		point;
+	t_obj		result_reference_half_quarter;
+	t_obj		result_half_quarter;
 
 	half_quarter = rotation_y(M_PI / 4);
 
@@ -117,18 +117,18 @@ Test(Matrix_rotation_y, Rotating_a_point_around_y_axis_half_quarter)
 	result_reference_half_quarter = create_point(sqrt(2) / 2, 0, sqrt(2) / 2);
 	cr_assert(cr_object_eq(result_half_quarter, result_reference_half_quarter));
 
-	clean_obj(point);
-	clean_obj(result_half_quarter);
-	clean_obj(result_reference_half_quarter);
+	// clean_obj(point);
+	// clean_obj(result_half_quarter);
+	// clean_obj(result_reference_half_quarter);
 	clean_matrix(half_quarter);
 }
 
 Test(Matrix_rotation_y, Rotating_a_point_around_y_axis_full_quarter)
 {
 	t_matrix	*full_quarter;
-	t_obj		*point;
-	t_obj		*result_reference_full_quarter;
-	t_obj		*result_full_quarter;
+	t_obj		point;
+	t_obj		result_reference_full_quarter;
+	t_obj		result_full_quarter;
 
 	full_quarter = rotation_y(M_PI / 2);
 
@@ -138,9 +138,9 @@ Test(Matrix_rotation_y, Rotating_a_point_around_y_axis_full_quarter)
 	result_reference_full_quarter = create_point(1, 0, 0);
 	cr_assert(cr_object_eq(result_full_quarter, result_reference_full_quarter));
 
-	clean_obj(point);
-	clean_obj(result_full_quarter);
-	clean_obj(result_reference_full_quarter);
+	// clean_obj(point);
+	// clean_obj(result_full_quarter);
+	// clean_obj(result_reference_full_quarter);
 	clean_matrix(full_quarter);
 }
 
@@ -166,9 +166,9 @@ Test(Matrix_rotation_z, Create_matrix_rotation_z)
 Test(Matrix_rotation_z, Rotating_a_point_around_y_axis_half_quarter)
 {
 	t_matrix	*half_quarter;
-	t_obj		*point;
-	t_obj		*result_reference_half_quarter;
-	t_obj		*result_half_quarter;
+	t_obj		point;
+	t_obj		result_reference_half_quarter;
+	t_obj		result_half_quarter;
 
 	half_quarter = rotation_z(M_PI / 4);
 
@@ -178,18 +178,18 @@ Test(Matrix_rotation_z, Rotating_a_point_around_y_axis_half_quarter)
 	result_reference_half_quarter = create_point(sqrt(2) / 2 * -1, sqrt(2) / 2, 0);
 	cr_assert(cr_object_eq(result_half_quarter, result_reference_half_quarter));
 
-	clean_obj(point);
-	clean_obj(result_half_quarter);
-	clean_obj(result_reference_half_quarter);
+	// clean_obj(point);
+	// clean_obj(result_half_quarter);
+	// clean_obj(result_reference_half_quarter);
 	clean_matrix(half_quarter);
 }
 
 Test(Matrix_rotation_z, Rotating_a_point_around_y_axis_full_quarter)
 {
 	t_matrix	*full_quarter;
-	t_obj		*point;
-	t_obj		*result_reference_full_quarter;
-	t_obj		*result_full_quarter;
+	t_obj		point;
+	t_obj		result_reference_full_quarter;
+	t_obj		result_full_quarter;
 
 	full_quarter = rotation_z(M_PI / 2);
 
@@ -199,8 +199,8 @@ Test(Matrix_rotation_z, Rotating_a_point_around_y_axis_full_quarter)
 	result_reference_full_quarter = create_point(-1, 0, 0);
 	cr_assert(cr_object_eq(result_full_quarter, result_reference_full_quarter));
 
-	clean_obj(point);
-	clean_obj(result_full_quarter);
-	clean_obj(result_reference_full_quarter);
+	// clean_obj(point);
+	// clean_obj(result_full_quarter);
+	// clean_obj(result_reference_full_quarter);
 	clean_matrix(full_quarter);
 }

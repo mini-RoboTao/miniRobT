@@ -3,37 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   handle_ray.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:48:49 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/21 03:27:29 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/02 00:24:29 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_ray	*create_ray(t_obj *point, t_obj *vector)
+t_ray	create_ray(t_obj point, t_obj vector)
 {
-	t_ray	*ray;
+	t_ray	ray;
 
-	if (!point || !vector)
-		return (NULL);
-	ray = malloc(sizeof(t_ray));
-	if (!ray)
-		return (NULL);
-	ray->position = point;
-	ray->direction = vector;
+	ray.position = point;
+	ray.direction = vector;
 	return (ray);
 }
 
-t_obj	*cat_position(t_ray *ray, double t)
+t_obj	cat_position(t_ray ray, double t)
 {
-	t_obj	*o;
+	t_obj	o;
+	t_obj	res;
 
-	multiply_object(ray->direction, t);
-	o = sum_objects(ray->position, ray->direction);
-	if (!o)
-		return (NULL);
+	res = multiply_object(ray.direction, t);
+	o = sum_objects(ray.position, res);
 	return (o);
 }
 

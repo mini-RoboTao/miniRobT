@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_operations_test.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 01:51:41 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/06 04:20:02 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/01 09:50:08 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,47 +60,42 @@ Test(matrix_operations, multiply_a_null_matrix4x4_and_another_with_values_should
 
 Test(matrix_operations, multiply_a_matrix4x4_by_a_obj_should_be_exp_obj)
 {
-	t_obj		*exp_obj	=	&(t_obj){.x=18, .y=24, .z=33, .w=1};
-	t_obj		*obj		=	&(t_obj){.x=1, .y=2, .z=3, .w=1};
+	t_obj		exp_obj	=	(t_obj){.x=18, .y=24, .z=33, .w=1};
+	t_obj		obj		=	(t_obj){.x=1, .y=2, .z=3, .w=1};
 	t_matrix	*ma			=	&(t_matrix){.node = (double *[]){ 		\
 								(double []){1, 2, 3, 4},				\
 								(double []){2, 4, 4, 2},				\
 								(double []){8, 6, 4, 1},				\
 								(double []){0, 0, 0, 1},				\
 								}, .x = 4, .y = 4};
-	t_obj		*result;
+	t_obj		result;
 
 	result = multiply_matrix_by_obj(ma, obj, 4, 4);
 	cr_assert(cr_object_eq(exp_obj, result));
-	clean_obj(result);
+	// clean_obj(result);
 }
 
-Test(matrix_operations, multiply_a_null_matrix4x4_by_a_obj_should_be_NULL)
-{
-	t_obj		*exp_obj	=	NULL;
-	t_obj		*obj		=	&(t_obj){.x=1, .y=2, .z=3, .w=1};
-	t_matrix	*ma			=	NULL;
-	t_obj		*result;
+// Test(matrix_operations, multiply_a_null_matrix4x4_by_a_obj_should_be_NULL)
+// {
+// 	t_obj		exp_obj	=	NULL;
+// 	t_obj		obj		=	(t_obj){.x=1, .y=2, .z=3, .w=1};
+// 	t_matrix	*ma			=	NULL;
+// 	t_obj		result;
 
-	result = multiply_matrix_by_obj(ma, obj, 4, 4);
-	cr_assert(eq(exp_obj, result));
-}
+// 	result = multiply_matrix_by_obj(ma, obj, 4, 4);
+// 	cr_assert(eq(exp_obj, result));
+// }
 
-Test(matrix_operations, multiply_a_matrix4x4_by_a_null_obj_should_be_NULL)
-{
-	t_obj		*exp_obj	=	NULL;
-	t_obj		*obj		=	NULL;
-	t_matrix	*ma			=	&(t_matrix){.node = (double *[]){ 		\
-								(double []){1, 2, 3, 4},				\
-								(double []){2, 4, 4, 2},				\
-								(double []){8, 6, 4, 1},				\
-								(double []){0, 0, 0, 1},				\
-								}, .x = 4, .y = 4};
-	t_obj		*result;
+// Test(matrix_operations, multiply_a_matrix4x4_by_a_null_obj_should_be_NULL)
+// {
+// 	t_obj		*exp_obj	=	NULL;
+// 	t_obj		*obj		=	NULL;
+// 	t_matrix	*ma			=	&(t_matrix){.node = (double *[]){(double []){1, 2, 3, 4}, (double []){2, 4, 4, 2}, (double []){8, 6, 4, 1}, (double []){0, 0, 0, 1}, }, .x = 4, .y = 4};
+// 	t_obj		*result;
 
-	result = multiply_matrix_by_obj(ma, obj, 4, 4);
-	cr_assert(eq(exp_obj, result));
-}
+// 	result = multiply_matrix_by_obj(ma, obj, 4, 4);
+// 	cr_assert(eq(exp_obj, result));
+// }
 
 t_matrix	*m_identity		=	&(t_matrix){.node = (double *[]){ 		\
 							(double []){1, 0, 0, 0},				\

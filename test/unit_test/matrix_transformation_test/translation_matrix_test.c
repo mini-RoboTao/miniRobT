@@ -20,9 +20,9 @@ Test(Matrix_translations, Create_matrix_translation)
 Test(Matrix_translations, Multiplying_by_a_translation_matrix)
 {
 	t_matrix	*transformation;
-	t_obj		*point;
-	t_obj		*result_reference;
-	t_obj		*result;
+	t_obj		point;
+	t_obj		result_reference;
+	t_obj		result;
 
 	transformation = translation(5, -3, 2);
 	cr_assert(eq(transformation->node[0][3], 5));
@@ -38,9 +38,9 @@ Test(Matrix_translations, Multiplying_by_a_translation_matrix)
 	result_reference = create_point(2, 1, 7);
 	cr_assert(cr_object_eq(result, result_reference));
 
-	clean_obj(point);
-	clean_obj(result);
-	clean_obj(result_reference);
+	// clean_obj(point);
+	// clean_obj(result);
+	// clean_obj(result_reference);
 	clean_matrix(transformation);
 }
 
@@ -48,9 +48,9 @@ Test(Matrix_translations, Multiplying_by_the_inverse_of_a_translation_matrix)
 {
 	t_matrix	*transformation;
 	t_matrix	*inverse_mtx;
-	t_obj		*point;
-	t_obj		*result_reference;
-	t_obj		*result;
+	t_obj		point;
+	t_obj		result_reference;
+	t_obj		result;
 
 	transformation = translation(5, -3, 2);
 	inverse_mtx = inverse_matrix(transformation);
@@ -67,9 +67,9 @@ Test(Matrix_translations, Multiplying_by_the_inverse_of_a_translation_matrix)
 	result_reference = create_point(-8, 7, 3);
 	cr_assert(cr_object_eq(result, result_reference));
 
-	clean_obj(point);
-	clean_obj(result);
-	clean_obj(result_reference);
+	// clean_obj(point);
+	// clean_obj(result);
+	// clean_obj(result_reference);
 	clean_matrix(transformation);
 	clean_matrix(inverse_mtx);
 }
@@ -77,15 +77,15 @@ Test(Matrix_translations, Multiplying_by_the_inverse_of_a_translation_matrix)
 Test(Matrix_translations, Translation_does_not_affect_vector)
 {
 	t_matrix	*transformation;
-	t_obj		*vector;
-	t_obj		*result;
+	t_obj		vector;
+	t_obj		result;
 
 	transformation = translation(5, -3, 2);
 	vector = create_vector(-3, 4, 5);
 	result = multiply_matrix_by_obj(transformation, vector, 4,4);
 	cr_assert(cr_object_eq(result, vector));
 
-	clean_obj(vector);
-	clean_obj(result);
+	// clean_obj(vector);
+	// clean_obj(result);
 	clean_matrix(transformation);
 }

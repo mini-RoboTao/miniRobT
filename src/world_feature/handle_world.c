@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 01:43:35 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/01 23:43:50 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_world	default_world(void)
 	return (w);
 }
 
-t_intersections	intersect_world(t_world *w, t_ray *ray)
+t_intersections	intersect_world(t_world *w, t_ray ray)
 {
 	int				i;
 	double			abc[3];
@@ -61,27 +61,26 @@ t_intersections	intersect_world(t_world *w, t_ray *ray)
 	return (xs);
 }
 
-t_precomp	prepare_computations(t_intersection *i, t_ray *r)
+t_precomp	prepare_computations(t_intersection *i, t_ray r)
 {
 	t_precomp	comps;
-	t_obj		*res_multiply;
+	t_obj		res_multiply;
 
 	comps = (t_precomp){0};
 	comps.t = i->t;
 	comps.shape = i->v;
 	comps.point = cat_position(r, comps.t);
-	comps.eyev = negating_object(object_normalize(r->direction));
+	comps.eyev = negating_object(object_normalize(r.direction));
 	comps.normalv = normal_at(comps.shape, comps.point);
 	if (object_dot(comps.normalv, comps.eyev) < 0)
 	{
 		comps.normalv = negating_object(object_normalize(comps.normalv));
 		comps.inside = 1;
 	}
-	res_multiply = create_object(comps.normalv->x, comps.normalv->y, \
-	comps.normalv->z, comps.normalv->w);
-	multiply_object(res_multiply, EPSILON);
+	res_multiply = create_object(comps.normalv.x, comps.normalv.y, \
+	comps.normalv.z, comps.normalv.w);
+	res_multiply = multiply_object(res_multiply, EPSILON);
 	comps.over_point = sum_objects(comps.point, res_multiply);
-	clean_obj(res_multiply);
 	return (comps);
 }
 

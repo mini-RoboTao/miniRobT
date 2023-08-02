@@ -31,9 +31,9 @@ Test(Matrix_shearing, Create_matrix_shearing)
 Test(Matrix_shearing, A_shearing_transformation_movex_x_in_proportion_to_y)
 {
 	t_matrix	*transformation;
-	t_obj		*point;
-	t_obj		*result_reference;
-	t_obj		*result;
+	t_obj		point;
+	t_obj		result_reference;
+	t_obj		result;
 	t_shearing	shearing_points;
 
 	shearing_points.x_to_y = 1;
@@ -55,18 +55,18 @@ Test(Matrix_shearing, A_shearing_transformation_movex_x_in_proportion_to_y)
 	result_reference = create_point(5, 3, 4);
 	cr_assert(cr_object_eq(result, result_reference));
 
-	clean_obj(point);
-	clean_obj(result);
-	clean_obj(result_reference);
+	// clean_obj(point);
+	// clean_obj(result);
+	// clean_obj(result_reference);
 	clean_matrix(transformation);
 }
 
 Test(Matrix_shearing, A_shearing_transformation_movex_x_in_proportion_to_z)
 {
 	t_matrix	*transformation;
-	t_obj		*point;
-	t_obj		*result_reference;
-	t_obj		*result;
+	t_obj		point;
+	t_obj		result_reference;
+	t_obj		result;
 	t_shearing	shearing_points;
 
 	shearing_points.x_to_y = 0;
@@ -89,18 +89,18 @@ Test(Matrix_shearing, A_shearing_transformation_movex_x_in_proportion_to_z)
 	result_reference = create_point(6, 3, 4);
 	cr_assert(cr_object_eq(result, result_reference));
 
-	clean_obj(point);
-	clean_obj(result);
-	clean_obj(result_reference);
+	// clean_obj(point);
+	// clean_obj(result);
+	// clean_obj(result_reference);
 	clean_matrix(transformation);
 }
 
 Test(Matrix_shearing, A_shearing_transformation_movex_y_in_proportion_to_x)
 {
 	t_matrix	*transformation;
-	t_obj		*point;
-	t_obj		*result_reference;
-	t_obj		*result;
+	t_obj		point;
+	t_obj		result_reference;
+	t_obj		result;
 	t_shearing	shearing_points;
 
 	shearing_points.x_to_y = 0;
@@ -123,18 +123,18 @@ Test(Matrix_shearing, A_shearing_transformation_movex_y_in_proportion_to_x)
 	result_reference = create_point(2, 5, 4);
 	cr_assert(cr_object_eq(result, result_reference));
 
-	clean_obj(point);
-	clean_obj(result);
-	clean_obj(result_reference);
+	// clean_obj(point);
+	// clean_obj(result);
+	// clean_obj(result_reference);
 	clean_matrix(transformation);
 }
 
 Test(Matrix_shearing, A_shearing_transformation_movex_y_in_proportion_to_z)
 {
 	t_matrix	*transformation;
-	t_obj		*point;
-	t_obj		*result_reference;
-	t_obj		*result;
+	t_obj		point;
+	t_obj		result_reference;
+	t_obj		result;
 	t_shearing	shearing_points;
 
 	shearing_points.x_to_y = 0;
@@ -157,18 +157,18 @@ Test(Matrix_shearing, A_shearing_transformation_movex_y_in_proportion_to_z)
 	result_reference = create_point(2, 7, 4);
 	cr_assert(cr_object_eq(result, result_reference));
 
-	clean_obj(point);
-	clean_obj(result);
-	clean_obj(result_reference);
+	// clean_obj(point);
+	// clean_obj(result);
+	// clean_obj(result_reference);
 	clean_matrix(transformation);
 }
 
 Test(Matrix_shearing, A_shearing_transformation_movex_z_in_proportion_to_x)
 {
 	t_matrix	*transformation;
-	t_obj		*point;
-	t_obj		*result_reference;
-	t_obj		*result;
+	t_obj		point;
+	t_obj		result_reference;
+	t_obj		result;
 	t_shearing	shearing_points;
 
 	shearing_points.x_to_y = 0;
@@ -191,18 +191,18 @@ Test(Matrix_shearing, A_shearing_transformation_movex_z_in_proportion_to_x)
 	result_reference = create_point(2, 3, 6);
 	cr_assert(cr_object_eq(result, result_reference));
 
-	clean_obj(point);
-	clean_obj(result);
-	clean_obj(result_reference);
+	// clean_obj(point);
+	// clean_obj(result);
+	// clean_obj(result_reference);
 	clean_matrix(transformation);
 }
 
 Test(Matrix_shearing, A_shearing_transformation_movex_z_in_proportion_to_y)
 {
 	t_matrix	*transformation;
-	t_obj		*point;
-	t_obj		*result_reference;
-	t_obj		*result;
+	t_obj		point;
+	t_obj		result_reference;
+	t_obj		result;
 	t_shearing	shearing_points;
 
 	shearing_points.x_to_y = 0;
@@ -225,8 +225,8 @@ Test(Matrix_shearing, A_shearing_transformation_movex_z_in_proportion_to_y)
 	result_reference = create_point(2, 3, 7);
 	cr_assert(cr_object_eq(result, result_reference));
 
-	clean_obj(point);
-	clean_obj(result);
-	clean_obj(result_reference);
+	// clean_obj(point);
+	// clean_obj(result);
+	// clean_obj(result_reference);
 	clean_matrix(transformation);
 }

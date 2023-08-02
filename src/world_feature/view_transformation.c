@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   view_transformation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:53:42 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/27 20:29:24 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/01 23:44:53 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	insert_row(t_matrix *m, t_obj *o, int index)
+static void	insert_row(t_matrix *m, t_obj o, int index)
 {
-	m->node[index][0] = o->x;
-	m->node[index][1] = o->y;
-	m->node[index][2] = o->z;
+	m->node[index][0] = o.x;
+	m->node[index][1] = o.y;
+	m->node[index][2] = o.z;
 }
 
-static t_matrix	*run_transform(t_obj *left, t_obj *true_up, \
-								t_obj *forward, t_obj *from)
+static t_matrix	*run_transform(t_obj left, t_obj true_up, \
+								t_obj forward, t_obj from)
 {
 	t_matrix	*orientation;
 	t_matrix	*m_translation;
@@ -31,19 +31,19 @@ static t_matrix	*run_transform(t_obj *left, t_obj *true_up, \
 	insert_row(orientation, true_up, 1);
 	insert_row(orientation, negating_object(forward), 2);
 	orientation->node[3][3] = 1;
-	m_translation = translation(-from->x, -from->y, -from->z);
+	m_translation = translation(-from.x, -from.y, -from.z);
 	m = multiply_matrix(orientation, m_translation, 4, 4);
 	clean_matrix(m_translation);
 	clean_matrix(orientation);
 	return (m);
 }
 
-t_matrix	*view_transformation(t_obj *from, t_obj *to, t_obj *up)
+t_matrix	*view_transformation(t_obj from, t_obj to, t_obj up)
 {
-	t_obj		*forward;
-	t_obj		*normalize_up;
-	t_obj		*left;
-	t_obj		*true_up;
+	t_obj		forward;
+	t_obj		normalize_up;
+	t_obj		left;
+	t_obj		true_up;
 	t_matrix	*m;
 
 	forward = object_normalize(subtract_objects(to, from));
@@ -51,14 +51,10 @@ t_matrix	*view_transformation(t_obj *from, t_obj *to, t_obj *up)
 	left = object_cross_product(forward, normalize_up);
 	true_up = object_cross_product(left, forward);
 	m = run_transform(left, true_up, forward, from);
-	clean_obj(normalize_up);
-	clean_obj(forward);
-	clean_obj(left);
-	clean_obj(true_up);
 	return (m);
 }
 
-t_color	color_at(t_world *w, t_ray *r)
+t_color	color_at(t_world *w, t_ray r)
 {
 	t_intersections	xs;
 	t_intersection	*i;
@@ -78,8 +74,6 @@ t_color	color_at(t_world *w, t_ray *r)
 	{
 		comps = prepare_computations(i, r);
 		c = shade_hit(w, &comps);
-		clean_obj(comps.point);
-		clean_obj(comps.normalv);
 	}
 	if (xs.shape)
 		free(xs.shape);

@@ -5,13 +5,13 @@ Test(Chaining_transformations, Individual_transformations_are_applied_in_sequenc
 	t_matrix	*rotation_matrix;
 	t_matrix	*scaling_matrix;
 	t_matrix	*translation_matrix;
-	t_obj		*point;
-	t_obj		*result_rotation;
-	t_obj		*result_scaling;
-	t_obj		*result_translation;
-	t_obj		*result_reference_after_rotation;
-	t_obj		*result_reference_after_scaling;
-	t_obj		*result_reference_after_translation;
+	t_obj		point;
+	t_obj		result_rotation;
+	t_obj		result_scaling;
+	t_obj		result_translation;
+	t_obj		result_reference_after_rotation;
+	t_obj		result_reference_after_scaling;
+	t_obj		result_reference_after_translation;
 
 	point = create_point(1, 0, 1);
 	rotation_matrix = rotation_x(M_PI/2);
@@ -30,13 +30,13 @@ Test(Chaining_transformations, Individual_transformations_are_applied_in_sequenc
 	result_reference_after_translation = create_point(15, 0, 7);
 	cr_assert(cr_object_eq(result_translation, result_reference_after_translation));
 
-	clean_obj(point);
-	clean_obj(result_rotation);
-	clean_obj(result_scaling);
-	clean_obj(result_translation);
-	clean_obj(result_reference_after_rotation);
-	clean_obj(result_reference_after_scaling);
-	clean_obj(result_reference_after_translation);
+	// clean_obj(point);
+	// clean_obj(result_rotation);
+	// clean_obj(result_scaling);
+	// clean_obj(result_translation);
+	// clean_obj(result_reference_after_rotation);
+	// clean_obj(result_reference_after_scaling);
+	// clean_obj(result_reference_after_translation);
 	clean_matrix(rotation_matrix);
 	clean_matrix(scaling_matrix);
 	clean_matrix(translation_matrix);
@@ -49,9 +49,9 @@ Test(Chaining_transformations, Chained_transformations_must_be_applied_in_revers
 	t_matrix	*translation_matrix;
 	t_matrix	*result_matrix_after_one_operation;
 	t_matrix	*result_matrix;
-	t_obj		*point;
-	t_obj		*result;
-	t_obj		*result_reference;
+	t_obj		point;
+	t_obj		result;
+	t_obj		result_reference;
 
 	point = create_point(1, 0, 1);
 	rotation_matrix = rotation_x(M_PI/2);
@@ -66,9 +66,9 @@ Test(Chaining_transformations, Chained_transformations_must_be_applied_in_revers
 	result = multiply_matrix_by_obj(result_matrix, point, 4, 4);
 	cr_assert(cr_object_eq(result, result_reference));
 
-	clean_obj(point);
-	clean_obj(result);
-	clean_obj(result_reference);
+	// clean_obj(point);
+	// clean_obj(result);
+	// clean_obj(result_reference);
 	clean_matrix(rotation_matrix);
 	clean_matrix(scaling_matrix);
 	clean_matrix(translation_matrix);

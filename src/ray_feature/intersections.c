@@ -3,37 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:49:11 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/27 13:49:02 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/02 00:24:39 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	calculate_discriminat(double *abc, t_ray *ray, t_sphere *s)
+double	calculate_discriminat(double *abc, t_ray ray, t_sphere *s)
 {
-	t_ray			*r;
-	t_obj			*s_ray;
+	t_ray			r;
+	t_obj			s_ray;
 	t_matrix		*m;
 	double			discriminat;
 
 	m = inverse_matrix(s->transform);
 	r = transform(ray, m);
 	clean_matrix(m);
-	s_ray = subtract_objects(r->position, &(t_obj){0, 0, 0, 1});
-	abc[0] = object_dot(r->direction, r->direction);
-	abc[1] = 2 * object_dot(r->direction, s_ray);
+	s_ray = subtract_objects(r.position, (t_obj){0, 0, 0, 1});
+	abc[0] = object_dot(r.direction, r.direction);
+	abc[1] = 2 * object_dot(r.direction, s_ray);
 	abc[2] = object_dot(s_ray, s_ray) - 1;
 	discriminat = pow(abc[1], 2) - 4 * abc[0] * abc[2];
-	if (s_ray)
-		free(s_ray);
-	clean_ray(r);
 	return (discriminat);
 }
 
-t_intersections	intersect(t_sphere *s, t_ray *ray)
+t_intersections	intersect(t_sphere *s, t_ray ray)
 {
 	double			abc[3];
 	double			discriminat;

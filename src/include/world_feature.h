@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world_feature.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:12:23 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/27 20:30:00 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/01 23:42:30 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 
 t_world			world(void);
 t_world			default_world(void);
-t_intersections	intersect_world(t_world *w, t_ray *ray);
-t_precomp		prepare_computations(t_intersection *i, t_ray *r);
+t_intersections	intersect_world(t_world *w, t_ray ray);
+t_precomp		prepare_computations(t_intersection *i, t_ray r);
 t_color			shade_hit(t_world *w, t_precomp *comps);
 
 // view transformation
-t_color			color_at(t_world *w, t_ray *r);
-t_matrix		*view_transformation(t_obj *from, t_obj *to, t_obj *up);
+t_color			color_at(t_world *w, t_ray r);
+t_matrix		*view_transformation(t_obj from, t_obj to, t_obj up);
 
 // camera
 t_camera		camera(int hsize, int vsize, double fov);
-t_ray			*ray_for_pixel(t_camera *c, double px, double py);
+t_ray			ray_for_pixel(t_camera *c, double px, double py);
 t_canvas		*render(t_camera *c, t_world *w);
 
 #endif
