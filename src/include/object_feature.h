@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object_feature.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 19:17:56 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 05:17:48 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:34:18 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,5 @@ double			object_magnitude(t_obj o);
 t_obj			object_normalize(t_obj o);
 double			object_dot(t_obj o_one, t_obj o_two);
 t_obj			object_cross_product(t_obj o_one, t_obj o_two);
-
-// Objects Actions
-t_projectile	*create_proj(t_obj point_p, t_obj vector_v);
-t_environment	*create_env(t_obj vector_g, t_obj vector_w);
-t_projectile	*tick(t_environment *e, t_projectile *p);
 
 #endif

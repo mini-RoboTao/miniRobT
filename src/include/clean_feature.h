@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_feature.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:17:03 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/01 23:29:58 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:28:16 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	clean_canvas(t_canvas *c);
 // void	clean_proj(t_projectile *c);
 void	*clean_matrix(t_matrix *m);
 // void	clean_ray(t_ray *r);
+void	clean_shape(union u_shape *s);
 void	clean_sphere(t_sphere *s);
 void	clean_ray_inter_shape(t_intersection **i, void **shape);
 void	clean_world(t_world w);

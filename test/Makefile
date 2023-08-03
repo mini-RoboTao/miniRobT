@@ -50,8 +50,7 @@ SRC_PROJECT						=			$(filter-out $(SRC_EXCLUDED),		\
 ######################## TEST SOURCES ###############################
 SRC_OBJ_FEATURE					=			create_object_test.c 				\
 											object_arithmetic_test.c 			\
-											handle_object_test.c			 	\
-											object_actions_test.c
+											handle_object_test.c
 SRC_COLORS_FEATURE				=			cap2_color_tests.c
 SRC_CANVAS_FEATURE				=			cap2_canva_tests.c
 SRC_UTILS						=			float_to_hex_test.c					\

@@ -9,8 +9,6 @@ Test(handle_ray, creating_and_querying_a_ray)
 	ray = create_ray(origin, direction);
 	cr_assert(cr_object_eq(ray.position, origin));
 	cr_assert(cr_object_eq(ray.direction, direction));
-	// if (ray)
-	// 	free(ray);
 }
 
 // Test(handle_ray, creating_and_a_ray_with_a_param_NULL_should_be_NULL)
@@ -29,7 +27,6 @@ static t_ray create_ray_res(void)
 {
 	t_ray	d_ray;
 
-	// d_ray = malloc(sizeof(t_ray));
 	d_ray.position = create_object(2, 3, 4, 1);
 	d_ray.direction = create_object(1, 0, 0, 0);
 	return (d_ray);
@@ -44,9 +41,6 @@ Test(handle_ray, computig_a_point_x2_y3_z4_w1_from_a_distance_0_should_be_a_poin
 
 	obj = cat_position(d_ray, 0);
 	cr_assert(cr_object_eq(obj, point_expected));
-	// free(d_ray);
-	// if (obj)
-	// 	free(obj);
 }
 
 Test(handle_ray, computig_a_point_x2_y3_z4_w1_from_a_distance_1_should_be_a_point_x3_y3_z4_w1)
@@ -57,9 +51,6 @@ Test(handle_ray, computig_a_point_x2_y3_z4_w1_from_a_distance_1_should_be_a_poin
 
 	obj = cat_position(d_ray, 1);
 	cr_assert(cr_object_eq(obj, point_expected));
-	// free(d_ray);
-	// if (obj)
-	// 	free(obj);
 }
 
 Test(handle_ray, computig_a_point_x2_y3_z4_w1_from_a_distance_minus_1_should_be_a_point_x1_y3_z4_w1)
@@ -70,9 +61,6 @@ Test(handle_ray, computig_a_point_x2_y3_z4_w1_from_a_distance_minus_1_should_be_
 
 	obj = cat_position(d_ray, -1);
 	cr_assert(cr_object_eq(obj, point_expected));
-	// free(d_ray);
-	// if (obj)
-	// 	free(obj);
 }
 
 Test(handle_ray, computig_a_point_x2_y3_z4_w1_from_a_distance_minus_1_should_be_a_point_x4_dot_5_y3_z4_w1)
@@ -83,7 +71,4 @@ Test(handle_ray, computig_a_point_x2_y3_z4_w1_from_a_distance_minus_1_should_be_
 
 	obj = cat_position(d_ray, 2.5);
 	cr_assert(cr_object_eq(obj, point_expected));
-	// free(d_ray);
-	// if (obj)
-	// 	free(obj);
 }

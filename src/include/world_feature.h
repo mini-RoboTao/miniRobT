@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world_feature.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:12:23 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/01 23:42:30 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:13:03 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_color			shade_hit(t_world *w, t_precomp *comps);
 
 // view transformation
 t_color			color_at(t_world *w, t_ray r);
-t_matrix		*view_transformation(t_obj from, t_obj to, t_obj up);
+t_matrix		view_transformation(t_obj from, t_obj to, t_obj up);
 
 // camera
 t_camera		camera(int hsize, int vsize, double fov);

@@ -6,13 +6,13 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 17:33:23 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/17 19:52:44 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:46:46 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linked_list.h"
 
-void	ft_lstclean(t_lst **l, void (*del)(t_object *))
+void	ft_lstclean(t_lst **l, void (*del)(t_obj *))
 {
 	t_lst	*head;
 	t_lst	*next;
