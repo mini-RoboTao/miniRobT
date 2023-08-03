@@ -26,38 +26,35 @@ Test(transforming_rays, scaling_a_ray)
 
 Test(transforming_rays, a_sphere_is_default_transformation)
 {
-	t_sphere	*s = new_sphere();
-	cr_assert(cr_matrix_eq(s->transform, create_identity_matrix()));
-	clean_sphere(s);
+	t_shape		shape = new_sphere();
+	cr_assert(cr_matrix_eq(shape.sphere->transform, create_identity_matrix()));
+	clean_shape(&shape);
 }
 
 Test(transforming_rays, changing_a_sphere_is_transformation)
 {
-	t_sphere	*s = new_sphere();
+	t_shape		shape = new_sphere();
 	t_matrix	t = translation(2, 3, 4);
 
-	set_transform(s, t);
-	cr_assert(cr_matrix_eq(s->transform, t));
-	clean_sphere(s);
+	set_transform(&shape, t);
+	cr_assert(cr_matrix_eq(shape.sphere->transform, t));
+	clean_shape(&shape);
 }
 
 Test(transforming_rays, intersecting_a_scaled_sphere_with_a_ray)
 {
+	t_shape		shape = new_sphere();
 	t_obj		origin = (t_obj){.x=0, .y=0, .z=-5, .w=1};
 	t_obj		direction = (t_obj){.x=0, .y=0, .z=1, .w=0};
 	t_ray		r = create_ray(origin, direction);
-	t_sphere	*s = new_sphere();
-	set_transform(s, scaling(2, 2, 2));
+	set_transform(&shape, scaling(2, 2, 2));
 
-	t_intersections	xs = intersect(s, r);
+	t_intersections	xs = intersect(shape, r);
 	cr_assert(eq(xs.amount, 2));
 	cr_assert(epsilon_eq(flt, xs.i->t, 3, EPSILON));
 	cr_assert(epsilon_eq(flt, xs.i->next->t, 7, EPSILON));
 	clean_intersection_lst(&xs.i);
-	if (s)
-		free(s);
-	if (xs.shape)
-		free(xs.shape);
+	clean_shape(&shape);
 }
 
 Test(transforming_rays, intersecting_a_translation_sphere_with_a_ray)
@@ -65,12 +62,11 @@ Test(transforming_rays, intersecting_a_translation_sphere_with_a_ray)
 	t_obj		origin = (t_obj){.x=0, .y=0, .z=-5, .w=1};
 	t_obj		direction = (t_obj){.x=0, .y=0, .z=1, .w=0};
 	t_ray		r = create_ray(origin, direction);
-	t_sphere	*s = new_sphere();
-	set_transform(s, translation(5, 0, 0));
+	t_shape		shape = new_sphere();
+	set_transform(&shape, translation(5, 0, 0));
 
-	t_intersections	xs = intersect(s, r);
+	t_intersections	xs = intersect(shape, r);
 	cr_assert(eq(xs.amount, 0));
 	clean_intersection_lst(&xs.i);
-	if (s)
-		free(s);
+	clean_shape(&shape);
 }

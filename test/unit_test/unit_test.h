@@ -58,10 +58,10 @@ int cr_sphere_check_material_eq(t_sphere *a, t_sphere *b)
 
 int cr_intersection_eq(t_intersection *a, t_intersection *b)
 {
-	return	(fabs(a->sphere->x - b->sphere->x) < EPSILON && \
-			fabs(a->sphere->y - b->sphere->y) < EPSILON && \
-			fabs(a->sphere->z - b->sphere->z) < EPSILON && \
-			fabs(a->sphere->radius - b->sphere->radius) < EPSILON &&
+	return	(fabs(a->shape.sphere->x - b->shape.sphere->x) < EPSILON && \
+			fabs(a->shape.sphere->y - b->shape.sphere->y) < EPSILON && \
+			fabs(a->shape.sphere->z - b->shape.sphere->z) < EPSILON && \
+			fabs(a->shape.sphere->radius - b->shape.sphere->radius) < EPSILON &&
 			fabs(a->t - b->t) < EPSILON);
 }
 

@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "__locale": "c",
-        "*.tcc": "c",
-        "complex": "c",
-        "streambuf": "c",
-        "string_view": "c"
-    }
-}

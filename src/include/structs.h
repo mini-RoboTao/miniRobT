@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/02 22:46:40 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 03:41:03 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,32 @@ typedef struct s_sphere
 	t_material	material;
 }				t_sphere;
 
-typedef struct s_shape
+typedef struct s_common_shape
 {
+	double		x;
+	double		y;
+	double		z;
+	double		radius;
 	t_matrix	transform;
-}				t_shape;
+	t_material	material;
+}				t_common_shape;
 
 union u_shape
 {
-	t_sphere	*sphere;
-	void		*v;
+	t_sphere		*sphere;
+	t_common_shape	*any;
+	void			*v;
 };
+
+typedef struct s_shape
+{
+	t_object_type			id;
+	union {
+		t_common_shape		*any;
+		t_sphere			*sphere;
+		void				*v;
+	};
+}				t_shape;
 /* ******************************** */
 
 typedef struct s_ray
@@ -98,17 +114,13 @@ typedef struct s_ray
 typedef struct s_intersection
 {
 	double					t;
-	union {
-		t_sphere			*sphere;
-		void				*v;
-	};
+	t_shape					shape;
 	struct s_intersection	*next;
 }				t_intersection;
 
 typedef struct s_intersections
 {
 	int				amount;
-	void			**shape;
 	t_intersection	*i;
 }				t_intersections;
 ////////////////////////////////
@@ -163,10 +175,7 @@ typedef struct s_lighting_data
 typedef struct s_precomp
 {
 	double		t;
-	union {
-		t_sphere			*sphere;
-		void				*v;
-	};
+	t_shape		shape;
 	t_obj		point;
 	t_obj		over_point;
 	t_obj		eyev;
@@ -188,7 +197,7 @@ typedef struct s_camera
 typedef struct s_world
 {
 	int				amount_obj;
-	union u_shape	*shape;
+	t_shape			*shapes;
 	t_camera		camera;
 	t_light			light;
 }					t_world;
@@ -211,9 +220,9 @@ typedef struct s_data {
 	t_canvas	*canvas;
 }	t_data;
 
-t_sphere	*make_wall_right(void *v);
-t_sphere	*make_wall_left(void *v);
-t_sphere	*make_floor(void *v);
+t_shape		make_wall_right(t_shape *floor);
+t_shape		make_wall_left(t_shape *floor);
+t_shape		make_floor(void *v);
 void		put_together(t_data *d);
 int			ft_render_minirt(t_data *data);
 void		ft_mlx_pixel_put(t_data *data, int x, int y, int color);

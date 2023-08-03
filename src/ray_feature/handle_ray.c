@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_ray.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:48:49 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 00:24:29 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/03 02:00:02 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,22 @@ t_obj	cat_position(t_ray ray, double t)
 	return (o);
 }
 
-t_sphere	*new_sphere(void)
+t_shape	new_sphere(void)
 {
+	t_shape		shape;
 	t_sphere	*s;
 
+	shape = (t_shape){0};
 	s = malloc(sizeof(t_sphere));
 	if (!s)
-		return (NULL);
+		return ((t_shape){0});
 	s->x = 0.0;
 	s->y = 0.0;
 	s->z = 0.0;
 	s->radius = 1.0;
 	s->transform = create_identity_matrix();
 	s->material = new_material();
-	return (s);
+	shape.sphere = s;
+	shape.id = 1;
+	return (shape);
 }

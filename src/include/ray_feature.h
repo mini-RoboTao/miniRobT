@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 09:37:44 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 18:19:22 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 02:00:49 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ t_ray			create_ray(t_obj point, t_obj vector);
 t_obj			cat_position(t_ray ray, double t);
 
 // intersections
-t_sphere		*new_sphere(void);
-double			calculate_discriminat(double *abc, t_ray ray, t_sphere *s);
-t_intersections	intersect(t_sphere *s, t_ray r);
-t_intersection	*intersection(double t, void *s);
+t_shape			new_sphere(void);
+double			calculate_discriminat(double *abc, t_ray ray, t_shape shape);
+t_intersections	intersect(t_shape shape, t_ray r);
+t_intersection	*intersection(double t, t_shape shape);
 void			intersections(t_intersections *xs, \
 				t_intersection *i1, t_intersection *i2, int index);
 t_intersection	*hit(t_intersections xs);
 
 // Transforming
 t_ray			transform(t_ray r, t_matrix m);
-void			set_transform(t_sphere *s, t_matrix t);
+void			set_transform(t_shape *s, t_matrix t);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 11:07:36 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 22:05:33 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/02 23:53:07 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@
 // 	}
 // }
 
-void	clean_shape(union u_shape *s)
+void	clean_shape(t_shape *obj)
 {
-	if (s->v)
-		free(s->v);
+	if (obj->v)
+		free(obj->v);
 }
 
 void	clean_sphere(t_sphere *s)
