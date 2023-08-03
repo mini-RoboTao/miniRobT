@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 01:51:41 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 19:42:11 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 15:43:05 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,14 +113,9 @@ Test(matrix_operations, transposing_a_NULL_should_be_NULL)
 	cr_assert(cr_matrix_eq(empty_matrix, result));
 }
 
-// Test(matrix_operations, multiply_a_null_matrix4x4_and_another_with_values_should_be_empty_matrix)
+/* // Test(matrix_operations, multiply_a_null_matrix4x4_and_another_with_values_should_be_empty_matrix)
 // {
-// 	t_matrix	m		=	(t_matrix){.node = { 		\
-// 							{-2, 1, 2, 3},				\
-// 							{3, 2, 1, -1},				\
-// 							{4, 3, 6, 5},				\
-// 							{1, 2, 7, 8},				\
-// 							}, .x = 4, .y = 4};
+// 	t_matrix	m		=	(t_matrix){.node = {{-2, 1, 2, 3},{3, 2, 1, -1},{4, 3, 6, 5},{1, 2, 7, 8},},.x = 4, .y = 4};
 // 	t_matrix	exp		=	(t_matrix)empty_matrix;
 // 	t_matrix	result;
 
@@ -128,7 +123,7 @@ Test(matrix_operations, transposing_a_NULL_should_be_NULL)
 // 	cr_assert(cr_matrix_eq(empty_matrix , result));
 // 	result = multiply_matrix(m, empty_matrix, 4, 4);
 // 	cr_assert(cr_matrix_eq(empty_matrix, result));
-// }
+// } */
 
 // Test(matrix_operations, multiply_a_null_matrix4x4_by_a_obj_should_be_NULL)
 // {
