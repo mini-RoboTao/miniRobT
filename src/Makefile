@@ -38,9 +38,7 @@ SRC_MATRIX_FEATURE			=					handle_matrix.c						\
 												matrix_operations.c					\
 												inverting_matrix.c					\
 												matrix_utils.c
-SRC_CLEAN_FEATURE			=					free_feature.c						\
-												free_objects.c						\
-												clean_world.c
+SRC_CLEAN_FEATURE			=					free_feature.c
 SRC_OBJECT_FEATURE			=					create_object.c						\
 												object_arithmetic.c					\
 												handle_object.c

@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:49:11 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/03 02:18:33 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 17:18:44 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ double	calculate_discriminat(double *abc, t_ray ray, t_shape shape)
 	t_obj			s_ray;
 	double			discriminat;
 
-	r = transform(ray, inverse_matrix(shape.sphere->transform));
+	r = transform(ray, inverse_matrix(shape.any->transform));
 	s_ray = subtract_objects(r.position, (t_obj){0, 0, 0, 1});
 	abc[0] = object_dot(r.direction, r.direction);
 	abc[1] = 2 * object_dot(r.direction, s_ray);
