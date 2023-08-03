@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_feature.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:16:00 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/28 05:18:39 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:14:35 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,24 @@ void	clean_canvas(t_canvas *c)
 	}
 }
 
-void	*clean_matrix(t_matrix *m)
-{
-	int	i;
+// void	*clean_matrix(t_matrix *m)
+// {
+// 	int	i;
 
-	i = 0;
-	if (m)
-	{
-		if (m->node)
-		{
-			while (i < m->y)
-			{
-				if (m->node[i])
-					free(m->node[i]);
-				i++;
-			}
-			free(m->node);
-		}
-		free(m);
-	}
-	return (NULL);
-}
+// 	i = 0;
+// 	if (m)
+// 	{
+// 		if (m->node)
+// 		{
+// 			while (i < m->y)
+// 			{
+// 				if (m->node[i])
+// 					free(m->node[i]);
+// 				i++;
+// 			}
+// 			free(m->node);
+// 		}
+// 		free(m);
+// 	}
+// 	return (NULL);
+// }

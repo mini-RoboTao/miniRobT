@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/01 23:22:18 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/02 22:46:40 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,36 +35,7 @@ typedef struct s_screen
 	double	passy;
 }	t_screen;
 
-typedef struct s_color
-{
-	double		red;
-	double		green;
-	double		blue;
-}	t_color;
-
-typedef struct s_canvas
-{
-	int			width;
-	int			height;
-	t_color		**canvas;
-}	t_canvas;
-
-typedef struct s_data {
-	void		*mlx;
-	void		*win;
-	char		*win_name;
-	int			win_w;
-	int			win_h;
-	t_img		img;
-	t_screen	screen;
-	t_canvas	*canvas;
-}	t_data;
-
-typedef struct s_object {
-	void		*content;
-	int			content_type;
-}	t_object;
-
+/*///////////////// Render Image //////////////////*/
 typedef struct s_obj {
 	double		x;
 	double		y;
@@ -72,31 +43,19 @@ typedef struct s_obj {
 	double		w;
 }	t_obj;
 
-typedef struct s_projectile
-{
-	t_obj		position;
-	t_obj		velocity;
-}				t_projectile;
-
-typedef struct s_environment
-{
-	t_obj		gravity;
-	t_obj		wind;
-}				t_environment;
-
 typedef struct s_matrix
 {
 	int		x;
 	int		y;
-	double	**node;
+	double	node[4][4];
 }				t_matrix;
 
-///// Ray intersection structs
-typedef struct s_ray
+typedef struct s_color
 {
-	t_obj		position;
-	t_obj		direction;
-}				t_ray;
+	double		red;
+	double		green;
+	double		blue;
+}	t_color;
 
 typedef struct s_material
 {
@@ -107,21 +66,34 @@ typedef struct s_material
 	double		shininess;
 }				t_material;
 
+/************* Objects *************/
 typedef struct s_sphere
 {
 	double		x;
 	double		y;
 	double		z;
 	double		radius;
-	t_matrix	*transform;
+	t_matrix	transform;
 	t_material	material;
 }				t_sphere;
 
-typedef struct s_intersect
+typedef struct s_shape
 {
-	int			amount;
-	double		collision[2];
-}				t_intersect;
+	t_matrix	transform;
+}				t_shape;
+
+union u_shape
+{
+	t_sphere	*sphere;
+	void		*v;
+};
+/* ******************************** */
+
+typedef struct s_ray
+{
+	t_obj		position;
+	t_obj		direction;
+}				t_ray;
 
 typedef struct s_intersection
 {
@@ -156,8 +128,8 @@ typedef struct s_normal_at
 	t_obj		object_point;
 	t_obj		object_normal;
 	t_obj		world_normal;
-	t_matrix	*inverse;
-	t_matrix	*transpose;
+	t_matrix	inverse;
+	t_matrix	transpose;
 	t_obj		point;
 }				t_normal_at;
 
@@ -188,19 +160,12 @@ typedef struct s_lighting_data
 	t_color	specular;
 }				t_lighting_data;
 
-typedef struct s_world
-{
-	int			amount_obj;
-	t_sphere	**sphere;
-	t_light		light;
-}				t_world;
-
 typedef struct s_precomp
 {
 	double		t;
 	union {
 		t_sphere			*sphere;
-		void				*shape;
+		void				*v;
 	};
 	t_obj		point;
 	t_obj		over_point;
@@ -208,27 +173,6 @@ typedef struct s_precomp
 	t_obj		normalv;
 	int			inside;
 }				t_precomp;
-
-typedef struct s_put_together
-{
-	double			wall_size;
-	double			pixel_size;
-	double			half;
-	double			w_y;
-	double			w_x;
-	double			w_z;
-	t_color			color;
-	t_obj			ray_origin;
-	t_sphere		*s;
-	t_obj			position;
-	t_ray			ray;
-	int				x;
-	int				y;
-	t_intersections	xs;
-	t_light			light;
-	t_lighting		lig;
-	t_intersection	*hit;
-}				t_put_together;
 
 typedef struct s_camera
 {
@@ -238,8 +182,34 @@ typedef struct s_camera
 	double		half_width;
 	double		half_height;
 	double		field_of_view;
-	t_matrix	*transform;
+	t_matrix	transform;
 }				t_camera;
+
+typedef struct s_world
+{
+	int				amount_obj;
+	union u_shape	*shape;
+	t_camera		camera;
+	t_light			light;
+}					t_world;
+
+typedef struct s_canvas
+{
+	int			width;
+	int			height;
+	t_color		**canvas;
+}	t_canvas;
+
+typedef struct s_data {
+	void		*mlx;
+	void		*win;
+	char		*win_name;
+	int			win_w;
+	int			win_h;
+	t_img		img;
+	t_screen	screen;
+	t_canvas	*canvas;
+}	t_data;
 
 t_sphere	*make_wall_right(void *v);
 t_sphere	*make_wall_left(void *v);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_feature.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 09:37:44 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/01 23:26:35 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:19:22 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void			intersections(t_intersections *xs, \
 t_intersection	*hit(t_intersections xs);
 
 // Transforming
-t_ray			transform(t_ray r, t_matrix *m);
-void			set_transform(t_sphere *s, t_matrix *t);
+t_ray			transform(t_ray r, t_matrix m);
+void			set_transform(t_sphere *s, t_matrix t);
 
 #endif

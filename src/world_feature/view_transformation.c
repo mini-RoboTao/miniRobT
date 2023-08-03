@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view_transformation.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:53:42 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/01 23:44:53 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:23:19 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,32 +19,27 @@ static void	insert_row(t_matrix *m, t_obj o, int index)
 	m->node[index][2] = o.z;
 }
 
-static t_matrix	*run_transform(t_obj left, t_obj true_up, \
+static t_matrix	run_transform(t_obj left, t_obj true_up, \
 								t_obj forward, t_obj from)
 {
-	t_matrix	*orientation;
-	t_matrix	*m_translation;
-	t_matrix	*m;
+	t_matrix	orientation;
 
-	orientation = alloc_matrix(4, 4);
-	insert_row(orientation, left, 0);
-	insert_row(orientation, true_up, 1);
-	insert_row(orientation, negating_object(forward), 2);
-	orientation->node[3][3] = 1;
-	m_translation = translation(-from.x, -from.y, -from.z);
-	m = multiply_matrix(orientation, m_translation, 4, 4);
-	clean_matrix(m_translation);
-	clean_matrix(orientation);
-	return (m);
+	orientation = new_matrix(4, 4);
+	insert_row(&orientation, left, 0);
+	insert_row(&orientation, true_up, 1);
+	insert_row(&orientation, negating_object(forward), 2);
+	orientation.node[3][3] = 1;
+	return (multiply_matrix(orientation, \
+	translation(-from.x, -from.y, -from.z), 4, 4));
 }
 
-t_matrix	*view_transformation(t_obj from, t_obj to, t_obj up)
+t_matrix	view_transformation(t_obj from, t_obj to, t_obj up)
 {
 	t_obj		forward;
 	t_obj		normalize_up;
 	t_obj		left;
 	t_obj		true_up;
-	t_matrix	*m;
+	t_matrix	m;
 
 	forward = object_normalize(subtract_objects(to, from));
 	normalize_up = object_normalize(up);

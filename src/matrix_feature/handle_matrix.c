@@ -6,97 +6,50 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 19:19:46 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/07/18 01:31:14 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:01:39 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_matrix	*alloc_matrix(int col, int row)
+t_matrix	new_matrix(int x, int y)
 {
-	int			i;
-	t_matrix	*m;
+	t_matrix	m;
 
-	m = malloc(sizeof(t_matrix));
-	if (!m)
-		return (NULL);
-	m->x = col;
-	m->y = row;
-	m->node = ft_calloc(sizeof(double *), row);
-	if (!m)
-		return (clean_matrix(m));
-	i = 0;
-	while (i < row)
-	{
-		m->node[i] = ft_calloc(sizeof(double), col);
-		if (!m->node[i])
-			return (clean_matrix(m));
-		i++;
-	}
+	m = (t_matrix){0};
+	m.x = x;
+	m.y = y;
 	return (m);
 }
 
-t_matrix	*create_matrix(char **values, int col, int row)
+t_matrix	create_matrix(char **values, int col, int row)
 {
 	int			i;
 	int			j;
-	t_matrix	*m;
+	t_matrix	m;
 
 	if (!values || !*values)
-		return (NULL);
-	m = alloc_matrix(col, row);
-	if (!m)
-		return (NULL);
-	j = 0;
+		return (new_matrix(0, 0));
+	m = new_matrix(col, row);
 	i = 0;
 	while (i < row)
 	{
 		j = -1;
 		while (++j < col)
-			m->node[i][j] = ft_atof(values[(i * col) + j]);
+			m.node[i][j] = ft_atof(values[(i * col) + j]);
 		i++;
 	}
 	return (m);
 }
 
-t_matrix	*create_identity_matrix(void)
+t_matrix	create_identity_matrix(void)
 {
-	char	**values;
+	t_matrix	m;
 
-	values = (char *[]){\
-		(char []){"1"}, (char []){"0"}, (char []){"0"}, (char []){"0"}, \
-		(char []){"0"}, (char []){"1"}, (char []){"0"}, (char []){"0"}, \
-		(char []){"0"}, (char []){"0"}, (char []){"1"}, (char []){"0"}, \
-		(char []){"0"}, (char []){"0"}, (char []){"0"}, (char []){"1"}, \
-		NULL};
-	return (create_matrix(values, 4, 4));
-}
-
-int	matrix_cmp(t_matrix *a, t_matrix *b)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	if (!a || !b)
-	{
-		if (a == b)
-			return (1);
-		return (0);
-	}
-	while (i < a->y && i < b->y)
-	{
-		j = 0;
-		while (j < a->x && j < b->x)
-		{
-			if (fabs(a->node[i][j] - b->node[i][j]) > EPSILON)
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	if (a->y == i && a->x == j && b->y == i && b->x == j)
-		return (1);
-	return (0);
+	m = new_matrix(4, 4);
+	m.node[0][0] = 1;
+	m.node[1][1] = 1;
+	m.node[2][2] = 1;
+	m.node[3][3] = 1;
+	return (m);
 }

@@ -9,10 +9,6 @@ Test(object_operations, test_sums_two_objects_one_of_type_vector_and_one_type_po
 
 	result = sum_objects(obj1, obj2);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(obj1);
-	// clean_obj(obj2);
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 Test(object_operations, test_sums_two_objects_of_type_vector_should_be_a_vector)
@@ -24,10 +20,6 @@ Test(object_operations, test_sums_two_objects_of_type_vector_should_be_a_vector)
 
 	result = sum_objects(obj1, obj2);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(obj1);
-	// clean_obj(obj2);
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 // Test(object_operations, test_sums_two_objects_of_type_point_should_be_NULL)
@@ -66,10 +58,6 @@ Test(object_operations, test_subtractions_two_objects_of_type_point_should_be_a_
 
 	result = subtract_objects(obj1, obj2);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(obj1);
-	// clean_obj(obj2);
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 Test(object_operations, test_subtractions_two_objects_one_of_type_point_minus_a_type_vector_should_be_a_point)
@@ -81,10 +69,6 @@ Test(object_operations, test_subtractions_two_objects_one_of_type_point_minus_a_
 
 	result = subtract_objects(obj1, obj2);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(obj1);
-	// clean_obj(obj2);
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 Test(object_operations, test_subtractions_two_objects_of_type_vector_should_be_a_vector)
@@ -96,10 +80,6 @@ Test(object_operations, test_subtractions_two_objects_of_type_vector_should_be_a
 
 	result = subtract_objects(obj1, obj2);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(obj1);
-	// clean_obj(obj2);
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 // Test(object_operations, test_subtractions_two_objects_one_of_type_vector_minus_a_type_point_should_be_NULL)
@@ -137,8 +117,6 @@ Test(object_operations, test_negate_a_object_of_type_vector)
 
 	result = negating_object(vector);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 Test(object_operations, test_negate_a_object_of_type_vector_with_all_values_zero)
@@ -149,8 +127,6 @@ Test(object_operations, test_negate_a_object_of_type_vector_with_all_values_zero
 
 	result = negating_object(vector);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 // Test(object_operations, test_negate_a_object_NULL_should_be_NULL)
@@ -171,8 +147,6 @@ Test(object_operations, test_negate_a_object_should_be_the_object_negate)
 
 	result = negating_object(obj);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 Test(object_operations, test_multiply_a_object_by_a_scalar_3_dot_5)
@@ -184,8 +158,6 @@ Test(object_operations, test_multiply_a_object_by_a_scalar_3_dot_5)
 
 	result = multiply_object(obj1, scale);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 Test(object_operations, test_multiply_a_object_by_a_fraction_0_dot_5)
@@ -197,8 +169,6 @@ Test(object_operations, test_multiply_a_object_by_a_fraction_0_dot_5)
 
 	result = multiply_object(obj1, scale);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 Test(object_operations, test_multiply_a_object_by_0)
@@ -210,8 +180,6 @@ Test(object_operations, test_multiply_a_object_by_0)
 
 	result = multiply_object(obj1, scale);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 // Test(object_operations, test_multiply_a_NULL_object_should_be_NULL)
@@ -234,8 +202,6 @@ Test(object_operations, test_divide_a_object_by_a_scalar_2)
 
 	result = divide_object(obj1, scale);
 	cr_assert(cr_object_eq(result, expected));
-	// clean_obj(result);
-	// clean_obj(expected);
 }
 
 // Test(object_operations, test_divide_a_object_by_0)

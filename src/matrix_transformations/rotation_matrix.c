@@ -3,59 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   rotation_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 11:18:17 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/18 17:28:50 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:08:21 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_matrix	*rotation_x(double r)
+t_matrix	rotation_x(double r)
 {
-	t_matrix	*matrix;
+	t_matrix	matrix;
 
-	matrix = alloc_matrix(4, 4);
-	if (!matrix)
-		return (NULL);
-	matrix->node[0][0] = 1;
-	matrix->node[1][1] = cos(r);
-	matrix->node[1][2] = sin(r) * -1;
-	matrix->node[2][1] = sin(r);
-	matrix->node[2][2] = cos(r);
-	matrix->node[3][3] = 1;
+	matrix = new_matrix(4, 4);
+	matrix.node[0][0] = 1;
+	matrix.node[1][1] = cos(r);
+	matrix.node[1][2] = sin(r) * -1;
+	matrix.node[2][1] = sin(r);
+	matrix.node[2][2] = cos(r);
+	matrix.node[3][3] = 1;
 	return (matrix);
 }
 
-t_matrix	*rotation_y(double r)
+t_matrix	rotation_y(double r)
 {
-	t_matrix	*matrix;
+	t_matrix	matrix;
 
-	matrix = alloc_matrix(4, 4);
-	if (!matrix)
-		return (NULL);
-	matrix->node[0][0] = cos(r);
-	matrix->node[0][2] = sin(r);
-	matrix->node[1][1] = 1;
-	matrix->node[2][0] = sin(r) * -1;
-	matrix->node[2][2] = cos(r);
-	matrix->node[3][3] = 1;
+	matrix = new_matrix(4, 4);
+	matrix.node[0][0] = cos(r);
+	matrix.node[0][2] = sin(r);
+	matrix.node[1][1] = 1;
+	matrix.node[2][0] = sin(r) * -1;
+	matrix.node[2][2] = cos(r);
+	matrix.node[3][3] = 1;
 	return (matrix);
 }
 
-t_matrix	*rotation_z(double r)
+t_matrix	rotation_z(double r)
 {
-	t_matrix	*matrix;
+	t_matrix	matrix;
 
-	matrix = alloc_matrix(4, 4);
-	if (!matrix)
-		return (NULL);
-	matrix->node[0][0] = cos(r);
-	matrix->node[0][1] = sin(r) * -1;
-	matrix->node[1][0] = sin(r);
-	matrix->node[1][1] = cos(r);
-	matrix->node[2][2] = 1;
-	matrix->node[3][3] = 1;
+	matrix = new_matrix(4, 4);
+	matrix.node[0][0] = cos(r);
+	matrix.node[0][1] = sin(r) * -1;
+	matrix.node[1][0] = sin(r);
+	matrix.node[1][1] = cos(r);
+	matrix.node[2][2] = 1;
+	matrix.node[3][3] = 1;
 	return (matrix);
 }

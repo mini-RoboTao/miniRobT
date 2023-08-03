@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:57:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 00:24:14 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:24:21 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_camera	camera(int hsize, int vsize, double fov)
 	return (c);
 }
 
-static t_ray	calculate_ray_cam(t_camera *c, t_matrix *inv_trans, \
+static t_ray	calculate_ray_cam(t_camera *c, t_matrix inv_trans, \
 									double wx, double wy)
 {
 	t_obj	pixel;
@@ -59,7 +59,6 @@ static t_ray	calculate_ray_cam(t_camera *c, t_matrix *inv_trans, \
 	pixel = multiply_matrix_by_obj(inv_trans, (t_obj){wx, wy, -1, 1}, 4, 4);
 	origin = multiply_matrix_by_obj(inv_trans, (t_obj){0, 0, 0, 1}, 4, 4);
 	direction = object_normalize(subtract_objects(pixel, origin));
-	clean_matrix(inv_trans);
 	return (create_ray(origin, direction));
 }
 
@@ -67,8 +66,8 @@ t_ray	ray_for_pixel(t_camera *c, double px, double py)
 {
 	double		world_x;
 	double		world_y;
-	t_matrix	*inverse_transform;
-	t_matrix	*origin;
+	t_matrix	inverse_transform;
+	t_matrix	origin;
 
 	world_x = c->half_width - ((px + 0.5) * c->pixel_size);
 	world_y = c->half_height - ((py + 0.5) * c->pixel_size);
