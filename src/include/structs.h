@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/03 03:41:03 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:51:30 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ typedef struct s_material
 	double		shininess;
 }				t_material;
 
+typedef struct s_ray
+{
+	t_obj		position;
+	t_obj		direction;
+}				t_ray;
+
 /************* Objects *************/
 typedef struct s_sphere
 {
@@ -75,7 +81,19 @@ typedef struct s_sphere
 	double		radius;
 	t_matrix	transform;
 	t_material	material;
+	t_ray		saved_ray;
 }				t_sphere;
+
+typedef struct s_plane
+{
+	double		x;
+	double		y;
+	double		z;
+	double		radius;
+	t_matrix	transform;
+	t_material	material;
+	t_ray		saved_ray;
+}				t_plane;
 
 typedef struct s_common_shape
 {
@@ -85,11 +103,13 @@ typedef struct s_common_shape
 	double		radius;
 	t_matrix	transform;
 	t_material	material;
+	t_ray		saved_ray;
 }				t_common_shape;
 
 union u_shape
 {
 	t_sphere		*sphere;
+	t_plane			*plane;
 	t_common_shape	*any;
 	void			*v;
 };
@@ -98,18 +118,13 @@ typedef struct s_shape
 {
 	t_object_type			id;
 	union {
-		t_common_shape		*any;
 		t_sphere			*sphere;
+		t_plane				*plane;
+		t_common_shape		*any;
 		void				*v;
 	};
 }				t_shape;
 /* ******************************** */
-
-typedef struct s_ray
-{
-	t_obj		position;
-	t_obj		direction;
-}				t_ray;
 
 typedef struct s_intersection
 {

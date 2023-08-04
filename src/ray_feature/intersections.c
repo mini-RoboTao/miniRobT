@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:49:11 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/03 17:18:44 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/04 20:08:33 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ double	calculate_discriminat(double *abc, t_ray ray, t_shape shape)
 	double			discriminat;
 
 	r = transform(ray, inverse_matrix(shape.any->transform));
+	shape.any->saved_ray = r;
 	s_ray = subtract_objects(r.position, (t_obj){0, 0, 0, 1});
 	abc[0] = object_dot(r.direction, r.direction);
 	abc[1] = 2 * object_dot(r.direction, s_ray);
@@ -34,12 +35,23 @@ t_intersections	intersect(t_shape shape, t_ray ray)
 	t_intersections	xs;
 
 	xs = (t_intersections){0};
-	discriminat = calculate_discriminat(abc, ray, shape);
-	if (discriminat < 0)
-		return ((t_intersections){0});
-	intersections(&xs, \
-	intersection((-abc[1] - (sqrt(discriminat))) / (2 * abc[0]), shape), \
-	intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), shape), 0);
+	if (shape.id == 3)
+	{
+		if (fabs(ray.direction.y) < EPSILON)
+			return ((t_intersections){0});
+		intersections(&xs, \
+		intersection((-ray.position.y) / ray.direction.y, shape), \
+		NULL, 0);
+	}
+	else if (shape.id == 1)
+	{
+		discriminat = calculate_discriminat(abc, ray, shape);
+		if (discriminat < 0)
+			return ((t_intersections){0});
+		intersections(&xs, \
+		intersection((-abc[1] - (sqrt(discriminat))) / (2 * abc[0]), shape), \
+		intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), shape), 0);
+	}
 	return (xs);
 }
 
@@ -59,9 +71,16 @@ t_intersection	*intersection(double t, t_shape shape)
 void	intersections(t_intersections *xs, \
 		t_intersection *i1, t_intersection *i2, int index)
 {
-	xs->amount += 2;
-	ft_lstrayadd_back(&xs->i, i1);
-	ft_lstrayadd_back(&xs->i, i2);
+	if (i1)
+	{
+		xs->amount += 1;
+		ft_lstrayadd_back(&xs->i, i1);
+	}
+	if (i2)
+	{
+		xs->amount += 1;
+		ft_lstrayadd_back(&xs->i, i2);
+	}
 }
 
 t_intersection	*hit(t_intersections xs)
