@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:53:42 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 18:23:19 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 00:43:27 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,7 @@ t_color	color_at(t_world *w, t_ray r)
 
 	xs = intersect_world(w, r);
 	if (!xs.i)
-	{
-		if (xs.shape)
-			free(xs.shape);
 		return ((t_color){0, 0, 0});
-	}
 	i = hit(xs);
 	c = (t_color){0, 0, 0};
 	if (i)
@@ -70,8 +66,6 @@ t_color	color_at(t_world *w, t_ray r)
 		comps = prepare_computations(i, r);
 		c = shade_hit(w, &comps);
 	}
-	if (xs.shape)
-		free(xs.shape);
 	clean_intersection_lst(&xs.i);
 	return (c);
 }

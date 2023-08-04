@@ -25,26 +25,26 @@ Test(The_Phong_Reflection, The_default_material)
 
 Test(The_Phong_Reflection, A_sphere_has_a_default_material)
 {
-	t_sphere	*s = new_sphere();
+	t_shape		shape = new_sphere();
 	t_material	material = new_material();
 
-	cr_assert(cr_material_eq(s->material, material));
+	cr_assert(cr_material_eq(shape.sphere->material, material));
 
-	clean_sphere(s);
+	clean_shape(&shape);
 }
 
 Test(The_Phong_Reflection, A_sphere_may_be_assigned_a_material)
 {
-	t_sphere	*s = new_sphere();
+	t_shape		shape = new_sphere();
 	t_material	material = new_material();
 
 	material.ambient = 1;
-	s->material = material;
+	shape.sphere->material = material;
 
-	cr_assert(cr_material_eq(s->material, material));
-	cr_assert(s->material.ambient == 1);
+	cr_assert(cr_material_eq(shape.sphere->material, material));
+	cr_assert(shape.sphere->material.ambient == 1);
 
-	clean_sphere(s);
+	clean_shape(&shape);
 }
 
 Test(The_Phong_Reflection, Lighting_with_the_eye_between_the_light_and_the_surface)

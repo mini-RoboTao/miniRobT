@@ -66,13 +66,13 @@ Test(Rendering_shadows, Shade_hit_is_given_an_intersection_in_shadow)
 	world.light 			= point_light(point, color);
 
 	t_matrix	transformation = translation(0, 0, 10);
-	set_transform(world.shape[1].sphere, transformation);
+	set_transform(&world.shapes[1], transformation);
 
 	t_obj	point2 = create_point(0, 0, 5);
 	t_obj	vector = create_vector(0, 0, 1);
 	t_ray	ray = create_ray(point2, vector);
 
-	t_intersection	*i = intersection(4, world.shape[1].v);
+	t_intersection	*i = intersection(4, world.shapes[1]);
 
 	t_precomp	comps = prepare_computations(i, ray);
 	t_color	c = shade_hit(&world, &comps);
@@ -89,14 +89,14 @@ Test(Rendering_shadows, The_hit_should_offset_the_point)
 	t_obj	point = create_point(0, 0, -5);
 	t_obj	vector = create_vector(0, 0, 1);
 	t_ray	ray = create_ray(point, vector);
-	t_sphere	*shape = new_sphere();
+	t_shape	shape = new_sphere();
 	t_matrix	transformation = translation(0, 0, 1);
-	set_transform(shape, transformation);
+	set_transform(&shape, transformation);
 	t_intersection	*i = intersection(5, shape);
 	t_precomp	comps = prepare_computations(i, ray);
 	cr_assert(comps.over_point.z < (-1 * (EPSILON / 2)));
 	cr_assert(comps.point.z > comps.over_point.z);
 
 	clean_intersection_lst(&i);
-	clean_sphere(shape);
+	clean_shape(&shape);
 }

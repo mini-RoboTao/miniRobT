@@ -6,19 +6,19 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:49:11 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 18:18:49 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 02:18:33 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	calculate_discriminat(double *abc, t_ray ray, t_sphere *s)
+double	calculate_discriminat(double *abc, t_ray ray, t_shape shape)
 {
 	t_ray			r;
 	t_obj			s_ray;
 	double			discriminat;
 
-	r = transform(ray, inverse_matrix(s->transform));
+	r = transform(ray, inverse_matrix(shape.sphere->transform));
 	s_ray = subtract_objects(r.position, (t_obj){0, 0, 0, 1});
 	abc[0] = object_dot(r.direction, r.direction);
 	abc[1] = 2 * object_dot(r.direction, s_ray);
@@ -27,32 +27,30 @@ double	calculate_discriminat(double *abc, t_ray ray, t_sphere *s)
 	return (discriminat);
 }
 
-t_intersections	intersect(t_sphere *s, t_ray ray)
+t_intersections	intersect(t_shape shape, t_ray ray)
 {
 	double			abc[3];
 	double			discriminat;
 	t_intersections	xs;
 
 	xs = (t_intersections){0};
-	discriminat = calculate_discriminat(abc, ray, s);
+	discriminat = calculate_discriminat(abc, ray, shape);
 	if (discriminat < 0)
 		return ((t_intersections){0});
-	xs.shape = malloc(sizeof(void *));
 	intersections(&xs, \
-	intersection((-abc[1] - (sqrt(discriminat))) / (2 * abc[0]), s), \
-	intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), s), 0);
-	xs.shape[0] = s;
+	intersection((-abc[1] - (sqrt(discriminat))) / (2 * abc[0]), shape), \
+	intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), shape), 0);
 	return (xs);
 }
 
-t_intersection	*intersection(double t, void *shape)
+t_intersection	*intersection(double t, t_shape shape)
 {
 	t_intersection	*head;
 
 	head = malloc(sizeof(t_intersection));
 	if (!head)
 		return (NULL);
-	head->v = shape;
+	head->shape = shape;
 	head->t = t;
 	head->next = NULL;
 	return (head);
@@ -61,8 +59,6 @@ t_intersection	*intersection(double t, void *shape)
 void	intersections(t_intersections *xs, \
 		t_intersection *i1, t_intersection *i2, int index)
 {
-	if (!xs->i)
-		xs->shape[index] = i1->v;
 	xs->amount += 2;
 	ft_lstrayadd_back(&xs->i, i1);
 	ft_lstrayadd_back(&xs->i, i2);
