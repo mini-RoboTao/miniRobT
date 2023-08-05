@@ -49,6 +49,11 @@ Lorep ipsum...
 We use linked list to store data received from the RT file, where each line in the file will be one item in list.
 After the processing and validate data input, each item will be transformaded into a 4x4 matrix.
 
+**Project Main Flow**
+> The main flow describes an overall process of the project by stages.
+
+![general scope](img/general_scope.jpg)
+
 ### Functions
 
 There are some functions to read and validate file and data input.
