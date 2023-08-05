@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclean.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 17:33:23 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 15:46:46 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/05 17:01:47 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	clean_intersection_lst(t_intersection **l)
 			free(head);
 		head = next;
 	}
-	*l = NULL;
+	l = NULL;
 }
