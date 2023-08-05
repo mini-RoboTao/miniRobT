@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:49:11 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/05 17:41:52 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/05 18:36:43 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,26 +60,9 @@ void	intersections(t_intersections *xs, \
 		t_intersection *i1, t_intersection *i2, int index)
 {
 	xs->amount += 2;
-	ft_lstrayadd_back(&xs->i, i1);
-	ft_lstrayadd_back(&xs->i, i2);
+	ft_lst_ray_sort_add(&xs->i, i1);
+	ft_lst_ray_sort_add(&xs->i, i2);
 }
-
-// void	intersections(t_intersections *xs,
-// 		t_intersection *i1, t_intersection *i2, int index)
-// {
-// 	xs->amount += 2;
-// 	printf("intersections before xs\t%p\n", xs);
-// 	printf("intersections before xs.i\t%p\n", xs->i);
-// 	printf("intersection before i1\t%p\n", i1);
-// 	printf("intersection before i2\t%p\n", i2);
-// 	ft_lstrayadd_back(&xs->i, i1);
-// 	// ft_lst_ray_sort_add(&xs->i, i1);
-// 	printf("intersections after xs.i\t%p\n", xs->i);
-// 	printf("intersection after i1\t%p\n", i1);
-// 	printf("intersection after i2\t%p\n\n", i2);
-// 	ft_lstrayadd_back(&xs->i, i2);
-// 	// ft_lst_ray_sort_add(&xs->i, i2);
-// }
 
 t_intersection	*hit(t_intersections xs)
 {

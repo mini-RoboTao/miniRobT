@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:38:20 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/27 21:59:23 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/05 18:11:11 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # endif
 # include <math.h>
 # include "libft.h"
+# include "colors.h"
 # include "defines.h"
 # include "enums.h"
 # include "structs.h"

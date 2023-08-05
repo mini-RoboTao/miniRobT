@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/05 17:41:28 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/05 18:36:13 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,41 +58,6 @@ t_intersections	intersect_world(t_world *w, t_ray ray)
 	}
 	return (xs);
 }
-
-// t_intersections	intersect_world(t_world *w, t_ray ray)
-// {
-// 	int				i;
-// 	double			abc[3];
-// 	double			discriminat;
-// 	t_intersections	xs;
-
-// 	i = 0;
-// 	printf("xs before:\t%p\n", xs);
-// 	printf("xs.i before:\t%p\n", xs.i);
-// 	xs = (t_intersections){0};
-// 	while (i < w->amount_obj)
-// 	{
-// 		discriminat = calculate_discriminat(abc, ray, w->shapes[i]);
-// 		if (discriminat >= 0)
-// 		{
-// 			intersections(&xs,
-// 			intersection((-abc[1] - (sqrt(discriminat)))
-// 			/ (2 * abc[0]), w->shapes[i]),
-// 			intersection((-abc[1] + (sqrt(discriminat)))
-// 			/ (2 * abc[0]), w->shapes[i]), i);
-// 		}
-// 		i++;
-// 	}
-// 	printf("xs after:\t%p\n", xs);
-// 	printf("xs.i after:\t%p\n", xs.i);
-// 	while (xs.i)
-// 	{
-// 		printf("loop xs.i\t%p\n", xs.i);
-// 		printf("loop xs.i->t\t%f\n", xs.i->t);
-// 		xs.i = xs.i->next;
-// 	}
-// 	return (xs);
-// }
 
 t_precomp	prepare_computations(t_intersection *i, t_ray r)
 {
