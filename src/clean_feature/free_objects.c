@@ -12,42 +12,6 @@
 
 #include "minirt.h"
 
-// void	clean_env(t_environment *c)
-// {
-// 	if (c)
-// 	{
-// 		if (c->gravity)
-// 			free(c->gravity);
-// 		if (c->wind)
-// 			free(c->wind);
-// 		free(c);
-// 	}
-// }
-
-// void	clean_ray(t_ray *r)
-// {
-// 	if (r)
-// 	{
-// 		if (r->position)
-// 			free(r->position);
-// 		if (r->direction)
-// 			free(r->direction);
-// 		free(r);
-// 	}
-// }
-
-// void	clean_proj(t_projectile *c)
-// {
-// 	if (c)
-// 	{
-// 		if (c->position)
-// 			free(c->position);
-// 		if (c->velocity)
-// 			free(c->velocity);
-// 		free(c);
-// 	}
-// }
-
 void	clean_shape(t_shape *obj)
 {
 	if (obj->v)
