@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:49:11 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/04 20:08:33 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/05 19:24:35 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void	intersections(t_intersections *xs, \
 	if (i1)
 	{
 		xs->amount += 1;
-		ft_lstrayadd_back(&xs->i, i1);
+		ft_lst_ray_sort_add(&xs->i, i1);
 	}
 	if (i2)
 	{
 		xs->amount += 1;
-		ft_lstrayadd_back(&xs->i, i2);
+		ft_lst_ray_sort_add(&xs->i, i2);
 	}
 }
 

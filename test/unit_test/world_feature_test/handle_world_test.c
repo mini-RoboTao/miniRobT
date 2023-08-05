@@ -36,9 +36,9 @@ Test(world_scene, Intersect_a_world_with_a_ray)
 	t_intersections	xs	= intersect_world(&w, r);
 	cr_assert(epsilon_eq(flt, xs.amount, 4, EPSILON));
 	cr_assert(epsilon_eq(flt, xs.i->t, 4, EPSILON));
-	cr_assert(epsilon_eq(flt, xs.i->next->t, 6, EPSILON));
-	cr_assert(epsilon_eq(flt, xs.i->next->next->t, 4.5, EPSILON));
-	cr_assert(epsilon_eq(flt, xs.i->next->next->next->t, 5.5, EPSILON));
+	cr_assert(epsilon_eq(flt, xs.i->next->t, 4.5, EPSILON));
+	cr_assert(epsilon_eq(flt, xs.i->next->next->t, 5.5, EPSILON));
+	cr_assert(epsilon_eq(flt, xs.i->next->next->next->t, 6, EPSILON));
 	clean_intersection_lst(&xs.i);
 	clean_world(w);
 }

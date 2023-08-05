@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 17:01:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 15:35:12 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/05 17:00:58 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int				ft_lstray_size(t_intersection *l);
 t_intersection	*ft_lstray_last(t_intersection *l);
 void			clean_intersection_lst(t_intersection **l);
 void			ft_lstrayadd_back(t_intersection **l, t_intersection *new);
+void			ft_lst_ray_sort_add(t_intersection **l, t_intersection *new);
 
 #endif
