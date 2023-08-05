@@ -6,20 +6,11 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:16:00 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 18:14:35 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/03 15:54:46 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-// void	clean_obj(t_obj *o)
-// {
-// 	if (o)
-// 	{
-// 		free(o);
-// 		o = NULL;
-// 	}
-// }
 
 void	clean_canvas(t_canvas *c)
 {
@@ -42,24 +33,16 @@ void	clean_canvas(t_canvas *c)
 	}
 }
 
-// void	*clean_matrix(t_matrix *m)
-// {
-// 	int	i;
+void	clean_shape(t_shape *obj)
+{
+	if (obj->v)
+		free(obj->v);
+}
 
-// 	i = 0;
-// 	if (m)
-// 	{
-// 		if (m->node)
-// 		{
-// 			while (i < m->y)
-// 			{
-// 				if (m->node[i])
-// 					free(m->node[i]);
-// 				i++;
-// 			}
-// 			free(m->node);
-// 		}
-// 		free(m);
-// 	}
-// 	return (NULL);
-// }
+void	clean_world(t_world w)
+{
+	clean_shape(&w.shapes[0]);
+	clean_shape(&w.shapes[1]);
+	if (w.shapes)
+		free(w.shapes);
+}

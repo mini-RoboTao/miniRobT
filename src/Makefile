@@ -14,7 +14,8 @@ VPATH						=					./srcs					\
 												./ray_feature			\
 												./matrix_transformations\
 												./light_and_shading		\
-												./world_feature
+												./world_feature			\
+												./shape_feature
 ######################## FLAGS ###############################
 FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
@@ -38,14 +39,13 @@ SRC_MATRIX_FEATURE			=					handle_matrix.c						\
 												matrix_operations.c					\
 												inverting_matrix.c					\
 												matrix_utils.c
-SRC_CLEAN_FEATURE			=					free_feature.c						\
-												free_objects.c						\
-												clean_world.c
+SRC_CLEAN_FEATURE			=					free_feature.c
 SRC_OBJECT_FEATURE			=					create_object.c						\
 												object_arithmetic.c					\
 												handle_object.c
 SRC_COLORS_FEATURE			=					object_colors.c
 SRC_CANVAS_FEATURE			=					canvas.c
+SRC_SHAPES_FEATURE			=					shapes.c
 SRC_LINKED_LST				=					ft_lstnew.c							\
 												ft_lstsize.c						\
 												ft_lstlast.c						\
@@ -61,7 +61,8 @@ SRC							=					minirt.c utils.c put_together.c objs.c				\
 												$(SRC_RAY_FEATURE)									\
 												$(SRC_LIGHT_AND_SHADING)							\
 												$(SRC_MATRIX_TRANSFORMATION)						\
-												$(SRC_WORLD_FEATURE)
+												$(SRC_WORLD_FEATURE)								\
+												$(SRC_SHAPES_FEATURE)
 OBJ							=					$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP							=					$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 ############## CONDITIONAL COMPILER FLAGS ####################

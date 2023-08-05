@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_world.c                                      :+:      :+:    :+:   */
+/*   shape_feature.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/28 01:19:18 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/03 02:13:27 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/08/03 22:11:05 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/08/04 20:07:43 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef SHAPE_FEATURE_H
+# define SHAPE_FEATURE_H
 
-void	clean_world(t_world w)
-{
-	clean_shape(&w.shapes[0]);
-	clean_shape(&w.shapes[1]);
-	if (w.shapes)
-		free(w.shapes);
-}
+# include "minirt.h"
+
+t_shape	test_shape(void);
+t_shape	new_plane(void);
+
+#endif

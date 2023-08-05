@@ -4,6 +4,7 @@
 # include "minirt.h"
 # include "criterion.h"
 # include "new/assert.h"
+# include <math.h>
 
 # define T (t_bool)true
 # define F (t_bool)false
@@ -34,6 +35,14 @@ int cr_object_eq(t_obj a, t_obj b)
 }
 
 int cr_sphere_eq(t_sphere *a, t_sphere *b)
+{
+	return	(fabs(a->x - b->x) < EPSILON && \
+			fabs(a->y - b->y) < EPSILON && \
+			fabs(a->z - b->z) < EPSILON && \
+			fabs(a->radius - b->radius) < EPSILON);
+}
+
+int cr_plane_eq(t_plane *a, t_plane *b)
 {
 	return	(fabs(a->x - b->x) < EPSILON && \
 			fabs(a->y - b->y) < EPSILON && \
