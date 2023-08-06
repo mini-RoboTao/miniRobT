@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   patterns.c                                         :+:      :+:    :+:   */
+/*   striped_pattern.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 20:45:31 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/06 05:18:51 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/06 21:00:01 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ t_pattern	stripe_pattern(t_color a, t_color b)
 	pattern.a = a;
 	pattern.b = b;
 	pattern.validate = true;
-	pattern.transform = new_matrix(4, 4);
-	pattern.transform.node[0][0] = 1;
-	pattern.transform.node[1][1] = 1;
-	pattern.transform.node[2][2] = 1;
-	pattern.transform.node[3][3] = 1;
+	pattern.type = stripe;
+	pattern.transform = create_identity_matrix();
 	return (pattern);
 }
 
@@ -40,6 +37,7 @@ t_color	stripe_at(t_pattern pattern, t_obj point)
 	return (res);
 }
 
+/*
 t_color	stripe_at_object(t_pattern *pattern, t_shape shape, t_obj world_point)
 {
 	t_obj	obj_point;
@@ -51,8 +49,4 @@ t_color	stripe_at_object(t_pattern *pattern, t_shape shape, t_obj world_point)
 			obj_point, 4, 4);
 	return (stripe_at(*pattern, pattern_point));
 }
-
-void	set_pattern_transform(t_pattern *pattern, t_matrix t)
-{
-	pattern->transform = t;
-}
+*/

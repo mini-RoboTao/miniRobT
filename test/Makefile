@@ -77,7 +77,9 @@ SRC_WORLD_FEATURE				=			handle_world_test.c 				\
 											view_transformation_test.c			\
 											camera_test.c
 SRC_SHAPES_FEATURE				=			shapes_test.c
-SRC_PATTERNS_FEATURE			=			patterns_test.c
+SRC_PATTERNS_FEATURE			=			making_a_striped_pattern_test.c		\
+											transforming_patterns_test.c		\
+											generalizing_patterns_test.c
 SRC								=			$(SRC_OBJ_FEATURE) 					\
 											$(SRC_COLORS_FEATURE) 				\
 											$(SRC_CANVAS_FEATURE) 				\

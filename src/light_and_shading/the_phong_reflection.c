@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/06 03:36:29 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:49:18 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_color	lighting(t_lighting lig)
 	t_color			color;
 
 	if (lig.material.pattern.validate)
-		color = stripe_at_object(&lig.material.pattern, lig.shape, lig.point);
+		color = pattern_at_shape(&lig.material.pattern, lig.shape, lig.point);
 	else
 		color = lig.material.color;
 	data.eff_color = multiply_colors(color, lig.light.intensity);

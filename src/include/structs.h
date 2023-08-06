@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/06 03:34:58 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/06 17:27:14 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,11 @@ typedef struct s_color
 
 typedef struct s_pattern
 {
-	t_color		a;
-	t_color		b;
-	t_bool		validate;
-	t_matrix	transform;
+	t_color			a;
+	t_color			b;
+	t_bool			validate;
+	t_matrix		transform;
+	t_pattern_type	type;
 }	t_pattern;
 
 typedef struct s_material
