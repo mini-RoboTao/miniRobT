@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/04 18:51:30 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/06 03:34:58 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ typedef struct s_color
 	double		blue;
 }	t_color;
 
+typedef struct s_pattern
+{
+	t_color		a;
+	t_color		b;
+	t_bool		validate;
+	t_matrix	transform;
+}	t_pattern;
+
 typedef struct s_material
 {
 	t_color		color;
@@ -64,6 +72,7 @@ typedef struct s_material
 	double		diffuse;
 	double		specular;
 	double		shininess;
+	t_pattern	pattern;
 }				t_material;
 
 typedef struct s_ray
@@ -169,6 +178,7 @@ typedef struct s_light
 typedef struct s_lighting
 {
 	t_material	material;
+	t_shape		shape;
 	t_light		light;
 	t_obj		point;
 	t_obj		eyev;

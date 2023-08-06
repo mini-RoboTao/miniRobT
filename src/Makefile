@@ -15,7 +15,8 @@ VPATH						=					./srcs					\
 												./matrix_transformations\
 												./light_and_shading		\
 												./world_feature			\
-												./shape_feature
+												./shape_feature			\
+												./patterns
 ######################## FLAGS ###############################
 FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
@@ -46,6 +47,7 @@ SRC_OBJECT_FEATURE			=					create_object.c						\
 SRC_COLORS_FEATURE			=					object_colors.c
 SRC_CANVAS_FEATURE			=					canvas.c
 SRC_SHAPES_FEATURE			=					shapes.c
+SRC_PATTERNS_FEATURE		=					patterns.c
 SRC_LINKED_LST				=					ft_lstnew.c							\
 												ft_lstsize.c						\
 												ft_lstlast.c						\
@@ -62,7 +64,8 @@ SRC							=					minirt.c utils.c put_together.c objs.c				\
 												$(SRC_LIGHT_AND_SHADING)							\
 												$(SRC_MATRIX_TRANSFORMATION)						\
 												$(SRC_WORLD_FEATURE)								\
-												$(SRC_SHAPES_FEATURE)
+												$(SRC_SHAPES_FEATURE)								\
+												$(SRC_PATTERNS_FEATURE)
 OBJ							=					$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP							=					$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 ############## CONDITIONAL COMPILER FLAGS ####################

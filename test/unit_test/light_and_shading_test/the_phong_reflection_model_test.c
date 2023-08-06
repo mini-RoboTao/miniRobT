@@ -54,6 +54,7 @@ Test(The_Phong_Reflection, Lighting_with_the_eye_between_the_light_and_the_surfa
 	lighting_s.point = create_point(0, 0, 0);
 	lighting_s.eyev = create_vector(0, 0, -1);
 	lighting_s.normalv = create_vector(0, 0, -1);
+	lighting_s.shape = new_sphere();
 	t_color		color = fill_color(1, 1, 1);
 	t_obj		point = create_point(0, 0, -10);
 	lighting_s.light = point_light(point, color);
@@ -62,6 +63,7 @@ Test(The_Phong_Reflection, Lighting_with_the_eye_between_the_light_and_the_surfa
 	t_color	res = lighting(lighting_s);
 
 	cr_assert(cr_color_eq(res, res_color));
+	clean_shape(&lighting_s.shape);
 }
 
 Test(The_Phong_Reflection, Lighting_with_the_eye_between_light_and_surface__eye_offset_45)
@@ -71,6 +73,7 @@ Test(The_Phong_Reflection, Lighting_with_the_eye_between_light_and_surface__eye_
 	lighting_s.point = create_point(0, 0, 0);
 	lighting_s.eyev = create_vector(0, sqrt(2)/2, sqrt(2)/2 * -1);
 	lighting_s.normalv = create_vector(0, 0, -1);
+	lighting_s.shape = new_sphere();
 	t_color		color = fill_color(1, 1, 1);
 	t_obj		point = create_point(0, 0, -10);
 	lighting_s.light = point_light(point, color);
@@ -79,6 +82,7 @@ Test(The_Phong_Reflection, Lighting_with_the_eye_between_light_and_surface__eye_
 	t_color	res = lighting(lighting_s);
 
 	cr_assert(cr_color_eq(res, res_color));
+	clean_shape(&lighting_s.shape);
 }
 
 Test(The_Phong_Reflection, Lighting_with_eye_opposite_surface__light_offset_45)
@@ -88,6 +92,7 @@ Test(The_Phong_Reflection, Lighting_with_eye_opposite_surface__light_offset_45)
 	lighting_s.point = create_point(0, 0, 0);
 	lighting_s.eyev = create_vector(0, 0, -1);
 	lighting_s.normalv = create_vector(0, 0, -1);
+	lighting_s.shape = new_sphere();
 	t_color		color = fill_color(1, 1, 1);
 	t_obj		point = create_point(0, 10, -10);
 	lighting_s.light = point_light(point, color);
@@ -96,6 +101,7 @@ Test(The_Phong_Reflection, Lighting_with_eye_opposite_surface__light_offset_45)
 	t_color	res = lighting(lighting_s);
 
 	cr_assert(cr_color_eq(res, res_color));
+	clean_shape(&lighting_s.shape);
 }
 
 Test(The_Phong_Reflection, Lighting_with_eye_in_the_path_of_the_reflection_vector)
@@ -105,6 +111,7 @@ Test(The_Phong_Reflection, Lighting_with_eye_in_the_path_of_the_reflection_vecto
 	lighting_s.point = create_point(0, 0, 0);
 	lighting_s.eyev = create_vector(0, sqrt(2)/2 * -1, sqrt(2)/2 * -1);
 	lighting_s.normalv = create_vector(0, 0, -1);
+	lighting_s.shape = new_sphere();
 	t_color		color = fill_color(1, 1, 1);
 	t_obj		point = create_point(0, 10, -10);
 	lighting_s.light = point_light(point, color);
@@ -113,6 +120,7 @@ Test(The_Phong_Reflection, Lighting_with_eye_in_the_path_of_the_reflection_vecto
 	t_color	res = lighting(lighting_s);
 
 	cr_assert(cr_color_eq(res, res_color));
+	clean_shape(&lighting_s.shape);
 }
 
 Test(The_Phong_Reflection, Lighting_with_the_light_behind_the_surface)
@@ -122,6 +130,7 @@ Test(The_Phong_Reflection, Lighting_with_the_light_behind_the_surface)
 	lighting_s.point = create_point(0, 0, 0);
 	lighting_s.eyev = create_vector(0, 0, -1);
 	lighting_s.normalv = create_vector(0, 0, -1);
+	lighting_s.shape = new_sphere();
 	t_color		color = fill_color(1, 1, 1);
 	t_obj		point = create_point(0, 0, 10);
 	lighting_s.light = point_light(point, color);
@@ -130,4 +139,5 @@ Test(The_Phong_Reflection, Lighting_with_the_light_behind_the_surface)
 	t_color	res = lighting(lighting_s);
 
 	cr_assert(cr_color_eq(res, res_color));
+	clean_shape(&lighting_s.shape);
 }

@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:38:20 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/05 19:04:57 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/05 20:58:01 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # include "defines.h"
 # include "enums.h"
 # include "structs.h"
+# include "patterns.h"
 # include "linked_list.h"
 # include "clean_feature.h"
 # include "object_feature.h"
