@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 20:46:21 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/06 20:48:41 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/06 22:30:43 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,7 @@ t_color		pattern_at_shape(t_pattern *pattern, t_shape shape,
 				t_obj world_point);
 t_color		pattern_at(t_pattern pattern, t_obj point);
 
+// Gradient Pattern
+t_pattern	gradient_pattern(t_color a, t_color b);
+t_color		gradient_at(t_pattern pattern, t_obj point);
 #endif

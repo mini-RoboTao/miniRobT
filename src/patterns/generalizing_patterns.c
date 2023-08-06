@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 16:50:46 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/06 20:40:02 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/06 22:43:09 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ t_color	pattern_at_shape(t_pattern *pattern, t_shape shape, t_obj world_point)
 			obj_point, 4, 4);
 	if (pattern->type == stripe)
 		return (stripe_at(*pattern, pattern_point));
+	else if (pattern->type == gradient)
+		return (gradient_at(*pattern, pattern_point));
 	return (pattern_at(*pattern, pattern_point));
 }
