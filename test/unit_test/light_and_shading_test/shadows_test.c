@@ -75,7 +75,7 @@ Test(Rendering_shadows, Shade_hit_is_given_an_intersection_in_shadow)
 	t_intersection	*i = intersection(4, world.shapes[1]);
 
 	t_precomp	comps = prepare_computations(i, ray);
-	t_color	c = shade_hit(&world, &comps);
+	t_color	c = shade_hit(&world, &comps, 2);
 
 	t_color	color_res = fill_color(0.1, 0.1, 0.1);
 	cr_assert(cr_color_eq(c, color_res));

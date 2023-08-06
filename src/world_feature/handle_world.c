@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/05 18:36:13 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/06 14:43:31 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_world	default_world(void)
 	w = (t_world){0};
 	w.amount_obj = 2;
 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
-	w.shapes = malloc(sizeof(t_shape) * 2);
+	w.shapes = malloc(sizeof(t_shape) * 10);
 	w.shapes[0] = new_sphere();
 	w.shapes[0].sphere->material.color = fill_color(0.8, 1, 0.6);
 	w.shapes[0].sphere->material.diffuse = 0.7;
@@ -75,6 +75,7 @@ t_precomp	prepare_computations(t_intersection *i, t_ray r)
 		comps.normalv = negating_object(object_normalize(comps.normalv));
 		comps.inside = 1;
 	}
+	comps.reflectv = reflect(r.direction, comps.normalv);
 	res_multiply = create_object(comps.normalv.x, comps.normalv.y, \
 	comps.normalv.z, comps.normalv.w);
 	res_multiply = multiply_object(res_multiply, EPSILON);
@@ -82,16 +83,21 @@ t_precomp	prepare_computations(t_intersection *i, t_ray r)
 	return (comps);
 }
 
-t_color	shade_hit(t_world *w, t_precomp *comps)
+t_color	shade_hit(t_world *w, t_precomp *comps, int remaining)
 {
 	t_lighting		lig;
+	t_color			surface;
+	t_color			reflected;
 
 	lig = (t_lighting){0};
 	lig.material = comps->shape.sphere->material;
+	lig.shape = comps->shape;
 	lig.light = w->light;
 	lig.point = comps->point;
 	lig.eyev = comps->eyev;
 	lig.normalv = comps->normalv;
 	lig.in_shadow = is_shadowed(w, comps->over_point);
-	return (lighting(lig));
+	surface = lighting(lig);
+	reflected = reflected_color(*w, *comps, remaining);
+	return (sum_colors(surface, reflected));
 }

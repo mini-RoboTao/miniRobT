@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/04 18:51:30 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/06 13:25:53 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_material
 	double		diffuse;
 	double		specular;
 	double		shininess;
+	double		reflective;
 }				t_material;
 
 typedef struct s_ray
@@ -169,6 +170,7 @@ typedef struct s_light
 typedef struct s_lighting
 {
 	t_material	material;
+	t_shape		shape;
 	t_light		light;
 	t_obj		point;
 	t_obj		eyev;
@@ -195,6 +197,7 @@ typedef struct s_precomp
 	t_obj		over_point;
 	t_obj		eyev;
 	t_obj		normalv;
+	t_obj		reflectv;
 	int			inside;
 }				t_precomp;
 
