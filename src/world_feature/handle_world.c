@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/05 18:36:13 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/07 23:45:52 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ t_color	shade_hit(t_world *w, t_precomp *comps)
 	lig.eyev = comps->eyev;
 	lig.normalv = comps->normalv;
 	lig.in_shadow = is_shadowed(w, comps->over_point);
+	lig.shape = comps->shape;
 	return (lighting(lig));
 }
