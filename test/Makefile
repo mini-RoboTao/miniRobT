@@ -81,7 +81,8 @@ SRC_PATTERNS_FEATURE			=			making_a_striped_pattern_test.c		\
 											transforming_patterns_test.c		\
 											generalizing_patterns_test.c		\
 											gradient_pattern_test.c				\
-											ring_pattern_test.c
+											ring_pattern_test.c					\
+											checkers_pattern_test.c
 SRC								=			$(SRC_OBJ_FEATURE) 					\
 											$(SRC_COLORS_FEATURE) 				\
 											$(SRC_CANVAS_FEATURE) 				\

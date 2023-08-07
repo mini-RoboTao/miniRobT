@@ -51,7 +51,8 @@ SRC_PATTERNS_FEATURE		=					striped_pattern.c					\
 												transforming_patterns.c				\
 												generalizing_patterns.c				\
 												gradient_pattern.c					\
-												ring_pattern.c
+												ring_pattern.c						\
+												checkers_pattern.c
 SRC_LINKED_LST				=					ft_lstnew.c							\
 												ft_lstsize.c						\
 												ft_lstlast.c						\

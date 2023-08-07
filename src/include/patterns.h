@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 20:46:21 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/07 14:51:17 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/07 16:36:25 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,9 @@ t_color		gradient_at(t_pattern pattern, t_obj point);
 // Ring Pattern
 t_pattern	ring_pattern(t_color a, t_color b);
 t_color		ring_at(t_pattern pattern, t_obj point);
+
+// Checkers Pattern
+t_pattern	checkers_pattern(t_color a, t_color b);
+t_color		checkers_at(t_pattern pattern, t_obj point);
+
 #endif
