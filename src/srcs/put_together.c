@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_together.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/03 03:33:17 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/07 23:46:46 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 t_shape	middle_sphere(void *v)
 {
 	t_shape		middle;
+	t_matrix	tmp[2];
+	t_pattern	pattern;
 
 	middle = new_sphere();
 	middle.sphere->transform = translation(-0.5, 1, 0.5);
@@ -22,6 +24,11 @@ t_shape	middle_sphere(void *v)
 	middle.sphere->material.color = fill_color(0.1, 1, 0.5);
 	middle.sphere->material.diffuse = 0.7;
 	middle.sphere->material.specular = 0.3;
+	pattern = gradient_pattern(fill_color(0, 1, 0), fill_color(1, 0, 0));
+	tmp[0] = translation(1, 1, 0.5);
+	tmp[1] = scaling(2, 2, 2);
+	set_pattern_transform(&pattern, multiply_matrix(tmp[0], tmp[1], 4, 4));
+	middle.sphere->material.pattern = pattern;
 	return (middle);
 	(void)v;
 }
@@ -30,6 +37,7 @@ t_shape	right_sphere(void *v)
 {
 	t_shape		middle;
 	t_matrix	tmp[2];
+	t_pattern	pattern;
 
 	middle = new_sphere();
 	tmp[0] = translation(1.5, 0.5, -0.5);
@@ -39,6 +47,9 @@ t_shape	right_sphere(void *v)
 	middle.sphere->material.color = fill_color(1, 0.1, 0.1);
 	middle.sphere->material.diffuse = 0.7;
 	middle.sphere->material.specular = 0.3;
+	pattern = checkers_pattern(fill_color(0, 1, 0), fill_color(1, 0, 0));
+	set_pattern_transform(&pattern, scaling(0.2, 0.2, 0.2));
+	middle.sphere->material.pattern = pattern;
 	return (middle);
 	(void)v;
 }
@@ -47,6 +58,7 @@ t_shape	left_sphere(void *v)
 {
 	t_shape		middle;
 	t_matrix	tmp[2];
+	t_pattern	pattern;
 
 	middle = new_sphere();
 	tmp[0] = translation(-1.5, 0.33, -0.75);
@@ -56,6 +68,9 @@ t_shape	left_sphere(void *v)
 	middle.sphere->material.color = fill_color(1, 0.8, 0.1);
 	middle.sphere->material.diffuse = 0.7;
 	middle.sphere->material.specular = 0.3;
+	pattern = stripe_pattern(fill_color(1, 1, 0), fill_color(1, 0, 0));
+	set_pattern_transform(&pattern, scaling(0.5, 0.5, 0.5));
+	middle.sphere->material.pattern = pattern;
 	return (middle);
 	(void)v;
 }
