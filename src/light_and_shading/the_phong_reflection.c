@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/02 00:25:25 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:49:18 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_material	new_material(void)
 	material.diffuse = 0.9;
 	material.specular = 0.9;
 	material.shininess = 200.0;
+	material.pattern.validate = false;
 	return (material);
 }
 
@@ -57,8 +58,13 @@ t_color	lighting(t_lighting lig)
 {
 	t_lighting_data	data;
 	t_obj			lightv;
+	t_color			color;
 
-	data.eff_color = multiply_colors(lig.material.color, lig.light.intensity);
+	if (lig.material.pattern.validate)
+		color = pattern_at_shape(&lig.material.pattern, lig.shape, lig.point);
+	else
+		color = lig.material.color;
+	data.eff_color = multiply_colors(color, lig.light.intensity);
 	lightv = subtract_objects(lig.light.position, lig.point);
 	lightv = object_normalize(lightv);
 	data.ambient = multiply_scalar_colors(data.eff_color, lig.material.ambient);

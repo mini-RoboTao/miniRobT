@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enums.h                                            :+:      :+:    :+:   */
+/*   ring_pattern.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/11 13:13:42 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/07 16:37:23 by rotakesh         ###   ########.fr       */
+/*   Created: 2023/08/06 21:45:22 by rotakesh          #+#    #+#             */
+/*   Updated: 2023/08/07 14:55:22 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENUMS_H
-# define ENUMS_H
+#include "minirt.h"
 
-# include "minirt.h"
-
-typedef enum e_object_type {
-	any,
-	sphere,
-	plane,
-	cylinder,
-	cube,
-	triangle,
-	csg
-}				t_object_type;
-
-typedef enum e_bool
+t_pattern	ring_pattern(t_color a, t_color b)
 {
-	false,
-	true
-}	t_bool;
+	t_pattern	pattern;
 
-typedef enum e_pattern_type
+	pattern.a = a;
+	pattern.b = b;
+	pattern.validate = true;
+	pattern.type = ring;
+	pattern.transform = create_identity_matrix();
+	return (pattern);
+}
+
+t_color	ring_at(t_pattern pattern, t_obj point)
 {
-	test,
-	stripe,
-	gradient,
-	ring,
-	checkers,
-}	t_pattern_type;
+	int	mod;
 
-#endif
+	mod = floor(sqrt(point.x + point.z));
+	if ((mod % 2) == 0)
+		return (pattern.a);
+	return (pattern.b);
+}
