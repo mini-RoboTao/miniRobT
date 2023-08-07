@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 16:50:46 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/06 22:43:09 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/07 17:02:06 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ t_pattern	test_pattern(void)
 
 t_color	pattern_at(t_pattern pattern, t_obj point)
 {
-	t_color	res;
-
-	res.red = point.x;
-	res.green = point.y;
-	res.blue = point.z;
-	return (res);
+	if (pattern.type == stripe)
+		return (stripe_at(pattern, point));
+	if (pattern.type == gradient)
+		return (gradient_at(pattern, point));
+	if (pattern.type == ring)
+		return (ring_at(pattern, point));
+	if (pattern.type == checkers)
+		return (checkers_at(pattern, point));
+	return (fill_color(point.x, point.y, point.z));
 }
 
 t_color	pattern_at_shape(t_pattern *pattern, t_shape shape, t_obj world_point)
@@ -46,5 +49,9 @@ t_color	pattern_at_shape(t_pattern *pattern, t_shape shape, t_obj world_point)
 		return (stripe_at(*pattern, pattern_point));
 	else if (pattern->type == gradient)
 		return (gradient_at(*pattern, pattern_point));
+	else if (pattern->type == ring)
+		return (ring_at(*pattern, pattern_point));
+	else if (pattern->type == checkers)
+		return (checkers_at(*pattern, pattern_point));
 	return (pattern_at(*pattern, pattern_point));
 }

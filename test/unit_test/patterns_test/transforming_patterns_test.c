@@ -7,7 +7,6 @@ Test(Transforming_patterns, Stripes_with_an_object_transformation)
 
 	set_transform(&sphere, scaling(2, 2, 2));
 
-	// t_color		c = stripe_at_object(&pattern, sphere, create_point(1.5, 0, 0));
 	t_color		c = pattern_at_shape(&pattern, sphere, create_point(1.5, 0, 0));
 
 	cr_assert(cr_color_eq(c, fill_color(1, 1, 1)));

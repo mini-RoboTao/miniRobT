@@ -17,9 +17,9 @@ Test(Making_a_striped_pattern, A_stripe_pattern_is_constant_in_y)
 
 	t_pattern pattern = stripe_pattern(white, black);
 
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(0, 0, 0)), white));
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(0, 1, 0)), white));
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(0, 2, 0)), white));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(0, 0, 0)), white));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(0, 1, 0)), white));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(0, 2, 0)), white));
 }
 
 Test(Making_a_striped_pattern, A_stripe_pattern_is_constant_in_z)
@@ -29,9 +29,9 @@ Test(Making_a_striped_pattern, A_stripe_pattern_is_constant_in_z)
 
 	t_pattern pattern = stripe_pattern(white, black);
 
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(0, 0, 0)), white));
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(0, 0, 1)), white));
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(0, 0, 2)), white));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(0, 0, 0)), white));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(0, 0, 1)), white));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(0, 0, 2)), white));
 }
 
 Test(Making_a_striped_pattern, A_stripe_pattern_alternates_in_x)
@@ -41,12 +41,12 @@ Test(Making_a_striped_pattern, A_stripe_pattern_alternates_in_x)
 
 	t_pattern pattern = stripe_pattern(white, black);
 
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(0, 0, 0)), white));
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(0.9, 0, 0)), white));
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(1, 0, 0)), black));
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(-0.1, 0, 0)), black));
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(-1, 0, 0)), black));
-	cr_assert(cr_color_eq(stripe_at(pattern, create_point(-1.1, 0, 0)), white));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(0, 0, 0)), white));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(0.9, 0, 0)), white));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(1, 0, 0)), black));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(-0.1, 0, 0)), black));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(-1, 0, 0)), black));
+	cr_assert(cr_color_eq(pattern_at(pattern, create_point(-1.1, 0, 0)), white));
 }
 
 Test(Making_a_striped_pattern, Lighting_with_a_pattern_applied)
