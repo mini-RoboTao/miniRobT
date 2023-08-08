@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/07 23:49:33 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 06:35:53 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ t_shape	middle_sphere(void *v)
 	t_pattern	pattern;
 
 	middle = new_sphere();
-	middle.sphere->transform = translation(-0.5, 1, 0.5);
+	middle.sphere->transform = translation(0, -3.5, -0.5);
 	middle.sphere->material = new_material();
-	middle.sphere->material.color = fill_color(0.1, 1, 0.5);
+	middle.sphere->material.color = fill_color(1, 0, 0);
+	middle.sphere->material.ambient = 0.5;
 	middle.sphere->material.diffuse = 0.7;
 	middle.sphere->material.specular = 0.3;
 	pattern = gradient_pattern(fill_color(0, 1, 0), fill_color(1, 0, 0));
@@ -89,7 +90,7 @@ void	put_together(t_data *d)
 	w.shapes[3] = middle_sphere(NULL);
 	w.shapes[4] = right_sphere(NULL);
 	w.shapes[5] = left_sphere(NULL);
-	w.light = point_light(create_point(-20, 10, -5), fill_color(1, 1, 1));
+	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
 	c = camera(1000, 500, M_PI / 3);
 	c.transform = view_transformation(create_point(0, 1.5, -5), \
 	create_point(0, 1, 0), create_vector(0, 1, 1));

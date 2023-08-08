@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/07 23:46:21 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 06:28:11 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ t_intersections	intersect_world(t_world *w, t_ray ray)
 
 	i = 0;
 	xs = (t_intersections){0};
+	abc[0] = 0;
+	abc[1] = 0;
+	abc[2] = 0;
 	while (i < w->amount_obj)
 	{
 		discriminat = calculate_discriminat(abc, ray, w->shapes[i]);
@@ -83,6 +86,7 @@ t_precomp	prepare_computations(t_intersection *i, t_ray r, \
 	comps.normalv.z, comps.normalv.w);
 	res_multiply = multiply_object(res_multiply, EPSILON);
 	comps.over_point = sum_objects(comps.point, res_multiply);
+	comps.under_point = subtract_objects(comps.point, res_multiply);
 	return (comps);
 }
 
@@ -91,6 +95,8 @@ t_color	shade_hit(t_world *w, t_precomp *comps, int remaining)
 	t_lighting		lig;
 	t_color			surface;
 	t_color			reflected;
+	t_color			refracted;
+	t_material		material;
 
 	lig = (t_lighting){0};
 	lig.material = comps->shape.sphere->material;
@@ -101,6 +107,14 @@ t_color	shade_hit(t_world *w, t_precomp *comps, int remaining)
 	lig.normalv = comps->normalv;
 	lig.in_shadow = is_shadowed(w, comps->over_point);
 	surface = lighting(lig);
+	refracted = refracted_color(*w, *comps, remaining);
 	reflected = reflected_color(*w, *comps, remaining);
-	return (sum_colors(surface, reflected));
+	material = comps->shape.any->material;
+	if (material.reflective > 0 && material.transparency > 0)
+	{
+		return (sum_colors(sum_colors(surface, \
+			multiply_scalar_colors(reflected, schlick(*comps))), \
+			multiply_scalar_colors(refracted, (1 - schlick(*comps)))));
+	}
+	return (sum_colors(refracted, sum_colors(surface, reflected)));
 }

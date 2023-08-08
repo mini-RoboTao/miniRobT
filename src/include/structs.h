@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/07 23:46:49 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 01:24:13 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,7 @@ typedef struct s_precomp
 	double		t;
 	t_shape		shape;
 	t_obj		point;
+	t_obj		under_point;
 	t_obj		over_point;
 	t_obj		eyev;
 	t_obj		normalv;

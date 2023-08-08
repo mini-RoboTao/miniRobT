@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:14:38 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/04 20:07:30 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 06:33:12 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_shape	test_shape(void)
 	s->x = 0.0;
 	s->y = 0.0;
 	s->z = 0.0;
-	s->radius = 1.0;
 	s->transform = create_identity_matrix();
 	s->material = new_material();
 	shape.sphere = s;
@@ -44,7 +43,7 @@ t_shape	new_plane(void)
 	p->x = 0.0;
 	p->y = 0.0;
 	p->z = 0.0;
-	p->radius = 1.0;
+	p->radius = 0.0;
 	p->transform = create_identity_matrix();
 	p->material = new_material();
 	shape.v = p;
