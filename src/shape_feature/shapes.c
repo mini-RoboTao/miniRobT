@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:14:38 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/08 06:33:12 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 12:08:05 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,8 @@ t_shape	test_shape(void)
 	s->transform = create_identity_matrix();
 	s->material = new_material();
 	shape.sphere = s;
+	shape.intersect = intersect_sphere;
+	shape.normal_at = normal_at_sphere;
 	shape.id = 1;
-	return (shape);
-}
-
-t_shape	new_plane(void)
-{
-	t_shape		shape;
-	t_plane		*p;
-
-	shape = (t_shape){0};
-	p = malloc(sizeof(t_plane));
-	if (!p)
-		return ((t_shape){0});
-	p->x = 0.0;
-	p->y = 0.0;
-	p->z = 0.0;
-	p->radius = 0.0;
-	p->transform = create_identity_matrix();
-	p->material = new_material();
-	shape.v = p;
-	shape.id = 3;
 	return (shape);
 }

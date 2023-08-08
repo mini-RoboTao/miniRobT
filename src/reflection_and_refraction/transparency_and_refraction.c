@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 23:19:54 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/08 06:14:13 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 12:31:46 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_color	refracted_color(t_world w, t_precomp comps, int remaining)
 
 	n_ratio = comps.n1 / comps.n2;
 	cos_i = object_dot(comps.eyev, comps.normalv);
-	sin2_t = (pow(n_ratio, 2)) * (1 - (pow(cos_i, 2)));
+	sin2_t = pow(n_ratio, 2) * (1 - pow(cos_i, 2));
 	cos_t = sqrt(1.0 - sin2_t);
 	direction = subtract_objects(\
 				multiply_object(comps.normalv, (n_ratio * cos_i - cos_t)), \

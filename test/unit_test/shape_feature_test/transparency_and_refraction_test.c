@@ -165,7 +165,7 @@ Test(transparency_and_refraction, the_refracted_color_with_a_refracted_ray)
 // 	ball.any->material.ambient = 0.5;
 // 	set_transform(&ball, translation(0, -3.5, -0.5));
 // 	w.shapes[3] = ball;
-// 	t_ray			ray = create_ray(create_point(0, 0, -3), create_vector(0, -(sqrt(2))/2, (sqrt(2))/2));
+// 	t_ray			ray = create_ray(create_point(0, 0, -3), create_vector(0, -sqrt(2)/2, sqrt(2)/2));
 // 	t_intersections	xs = (t_intersections){0};
 // 	intersections(&xs, intersection(sqrt(2), floor, &xs), NULL, 0);
 // 	t_precomp		comps = prepare_computations(xs.i, ray, &xs);
@@ -236,7 +236,7 @@ Test(transparency_and_refraction, the_schlick_approximation_with_small_angle_and
 // 	intersections(&xs, intersection(sqrt(2), floor, &xs), NULL, 0);
 // 	t_precomp		comps = prepare_computations(xs.i, ray, &xs);
 // 	t_color			color = shade_hit(&w, &comps, 5);
-// 	printf("AQUI ESTAMOS\n");
+// 	printf("AQUI ESTAMOS 2\n");
 // 	printf("%lf\t%lf\t%lf\n", color.red, color.green, color.blue);
 // 	cr_assert(cr_color_eq(color, fill_color(0.93391, 0.69643, 0.69243)));
 // 	clean_intersection_lst(&xs.i);
