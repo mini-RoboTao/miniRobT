@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 15:20:58 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/08 11:31:39 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 12:48:46 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ t_intersections	intersect_sphere(t_shape shape, t_ray ray)
 		return ((t_intersections){0});
 	intersections(&xs, \
 	intersection((-abc[1] - (sqrt(discriminat))) / (2 * abc[0]), shape, &xs), \
-	intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), shape, &xs), 0);
+	intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), shape, \
+	&xs), 0);
 	return (xs);
 }
 

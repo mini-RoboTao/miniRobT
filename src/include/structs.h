@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/08 11:25:34 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 12:49:00 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ typedef struct s_shape			t_shape;
 typedef							t_intersections (t_local_intersect)\
 								(t_shape, t_ray);
 typedef							t_obj (t_local_normal_at)(t_shape, t_obj);
-
 
 typedef struct s_shape
 {
