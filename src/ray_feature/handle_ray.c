@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 19:48:49 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/03 02:00:02 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 11:46:18 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,4 @@ t_obj	cat_position(t_ray ray, double t)
 	res = multiply_object(ray.direction, t);
 	o = sum_objects(ray.position, res);
 	return (o);
-}
-
-t_shape	new_sphere(void)
-{
-	t_shape		shape;
-	t_sphere	*s;
-
-	shape = (t_shape){0};
-	s = malloc(sizeof(t_sphere));
-	if (!s)
-		return ((t_shape){0});
-	s->x = 0.0;
-	s->y = 0.0;
-	s->z = 0.0;
-	s->radius = 1.0;
-	s->transform = create_identity_matrix();
-	s->material = new_material();
-	shape.sphere = s;
-	shape.id = 1;
-	return (shape);
 }

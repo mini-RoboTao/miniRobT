@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/08 06:28:11 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 12:40:47 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ t_intersections	intersect_world(t_world *w, t_ray ray)
 	abc[2] = 0;
 	while (i < w->amount_obj)
 	{
-		discriminat = calculate_discriminat(abc, ray, w->shapes[i]);
+		ray = transform(ray, inverse_matrix(w->shapes[i].any->transform));
+		discriminat = calculate_discriminat(abc, ray);
 		if (discriminat >= 0)
 		{
 			intersections(&xs, \
@@ -116,5 +117,5 @@ t_color	shade_hit(t_world *w, t_precomp *comps, int remaining)
 			multiply_scalar_colors(reflected, schlick(*comps))), \
 			multiply_scalar_colors(refracted, (1 - schlick(*comps)))));
 	}
-	return (sum_colors(refracted, sum_colors(surface, reflected)));
+	return (sum_colors(sum_colors(surface, reflected), refracted));
 }

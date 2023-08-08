@@ -48,7 +48,8 @@ SRC_OBJECT_FEATURE					=					create_object.c						\
 SRC_COLORS_FEATURE					=					object_colors.c
 SRC_CANVAS_FEATURE					=					canvas.c
 SRC_SHAPES_FEATURE					=					shapes.c							\
-														sphere.c
+														sphere.c							\
+														plane.c
 SRC_REFLECTION_AND_REFRACTION		=					reflection.c						\
 														transparency_and_refraction.c
 SRC_LINKED_LST						=					ft_lstnew.c							\

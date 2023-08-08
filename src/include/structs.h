@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/08 01:24:13 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 12:49:00 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,9 +127,18 @@ union u_shape
 	void			*v;
 };
 
+typedef struct s_intersections	t_intersections;
+typedef struct s_shape			t_shape;
+
+typedef							t_intersections (t_local_intersect)\
+								(t_shape, t_ray);
+typedef							t_obj (t_local_normal_at)(t_shape, t_obj);
+
 typedef struct s_shape
 {
 	t_object_type			id;
+	t_local_intersect		*intersect;
+	t_local_normal_at		*normal_at;
 	union {
 		t_sphere			*sphere;
 		t_plane				*plane;

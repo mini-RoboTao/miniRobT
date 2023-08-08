@@ -94,9 +94,9 @@ Test(shapes, computing_the_normal_on_a_transformed_shape)
 Test(Plane, the_normal_of_a_plane_is_constant_everywhere)
 {
 	t_shape	plane = new_plane();
-	t_obj	norm1 = normal_at(plane, create_point(0, 0, 0));
-	t_obj	norm2 = normal_at(plane, create_point(10, 0, -10));
-	t_obj	norm3 = normal_at(plane, create_point(-5, 0, 150));
+	t_obj	norm1 =	plane.normal_at(plane, create_point(0, 0, 0));
+	t_obj	norm2 = plane.normal_at(plane, create_point(10, 0, -10));
+	t_obj	norm3 = plane.normal_at(plane, create_point(-5, 0, 150));
 
 	cr_assert(cr_object_eq(norm1, create_vector(0, 1, 0)));
 	cr_assert(cr_object_eq(norm2, create_vector(0, 1, 0)));
