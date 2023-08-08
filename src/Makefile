@@ -16,7 +16,8 @@ VPATH						=					./srcs								\
 												./light_and_shading					\
 												./world_feature						\
 												./shape_feature						\
-												./reflection_and_refraction
+												./reflection_and_refraction			\
+												./patterns
 ######################## FLAGS ###############################
 FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
@@ -56,6 +57,12 @@ SRC_LINKED_LST						=					ft_lstnew.c							\
 														ft_lstclean.c						\
 														ft_lstadd_back.c					\
 														ft_lstremove.c
+SRC_PATTERNS_FEATURE				=					striped_pattern.c					\
+														transforming_patterns.c				\
+														generalizing_patterns.c				\
+														gradient_pattern.c					\
+														ring_pattern.c						\
+														checkers_pattern.c
 SRC									=					minirt.c utils.c put_together.c objs.c				\
 														$(SRC_LINKED_LST) 									\
 														$(SRC_OBJECT_FEATURE) 								\
@@ -68,7 +75,8 @@ SRC									=					minirt.c utils.c put_together.c objs.c				\
 														$(SRC_MATRIX_TRANSFORMATION)						\
 														$(SRC_WORLD_FEATURE)								\
 														$(SRC_SHAPES_FEATURE)								\
-														$(SRC_REFLECTION_AND_REFRACTION)
+														$(SRC_REFLECTION_AND_REFRACTION)					\
+														$(SRC_PATTERNS_FEATURE)
 OBJ									=					$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP									=					$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 ############## CONDITIONAL COMPILER FLAGS ####################

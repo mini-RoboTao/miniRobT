@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/06 15:18:19 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/07 23:47:30 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_material	new_material(void)
 	material.reflective = 0.0;
 	material.transparency = 0.0;
 	material.refractive_index = 1.0;
+	material.pattern.validate = false;
 	return (material);
 }
 
@@ -60,8 +61,13 @@ t_color	lighting(t_lighting lig)
 {
 	t_lighting_data	data;
 	t_obj			lightv;
+	t_color			color;
 
-	data.eff_color = multiply_colors(lig.material.color, lig.light.intensity);
+	if (lig.material.pattern.validate)
+		color = pattern_at_shape(&lig.material.pattern, lig.shape, lig.point);
+	else
+		color = lig.material.color;
+	data.eff_color = multiply_colors(color, lig.light.intensity);
 	lightv = subtract_objects(lig.light.position, lig.point);
 	lightv = object_normalize(lightv);
 	data.ambient = multiply_scalar_colors(data.eff_color, lig.material.ambient);

@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/07 22:30:27 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/07 23:46:49 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,15 @@ typedef struct s_color
 	double		blue;
 }	t_color;
 
+typedef struct s_pattern
+{
+	t_color			a;
+	t_color			b;
+	t_bool			validate;
+	t_matrix		transform;
+	t_pattern_type	type;
+}	t_pattern;
+
 typedef struct s_material
 {
 	t_color		color;
@@ -67,6 +76,7 @@ typedef struct s_material
 	double		reflective;
 	double		transparency;
 	double		refractive_index;
+	t_pattern	pattern;
 }				t_material;
 
 typedef struct s_ray
