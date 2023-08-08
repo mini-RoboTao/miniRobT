@@ -42,7 +42,8 @@ VPATH							=			$(addprefix $(UNIT_PATH), 			\
 											light_and_shading_test				\
 											world_feature_test					\
 											shape_feature_test					\
-											reflection_and_refraction_test)
+											reflection_and_refraction_test		\
+											linked_list_test)
 ######################## PROJECT FILES ##############################
 SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 											draw_mini.o							\
@@ -78,6 +79,7 @@ SRC_WORLD_FEATURE				=			handle_world_test.c 				\
 											camera_test.c
 SRC_SHAPES_FEATURE				=			shapes_test.c
 SRC_REFLECTIVE_AND_REFRACTION	=			reflection_test.c
+SRC_LINKED_LST					=			ft_lstremove_test.c
 SRC								=			$(SRC_OBJ_FEATURE) 					\
 											$(SRC_COLORS_FEATURE) 				\
 											$(SRC_CANVAS_FEATURE) 				\
@@ -88,7 +90,8 @@ SRC								=			$(SRC_OBJ_FEATURE) 					\
 											$(SRC_MATRIX_TRANSFORMATION)		\
 											$(SRC_WORLD_FEATURE)				\
 											$(SRC_SHAPES_FEATURE)				\
-											$(SRC_REFLECTIVE_AND_REFRACTION)
+											$(SRC_REFLECTIVE_AND_REFRACTION)	\
+											$(SRC_LINKED_LST)
 OBJ								=			$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP								=			$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)

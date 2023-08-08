@@ -10,8 +10,8 @@ Test(reflection, precomputing_the_reflection_vector)
 {
 	t_shape			plane = new_plane();
 	t_ray			ray = create_ray(create_point(0, 1, -1), create_vector(0, -((sqrt(2)) / 2), (sqrt(2)) / 2));
-	t_intersection	*i = intersection(sqrt(2), plane);
-	t_precomp		comp = prepare_computations(i, ray);
+	t_intersection	*i = intersection(sqrt(2), plane, XS_CONST);
+	t_precomp		comp = prepare_computations(i, ray, XS_CONST);
 	cr_assert(cr_object_eq(comp.reflectv, create_vector(0, (sqrt(2))/2, (sqrt(2))/2)));
 	clean_intersection_lst(&i);
 	clean_shape(&plane);
@@ -23,8 +23,8 @@ Test(reflection, the_reflected_color_for_a_nonreflective_material)
 	t_ray			ray = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
 	t_shape			shape = w.shapes[0];
 	shape.any->material.ambient = 1;
-	t_intersection	*i = intersection(1, shape);
-	t_precomp		comps = prepare_computations(i, ray);
+	t_intersection	*i = intersection(1, shape, XS_CONST);
+	t_precomp		comps = prepare_computations(i, ray, XS_CONST);
 	t_color			color = reflected_color(w, comps, 1);
 	cr_assert(cr_color_eq(color, fill_color(0, 0, 0)));
 	clean_intersection_lst(&i);
@@ -40,8 +40,8 @@ Test(reflection, the_reflected_color_for_a_reflective_material)
 	w.amount_obj = 3;
 	w.shapes[2] = shape;
 	t_ray			ray = create_ray(create_point(0, 0, -3), create_vector(0, (sqrt(2))/2, (sqrt(2))/2));
-	t_intersection	*i = intersection(sqrt(2), shape);
-	t_precomp		comps = prepare_computations(i, ray);
+	t_intersection	*i = intersection(sqrt(2), shape, XS_CONST);
+	t_precomp		comps = prepare_computations(i, ray, XS_CONST);
 
 	t_color			color = reflected_color(w, comps, 1);
 
@@ -59,8 +59,8 @@ Test(reflection, shade_hit_with_a_reflective_material)
 	w.amount_obj = 3;
 	w.shapes[2] = shape;
 	t_ray			ray = create_ray(create_point(0, 0, -3), create_vector(0, -(sqrt(2))/2, (sqrt(2))/2));
-	t_intersection	*i = intersection(sqrt(2), shape);
-	t_precomp		comps = prepare_computations(i, ray);
+	t_intersection	*i = intersection(sqrt(2), shape, XS_CONST);
+	t_precomp		comps = prepare_computations(i, ray, XS_CONST);
 
 	t_color			color = shade_hit(&w, &comps, 1);
 	cr_assert(cr_color_eq(color, fill_color(0.87677, 0.92436, 0.82918)));
@@ -95,8 +95,8 @@ Test(reflection, the_reflected_color_at_the_maximum_recursive_depth)
 	w.amount_obj = 3;
 	w.shapes[2] = shape;
 	t_ray			ray = create_ray(create_point(0, 0, -3), create_vector(0, -(sqrt(2))/2, (sqrt(2))/2));
-	t_intersection	*i = intersection(sqrt(2), shape);
-	t_precomp		comps = prepare_computations(i, ray);
+	t_intersection	*i = intersection(sqrt(2), shape, XS_CONST);
+	t_precomp		comps = prepare_computations(i, ray, XS_CONST);
 
 	t_color			color = reflected_color( w, comps, 0);
 	cr_assert(cr_color_eq(color, fill_color(0, 0, 0)));

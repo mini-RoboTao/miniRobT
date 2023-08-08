@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/06 13:25:53 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/07 22:30:27 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef struct s_material
 	double		specular;
 	double		shininess;
 	double		reflective;
+	double		transparency;
+	double		refractive_index;
 }				t_material;
 
 typedef struct s_ray
@@ -125,6 +127,11 @@ typedef struct s_shape
 		void				*v;
 	};
 }				t_shape;
+
+typedef struct a_lst {
+	t_shape			shape;
+	struct a_lst	*next;
+}				t_lst;
 /* ******************************** */
 
 typedef struct s_intersection
@@ -198,6 +205,8 @@ typedef struct s_precomp
 	t_obj		eyev;
 	t_obj		normalv;
 	t_obj		reflectv;
+	double		n1;
+	double		n2;
 	int			inside;
 }				t_precomp;
 

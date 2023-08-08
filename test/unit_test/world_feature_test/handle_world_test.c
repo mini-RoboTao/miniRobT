@@ -48,8 +48,8 @@ Test(world_scene, precomputing_the_state_of_an_intersection)
 {
 	t_ray			r = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
 	t_shape			shape = new_sphere();
-	t_intersection	*i = intersection(4, shape);
-	t_precomp		comps = prepare_computations(i, r);
+	t_intersection	*i = intersection(4, shape, XS_CONST);
+	t_precomp		comps = prepare_computations(i, r, XS_CONST);
 
 	cr_assert(epsilon_eq(flt, comps.t, i->t, EPSILON));
 	cr_assert(cr_sphere_eq(comps.shape.sphere, i->shape.sphere));
@@ -64,8 +64,8 @@ Test(world_scene, the_hit_when_an_intersection_occurs_on_the_outside)
 {
 	t_ray			r = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
 	t_shape			shape = new_sphere();
-	t_intersection	*i = intersection(4, shape);
-	t_precomp		comps = prepare_computations(i, r);
+	t_intersection	*i = intersection(4, shape, XS_CONST);
+	t_precomp		comps = prepare_computations(i, r, XS_CONST);
 	cr_assert(eq(comps.inside, 0));
 	clean_intersection_lst(&i);
 	clean_shape(&shape);
@@ -75,8 +75,8 @@ Test(world_scene, the_hit_when_an_intersection_occurs_on_the_inside)
 {
 	t_ray			r = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
 	t_shape			shape = new_sphere();
-	t_intersection	*i = intersection(1, shape);
-	t_precomp		comps = prepare_computations(i, r);
+	t_intersection	*i = intersection(1, shape, XS_CONST);
+	t_precomp		comps = prepare_computations(i, r, XS_CONST);
 	cr_assert(eq(comps.inside, 1));
 	cr_assert(cr_object_eq(comps.point, (t_obj){0, 0, 1, 1}));
 	cr_assert(cr_object_eq(comps.eyev, (t_obj){0, 0, -1, 0}));
@@ -90,8 +90,8 @@ Test(world_scene, shading_an_intersection)
 	t_world			w = default_world();
 	t_ray			r = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
 	t_shape			shape = w.shapes[0];
-	t_intersection	*i = intersection(4, shape);
-	t_precomp		comps = prepare_computations(i, r);
+	t_intersection	*i = intersection(4, shape, XS_CONST);
+	t_precomp		comps = prepare_computations(i, r, XS_CONST);
 	t_color c = shade_hit(&w, &comps, 2);
 	cr_assert(cr_color_eq(c, (t_color){0.38066, 0.47583, 0.2855}));
 	clean_intersection_lst(&i);
@@ -104,8 +104,8 @@ Test(world_scene, shading_an_intersection_from_the_inside)
 	w.light	= point_light(create_point(0, 0.25, 0), fill_color(1, 1, 1));
 	t_ray			r = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
 	t_shape			shape = w.shapes[1];
-	t_intersection	*i = intersection(0.5, shape);
-	t_precomp		comps = prepare_computations(i, r);
+	t_intersection	*i = intersection(0.5, shape, XS_CONST);
+	t_precomp		comps = prepare_computations(i, r, XS_CONST);
 	t_color c = shade_hit(&w, &comps, 2);
 	cr_assert(cr_color_eq(c, (t_color){0.90498, 0.90498, 0.90498}));
 	clean_intersection_lst(&i);

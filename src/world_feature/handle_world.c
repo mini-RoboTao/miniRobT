@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/06 14:43:31 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/07 23:24:44 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,26 @@ t_intersections	intersect_world(t_world *w, t_ray ray)
 		{
 			intersections(&xs, \
 			intersection((-abc[1] - (sqrt(discriminat))) \
-			/ (2 * abc[0]), w->shapes[i]), \
+			/ (2 * abc[0]), w->shapes[i], &xs), \
 			intersection((-abc[1] + (sqrt(discriminat))) \
-			/ (2 * abc[0]), w->shapes[i]), i);
+			/ (2 * abc[0]), w->shapes[i], &xs), i);
 		}
 		i++;
 	}
 	return (xs);
 }
 
-t_precomp	prepare_computations(t_intersection *i, t_ray r)
+t_precomp	prepare_computations(t_intersection *i, t_ray r, \
+			t_intersections *xs)
 {
-	t_precomp	comps;
-	t_obj		res_multiply;
+	t_precomp		comps;
+	t_obj			res_multiply;
+	t_intersection	*containers;
 
 	comps = (t_precomp){0};
 	comps.t = i->t;
 	comps.shape = i->shape;
+	determining_n1_and_n2(xs, i, &comps);
 	comps.point = cat_position(r, comps.t);
 	comps.eyev = negating_object(object_normalize(r.direction));
 	comps.normalv = normal_at(comps.shape, comps.point);

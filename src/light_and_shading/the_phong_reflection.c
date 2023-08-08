@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/05 18:57:08 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/06 15:18:19 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_material	new_material(void)
 	material.specular = 0.9;
 	material.shininess = 200.0;
 	material.reflective = 0.0;
+	material.transparency = 0.0;
+	material.refractive_index = 1.0;
 	return (material);
 }
 

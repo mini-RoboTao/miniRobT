@@ -46,13 +46,16 @@ SRC_OBJECT_FEATURE					=					create_object.c						\
 														handle_object.c
 SRC_COLORS_FEATURE					=					object_colors.c
 SRC_CANVAS_FEATURE					=					canvas.c
-SRC_SHAPES_FEATURE					=					shapes.c
-SRC_REFLECTION_AND_REFRACTION		=					reflection.c
+SRC_SHAPES_FEATURE					=					shapes.c							\
+														sphere.c
+SRC_REFLECTION_AND_REFRACTION		=					reflection.c						\
+														transparency_and_refraction.c
 SRC_LINKED_LST						=					ft_lstnew.c							\
 														ft_lstsize.c						\
 														ft_lstlast.c						\
 														ft_lstclean.c						\
-														ft_lstadd_back.c
+														ft_lstadd_back.c					\
+														ft_lstremove.c
 SRC									=					minirt.c utils.c put_together.c objs.c				\
 														$(SRC_LINKED_LST) 									\
 														$(SRC_OBJECT_FEATURE) 								\

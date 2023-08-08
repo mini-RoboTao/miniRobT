@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 17:01:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/05 17:00:58 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/07 22:28:33 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,17 @@
 
 # include "minirt.h"
 
-typedef struct a_lst {
-	t_obj			*obj;
-	struct a_lst	*next;
-}				t_lst;
-
 // list
-t_lst			*ft_lstnew(t_obj *obj);
+t_lst			*ft_lstnew(t_shape shape);
 int				ft_lstsize(t_lst *l);
 t_lst			*ft_lstlast(t_lst *l);
 void			ft_lstadd_back(t_lst **l, t_lst *new);
-void			ft_lstclean(t_lst **l, void (*del)(t_obj *));
+void			ft_lstremove(t_lst **l, t_shape rm);
+void			ft_only_lstclean(t_lst **l);
+void			ft_lstclean(t_lst **l, void (*del)(void *));
 
 // ray
+t_intersection	*ft_lstnew_ray(double t, t_shape shape, size_t id);
 int				ft_lstray_size(t_intersection *l);
 t_intersection	*ft_lstray_last(t_intersection *l);
 void			clean_intersection_lst(t_intersection **l);

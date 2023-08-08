@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstremove.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 17:10:01 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/07 22:31:27 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/08/06 16:42:59 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/08/07 23:30:46 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#include "minirt.h"
 
-t_lst	*ft_lstnew(t_shape shape)
+void	ft_lstremove(t_lst **l, t_shape rm)
 {
 	t_lst	*head;
+	t_lst	*tmp;
 
-	head = malloc(sizeof(t_lst));
-	if (!head)
-		return (NULL);
-	head->shape = shape;
-	head->next = NULL;
-	return (head);
-}
-
-t_intersection	*ft_lstnew_ray(double t, t_shape shape, size_t id)
-{
-	t_intersection	*head;
-
-	head = malloc(sizeof(t_intersection));
-	if (!head)
-		return (NULL);
-	head->t = t;
-	head->shape = shape;
-	head->next = NULL;
-	return (head);
+	if (*l && rm.v && (*l)->shape.v == rm.v)
+	{
+		head = (*l)->next;
+		if (*l)
+			free(*l);
+		*l = head;
+		return ;
+	}
+	head = *l;
+	while (head)
+	{
+		if (head->next && head->next->shape.v == rm.v)
+		{
+			tmp = head->next->next;
+			if (head->next)
+				free(head->next);
+			head->next = tmp;
+			return ;
+		}
+		head = head->next;
+	}
 }
