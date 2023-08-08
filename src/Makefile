@@ -4,75 +4,81 @@ NAME						=					miniRT
 PATH_OBJ					=					objs/
 PATH_INCLUDES				=					include/
 PATH_LIBFT					=					libs/libft/
-VPATH						=					./srcs					\
-												./linked_list			\
-												./object_feature		\
-												./object_colors			\
-												./canvas				\
-												./clean_feature 		\
-												./matrix_feature		\
-												./ray_feature			\
-												./matrix_transformations\
-												./light_and_shading		\
-												./world_feature			\
-												./shape_feature			\
+VPATH						=					./srcs								\
+												./linked_list						\
+												./object_feature					\
+												./object_colors						\
+												./canvas							\
+												./clean_feature 					\
+												./matrix_feature					\
+												./ray_feature						\
+												./matrix_transformations			\
+												./light_and_shading					\
+												./world_feature						\
+												./shape_feature						\
+												./reflection_and_refraction			\
 												./patterns
 ######################## FLAGS ###############################
 FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
 FLAG_EXTRA					=					 -g3 -O3 -MMD -MP
 ######################## SRCS ################################
-SRC_WORLD_FEATURE			=					handle_world.c						\
-												view_transformation.c				\
-												camera.c
-SRC_LIGHT_AND_SHADING		=					normal_at.c							\
-												reflect.c							\
-												the_phong_reflection.c				\
-												shadows.c
-SRC_RAY_FEATURE				=					handle_ray.c						\
-												intersections.c						\
-												transforming_rays.c
-SRC_MATRIX_TRANSFORMATION	=					translate_matrix.c					\
-												scaling_matrix.c					\
-												rotation_matrix.c					\
-												shearing_matrix.c
-SRC_MATRIX_FEATURE			=					handle_matrix.c						\
-												matrix_operations.c					\
-												inverting_matrix.c					\
-												matrix_utils.c
-SRC_CLEAN_FEATURE			=					free_feature.c
-SRC_OBJECT_FEATURE			=					create_object.c						\
-												object_arithmetic.c					\
-												handle_object.c
-SRC_COLORS_FEATURE			=					object_colors.c
-SRC_CANVAS_FEATURE			=					canvas.c
-SRC_SHAPES_FEATURE			=					shapes.c
-SRC_PATTERNS_FEATURE		=					striped_pattern.c					\
-												transforming_patterns.c				\
-												generalizing_patterns.c				\
-												gradient_pattern.c					\
-												ring_pattern.c						\
-												checkers_pattern.c
-SRC_LINKED_LST				=					ft_lstnew.c							\
-												ft_lstsize.c						\
-												ft_lstlast.c						\
-												ft_lstclean.c						\
-												ft_lstadd_back.c
-SRC							=					minirt.c utils.c put_together.c objs.c				\
-												$(SRC_LINKED_LST) 									\
-												$(SRC_OBJECT_FEATURE) 								\
-												$(SRC_COLORS_FEATURE) 								\
-												$(SRC_CANVAS_FEATURE)								\
-												$(SRC_CLEAN_FEATURE)								\
-												$(SRC_MATRIX_FEATURE)								\
-												$(SRC_RAY_FEATURE)									\
-												$(SRC_LIGHT_AND_SHADING)							\
-												$(SRC_MATRIX_TRANSFORMATION)						\
-												$(SRC_WORLD_FEATURE)								\
-												$(SRC_SHAPES_FEATURE)								\
-												$(SRC_PATTERNS_FEATURE)
-OBJ							=					$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
-DEP							=					$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
+SRC_WORLD_FEATURE					=					handle_world.c						\
+														view_transformation.c				\
+														camera.c
+SRC_LIGHT_AND_SHADING				=					normal_at.c							\
+														reflect.c							\
+														the_phong_reflection.c				\
+														shadows.c
+SRC_RAY_FEATURE						=					handle_ray.c						\
+														intersections.c						\
+														transforming_rays.c
+SRC_MATRIX_TRANSFORMATION			=					translate_matrix.c					\
+														scaling_matrix.c					\
+														rotation_matrix.c					\
+														shearing_matrix.c
+SRC_MATRIX_FEATURE					=					handle_matrix.c						\
+														matrix_operations.c					\
+														inverting_matrix.c					\
+														matrix_utils.c
+SRC_CLEAN_FEATURE					=					free_feature.c
+SRC_OBJECT_FEATURE					=					create_object.c						\
+														object_arithmetic.c					\
+														handle_object.c
+SRC_COLORS_FEATURE					=					object_colors.c
+SRC_CANVAS_FEATURE					=					canvas.c
+SRC_SHAPES_FEATURE					=					shapes.c							\
+														sphere.c
+SRC_REFLECTION_AND_REFRACTION		=					reflection.c						\
+														transparency_and_refraction.c
+SRC_LINKED_LST						=					ft_lstnew.c							\
+														ft_lstsize.c						\
+														ft_lstlast.c						\
+														ft_lstclean.c						\
+														ft_lstadd_back.c					\
+														ft_lstremove.c
+SRC_PATTERNS_FEATURE				=					striped_pattern.c					\
+														transforming_patterns.c				\
+														generalizing_patterns.c				\
+														gradient_pattern.c					\
+														ring_pattern.c						\
+														checkers_pattern.c
+SRC									=					minirt.c utils.c put_together.c objs.c				\
+														$(SRC_LINKED_LST) 									\
+														$(SRC_OBJECT_FEATURE) 								\
+														$(SRC_COLORS_FEATURE) 								\
+														$(SRC_CANVAS_FEATURE)								\
+														$(SRC_CLEAN_FEATURE)								\
+														$(SRC_MATRIX_FEATURE)								\
+														$(SRC_RAY_FEATURE)									\
+														$(SRC_LIGHT_AND_SHADING)							\
+														$(SRC_MATRIX_TRANSFORMATION)						\
+														$(SRC_WORLD_FEATURE)								\
+														$(SRC_SHAPES_FEATURE)								\
+														$(SRC_REFLECTION_AND_REFRACTION)					\
+														$(SRC_PATTERNS_FEATURE)
+OBJ									=					$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
+DEP									=					$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 ############## CONDITIONAL COMPILER FLAGS ####################
 UNAME_S						:=					$(shell uname -s)
 ifeq ($(UNAME_S), Linux)

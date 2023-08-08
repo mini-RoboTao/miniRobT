@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generalizing_patterns.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 16:50:46 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/07 17:02:06 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/08 02:27:52 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

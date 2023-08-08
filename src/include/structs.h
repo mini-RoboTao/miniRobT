@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/06 17:27:14 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/08 01:24:13 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ typedef struct s_material
 	double		diffuse;
 	double		specular;
 	double		shininess;
+	double		reflective;
+	double		transparency;
+	double		refractive_index;
 	t_pattern	pattern;
 }				t_material;
 
@@ -134,6 +137,11 @@ typedef struct s_shape
 		void				*v;
 	};
 }				t_shape;
+
+typedef struct a_lst {
+	t_shape			shape;
+	struct a_lst	*next;
+}				t_lst;
 /* ******************************** */
 
 typedef struct s_intersection
@@ -203,9 +211,13 @@ typedef struct s_precomp
 	double		t;
 	t_shape		shape;
 	t_obj		point;
+	t_obj		under_point;
 	t_obj		over_point;
 	t_obj		eyev;
 	t_obj		normalv;
+	t_obj		reflectv;
+	double		n1;
+	double		n2;
 	int			inside;
 }				t_precomp;
 

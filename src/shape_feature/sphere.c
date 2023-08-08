@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 17:19:49 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/07 23:25:17 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/08/06 15:20:58 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/08/07 23:08:41 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#include "minirt.h"
 
-t_lst	*ft_lstlast(t_lst *l)
+t_shape	glass_sphere(void)
 {
-	t_lst	*tail;
+	t_shape	shape;
 
-	if (!l)
-		return (NULL);
-	while (l)
-	{
-		tail = l;
-		l = l->next;
-	}
-	return (tail);
-}
-
-t_intersection	*ft_lstray_last(t_intersection *l)
-{
-	t_intersection	*tail;
-
-	if (!l)
-		return (NULL);
-	while (l)
-	{
-		tail = l;
-		l = l->next;
-	}
-	return (tail);
+	shape = new_sphere();
+	shape.sphere->material.transparency = 1.0;
+	shape.sphere->material.refractive_index = 1.5;
+	return (shape);
 }

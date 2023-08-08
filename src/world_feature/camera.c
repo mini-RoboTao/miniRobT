@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:57:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 18:24:21 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/06 13:45:03 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_canvas	*render(t_camera *c, t_world *w)
 		while (x < c->hsize - 1)
 		{
 			ray = ray_for_pixel(c, x, y);
-			color = color_at(w, ray);
+			color = color_at(w, ray, 2);
 			write_pixel(image, x, y, color);
 			x++;
 		}

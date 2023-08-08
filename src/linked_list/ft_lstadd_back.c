@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 17:28:51 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/05 18:44:11 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/07 21:54:01 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

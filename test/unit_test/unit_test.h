@@ -8,6 +8,7 @@
 
 # define T (t_bool)true
 # define F (t_bool)false
+# define XS_CONST &(t_intersections){0}
 
 int	cr_color_eq(t_color a, t_color b)
 {

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclean.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 17:33:23 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/05 17:01:47 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/07 22:28:19 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linked_list.h"
 
-void	ft_lstclean(t_lst **l, void (*del)(t_obj *))
+void	ft_lstclean(t_lst **l, void (*del)(void *))
 {
 	t_lst	*head;
 	t_lst	*next;
@@ -22,7 +22,24 @@ void	ft_lstclean(t_lst **l, void (*del)(t_obj *))
 	while (next)
 	{
 		next = head->next;
-		del(head->obj);
+		del(head->shape.v);
+		if (head)
+			free(head);
+		head = next;
+	}
+	*l = NULL;
+}
+
+void	ft_only_lstclean(t_lst **l)
+{
+	t_lst	*head;
+	t_lst	*next;
+
+	head = *l;
+	next = *l;
+	while (next)
+	{
+		next = head->next;
 		if (head)
 			free(head);
 		head = next;

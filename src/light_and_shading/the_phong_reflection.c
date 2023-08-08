@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_phong_reflection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/06 20:49:18 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/07 23:47:30 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ t_material	new_material(void)
 	material.diffuse = 0.9;
 	material.specular = 0.9;
 	material.shininess = 200.0;
+	material.reflective = 0.0;
+	material.transparency = 0.0;
+	material.refractive_index = 1.0;
 	material.pattern.validate = false;
 	return (material);
 }

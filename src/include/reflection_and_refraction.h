@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   reflection_and_refraction.h                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 17:19:49 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/07 23:25:17 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/08/05 19:17:34 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/08/08 05:02:59 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#ifndef REFLECTION_AND_REFRACTION_H
+# define REFLECTION_AND_REFRACTION_H
 
-t_lst	*ft_lstlast(t_lst *l)
-{
-	t_lst	*tail;
+# include "minirt.h"
 
-	if (!l)
-		return (NULL);
-	while (l)
-	{
-		tail = l;
-		l = l->next;
-	}
-	return (tail);
-}
+t_color	reflected_color(t_world w, t_precomp c, int remaining);
+void	determining_n1_and_n2(t_intersections *xs, t_intersection *hit, \
+		t_precomp *comps);
+t_color	refracted_color(t_world w, t_precomp comps, int remaining);
+double	schlick(t_precomp comps);
 
-t_intersection	*ft_lstray_last(t_intersection *l)
-{
-	t_intersection	*tail;
-
-	if (!l)
-		return (NULL);
-	while (l)
-	{
-		tail = l;
-		l = l->next;
-	}
-	return (tail);
-}
+#endif

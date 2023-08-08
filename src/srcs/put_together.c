@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_together.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/07 23:46:46 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/08 06:35:53 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ t_shape	middle_sphere(void *v)
 	t_pattern	pattern;
 
 	middle = new_sphere();
-	middle.sphere->transform = translation(-0.5, 1, 0.5);
+	middle.sphere->transform = translation(0, -3.5, -0.5);
 	middle.sphere->material = new_material();
-	middle.sphere->material.color = fill_color(0.1, 1, 0.5);
+	middle.sphere->material.color = fill_color(1, 0, 0);
+	middle.sphere->material.ambient = 0.5;
 	middle.sphere->material.diffuse = 0.7;
 	middle.sphere->material.specular = 0.3;
 	pattern = gradient_pattern(fill_color(0, 1, 0), fill_color(1, 0, 0));
@@ -44,7 +45,7 @@ t_shape	right_sphere(void *v)
 	tmp[1] = scaling(0.5, 0.5, 0.5);
 	middle.sphere->transform = multiply_matrix(tmp[0], tmp[1], 4, 4);
 	middle.sphere->material = new_material();
-	middle.sphere->material.color = fill_color(1, 0.1, 0.1);
+	middle.sphere->material.color = fill_color(1, 0.1, 0.8);
 	middle.sphere->material.diffuse = 0.7;
 	middle.sphere->material.specular = 0.3;
 	pattern = checkers_pattern(fill_color(0, 1, 0), fill_color(1, 0, 0));

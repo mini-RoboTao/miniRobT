@@ -1,51 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_feature.c                                     :+:      :+:    :+:   */
+/*   reflection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 19:16:00 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/06 11:47:51 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/08/05 19:12:37 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/08/06 14:51:37 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	clean_canvas(t_canvas *c)
+t_color	reflected_color(t_world w, t_precomp c, int remaining)
 {
-	int	x;
+	t_color	color;
+	t_ray	reflect_ray;
 
-	x = 0;
-	if (c)
-	{
-		if (c->canvas)
-		{
-			while (x < c->width)
-			{
-				if (c->canvas[x])
-					free(c->canvas[x]);
-				x++;
-			}
-			free(c->canvas);
-		}
-		free(c);
-	}
-}
-
-void	clean_shape(t_shape *obj)
-{
-	if (obj->v)
-		free(obj->v);
-}
-
-void	clean_world(t_world w)
-{
-	int	i;
-
-	i = 0;
-	while (i < w.amount_obj)
-		clean_shape(&w.shapes[i++]);
-	if (w.shapes)
-		free(w.shapes);
+	color = fill_color(0, 0, 0);
+	if (remaining <= 0)
+		return (color);
+	if (c.shape.any->material.reflective == 0)
+		return (color);
+	reflect_ray = create_ray(c.over_point, c.reflectv);
+	color = color_at(&w, reflect_ray, remaining - 1);
+	return (multiply_scalar_colors(color, c.shape.any->material.reflective));
 }

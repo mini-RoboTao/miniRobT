@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:49:11 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/05 19:24:35 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/08 06:31:51 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_intersections	intersect(t_shape shape, t_ray ray)
 {
 	double			abc[3];
 	double			discriminat;
+	double			sqrtdis;
 	t_intersections	xs;
 
 	xs = (t_intersections){0};
@@ -40,7 +41,7 @@ t_intersections	intersect(t_shape shape, t_ray ray)
 		if (fabs(ray.direction.y) < EPSILON)
 			return ((t_intersections){0});
 		intersections(&xs, \
-		intersection((-ray.position.y) / ray.direction.y, shape), \
+		intersection((-ray.position.y) / ray.direction.y, shape, &xs), \
 		NULL, 0);
 	}
 	else if (shape.id == 1)
@@ -48,14 +49,15 @@ t_intersections	intersect(t_shape shape, t_ray ray)
 		discriminat = calculate_discriminat(abc, ray, shape);
 		if (discriminat < 0)
 			return ((t_intersections){0});
+		sqrtdis = sqrt(discriminat);
 		intersections(&xs, \
-		intersection((-abc[1] - (sqrt(discriminat))) / (2 * abc[0]), shape), \
-		intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), shape), 0);
+		intersection((-abc[1] - (sqrtdis)) / (2 * abc[0]), shape, &xs), \
+		intersection((-abc[1] + (sqrtdis)) / (2 * abc[0]), shape, &xs), 0);
 	}
 	return (xs);
 }
 
-t_intersection	*intersection(double t, t_shape shape)
+t_intersection	*intersection(double t, t_shape shape, t_intersections *xs)
 {
 	t_intersection	*head;
 
@@ -71,6 +73,8 @@ t_intersection	*intersection(double t, t_shape shape)
 void	intersections(t_intersections *xs, \
 		t_intersection *i1, t_intersection *i2, int index)
 {
+	static size_t	id;
+
 	if (i1)
 	{
 		xs->amount += 1;

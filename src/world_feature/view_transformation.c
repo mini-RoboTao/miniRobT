@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:53:42 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/03 00:43:27 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:48:02 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_matrix	view_transformation(t_obj from, t_obj to, t_obj up)
 	return (m);
 }
 
-t_color	color_at(t_world *w, t_ray r)
+t_color	color_at(t_world *w, t_ray r, int remaining)
 {
 	t_intersections	xs;
 	t_intersection	*i;
@@ -63,8 +63,8 @@ t_color	color_at(t_world *w, t_ray r)
 	c = (t_color){0, 0, 0};
 	if (i)
 	{
-		comps = prepare_computations(i, r);
-		c = shade_hit(w, &comps);
+		comps = prepare_computations(i, r, &xs);
+		c = shade_hit(w, &comps, remaining);
 	}
 	clean_intersection_lst(&xs.i);
 	return (c);
