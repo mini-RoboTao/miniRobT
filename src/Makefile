@@ -49,7 +49,8 @@ SRC_COLORS_FEATURE					=					object_colors.c
 SRC_CANVAS_FEATURE					=					canvas.c
 SRC_SHAPES_FEATURE					=					shapes.c							\
 														sphere.c							\
-														plane.c
+														plane.c								\
+														cube.c
 SRC_REFLECTION_AND_REFRACTION		=					reflection.c						\
 														transparency_and_refraction.c
 SRC_LINKED_LST						=					ft_lstnew.c							\
@@ -64,7 +65,7 @@ SRC_PATTERNS_FEATURE				=					striped_pattern.c					\
 														gradient_pattern.c					\
 														ring_pattern.c						\
 														checkers_pattern.c
-SRC									=					minirt.c utils.c put_together.c objs.c				\
+SRC									=					minirt.c utils.c put_together.c objs.c aux_math.c	\
 														$(SRC_LINKED_LST) 									\
 														$(SRC_OBJECT_FEATURE) 								\
 														$(SRC_COLORS_FEATURE) 								\
