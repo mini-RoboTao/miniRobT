@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:30:50 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/08 12:02:50 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/08 13:22:16 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_intersections	intersect_plane(t_shape shape, t_ray ray)
 	if (fabs(ray.direction.y) < EPSILON)
 		return ((t_intersections){0});
 	intersections(&xs, \
-	intersection((-ray.position.y) / ray.direction.y, shape, &xs), \
+	intersection(-ray.position.y / ray.direction.y, shape, &xs), \
 	NULL, 0);
 	return (xs);
 }

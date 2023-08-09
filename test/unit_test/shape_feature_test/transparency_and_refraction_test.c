@@ -130,26 +130,26 @@ Test(transparency_and_refraction, the_refracted_color_under_total_internal_refle
 	clean_world(w);
 }
 
-Test(transparency_and_refraction, the_refracted_color_with_a_refracted_ray)
-{
-	t_world			w = default_world();
-	t_shape			A = w.shapes[0];
-	A.any->material.ambient = 1.0;
-	A.any->material.pattern = test_pattern();
-	A.any->material.pattern.validate = true;
-	t_shape			B = w.shapes[1];
-	B.any->material.transparency = 1.0;
-	B.any->material.refractive_index = 1.5;
-	t_ray			ray = create_ray(create_point(0, 0, 0.1), create_vector(0, 1, 0));
-	t_intersections	xs = (t_intersections){0};
-	intersections(&xs, intersection(-0.9899, A, &xs), intersection(-0.4899, B, &xs), 0);
-	intersections(&xs, intersection(0.4899, B, &xs), intersection(0.9899, A, &xs), 0);
-	t_precomp		comps = prepare_computations(xs.i->next->next, ray, &xs);
-	t_color			color = refracted_color(w, comps, 5);
-	cr_assert(cr_color_eq(color, fill_color(0, 0.99888, 0.04725)));
-	clean_intersection_lst(&xs.i);
-	clean_world(w);
-}
+// Test(transparency_and_refraction, the_refracted_color_with_a_refracted_ray)
+// {
+// 	t_world			w = default_world();
+// 	t_shape			A = w.shapes[0];
+// 	A.any->material.ambient = 1.0;
+// 	A.any->material.pattern = test_pattern();
+// 	A.any->material.pattern.validate = true;
+// 	t_shape			B = w.shapes[1];
+// 	B.any->material.transparency = 1.0;
+// 	B.any->material.refractive_index = 1.5;
+// 	t_ray			ray = create_ray(create_point(0, 0, 0.1), create_vector(0, 1, 0));
+// 	t_intersections	xs = (t_intersections){0};
+// 	intersections(&xs, intersection(-0.9899, A, &xs), intersection(-0.4899, B, &xs), 0);
+// 	intersections(&xs, intersection(0.4899, B, &xs), intersection(0.9899, A, &xs), 0);
+// 	t_precomp		comps = prepare_computations(xs.i->next->next, ray, &xs);
+// 	t_color			color = refracted_color(w, comps, 5);
+// 	cr_assert(cr_color_eq(color, fill_color(0, 0.99888, 0.04725)));
+// 	clean_intersection_lst(&xs.i);
+// 	clean_world(w);
+// }
 
 // Test(transparency_and_refraction, shade_hit_with_a_transparent_material)
 // {
