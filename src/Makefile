@@ -50,7 +50,9 @@ SRC_CANVAS_FEATURE					=					canvas.c
 SRC_SHAPES_FEATURE					=					shapes.c							\
 														sphere.c							\
 														plane.c								\
-														cube.c
+														cube.c								\
+														cylinder.c							\
+														cylinder_cap.c
 SRC_REFLECTION_AND_REFRACTION		=					reflection.c						\
 														transparency_and_refraction.c
 SRC_LINKED_LST						=					ft_lstnew.c							\
