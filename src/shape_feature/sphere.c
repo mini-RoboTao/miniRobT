@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 15:20:58 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/08 12:48:46 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 02:49:00 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_shape	new_sphere(void)
 	s->transform = create_identity_matrix();
 	s->material = new_material();
 	shape.sphere = s;
-	shape.id = 1;
+	shape.id = sphere;
 	shape.intersect = intersect_sphere;
 	shape.normal_at = normal_at_sphere;
 	return (shape);

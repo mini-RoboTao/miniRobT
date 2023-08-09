@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:30:50 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/08 12:02:50 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 02:48:49 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_shape	new_plane(void)
 	p->transform = create_identity_matrix();
 	p->material = new_material();
 	shape.v = p;
-	shape.id = 3;
+	shape.id = plane;
 	shape.intersect = intersect_plane;
 	shape.normal_at = normal_at_plane;
 	return (shape);
