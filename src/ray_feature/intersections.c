@@ -6,17 +6,19 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:49:11 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/08 11:43:06 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 08:32:34 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	calculate_discriminat(double *abc, t_ray ray)
+double	calculate_discriminat(double *abc, t_ray ray, t_shape shape)
 {
+	t_ray			r;
 	t_obj			s_ray;
 	double			discriminat;
 
+	shape.any->saved_ray = ray;
 	s_ray = subtract_objects(ray.position, (t_obj){0, 0, 0, 1});
 	abc[0] = object_dot(ray.direction, ray.direction);
 	abc[1] = 2 * object_dot(ray.direction, s_ray);
@@ -25,9 +27,9 @@ double	calculate_discriminat(double *abc, t_ray ray)
 	return (discriminat);
 }
 
-t_intersections	intersect(t_shape shape, t_ray ray)
+void	intersect(t_intersections *xs, t_shape shape, t_ray ray)
 {
-	return (shape.intersect(shape, \
+	return (shape.intersect(xs, shape, \
 		transform(ray, inverse_matrix(shape.any->transform))));
 }
 
@@ -45,7 +47,7 @@ t_intersection	*intersection(double t, t_shape shape, t_intersections *xs)
 }
 
 void	intersections(t_intersections *xs, \
-		t_intersection *i1, t_intersection *i2, int index)
+		t_intersection *i1, t_intersection *i2)
 {
 	static size_t	id;
 

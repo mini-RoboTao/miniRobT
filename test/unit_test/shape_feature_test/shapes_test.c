@@ -47,7 +47,7 @@ Test(shapes, intersectiong_a_scaled_shape_with_a_ray)
 	t_shape	shape		= test_shape();
 
 	set_transform(&shape, scaling(2, 2, 2));
-	xs = intersect(shape, ray);
+	intersect(&xs, shape, ray);
 	cr_assert(cr_object_eq(shape.any->saved_ray.position, create_point(0, 0, -2.5)));
 	cr_assert(cr_object_eq(shape.any->saved_ray.direction, create_vector(0, 0, 0.5)));
 	clean_shape(&shape);
@@ -61,11 +61,10 @@ Test(shapes, intersectiong_a_translated_shape_with_a_ray)
 	t_shape	shape		= test_shape();
 
 	set_transform(&shape, translation(5, 0, 0));
-	xs = intersect(shape, ray);
+	intersect(&xs, shape, ray);
 	cr_assert(cr_object_eq(shape.any->saved_ray.position, create_point(-5, 0, -5)));
 	cr_assert(cr_object_eq(shape.any->saved_ray.direction, create_vector(0, 0, 1)));
 	clean_shape(&shape);
-	clean_intersection_lst(&xs.i);
 }
 
 Test(shapes, computing_the_normal_on_a_translated_shape)
@@ -106,9 +105,11 @@ Test(Plane, the_normal_of_a_plane_is_constant_everywhere)
 
 Test(Plane, intersect_with_a_ray_parallel_to_the_plane)
 {
-	t_shape	plane = new_plane();
-	t_ray	ray = create_ray(create_point(0, 10, 0), create_vector(0, 0, 1));
-	t_intersections	xs = intersect(plane, ray);
+	t_shape				plane = new_plane();
+	t_ray				ray = create_ray(create_point(0, 10, 0), create_vector(0, 0, 1));
+	t_intersections		xs = (t_intersections){0};
+
+	intersect(&xs, plane, ray);
 	cr_assert(eq(xs.i, NULL));
 	cr_assert(eq(xs.amount, 0));
 	clean_shape(&plane);
@@ -116,9 +117,11 @@ Test(Plane, intersect_with_a_ray_parallel_to_the_plane)
 
 Test(Plane, intersect_with_a_coplanar_ray)
 {
-	t_shape	plane = new_plane();
-	t_ray	ray = create_ray(create_point(0, 10, 0), create_vector(0, 0, 1));
-	t_intersections	xs = intersect(plane, ray);
+	t_shape				plane = new_plane();
+	t_ray				ray = create_ray(create_point(0, 10, 0), create_vector(0, 0, 1));
+	t_intersections		xs = (t_intersections){0};
+
+	intersect(&xs, plane, ray);
 	cr_assert(eq(xs.i, NULL));
 	cr_assert(eq(xs.amount, 0));
 	clean_shape(&plane);
@@ -126,10 +129,11 @@ Test(Plane, intersect_with_a_coplanar_ray)
 
 Test(Plane, a_ray_intersecting_a_plane_from_above)
 {
-	t_shape			plane = new_plane();
-	t_ray			ray = create_ray(create_point(0, 1, 0), create_vector(0, -1, 0));
-	t_intersections	xs = intersect(plane, ray);
+	t_shape				plane = new_plane();
+	t_ray				ray = create_ray(create_point(0, 1, 0), create_vector(0, -1, 0));
+	t_intersections		xs = (t_intersections){0};
 
+	intersect(&xs, plane, ray);
 	cr_assert(eq(xs.amount, 1));
 	cr_assert(eq(xs.i->t, 1));
 	cr_assert(cr_plane_eq(xs.i->shape.plane, plane.plane));
@@ -139,10 +143,11 @@ Test(Plane, a_ray_intersecting_a_plane_from_above)
 
 Test(Plane, a_ray_intersecting_a_plane_from_below)
 {
-	t_shape			plane = new_plane();
-	t_ray			ray = create_ray(create_point(0, -1, 0), create_vector(0, 1, 0));
-	t_intersections	xs = intersect(plane, ray);
+	t_shape				 plane = new_plane();
+	t_ray				ray = create_ray(create_point(0, -1, 0), create_vector(0, 1, 0));
+	t_intersections		xs = (t_intersections){0};
 
+	intersect(&xs, plane, ray);
 	cr_assert(eq(xs.amount, 1));
 	cr_assert(eq(xs.i->t, 1));
 	cr_assert(cr_plane_eq(xs.i->shape.plane, plane.plane));

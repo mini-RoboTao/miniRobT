@@ -3,29 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:30:50 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 02:48:49 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/09 08:33:16 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_intersections	intersect_plane(t_shape shape, t_ray ray)
+void	intersect_plane(t_intersections *xs, t_shape shape, t_ray ray)
 {
-	double			abc[3];
-	double			discriminat;
-	t_intersections	xs;
+	double			t;
 
-	xs = (t_intersections){0};
 	shape.any->saved_ray = ray;
 	if (fabs(ray.direction.y) < EPSILON)
-		return ((t_intersections){0});
-	intersections(&xs, \
-	intersection((-ray.position.y) / ray.direction.y, shape, &xs), \
-	NULL, 0);
-	return (xs);
+		return ;
+	t = (-ray.position.y) / ray.direction.y;
+	intersections(xs, \
+	intersection(t, shape, xs), NULL);
 }
 
 t_obj	normal_at_plane(t_shape shape, t_obj world_point)
@@ -45,7 +41,6 @@ t_shape	new_plane(void)
 	p->x = 0.0;
 	p->y = 0.0;
 	p->z = 0.0;
-	p->radius = 0.0;
 	p->transform = create_identity_matrix();
 	p->material = new_material();
 	shape.v = p;

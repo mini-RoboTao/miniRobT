@@ -47,8 +47,7 @@ int cr_plane_eq(t_plane *a, t_plane *b)
 {
 	return	(fabs(a->x - b->x) < EPSILON && \
 			fabs(a->y - b->y) < EPSILON && \
-			fabs(a->z - b->z) < EPSILON && \
-			fabs(a->radius - b->radius) < EPSILON);
+			fabs(a->z - b->z) < EPSILON);
 }
 
 int cr_light_eq(t_light a, t_light b)

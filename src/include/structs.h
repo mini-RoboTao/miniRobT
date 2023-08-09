@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/09 02:46:17 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/09 07:51:21 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ union u_shape
 {
 	t_sphere		*sphere;
 	t_plane			*plane;
+	t_cube			*cube;
 	t_common_shape	*any;
 	void			*v;
 };
@@ -143,8 +144,8 @@ union u_shape
 typedef struct s_intersections	t_intersections;
 typedef struct s_shape			t_shape;
 
-typedef							t_intersections (t_local_intersect)\
-								(t_shape, t_ray);
+typedef							void (t_local_intersect)\
+								(t_intersections *, t_shape, t_ray);
 typedef							t_obj (t_local_normal_at)(t_shape, t_obj);
 
 typedef struct s_shape
@@ -155,6 +156,7 @@ typedef struct s_shape
 	union {
 		t_sphere			*sphere;
 		t_plane				*plane;
+		t_cube				*cube;
 		t_common_shape		*any;
 		void				*v;
 	};

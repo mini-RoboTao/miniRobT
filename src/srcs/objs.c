@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 02:46:39 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/08 12:17:59 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:17:03 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ t_shape	make_floor(void *v)
 	t_shape	floor;
 
 	floor = new_plane();
-	floor.sphere->transform = translation(0, -1, 0);
-	floor.sphere->material = new_material();
-	floor.sphere->material.transparency = 0.5;
-	floor.sphere->material.reflective = 0.5;
-	floor.sphere->material.refractive_index = 1.5;
-	floor.sphere->material.color = fill_color(1, 0.5, 0.9);
-	floor.sphere->material.specular = 0;
+	floor.plane->material = new_material();
+	floor.plane->material.color = fill_color(1, 0.9, 0.9);
+	floor.plane->transform = multiply_matrix(rotation_x(M_PI_2), \
+	translation(0, 0, 1), 4, 4);
+	floor.plane->material.transparency = 0.5;
+	floor.plane->material.reflective = 0.5;
+	floor.plane->material.refractive_index = 1.5;
+	floor.plane->material.specular = 0;
 	return (floor);
 	(void)v;
 }
@@ -31,16 +32,15 @@ t_shape	make_floor(void *v)
 t_shape	make_wall_left(t_shape *floor)
 {
 	t_shape		wall;
-	t_matrix	tmp[6];
 
 	wall = new_sphere();
-	tmp[0] = translation(0, 0, 5);
-	tmp[1] = rotation_y(-(M_PI_4));
-	tmp[2] = rotation_x(M_PI_2);
-	tmp[3] = scaling(10, 0.01, 10);
-	tmp[4] = multiply_matrix(tmp[0], tmp[1], 4, 4);
-	tmp[5] = multiply_matrix(tmp[2], tmp[3], 4, 4);
-	wall.sphere->transform = multiply_matrix(tmp[4], tmp[5], 4, 4);
+	wall.sphere->transform = multiply_matrix(\
+								multiply_matrix(\
+									translation(0, 0, 5), \
+									rotation_y(-(M_PI_4)), 4, 4), \
+								multiply_matrix(\
+									rotation_x(M_PI_2), \
+									scaling(10, 0.01, 10), 4, 4), 4, 4);
 	wall.sphere->material = floor->sphere->material;
 	return (wall);
 }
@@ -51,13 +51,13 @@ t_shape	make_wall_right(t_shape *floor)
 	t_matrix	tmp[6];
 
 	wall = new_sphere();
-	tmp[0] = translation(0, 0, 5);
-	tmp[1] = rotation_y(M_PI_4);
-	tmp[2] = rotation_x(M_PI_2);
-	tmp[3] = scaling(10, 0.01, 10);
-	tmp[4] = multiply_matrix(tmp[0], tmp[1], 4, 4);
-	tmp[5] = multiply_matrix(tmp[2], tmp[3], 4, 4);
-	wall.sphere->transform = multiply_matrix(tmp[4], tmp[5], 4, 4);
+	wall.sphere->transform = multiply_matrix(\
+								multiply_matrix(\
+									translation(0, 0, 5), \
+									rotation_y((M_PI_4)), 4, 4), \
+								multiply_matrix(\
+									rotation_x(M_PI_2), \
+									scaling(10, 0.01, 10), 4, 4), 4, 4);
 	wall.sphere->material = floor->sphere->material;
 	return (wall);
 }

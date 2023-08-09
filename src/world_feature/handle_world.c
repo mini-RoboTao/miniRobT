@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/08 12:40:47 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 08:28:00 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,12 @@ t_world	default_world(void)
 t_intersections	intersect_world(t_world *w, t_ray ray)
 {
 	int				i;
-	double			abc[3];
-	double			discriminat;
 	t_intersections	xs;
 
 	i = 0;
 	xs = (t_intersections){0};
-	abc[0] = 0;
-	abc[1] = 0;
-	abc[2] = 0;
 	while (i < w->amount_obj)
-	{
-		ray = transform(ray, inverse_matrix(w->shapes[i].any->transform));
-		discriminat = calculate_discriminat(abc, ray);
-		if (discriminat >= 0)
-		{
-			intersections(&xs, \
-			intersection((-abc[1] - (sqrt(discriminat))) \
-			/ (2 * abc[0]), w->shapes[i], &xs), \
-			intersection((-abc[1] + (sqrt(discriminat))) \
-			/ (2 * abc[0]), w->shapes[i], &xs), i);
-		}
-		i++;
-	}
+		intersect(&xs, w->shapes[i++], ray);
 	return (xs);
 }
 
@@ -100,7 +83,7 @@ t_color	shade_hit(t_world *w, t_precomp *comps, int remaining)
 	t_material		material;
 
 	lig = (t_lighting){0};
-	lig.material = comps->shape.sphere->material;
+	lig.material = comps->shape.any->material;
 	lig.shape = comps->shape;
 	lig.light = w->light;
 	lig.point = comps->point;
@@ -117,5 +100,5 @@ t_color	shade_hit(t_world *w, t_precomp *comps, int remaining)
 			multiply_scalar_colors(reflected, schlick(*comps))), \
 			multiply_scalar_colors(refracted, (1 - schlick(*comps)))));
 	}
-	return (sum_colors(sum_colors(surface, reflected), refracted));
+	return (sum_colors(refracted, sum_colors(surface, reflected)));
 }

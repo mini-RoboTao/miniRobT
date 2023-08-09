@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 02:42:12 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/09 06:43:25 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/09 08:33:27 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,13 @@ t_shape	new_cube(void)
 	return (shape);
 }
 
-t_intersections	intersect_cube(t_shape cube, t_ray ray)
+void	intersect_cube(t_intersections *xs, t_shape cube, t_ray ray)
 {
 	double			*x_min_max;
 	double			*y_min_max;
 	double			*z_min_max;
 	double			t_min_max[2];
-	t_intersections	xs;
 
-	xs = (t_intersections){0};
 	x_min_max = check_axis(ray.position.x, ray.direction.x);
 	y_min_max = check_axis(ray.position.y, ray.direction.y);
 	z_min_max = check_axis(ray.position.z, ray.direction.z);
@@ -54,10 +52,9 @@ t_intersections	intersect_cube(t_shape cube, t_ray ray)
 	free(y_min_max);
 	free(z_min_max);
 	if (t_min_max[0] > t_min_max[1])
-		return (xs);
-	intersections(&xs, intersection(t_min_max[0], cube, &xs), \
-						intersection(t_min_max[1], cube, &xs), 0);
-	return (xs);
+		return ;
+	intersections(xs, intersection(t_min_max[0], cube, xs), \
+						intersection(t_min_max[1], cube, xs));
 }
 
 double	*check_axis(double origin, double direction)
