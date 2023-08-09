@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:30:50 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 06:36:33 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 07:03:48 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_shape	new_plane(void)
 	p->transform = create_identity_matrix();
 	p->material = new_material();
 	shape.v = p;
-	shape.id = 2;
+	shape.id = plane;
 	shape.intersect = intersect_plane;
 	shape.normal_at = normal_at_plane;
 	return (shape);

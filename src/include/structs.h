@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/08 12:49:00 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 02:46:17 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,19 @@ typedef struct s_plane
 	t_material	material;
 	t_ray		saved_ray;
 }				t_plane;
+
+typedef struct s_cube
+{
+	double		x;
+	double		y;
+	double		z;
+	double		width;
+	double		height;
+	double		lenght;
+	t_matrix	transform;
+	t_material	material;
+	t_ray		saved_ray;
+}				t_cube;
 
 typedef struct s_common_shape
 {

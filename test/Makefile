@@ -58,7 +58,8 @@ SRC_OBJ_FEATURE					=			create_object_test.c 				\
 SRC_COLORS_FEATURE				=			cap2_color_tests.c
 SRC_CANVAS_FEATURE				=			cap2_canva_tests.c
 SRC_UTILS						=			float_to_hex_test.c					\
-											join_rgb_colors_test.c
+											join_rgb_colors_test.c				\
+											aux_math_test.c
 SRC_MATRIX_FEATURE				=			handle_matrix_test.c 				\
 											matrix_operations_test.c			\
 											inverting_matrix_test.c				\
@@ -78,7 +79,8 @@ SRC_MATRIX_TRANSFORMATION		=			translation_matrix_test.c			\
 SRC_WORLD_FEATURE				=			handle_world_test.c 				\
 											view_transformation_test.c			\
 											camera_test.c
-SRC_SHAPES_FEATURE				=			shapes_test.c
+SRC_SHAPES_FEATURE				=			shapes_test.c						\
+											cube_test.c
 SRC_REFLECTIVE_AND_REFRACTION	=			reflection_test.c
 SRC_LINKED_LST					=			ft_lstremove_test.c
 SRC_PATTERNS_FEATURE			=			making_a_striped_pattern_test.c		\
