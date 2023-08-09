@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 04:11:23 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 06:35:54 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,18 @@ void	put_together(t_data *d)
 	t_camera	c;
 
 	w = (t_world){0};
-	w.amount_obj = 6;
+	w.amount_obj = 1;
 	w.shapes = malloc(sizeof(t_shape) * w.amount_obj);
 	w.shapes[0] = make_floor(NULL);
-	w.shapes[1] = make_wall_left(&w.shapes[0]);
-	w.shapes[2] = make_wall_right(&w.shapes[0]);
-	w.shapes[3] = right_sphere(NULL);
-	w.shapes[4] = left_sphere(NULL);
-	w.shapes[5] = middle_sphere(NULL);
 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
 	c = camera(1000, 1000, M_PI / 3);
 	c.transform = view_transformation(create_point(0, 1.5, -5), \
 	create_point(0, 1, 0), create_vector(0, 1, 0));
 	d->canvas = render(&c, &w);
 }
+
+	// w.shapes[1] = make_wall_left(&w.shapes[0]);
+	// w.shapes[2] = make_wall_right(&w.shapes[0]);
+	//w.shapes[1] = right_sphere(NULL);
+	//w.shapes[2] = left_sphere(NULL);
+	//w.shapes[3] = middle_sphere(NULL);

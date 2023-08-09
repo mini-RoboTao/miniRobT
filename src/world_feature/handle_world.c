@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 04:34:01 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 06:34:01 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ t_color	shade_hit(t_world *w, t_precomp *comps, int remaining)
 	t_material		material;
 
 	lig = (t_lighting){0};
-	lig.material = comps->shape.sphere->material;
+	lig.material = comps->shape.any->material;
 	lig.shape = comps->shape;
 	lig.light = w->light;
 	lig.point = comps->point;

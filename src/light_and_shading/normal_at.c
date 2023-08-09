@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 21:49:46 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/09 03:05:41 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 06:26:55 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ t_obj	normal_at(t_shape shape, t_obj world_point)
 	inverse_matrix(shape.any->transform), world_point, 4, 4);
 	local_normal = shape.normal_at(shape, local_point);
 	world_normal = multiply_matrix_by_obj(\
-	transpose_matrix(inverse_matrix(shape.any->transform)) \
-	, local_normal, 4, 4);
+	transpose_matrix(inverse_matrix(shape.any->transform)), local_normal, 4, 4);
 	world_normal.w = 0;
 	return (object_normalize(world_normal));
 }
