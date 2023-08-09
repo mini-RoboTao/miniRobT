@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 22:11:05 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 06:39:11 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:30:41 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,18 @@ t_obj			normal_at_plane(t_shape shape, t_obj world_point);
 t_shape			new_plane(void);
 
 // Cube
-
 t_shape			new_cube(void);
 t_intersections	intersect_cube(t_shape cube, t_ray ray);
 double			*check_axis(double origin, double direction);
 t_obj			normal_at_cube(t_shape cube, t_obj point);
+
+// Cylinder
+t_shape			new_cylinder(void);
+t_intersections	intersect_cylinder(t_shape cylinder, t_ray ray);
+t_obj			normal_at_cylinder(t_shape cylinder, t_obj point);
+
+// Cap cylinder
+double			check_cap(t_ray ray, double t);
+t_intersections	intersect_caps(t_shape cylinder, t_ray ray);
 
 #endif

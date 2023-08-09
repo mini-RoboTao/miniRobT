@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/09 02:46:17 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/09 09:41:13 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,20 @@ typedef struct s_cube
 	t_ray		saved_ray;
 }				t_cube;
 
+typedef struct s_cylinder
+{
+	double		x;
+	double		y;
+	double		z;
+	double		radius;
+	double		minimum;
+	double		maximum;
+	t_bool		closed;
+	t_matrix	transform;
+	t_material	material;
+	t_ray		saved_ray;
+}				t_cylinder;
+
 typedef struct s_common_shape
 {
 	double		x;
@@ -136,6 +150,8 @@ union u_shape
 {
 	t_sphere		*sphere;
 	t_plane			*plane;
+	t_cube			*cube;
+	t_cylinder		*cylinder;
 	t_common_shape	*any;
 	void			*v;
 };
@@ -155,6 +171,8 @@ typedef struct s_shape
 	union {
 		t_sphere			*sphere;
 		t_plane				*plane;
+		t_cube				*cube;
+		t_cylinder			*cylinder;
 		t_common_shape		*any;
 		void				*v;
 	};

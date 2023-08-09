@@ -80,7 +80,8 @@ SRC_WORLD_FEATURE				=			handle_world_test.c 				\
 											view_transformation_test.c			\
 											camera_test.c
 SRC_SHAPES_FEATURE				=			shapes_test.c						\
-											cube_test.c
+											cube_test.c							\
+											cylinder_test.c
 SRC_REFLECTIVE_AND_REFRACTION	=			reflection_test.c
 SRC_LINKED_LST					=			ft_lstremove_test.c
 SRC_PATTERNS_FEATURE			=			making_a_striped_pattern_test.c		\
