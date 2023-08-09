@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 06:35:54 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:17:27 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_shape	middle_sphere(void *v)
 	middle.sphere->material.color = fill_color(0.8, 0.4, 1);
 	middle.sphere->material.reflective = 0.5;
 	middle.sphere->material.transparency = 0.5;
-	middle.sphere->material.refractive_index = 0.5;
+	middle.sphere->material.refractive_index = 1.5;
 	middle.sphere->material.diffuse = 0.7;
 	middle.sphere->material.specular = 0.3;
 	middle.sphere->material.ambient = 0.5;
@@ -84,18 +84,17 @@ void	put_together(t_data *d)
 	t_camera	c;
 
 	w = (t_world){0};
-	w.amount_obj = 1;
+	w.amount_obj = 2;
 	w.shapes = malloc(sizeof(t_shape) * w.amount_obj);
-	w.shapes[0] = make_floor(NULL);
+	w.shapes[1] = middle_sphere(NULL);
+	w.shapes[0] = new_plane();
+	set_transform(&w.shapes[0], translation(0, -1, 0));
+	w.shapes[0].plane->material.reflective = 0.5;
+	w.shapes[0].plane->material.transparency = 0.5;
+	w.shapes[0].plane->material.refractive_index = 1.5;
 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
 	c = camera(1000, 1000, M_PI / 3);
 	c.transform = view_transformation(create_point(0, 1.5, -5), \
 	create_point(0, 1, 0), create_vector(0, 1, 0));
 	d->canvas = render(&c, &w);
 }
-
-	// w.shapes[1] = make_wall_left(&w.shapes[0]);
-	// w.shapes[2] = make_wall_right(&w.shapes[0]);
-	//w.shapes[1] = right_sphere(NULL);
-	//w.shapes[2] = left_sphere(NULL);
-	//w.shapes[3] = middle_sphere(NULL);

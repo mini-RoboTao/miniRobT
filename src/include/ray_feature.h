@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 09:37:44 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 01:19:08 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 08:32:19 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ t_obj			cat_position(t_ray ray, double t);
 
 // intersections
 double			calculate_discriminat(double *abc, t_ray ray, t_shape shape);
-t_intersections	intersect(t_shape shape, t_ray r);
+void			intersect(t_intersections *xs, t_shape shape, t_ray r);
 t_intersection	*intersection(double t, t_shape shape, t_intersections *xs);
 void			intersections(t_intersections *xs, \
-				t_intersection *i1, t_intersection *i2, int index);
+				t_intersection *i1, t_intersection *i2);
 t_intersection	*hit(t_intersections xs);
 
 // Transforming

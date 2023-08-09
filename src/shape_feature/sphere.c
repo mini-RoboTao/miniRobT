@@ -6,28 +6,24 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 15:20:58 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 07:05:21 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:16:23 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_intersections	intersect_sphere(t_shape shape, t_ray ray)
+void	intersect_sphere(t_intersections *xs, t_shape shape, t_ray ray)
 {
 	double			abc[3];
 	double			discriminat;
-	t_intersections	xs;
 
-	xs = (t_intersections){0};
 	shape.any->saved_ray = ray;
 	discriminat = calculate_discriminat(abc, ray, shape);
 	if (discriminat < 0)
-		return ((t_intersections){0});
-	intersections(&xs, \
-	intersection((-abc[1] - (sqrt(discriminat))) / (2 * abc[0]), shape, &xs), \
-	intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), shape, \
-	&xs), 0);
-	return (xs);
+		return ;
+	intersections(xs, \
+	intersection((-abc[1] - (sqrt(discriminat))) / (2 * abc[0]), shape, xs), \
+	intersection((-abc[1] + (sqrt(discriminat))) / (2 * abc[0]), shape, xs));
 }
 
 t_obj	normal_at_sphere(t_shape shape, t_obj point)

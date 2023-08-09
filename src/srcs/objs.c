@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 02:46:39 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 06:36:13 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:17:03 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ t_shape	make_floor(void *v)
 	t_shape	floor;
 
 	floor = new_plane();
-	floor.plane->transform = translation(0, 0, 0);
+	floor.plane->material = new_material();
+	floor.plane->material.color = fill_color(1, 0.9, 0.9);
+	floor.plane->transform = multiply_matrix(rotation_x(M_PI_2), \
+	translation(0, 0, 1), 4, 4);
+	floor.plane->material.transparency = 0.5;
+	floor.plane->material.reflective = 0.5;
+	floor.plane->material.refractive_index = 1.5;
+	floor.plane->material.specular = 0;
 	return (floor);
 	(void)v;
 }
-
-	// floor.plane->material = new_material();
-	// floor.plane->material.transparency = 0.5;
-	// floor.plane->material.reflective = 0.5;
-	// floor.plane->material.refractive_index = 1.5;
-	// floor.plane->material.color = fill_color(1, 0.9, 0.9);
-	// floor.plane->material.specular = 0;
 
 t_shape	make_wall_left(t_shape *floor)
 {
