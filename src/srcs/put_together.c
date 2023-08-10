@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/10 04:44:32 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/10 17:47:13 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	put_together(t_data *d)
 	t_camera	c;
 
 	w = (t_world){0};
-	w.amount_obj = 6;
+	w.amount_obj = 8;
 	w.shapes = malloc(sizeof(t_shape) * w.amount_obj);
 	w.shapes[0] = make_floor(NULL);
 	w.shapes[1] = middle_sphere(NULL);
@@ -113,6 +113,8 @@ void	put_together(t_data *d)
 	w.shapes[3] = left_cylinder(NULL);
 	w.shapes[4] = right_cube(NULL);
 	w.shapes[5] = cap_cylinder(NULL);
+	w.shapes[6] = left_cone(NULL);
+	w.shapes[7] = left_cone_2(NULL);
 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
 	c = camera(WIDTH, HEIGHT, M_PI / 3);
 	c.transform = view_transformation(create_point(0, 1.5, -5), \

@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/10 05:48:50 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/10 17:48:09 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -319,6 +319,8 @@ t_shape		make_wall_left(t_shape *floor);
 t_shape		make_floor(void *v);
 t_shape		cap_cylinder(void *v);
 t_shape		right_cube(void *v);
+t_shape		left_cone(void *v);
+t_shape		left_cone_2(void *v);
 void		put_together(t_data *d);
 int			ft_render_minirt(t_data *data);
 void		ft_mlx_pixel_put(t_data *data, int x, int y, int color);

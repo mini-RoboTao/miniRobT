@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 02:46:39 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/10 04:44:48 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/10 17:48:31 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,47 @@ t_shape	right_cube(void *v)
 	set_pattern_transform(&pattern, scaling(0.5, 0.5, 0.5));
 	middle.any->material.pattern = pattern;
 	return (middle);
+	(void)v;
+}
+
+t_shape	left_cone(void *v)
+{
+	t_shape		s3;
+	t_pattern	pattern;
+
+	s3 = new_cone();
+	s3.any->transform = multiply_matrix(\
+									translation(1, 1.66, -0.75), \
+									scaling(0.6, 0.6, 0.6), 4, 4);
+	s3.any->transform = multiply_matrix(s3.any->transform, rotation_x(M_PI), \
+									4, 4);
+	s3.any->material = new_material();
+	s3.any->material.color = fill_color(1, 0.8, 0.1);
+	s3.any->material.diffuse = 0.7;
+	s3.any->material.specular = 0.3;
+	pattern = alt_checkers_pattern(fill_color(1, 1, 0), fill_color(1, 0.4, 0));
+	set_pattern_transform(&pattern, scaling(0.2, 0.2, 0.2));
+	s3.any->material.pattern = pattern;
+	return (s3);
+	(void)v;
+}
+
+t_shape	left_cone_2(void *v)
+{
+	t_shape		s3;
+	t_pattern	pattern;
+
+	s3 = new_cone();
+	s3.any->transform = multiply_matrix(\
+									translation(1, 1.66, -0.75), \
+									scaling(0.6, 0.6, 0.6), 4, 4);
+	s3.any->material = new_material();
+	s3.any->material.color = fill_color(1, 0.8, 0.1);
+	s3.any->material.diffuse = 0.7;
+	s3.any->material.specular = 0.3;
+	pattern = alt_checkers_pattern(fill_color(1, 1, 0), fill_color(1, 0.4, 0));
+	set_pattern_transform(&pattern, scaling(0.2, 0.2, 0.2));
+	s3.any->material.pattern = pattern;
+	return (s3);
 	(void)v;
 }
