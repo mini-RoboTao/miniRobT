@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 13:13:42 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/07 16:37:23 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/10 05:32:02 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef enum e_object_type {
 	plane,
 	cylinder,
 	cube,
+	cone,
 	triangle,
 	csg
 }				t_object_type;
@@ -38,6 +39,7 @@ typedef enum e_pattern_type
 	gradient,
 	ring,
 	checkers,
+	alt_checkers
 }	t_pattern_type;
 
 #endif

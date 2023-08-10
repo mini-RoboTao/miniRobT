@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generalizing_patterns.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 16:50:46 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/08 02:27:52 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/10 03:38:38 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_color	pattern_at(t_pattern pattern, t_obj point)
 		return (ring_at(pattern, point));
 	if (pattern.type == checkers)
 		return (checkers_at(pattern, point));
+	if (pattern.type == alt_checkers)
+		return (alt_checkers_at(pattern, point));
 	return (fill_color(point.x, point.y, point.z));
 }
 

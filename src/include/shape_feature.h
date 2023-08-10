@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape_feature.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 22:11:05 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 13:33:25 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/10 16:58:46 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,14 @@ t_obj	normal_at_cylinder(t_shape cylinder, t_obj point);
 // Cap cylinder
 double	check_cap(t_ray ray, double t);
 void	intersect_caps(t_intersections *xs, t_shape cylinder, t_ray ray);
+
+// Cone
+t_shape	new_cone(void);
+void	intersect_cone(t_intersections *xs, t_shape cone, t_ray ray);
+t_obj	normal_at_cone(t_shape cone, t_obj point);
+
+// Cap cone
+double	check_cone_cap(t_ray ray, double t, double minmax);
+void	intersect_cone_caps(t_intersections *xs, t_shape cone, t_ray ray);
 
 #endif

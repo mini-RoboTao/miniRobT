@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/09 12:52:35 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/10 17:48:09 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,20 @@ typedef struct s_cylinder
 	t_ray		saved_ray;
 }				t_cylinder;
 
+typedef struct s_cone
+{
+	double		x;
+	double		y;
+	double		z;
+	double		radius;
+	double		minimum;
+	double		maximum;
+	t_bool		closed;
+	t_matrix	transform;
+	t_material	material;
+	t_ray		saved_ray;
+}				t_cone;
+
 typedef struct s_common_shape
 {
 	double		x;
@@ -152,6 +166,7 @@ union u_shape
 	t_plane			*plane;
 	t_cube			*cube;
 	t_cylinder		*cylinder;
+	t_cone			*cone;
 	t_common_shape	*any;
 	void			*v;
 };
@@ -173,6 +188,7 @@ typedef struct s_shape
 		t_plane				*plane;
 		t_cube				*cube;
 		t_cylinder			*cylinder;
+		t_cone				*cone;
 		t_common_shape		*any;
 		void				*v;
 	};
@@ -301,6 +317,10 @@ typedef struct s_data {
 t_shape		make_wall_right(t_shape *floor);
 t_shape		make_wall_left(t_shape *floor);
 t_shape		make_floor(void *v);
+t_shape		cap_cylinder(void *v);
+t_shape		right_cube(void *v);
+t_shape		left_cone(void *v);
+t_shape		left_cone_2(void *v);
 void		put_together(t_data *d);
 int			ft_render_minirt(t_data *data);
 void		ft_mlx_pixel_put(t_data *data, int x, int y, int color);
