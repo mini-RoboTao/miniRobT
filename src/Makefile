@@ -52,7 +52,9 @@ SRC_SHAPES_FEATURE					=					shapes.c							\
 														plane.c								\
 														cube.c								\
 														cylinder.c							\
-														cylinder_cap.c
+														cylinder_cap.c						\
+														cone.c								\
+														cone_cap.c
 SRC_REFLECTION_AND_REFRACTION		=					reflection.c						\
 														transparency_and_refraction.c
 SRC_LINKED_LST						=					ft_lstnew.c							\

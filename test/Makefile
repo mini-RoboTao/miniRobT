@@ -81,7 +81,8 @@ SRC_WORLD_FEATURE				=			handle_world_test.c 				\
 											camera_test.c
 SRC_SHAPES_FEATURE				=			shapes_test.c						\
 											cube_test.c							\
-											cylinder_test.c
+											cylinder_test.c						\
+											cone_test.c
 SRC_REFLECTIVE_AND_REFRACTION	=			reflection_test.c					\
 											transparency_and_refraction_test.c
 SRC_REFLECTIVE_AND_REFRACTION	=			reflection_test.c
