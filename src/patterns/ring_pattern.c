@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 21:45:22 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/07 14:55:22 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/10 03:36:05 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_color	ring_at(t_pattern pattern, t_obj point)
 {
 	int	mod;
 
-	mod = floor(sqrt(point.x + point.z));
+	mod = floor(sqrt(pow(point.x, 2) + pow(point.z, 2)));
 	if ((mod % 2) == 0)
 		return (pattern.a);
 	return (pattern.b);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_together.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 17:44:56 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/10 04:44:32 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_shape	right_sphere(void *v)
 	middle.any->material.reflective = 0.5;
 	middle.any->material.diffuse = 0.7;
 	middle.any->material.specular = 0.3;
-	pattern = checkers_pattern(fill_color(0, 1, 0), fill_color(1, 0, 0));
+	pattern = alt_checkers_pattern(fill_color(0, 1, 0), fill_color(1, 0, 0));
 	set_pattern_transform(&pattern, scaling(0.2, 0.2, 0.2));
 	middle.any->material.pattern = pattern;
 	return (middle);
@@ -105,14 +105,16 @@ void	put_together(t_data *d)
 	t_camera	c;
 
 	w = (t_world){0};
-	w.amount_obj = 4;
+	w.amount_obj = 6;
 	w.shapes = malloc(sizeof(t_shape) * w.amount_obj);
 	w.shapes[0] = make_floor(NULL);
 	w.shapes[1] = middle_sphere(NULL);
 	w.shapes[2] = right_sphere(NULL);
 	w.shapes[3] = left_cylinder(NULL);
+	w.shapes[4] = right_cube(NULL);
+	w.shapes[5] = cap_cylinder(NULL);
 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
-	c = camera(800, 800, M_PI / 3);
+	c = camera(WIDTH, HEIGHT, M_PI / 3);
 	c.transform = view_transformation(create_point(0, 1.5, -5), \
 	create_point(0, 1, 0), create_vector(0, 1, 0));
 	d->canvas = render(&c, &w);
