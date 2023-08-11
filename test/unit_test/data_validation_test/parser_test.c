@@ -7,7 +7,7 @@ void	create_file_test(int *fd, char *name, char *expected)
 	char	path[300];
 	// Create the file and input the text.
 	sprintf(path, __PATH_TEST_, name);
-	*fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU | S_IRWXG);
+	*fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU | S_IRWXG | S_IRWXO);
 	write(*fd, expected, ft_strlen(expected));
 	close(*fd);
 }
