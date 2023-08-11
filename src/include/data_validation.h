@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   data_validation.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:59:18 by dapaulin          #+#    #+#             */
 /*   Updated: 2023/08/11 07:06:33 by dapaulin         ###   ########.fr       */
