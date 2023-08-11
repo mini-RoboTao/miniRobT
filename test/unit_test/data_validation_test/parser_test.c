@@ -89,7 +89,7 @@ Test(Parser_valid_xyz, test_a_valid_string_xyz)
 	t_obj	expected = create_point(0, 1, 0);
 	t_obj	result;
 
-	result = valid_xyz(str, &is_valid);
+	result = convert_xyz(str, &is_valid);
 
 	cr_assert(eq(is_valid, T));
 	cr_assert(cr_object_eq(result, expected));
@@ -102,7 +102,7 @@ Test(Parser_valid_xyz, test_a_string_with_a_invalid_y_value_xyz)
 	t_obj	expected = create_point(0, 0, 0);
 	t_obj	result;
 
-	result = valid_xyz(str, &is_valid);
+	result = convert_xyz(str, &is_valid);
 
 	cr_assert(eq(is_valid, F));
 	cr_assert(cr_object_eq(result, expected));
@@ -115,7 +115,7 @@ Test(Parser_valid_xyz, test_a_string_with_a_invalid_x_value_xyz)
 	t_obj	expected = create_point(0, 0, 0);
 	t_obj	result;
 
-	result = valid_xyz(str, &is_valid);
+	result = convert_xyz(str, &is_valid);
 
 	cr_assert(eq(is_valid, F));
 	cr_assert(cr_object_eq(result, expected));
@@ -128,7 +128,7 @@ Test(Parser_valid_xyz, test_a_string_with_a_invalid_z_value_xyz)
 	t_obj	expected = create_point(0, 0, 0);
 	t_obj	result;
 
-	result = valid_xyz(str, &is_valid);
+	result = convert_xyz(str, &is_valid);
 
 	cr_assert(eq(is_valid, F));
 	cr_assert(cr_object_eq(result, expected));
@@ -141,7 +141,7 @@ Test(Parser_valid_xyz, test_a_string_with_more_params_xyz)
 	t_obj	expected = create_point(0, 0, 0);
 	t_obj	result;
 
-	result = valid_xyz(str, &is_valid);
+	result = convert_xyz(str, &is_valid);
 
 	cr_assert(eq(is_valid, F));
 	cr_assert(cr_object_eq(result, expected));
@@ -154,7 +154,7 @@ Test(Parser_valid_xyz, test_a_string_with_minus_params_xyz)
 	t_obj	expected = create_point(0, 0, 0);
 	t_obj	result;
 
-	result = valid_xyz(str, &is_valid);
+	result = convert_xyz(str, &is_valid);
 
 	cr_assert(eq(is_valid, F));
 	cr_assert(cr_object_eq(result, expected));
@@ -167,22 +167,35 @@ Test(Parser_valid_xyz, test_a_string_with_a_big_x_value_params_xyz)
 	t_obj	expected = create_point(7798797985454.654646544564, 0, 0);
 	t_obj	result;
 
-	result = valid_xyz(str, &is_valid);
+	result = convert_xyz(str, &is_valid);
 
 	cr_assert(eq(is_valid, T));
 	cr_assert(cr_object_eq(result, expected));
 }
 
-Test(Parser_valid_xyz, test_valid_3d_normalized_with_a_big_x_value_params_xyz)
+Test(Parser_valid_xyz, test_valid_3d_normalized_with_a_big_x_value)
 {
 	t_bool	is_valid;
 	char	*str = "7798797985454.654646544564,0.0,0.0";
 	t_obj	expected = create_vector(0, 0, 0);
 	t_obj	result;
 
-	result = valid_3d_normalized(str, &is_valid);
+	result = convert_3d_normalized(str, &is_valid);
 
 	cr_assert(eq(is_valid, F));
+	cr_assert(cr_object_eq(result, expected));
+}
+
+Test(Parser_valid_xyz, test_valid_3d_normalized_with_valid_values)
+{
+	t_bool	is_valid;
+	char	*str = "0.99,0.0,0.0";
+	t_obj	expected = create_vector(0.99, 0, 0);
+	t_obj	result;
+
+	result = convert_3d_normalized(str, &is_valid);
+
+	cr_assert(eq(is_valid, T));
 	cr_assert(cr_object_eq(result, expected));
 }
 

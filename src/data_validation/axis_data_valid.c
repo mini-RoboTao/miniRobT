@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 01:00:53 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 01:28:58 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 01:52:53 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	set_float(double *res, char **array, int i, t_bool *is_valid)
 	return (1);
 }
 
-t_obj	valid_xyz(char *str, t_bool *is_valid)
+t_obj	convert_xyz(char *str, t_bool *is_valid)
 {
 	size_t	size;
 	t_obj	point;
@@ -66,11 +66,11 @@ t_obj	valid_xyz(char *str, t_bool *is_valid)
 	return (point);
 }
 
-t_obj	valid_3d_normalized(char *str, t_bool *is_valid)
+t_obj	convert_3d_normalized(char *str, t_bool *is_valid)
 {
 	t_obj	vector;
 
-	vector = valid_xyz(str, is_valid);
+	vector = convert_xyz(str, is_valid);
 	if (!*is_valid)
 		return (vector);
 	if (vector.x < -1 || vector.x > 1
