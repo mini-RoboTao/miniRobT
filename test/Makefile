@@ -95,7 +95,8 @@ SRC_PATTERNS_FEATURE			=			making_a_striped_pattern_test.c		\
 											gradient_pattern_test.c				\
 											ring_pattern_test.c					\
 											checkers_pattern_test.c
-SRC_DATA_VALIDATION				=			parser_test.c
+SRC_DATA_VALIDATION				=			parser_test.c						\
+											rgb_validate_test.c
 SRC								=			$(SRC_OBJ_FEATURE) 					\
 											$(SRC_COLORS_FEATURE) 				\
 											$(SRC_CANVAS_FEATURE) 				\
