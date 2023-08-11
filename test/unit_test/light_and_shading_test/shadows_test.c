@@ -14,7 +14,7 @@ Test(Shadows, Lighting_with_the_surface_in_shadow)
 	data.light		= point_light(point, color);
 	data.in_shadow	= true;
 
-	t_color result = lighting(data);
+	t_color result = lighting(data, create_point(0, 0, 0));
 	cr_assert(cr_color_eq(result, res_color));
 }
 

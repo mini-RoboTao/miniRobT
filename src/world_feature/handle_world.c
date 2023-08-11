@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 06:27:08 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 07:06:23 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_color	shade_hit(t_world *w, t_precomp *comps, int remaining)
 	lig.eyev = comps->eyev;
 	lig.normalv = comps->normalv;
 	lig.in_shadow = is_shadowed(w, comps->over_point);
-	surface = lighting(lig);
+	surface = lighting(lig, comps->over_point);
 	refracted = refracted_color(*w, *comps, remaining);
 	reflected = reflected_color(*w, *comps, remaining);
 	material = comps->shape.any->material;

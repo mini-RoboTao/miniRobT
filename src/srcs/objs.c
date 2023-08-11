@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 02:46:39 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 06:25:52 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 07:17:05 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_shape	left_cone(void *v)
 
 	s3 = new_cone();
 	s3.any->transform = multiply_matrix(\
-									translation(1, 1.66, -0.75), \
+									translation(1, 1.66, 1.75), \
 									scaling(0.6, 0.6, 0.6), 4, 4);
 	s3.any->transform = multiply_matrix(s3.any->transform, rotation_x(M_PI), \
 									4, 4);
@@ -101,7 +101,7 @@ t_shape	left_cone_2(void *v)
 
 	s3 = new_cone();
 	s3.any->transform = multiply_matrix(\
-									translation(1, 1.66, -0.75), \
+									translation(1, 1.66, 1.75), \
 									scaling(0.6, 0.6, 0.6), 4, 4);
 	s3.any->material = new_material();
 	s3.any->material.color = fill_color(1, 0.8, 0.1);

@@ -71,7 +71,8 @@ SRC_PATTERNS_FEATURE				=					striped_pattern.c					\
 														ring_pattern.c						\
 														checkers_pattern.c
 SRC_DATA_VALIDATION					=					parser.c							\
-														axis_data_valid.c
+														axis_data_valid.c					\
+														rgb_utils.c
 SRC									=					minirt.c utils.c put_together.c objs.c aux_math.c	\
 														$(SRC_LINKED_LST) 									\
 														$(SRC_OBJECT_FEATURE) 								\

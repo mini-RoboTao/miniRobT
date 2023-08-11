@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 06:56:58 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 07:14:28 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,14 +106,14 @@ void	put_together(t_data *d)
 	t_camera	c;
 
 	w = (t_world){0};
-	w.amount_obj = 3;
+	w.amount_obj = 8;
 	w.shapes = malloc(sizeof(t_shape) * w.amount_obj);
 	w.shapes[0] = make_floor(NULL);
 	w.shapes[1] = middle_sphere(NULL);
 	w.shapes[2] = right_sphere(NULL);
-	w.shapes[1] = left_cylinder(NULL);
+	w.shapes[3] = left_cylinder(NULL);
 	w.shapes[4] = right_cube(NULL);
-	w.shapes[2] = cap_cylinder(NULL);
+	w.shapes[5] = cap_cylinder(NULL);
 	w.shapes[6] = left_cone(NULL);
 	w.shapes[7] = left_cone_2(NULL);
 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
