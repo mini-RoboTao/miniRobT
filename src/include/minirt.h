@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:38:20 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/07 23:47:43 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/10 18:14:17 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@
 # include "world_feature.h"
 # include "shape_feature.h"
 # include "reflection_and_refraction.h"
+# include "data_validation.h"
 #endif

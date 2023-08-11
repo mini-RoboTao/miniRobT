@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/10 17:48:09 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/10 23:10:01 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,18 @@ typedef struct s_color
 	double		green;
 	double		blue;
 }	t_color;
+
+typedef struct s_any_input
+{
+	t_object_type	type;
+	t_obj			point;
+	t_obj			vector;
+	double			diameter;
+	double			height;
+	double			brightness;
+	t_color			rgb;
+	double			fov;
+}					t_any_input;
 
 typedef struct s_pattern
 {
