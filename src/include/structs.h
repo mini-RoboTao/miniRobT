@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/10 23:10:01 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 06:46:20 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,6 @@ typedef struct s_color
 	double		blue;
 }	t_color;
 
-typedef struct s_any_input
-{
-	t_object_type	type;
-	t_obj			point;
-	t_obj			vector;
-	double			diameter;
-	double			height;
-	double			brightness;
-	t_color			rgb;
-	double			fov;
-}					t_any_input;
-
 typedef struct s_pattern
 {
 	t_color			a;
@@ -98,90 +86,19 @@ typedef struct s_ray
 }				t_ray;
 
 /************* Objects *************/
-typedef struct s_sphere
-{
-	double		x;
-	double		y;
-	double		z;
-	double		radius;
-	t_matrix	transform;
-	t_material	material;
-	t_ray		saved_ray;
-}				t_sphere;
-
-typedef struct s_plane
-{
-	double		x;
-	double		y;
-	double		z;
-	double		radius;
-	t_matrix	transform;
-	t_material	material;
-	t_ray		saved_ray;
-}				t_plane;
-
-typedef struct s_cube
-{
-	double		x;
-	double		y;
-	double		z;
-	double		width;
-	double		height;
-	double		lenght;
-	t_matrix	transform;
-	t_material	material;
-	t_ray		saved_ray;
-}				t_cube;
-
-typedef struct s_cylinder
-{
-	double		x;
-	double		y;
-	double		z;
-	double		radius;
-	double		minimum;
-	double		maximum;
-	t_bool		closed;
-	t_matrix	transform;
-	t_material	material;
-	t_ray		saved_ray;
-}				t_cylinder;
-
-typedef struct s_cone
-{
-	double		x;
-	double		y;
-	double		z;
-	double		radius;
-	double		minimum;
-	double		maximum;
-	t_bool		closed;
-	t_matrix	transform;
-	t_material	material;
-	t_ray		saved_ray;
-}				t_cone;
 
 typedef struct s_common_shape
 {
 	double		x;
 	double		y;
 	double		z;
-	double		radius;
+	double		minimum;
+	double		maximum;
+	t_bool		closed;
 	t_matrix	transform;
 	t_material	material;
 	t_ray		saved_ray;
 }				t_common_shape;
-
-union u_shape
-{
-	t_sphere		*sphere;
-	t_plane			*plane;
-	t_cube			*cube;
-	t_cylinder		*cylinder;
-	t_cone			*cone;
-	t_common_shape	*any;
-	void			*v;
-};
 
 typedef struct s_intersections	t_intersections;
 typedef struct s_shape			t_shape;
@@ -195,15 +112,7 @@ typedef struct s_shape
 	t_object_type			id;
 	t_local_intersect		*intersect;
 	t_local_normal_at		*normal_at;
-	union {
-		t_sphere			*sphere;
-		t_plane				*plane;
-		t_cube				*cube;
-		t_cylinder			*cylinder;
-		t_cone				*cone;
-		t_common_shape		*any;
-		void				*v;
-	};
+	t_common_shape			*any;
 }				t_shape;
 
 typedef struct a_lst {
@@ -235,16 +144,6 @@ typedef struct s_shearing
 	double	z_to_x;
 	double	z_to_y;
 }				t_shearing;
-
-typedef struct s_normal_at
-{
-	t_obj		object_point;
-	t_obj		object_normal;
-	t_obj		world_normal;
-	t_matrix	inverse;
-	t_matrix	transpose;
-	t_obj		point;
-}				t_normal_at;
 
 typedef struct s_light
 {
@@ -326,8 +225,6 @@ typedef struct s_data {
 	t_canvas	*canvas;
 }	t_data;
 
-t_shape		make_wall_right(t_shape *floor);
-t_shape		make_wall_left(t_shape *floor);
 t_shape		make_floor(void *v);
 t_shape		cap_cylinder(void *v);
 t_shape		right_cube(void *v);

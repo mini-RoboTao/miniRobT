@@ -136,7 +136,7 @@ Test(Plane, a_ray_intersecting_a_plane_from_above)
 	intersect(&xs, plane, ray);
 	cr_assert(eq(xs.amount, 1));
 	cr_assert(eq(xs.i->t, 1));
-	cr_assert(cr_plane_eq(xs.i->shape.plane, plane.plane));
+	cr_assert(cr_plane_eq(xs.i->shape.any, plane.any));
 	clean_shape(&plane);
 	clean_intersection_lst(&xs.i);
 }
@@ -150,7 +150,7 @@ Test(Plane, a_ray_intersecting_a_plane_from_below)
 	intersect(&xs, plane, ray);
 	cr_assert(eq(xs.amount, 1));
 	cr_assert(eq(xs.i->t, 1));
-	cr_assert(cr_plane_eq(xs.i->shape.plane, plane.plane));
+	cr_assert(cr_plane_eq(xs.i->shape.any, plane.any));
 	clean_shape(&plane);
 	clean_intersection_lst(&xs.i);
 }

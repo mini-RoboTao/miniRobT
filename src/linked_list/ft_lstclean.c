@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 17:33:23 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/07 22:28:19 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 06:26:03 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_lstclean(t_lst **l, void (*del)(void *))
 	while (next)
 	{
 		next = head->next;
-		del(head->shape.v);
+		del(head->shape.any);
 		if (head)
 			free(head);
 		head = next;

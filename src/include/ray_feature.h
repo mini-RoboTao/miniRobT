@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 09:37:44 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 08:32:19 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 04:37:56 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_intersection	*hit(t_intersections xs);
 // Transforming
 t_ray			transform(t_ray r, t_matrix m);
 void			set_transform(t_shape *s, t_matrix t);
+void			set_transform2(t_shape *shape, t_matrix t);
 
 #endif

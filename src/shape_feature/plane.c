@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:30:50 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 08:33:16 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 06:31:44 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,16 @@ t_obj	normal_at_plane(t_shape shape, t_obj world_point)
 t_shape	new_plane(void)
 {
 	t_shape		shape;
-	t_plane		*p;
 
 	shape = (t_shape){0};
-	p = malloc(sizeof(t_plane));
-	if (!p)
+	shape.any = malloc(sizeof(t_common_shape));
+	if (!shape.any)
 		return ((t_shape){0});
-	p->x = 0.0;
-	p->y = 0.0;
-	p->z = 0.0;
-	p->transform = create_identity_matrix();
-	p->material = new_material();
-	shape.v = p;
+	shape.any->x = 0.0;
+	shape.any->y = 0.0;
+	shape.any->z = 0.0;
+	shape.any->transform = create_identity_matrix();
+	shape.any->material = new_material();
 	shape.id = plane;
 	shape.intersect = intersect_plane;
 	shape.normal_at = normal_at_plane;

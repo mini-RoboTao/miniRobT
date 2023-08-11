@@ -37,15 +37,14 @@ int cr_object_eq(t_obj a, t_obj b)
 			a.w == b.w);
 }
 
-int cr_sphere_eq(t_sphere *a, t_sphere *b)
+int cr_sphere_eq(t_common_shape *a, t_common_shape *b)
 {
 	return	(fabs(a->x - b->x) < EPSILON && \
 			fabs(a->y - b->y) < EPSILON && \
-			fabs(a->z - b->z) < EPSILON && \
-			fabs(a->radius - b->radius) < EPSILON);
+			fabs(a->z - b->z) < EPSILON);
 }
 
-int cr_plane_eq(t_plane *a, t_plane *b)
+int cr_plane_eq(t_common_shape *a, t_common_shape *b)
 {
 	return	(fabs(a->x - b->x) < EPSILON && \
 			fabs(a->y - b->y) < EPSILON && \
@@ -58,21 +57,19 @@ int cr_light_eq(t_light a, t_light b)
 			cr_object_eq(a.position, b.position));
 }
 
-int cr_sphere_check_material_eq(t_sphere *a, t_sphere *b)
+int cr_sphere_check_material_eq(t_common_shape *a, t_common_shape *b)
 {
 	return	(fabs(a->x - b->x) < EPSILON && \
 			fabs(a->y - b->y) < EPSILON && \
 			fabs(a->z - b->z) < EPSILON && \
-			fabs(a->radius - b->radius) < EPSILON && \
 			cr_material_eq(a->material, b->material));
 }
 
 int cr_intersection_eq(t_intersection *a, t_intersection *b)
 {
-	return	(fabs(a->shape.sphere->x - b->shape.sphere->x) < EPSILON && \
-			fabs(a->shape.sphere->y - b->shape.sphere->y) < EPSILON && \
-			fabs(a->shape.sphere->z - b->shape.sphere->z) < EPSILON && \
-			fabs(a->shape.sphere->radius - b->shape.sphere->radius) < EPSILON &&
+	return	(fabs(a->shape.any->x - b->shape.any->x) < EPSILON && \
+			fabs(a->shape.any->y - b->shape.any->y) < EPSILON && \
+			fabs(a->shape.any->z - b->shape.any->z) < EPSILON && \
 			fabs(a->t - b->t) < EPSILON);
 }
 

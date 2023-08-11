@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cone.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 02:42:12 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/10 17:12:19 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/11 06:36:48 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,19 @@
 t_shape	new_cone(void)
 {
 	t_shape	shape;
-	t_cone	*sh_cone;
 
 	shape = (t_shape){0};
-	sh_cone = malloc(sizeof(t_cylinder));
-	if (!sh_cone)
+	shape.any = malloc(sizeof(t_common_shape));
+	if (!shape.any)
 		return ((t_shape){0});
-	sh_cone->x = 0.0;
-	sh_cone->y = 0.0;
-	sh_cone->z = 0.0;
-	sh_cone->radius = 1.0;
-	sh_cone->minimum = -INFINITY;
-	sh_cone->maximum = INFINITY;
-	sh_cone->closed = false;
-	sh_cone->transform = create_identity_matrix();
-	sh_cone->material = new_material();
-	shape.v = sh_cone;
+	shape.any->x = 0.0;
+	shape.any->y = 0.0;
+	shape.any->z = 0.0;
+	shape.any->minimum = -INFINITY;
+	shape.any->maximum = INFINITY;
+	shape.any->closed = false;
+	shape.any->transform = create_identity_matrix();
+	shape.any->material = new_material();
 	shape.id = cone;
 	shape.intersect = intersect_cone_caps;
 	shape.normal_at = normal_at_cone;
@@ -68,10 +65,10 @@ void	intersect_cone(t_intersections *xs, t_shape cone, t_ray ray)
 	if (t[0] > t[1])
 		swap_double(&t[0], &t[1]);
 	y[0] = ray.position.y + t[0] * ray.direction.y;
-	if (cone.cone->minimum < y[0] && y[0] < cone.cone->maximum)
+	if (cone.any->minimum < y[0] && y[0] < cone.any->maximum)
 		intersections(xs, intersection(t[0], cone, xs), NULL);
 	y[1] = ray.position.y + t[1] * ray.direction.y;
-	if (cone.cone->minimum < y[1] && y[1] < cone.cone->maximum)
+	if (cone.any->minimum < y[1] && y[1] < cone.any->maximum)
 		intersections(xs, intersection(t[1], cone, xs), NULL);
 }
 
@@ -84,9 +81,9 @@ t_obj	normal_at_cone(t_shape cone, t_obj point)
 	if (point.y > 0)
 		y = -y;
 	dist = pow(point.x, 2) + pow(point.z, 2);
-	if (dist < 1 && point.y >= cone.cone->maximum - EPSILON)
+	if (dist < 1 && point.y >= cone.any->maximum - EPSILON)
 		return (create_vector(0, 1, 0));
-	else if (dist < 1 && point.y <= cone.cone->minimum + EPSILON)
+	else if (dist < 1 && point.y <= cone.any->minimum + EPSILON)
 		return (create_vector(0, -1, 0));
 	return (create_vector(point.x, y, point.z));
 }

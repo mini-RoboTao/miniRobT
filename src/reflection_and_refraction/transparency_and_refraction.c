@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 23:19:54 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/09 09:43:15 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 06:37:14 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	shape_in_the_lst(t_lst *lst, t_shape find)
 {
 	while (lst)
 	{
-		if (lst->shape.v == find.v)
+		if (lst->shape.any == find.any)
 			return (1);
 		lst = lst->next;
 	}
