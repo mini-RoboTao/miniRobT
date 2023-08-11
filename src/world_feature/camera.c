@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:57:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/06 13:45:03 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:03:21 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_ray	ray_for_pixel(t_camera *c, double px, double py)
 	return (calculate_ray_cam(c, inverse_transform, world_x, world_y));
 }
 
-t_canvas	*render(t_camera *c, t_world *w)
+t_canvas	*render(t_world *w)
 {
 	int			y;
 	int			x;
@@ -84,14 +84,16 @@ t_canvas	*render(t_camera *c, t_world *w)
 	t_canvas	*image;
 
 	y = 0;
-	image = generate_canvas(c->hsize, c->vsize);
-	while (y < c->vsize - 1)
+	image = generate_canvas(w->camera.hsize, w->camera.vsize);
+	printf("%s AQUI %f %s\n", YELLOW, w->camera.vsize, RESET_COLORS);
+	while (y < w->camera.vsize - 1)
 	{
 		x = 0;
-		while (x < c->hsize - 1)
+		while (x < w->camera.hsize - 1)
 		{
-			ray = ray_for_pixel(c, x, y);
+			ray = ray_for_pixel(&w->camera, x, y);
 			color = color_at(w, ray, 2);
+			//printf("%s color at: %f %f %f %s\n", GREEN, color.red, color.green, color.blue, RESET_COLORS);
 			write_pixel(image, x, y, color);
 			x++;
 		}

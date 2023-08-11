@@ -129,7 +129,7 @@ $(PATH_OBJ)%.o:	%.c
 run-test: rm-obj create_outs_dir make_minirobt $(PATH_OBJ) $(ONE_TEST)
 	@			echo $(ONE_TEST%)
 	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB) $(TEST_NAME) $(L_YELLOWB)]: $(L_WHITE)"
-	@			$(VALGRIND_FLAG) $(addprefix ./outs/, $(notdir $(basename $(TEST_NAME))))
+	@			$(addprefix ./outs/, $(notdir $(basename $(TEST_NAME))))
 	@			@if [ $$? -eq 0 ]; then \
 					echo "Comando executado com sucesso"; \
 				else \

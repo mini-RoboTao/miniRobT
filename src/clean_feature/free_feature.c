@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:16:00 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 06:26:55 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 09:48:46 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ void	clean_world(t_world w)
 	int	i;
 
 	i = 0;
-	while (i < w.amount_obj)
-		clean_shape(&w.shapes[i++]);
-	if (w.shapes)
-		free(w.shapes);
+	ft_lstclean(&w.lst, free);
 }
 
 void	clean_array(char **array)

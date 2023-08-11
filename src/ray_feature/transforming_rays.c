@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 23:06:15 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 06:56:11 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:18:40 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,8 @@ void	set_transform2(t_shape *shape, t_matrix t)
 {
 	shape->any->transform = multiply_matrix(shape->any->transform, t, 4, 4);
 }
+
+// void	set_transform_cam(t_camera *cam, t_matrix t)
+// {
+// 	cam->transform = multiply_matrix(cam->transform, t, 4, 4);
+// }

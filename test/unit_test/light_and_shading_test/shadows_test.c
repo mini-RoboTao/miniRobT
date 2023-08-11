@@ -66,13 +66,13 @@ Test(Rendering_shadows, Shade_hit_is_given_an_intersection_in_shadow)
 	world.light 			= point_light(point, color);
 
 	t_matrix	transformation = translation(0, 0, 10);
-	set_transform(&world.shapes[1], transformation);
+	set_transform(&world.lst->shape, transformation);
 
 	t_obj	point2 = create_point(0, 0, 5);
 	t_obj	vector = create_vector(0, 0, 1);
 	t_ray	ray = create_ray(point2, vector);
 
-	t_intersection	*i = intersection(4, world.shapes[1], XS_CONST);
+	t_intersection	*i = intersection(4, world.lst->next->shape, XS_CONST);
 
 	t_precomp	comps = prepare_computations(i, ray, XS_CONST);
 	t_color	c = shade_hit(&world, &comps, 2);

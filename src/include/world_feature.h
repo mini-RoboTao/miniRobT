@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:12:23 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/07 23:08:51 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:11:06 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_matrix		view_transformation(t_obj from, t_obj to, t_obj up);
 // camera
 t_camera		camera(int hsize, int vsize, double fov);
 t_ray			ray_for_pixel(t_camera *c, double px, double py);
-t_canvas		*render(t_camera *c, t_world *w);
+t_canvas		*render(t_world *w);
+t_matrix	set_transform_cam(t_camera *cam, t_matrix t);
 
 #endif

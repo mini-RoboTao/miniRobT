@@ -13,18 +13,16 @@ Test(world_scene, the_default_world)
 	t_world w_exp = (t_world){0};
 	t_world w_res = (t_world){0};
 	w_exp.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
-	w_exp.shapes = malloc(sizeof(t_common_shape) * 2);
-	w_exp.amount_obj = 2;
-	w_exp.shapes[0] = new_sphere();
-	w_exp.shapes[0].any->material.color = fill_color(0.8, 1, 0.6);
-	w_exp.shapes[0].any->material.diffuse = 0.7;
-	w_exp.shapes[0].any->material.specular = 0.2;
-	w_exp.shapes[1] = new_sphere();
-	set_transform(&w_exp.shapes[1], scaling(0.5, 0.5, 0.5));
+	ft_lstadd_back(&w_exp.lst, ft_lstnew(new_sphere()));
+	w_exp.lst->shape.any->material.color = fill_color(0.8, 1, 0.6);
+	w_exp.lst->shape.any->material.diffuse = 0.7;
+	w_exp.lst->shape.any->material.specular = 0.2;
+	ft_lstadd_back(&w_exp.lst, ft_lstnew(new_sphere()));
+	set_transform(&w_exp.lst->next->shape, scaling(0.5, 0.5, 0.5));
 
 	w_res = default_world();
-	cr_assert(cr_sphere_check_material_eq(w_res.shapes[0].any, w_exp.shapes[0].any));
-	cr_assert(cr_sphere_check_material_eq(w_res.shapes[1].any, w_exp.shapes[1].any));
+	cr_assert(cr_sphere_check_material_eq(w_res.lst->shape.any, w_exp.lst->shape.any));
+	cr_assert(cr_sphere_check_material_eq(w_res.lst->next->shape.any, w_exp.lst->next->shape.any));
 	cr_assert(cr_light_eq(w_res.light, w_exp.light));
 	clean_world(w_res);
 	clean_world(w_exp);
@@ -89,7 +87,7 @@ Test(world_scene, shading_an_intersection)
 {
 	t_world			w = default_world();
 	t_ray			r = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
-	t_shape			shape = w.shapes[0];
+	t_shape			shape = w.lst->shape;
 	t_intersection	*i = intersection(4, shape, XS_CONST);
 	t_precomp		comps = prepare_computations(i, r, XS_CONST);
 	t_color c = shade_hit(&w, &comps, 2);
@@ -103,7 +101,7 @@ Test(world_scene, shading_an_intersection_from_the_inside)
 	t_world			w = default_world();
 	w.light	= point_light(create_point(0, 0.25, 0), fill_color(1, 1, 1));
 	t_ray			r = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
-	t_shape			shape = w.shapes[1];
+	t_shape			shape = w.lst->next->shape;
 	t_intersection	*i = intersection(0.5, shape, XS_CONST);
 	t_precomp		comps = prepare_computations(i, r, XS_CONST);
 	t_color c = shade_hit(&w, &comps, 2);
@@ -133,10 +131,10 @@ Test(Supporting_multiple_light, the_color_when_a_ray_hits)
 Test(Supporting_multiple_light, the_color_with_an_intersection_behind_the_ray)
 {
 	t_world			w = default_world();
-	w.shapes[0].any->material.ambient = 1;
-	w.shapes[1].any->material.ambient = 1;
+	w.lst->shape.any->material.ambient = 1;
+	w.lst->next->shape.any->material.ambient = 1;
 	t_ray			r = create_ray(create_point(0, 0, 0.75), create_vector(0, 0, -1));
 	t_color			c = color_at(&w, r, 2);
-	cr_assert(cr_color_eq(c, w.shapes[1].any->material.color));
+	cr_assert(cr_color_eq(c, w.lst->next->shape.any->material.color));
 	clean_world(w);
 }

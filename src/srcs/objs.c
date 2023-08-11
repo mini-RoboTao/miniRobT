@@ -6,11 +6,29 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 02:46:39 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 07:17:05 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:24:59 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+// t_shape	make_floor(void *v)
+// {
+// 	t_shape		floor;
+// 	t_pattern	pattern;
+
+// 	floor = new_plane();
+// 	floor.any->material = new_material();
+// 	set_transform(&floor, translation(0, -1, 0));
+// 	floor.any->material.reflective = 0.5;
+// 	floor.any->material.transparency = 0.5;
+// 	floor.any->material.refractive_index = 1.5;
+// 	pattern = checkers_pattern(fill_color(1, 1, 1), fill_color(0, 0, 0));
+// 	set_pattern_transform(&pattern, scaling(0.5, 0.5, 0.5));
+// 	floor.any->material.pattern = pattern;
+// 	return (floor);
+// 	(void)v;
+// }
 
 t_shape	make_floor(void *v)
 {
@@ -19,13 +37,8 @@ t_shape	make_floor(void *v)
 
 	floor = new_plane();
 	floor.any->material = new_material();
-	set_transform(&floor, translation(0, -1, 0));
-	floor.any->material.reflective = 0.5;
-	floor.any->material.transparency = 0.5;
-	floor.any->material.refractive_index = 1.5;
-	pattern = checkers_pattern(fill_color(1, 1, 1), fill_color(0, 0, 0));
-	set_pattern_transform(&pattern, scaling(0.5, 0.5, 0.5));
-	floor.any->material.pattern = pattern;
+	floor.any->material.color = fill_color(1, 0, 1);
+	set_transform2(&floor, translation(0, -1, 0));
 	return (floor);
 	(void)v;
 }

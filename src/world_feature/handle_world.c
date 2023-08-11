@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   handle_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 07:06:23 by dapaulin         ###   ########.fr       */
-/*   Updated: 2023/08/10 21:52:40 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:17:25 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "minirt.h"
 
@@ -23,15 +23,13 @@ t_world	default_world(void)
 	t_world	w;
 
 	w = (t_world){0};
-	w.amount_obj = 2;
 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
-	w.shapes = malloc(sizeof(t_shape) * 10);
-	w.shapes[0] = new_sphere();
-	w.shapes[0].any->material.color = fill_color(0.8, 1, 0.6);
-	w.shapes[0].any->material.diffuse = 0.7;
-	w.shapes[0].any->material.specular = 0.2;
-	w.shapes[1] = new_sphere();
-	set_transform(&w.shapes[1], scaling(0.5, 0.5, 0.5));
+	ft_lstadd_back(&w.lst, ft_lstnew(new_sphere()));
+	w.lst->shape.any->material.color = fill_color(0.8, 1, 0.6);
+	w.lst->shape.any->material.diffuse = 0.7;
+	w.lst->shape.any->material.specular = 0.2;
+	ft_lstadd_back(&w.lst, ft_lstnew(new_sphere()));
+	set_transform(&w.lst->next->shape, scaling(0.5, 0.5, 0.5));
 	return (w);
 }
 
@@ -39,11 +37,16 @@ t_intersections	intersect_world(t_world *w, t_ray ray)
 {
 	int				i;
 	t_intersections	xs;
+	t_lst			*head;
 
 	i = 0;
 	xs = (t_intersections){0};
-	while (i < w->amount_obj)
-		intersect(&xs, w->shapes[i++], ray);
+	head = w->lst;
+	while (head)
+	{
+		intersect(&xs, head->shape, ray);
+		head = head->next;
+	}
 	return (xs);
 }
 

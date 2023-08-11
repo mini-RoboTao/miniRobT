@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 00:11:17 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/11 04:40:12 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:31:41 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,11 @@ static double	convert_each_rgb(char *input)
 	return (1.0 / 255.0 * res);
 }
 
-t_color	convert_to_rgb(char *input, t_bool *is_valid)
+t_color	convert_to_rgb(char *input, t_world *world)
 {
 	t_color	rgb;
 	char	**input_array;
 
-	*is_valid = false;
 	rgb = (t_color){0};
 	if (!validate_rgb(input))
 		return (rgb);
@@ -83,9 +82,9 @@ t_color	convert_to_rgb(char *input, t_bool *is_valid)
 	if (rgb.red < 0 || rgb.green < 0 || rgb.blue < 0)
 	{
 		clean_array(input_array);
-		return (rgb);
+		clean_world(*world);
+		exit(1);
 	}
 	clean_array(input_array);
-	*is_valid = true;
 	return (rgb);
 }
