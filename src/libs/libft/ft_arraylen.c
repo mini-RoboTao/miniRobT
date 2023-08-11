@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_feature.h                                    :+:      :+:    :+:   */
+/*   ft_arraylen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 19:17:03 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/10 22:48:52 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/08/11 01:09:57 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/08/11 01:26:43 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLEAN_FEATURE_H
-# define CLEAN_FEATURE_H
+#include "libft.h"
 
-# include "minirt.h"
+size_t	ft_arraylen(char **array)
+{
+	size_t	i;
 
-void	clean_canvas(t_canvas *c);
-void	clean_shape(t_shape *obj);
-void	clean_world(t_world w);
-void	clean_array(char **array);
-
-#endif
+	i = 0;
+	while (array && array[i])
+		i++;
+	return (i);
+}

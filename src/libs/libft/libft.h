@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 23:31:49 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/07/05 22:10:01 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 01:10:28 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "get_next_line.h"
 
 typedef struct s_atof
 {
@@ -36,6 +37,7 @@ int		ft_toupper(int c);
 int		ft_islower(int c);
 int		ft_isupper(int c);
 size_t	ft_strlen(const char *str);
+size_t	ft_arraylen(char **array);
 // Print Functions
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);

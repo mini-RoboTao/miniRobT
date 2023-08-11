@@ -29,6 +29,7 @@ endif
 ######################## PATHS 		  ###############################
 PATH_OBJ						=			objs/
 DIR_OUTS						=			outs/
+DIR_FILES						=			fd_test/
 OBJS_PROJECT					=			../src/objs/
 UNIT_PATH						=			./unit_test/
 VPATH							=			$(addprefix $(UNIT_PATH), 			\
@@ -44,7 +45,8 @@ VPATH							=			$(addprefix $(UNIT_PATH), 			\
 											shape_feature_test					\
 											reflection_and_refraction_test		\
 											linked_list_test					\
-											patterns_test)
+											patterns_test						\
+											data_validation_test)
 ######################## PROJECT FILES ##############################
 SRC_EXCLUDED					=			$(addprefix $(OBJS_PROJECT),		\
 											draw_mini.o							\
@@ -93,6 +95,7 @@ SRC_PATTERNS_FEATURE			=			making_a_striped_pattern_test.c		\
 											gradient_pattern_test.c				\
 											ring_pattern_test.c					\
 											checkers_pattern_test.c
+SRC_DATA_VALIDATION				=			parser_test.c
 SRC								=			$(SRC_OBJ_FEATURE) 					\
 											$(SRC_COLORS_FEATURE) 				\
 											$(SRC_CANVAS_FEATURE) 				\
@@ -105,7 +108,8 @@ SRC								=			$(SRC_OBJ_FEATURE) 					\
 											$(SRC_SHAPES_FEATURE)				\
 											$(SRC_REFLECTIVE_AND_REFRACTION)	\
 											$(SRC_LINKED_LST)					\
-											$(SRC_PATTERNS_FEATURE)
+											$(SRC_PATTERNS_FEATURE)				\
+											$(SRC_DATA_VALIDATION)
 OBJ								=			$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP								=			$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)
@@ -152,6 +156,7 @@ make_minirobt:
 
 create_outs_dir:
 	@			mkdir -p $(DIR_OUTS)
+	@			mkdir -p $(DIR_FILES)
 
 $(EXEC_OUTS):
 	@			echo "$(L_YELLOWB)[Run Test: $(L_WHITEB)$@$(L_YELLOWB)]: $(L_WHITE)" && $(VALGRIND_FLAG) ./$@;
@@ -159,6 +164,7 @@ $(EXEC_OUTS):
 clean:
 	@			$(MAKE) -s -C ../src $@
 	@			rm -rf objs
+	@			rm -rf $(DIR_FILES)
 	@			echo "$(L_RED)[$(L_YELLOW)Objects Removed! $(L_RED)$(OBJ)]$(L_WHITE)"
 
 fclean: clean

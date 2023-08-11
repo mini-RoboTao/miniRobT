@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_feature.h                                    :+:      :+:    :+:   */
+/*   data_validation.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 19:17:03 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/10 22:48:52 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/08/10 16:59:18 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/08/11 01:07:53 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLEAN_FEATURE_H
-# define CLEAN_FEATURE_H
+#ifndef DATA_VALIDATION_H
+# define DATA_VALIDATION_H
 
 # include "minirt.h"
 
-void	clean_canvas(t_canvas *c);
-void	clean_shape(t_shape *obj);
-void	clean_world(t_world w);
-void	clean_array(char **array);
+char			**parser_line(int fd);
+t_any_input		define_shape(int fd);
+t_obj			valid_xyz(char *str, t_bool *is_valid);
+t_obj			valid_3d_normalized(char *str, t_bool *is_valid);
 
 #endif

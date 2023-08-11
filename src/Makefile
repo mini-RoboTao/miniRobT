@@ -17,7 +17,8 @@ VPATH						=					./srcs								\
 												./world_feature						\
 												./shape_feature						\
 												./reflection_and_refraction			\
-												./patterns
+												./patterns							\
+												./data_validation
 ######################## FLAGS ###############################
 FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
@@ -69,6 +70,8 @@ SRC_PATTERNS_FEATURE				=					striped_pattern.c					\
 														gradient_pattern.c					\
 														ring_pattern.c						\
 														checkers_pattern.c
+SRC_DATA_VALIDATION					=					parser.c							\
+														axis_data_valid.c
 SRC									=					minirt.c utils.c put_together.c objs.c aux_math.c	\
 														$(SRC_LINKED_LST) 									\
 														$(SRC_OBJECT_FEATURE) 								\
@@ -82,7 +85,8 @@ SRC									=					minirt.c utils.c put_together.c objs.c aux_math.c	\
 														$(SRC_WORLD_FEATURE)								\
 														$(SRC_SHAPES_FEATURE)								\
 														$(SRC_REFLECTION_AND_REFRACTION)					\
-														$(SRC_PATTERNS_FEATURE)
+														$(SRC_PATTERNS_FEATURE)								\
+														$(SRC_DATA_VALIDATION)
 OBJ									=					$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP									=					$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 ############## CONDITIONAL COMPILER FLAGS ####################

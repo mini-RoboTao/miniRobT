@@ -4,6 +4,8 @@
 # include "minirt.h"
 # include "criterion.h"
 # include "new/assert.h"
+# include <sys/stat.h>
+# include <fcntl.h>
 # include <math.h>
 
 # define T (t_bool)true
