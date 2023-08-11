@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 02:42:12 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/09 13:10:57 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 06:34:15 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,19 @@
 t_shape	new_cylinder(void)
 {
 	t_shape			shape;
-	t_cylinder		*sh_cylinder;
 
 	shape = (t_shape){0};
-	sh_cylinder = malloc(sizeof(t_cylinder));
-	if (!sh_cylinder)
+	shape.any = malloc(sizeof(t_common_shape));
+	if (!shape.any)
 		return ((t_shape){0});
-	sh_cylinder->x = 0.0;
-	sh_cylinder->y = 0.0;
-	sh_cylinder->z = 0.0;
-	sh_cylinder->radius = 1.0;
-	sh_cylinder->minimum = -INFINITY;
-	sh_cylinder->maximum = INFINITY;
-	sh_cylinder->closed = false;
-	sh_cylinder->transform = create_identity_matrix();
-	sh_cylinder->material = new_material();
-	shape.v = sh_cylinder;
+	shape.any->x = 0.0;
+	shape.any->y = 0.0;
+	shape.any->z = 0.0;
+	shape.any->minimum = -INFINITY;
+	shape.any->maximum = INFINITY;
+	shape.any->closed = false;
+	shape.any->transform = create_identity_matrix();
+	shape.any->material = new_material();
 	shape.id = cylinder;
 	shape.intersect = intersect_caps;
 	shape.normal_at = normal_at_cylinder;
@@ -66,10 +63,10 @@ void	intersect_cylinder(t_intersections *xs, t_shape cylinder, t_ray ray)
 	if (t[0] > t[1])
 		swap_double(&t[0], &t[1]);
 	y[0] = ray.position.y + t[0] * ray.direction.y;
-	if (cylinder.cylinder->minimum < y[0] && y[0] < cylinder.cylinder->maximum)
+	if (cylinder.any->minimum < y[0] && y[0] < cylinder.any->maximum)
 		intersections(xs, intersection(t[0], cylinder, xs), NULL);
 	y[1] = ray.position.y + t[1] * ray.direction.y;
-	if (cylinder.cylinder->minimum < y[1] && y[1] < cylinder.cylinder->maximum)
+	if (cylinder.any->minimum < y[1] && y[1] < cylinder.any->maximum)
 		intersections(xs, intersection(t[1], cylinder, xs), NULL);
 }
 
@@ -78,9 +75,9 @@ t_obj	normal_at_cylinder(t_shape cylinder, t_obj point)
 	double	dist;
 
 	dist = pow(point.x, 2) + pow(point.z, 2);
-	if (dist < 1 && point.y >= cylinder.cylinder->maximum - EPSILON)
+	if (dist < 1 && point.y >= cylinder.any->maximum - EPSILON)
 		return (create_vector(0, 1, 0));
-	else if (dist < 1 && point.y <= cylinder.cylinder->minimum + EPSILON)
+	else if (dist < 1 && point.y <= cylinder.any->minimum + EPSILON)
 		return (create_vector(0, -1, 0));
 	return (create_vector(point.x, 0, point.z));
 }

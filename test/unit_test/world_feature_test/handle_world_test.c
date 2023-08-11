@@ -13,18 +13,18 @@ Test(world_scene, the_default_world)
 	t_world w_exp = (t_world){0};
 	t_world w_res = (t_world){0};
 	w_exp.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
-	w_exp.shapes = malloc(sizeof(t_sphere) * 2);
+	w_exp.shapes = malloc(sizeof(t_common_shape) * 2);
 	w_exp.amount_obj = 2;
 	w_exp.shapes[0] = new_sphere();
-	w_exp.shapes[0].sphere->material.color = fill_color(0.8, 1, 0.6);
-	w_exp.shapes[0].sphere->material.diffuse = 0.7;
-	w_exp.shapes[0].sphere->material.specular = 0.2;
+	w_exp.shapes[0].any->material.color = fill_color(0.8, 1, 0.6);
+	w_exp.shapes[0].any->material.diffuse = 0.7;
+	w_exp.shapes[0].any->material.specular = 0.2;
 	w_exp.shapes[1] = new_sphere();
 	set_transform(&w_exp.shapes[1], scaling(0.5, 0.5, 0.5));
 
 	w_res = default_world();
-	cr_assert(cr_sphere_check_material_eq(w_res.shapes[0].v, w_exp.shapes[0].v));
-	cr_assert(cr_sphere_check_material_eq(w_res.shapes[1].v, w_exp.shapes[1].v));
+	cr_assert(cr_sphere_check_material_eq(w_res.shapes[0].any, w_exp.shapes[0].any));
+	cr_assert(cr_sphere_check_material_eq(w_res.shapes[1].any, w_exp.shapes[1].any));
 	cr_assert(cr_light_eq(w_res.light, w_exp.light));
 	clean_world(w_res);
 	clean_world(w_exp);
@@ -52,7 +52,7 @@ Test(world_scene, precomputing_the_state_of_an_intersection)
 	t_precomp		comps = prepare_computations(i, r, XS_CONST);
 
 	cr_assert(epsilon_eq(flt, comps.t, i->t, EPSILON));
-	cr_assert(cr_sphere_eq(comps.shape.sphere, i->shape.sphere));
+	cr_assert(cr_sphere_eq(comps.shape.any, i->shape.any));
 	cr_assert(cr_object_eq(comps.point, (t_obj){0, 0, -1, 1}));
 	cr_assert(cr_object_eq(comps.eyev, (t_obj){0, 0, -1, 0}));
 	cr_assert(cr_object_eq(comps.normalv, (t_obj){0, 0, -1, 0}));
@@ -133,10 +133,10 @@ Test(Supporting_multiple_light, the_color_when_a_ray_hits)
 Test(Supporting_multiple_light, the_color_with_an_intersection_behind_the_ray)
 {
 	t_world			w = default_world();
-	w.shapes[0].sphere->material.ambient = 1;
-	w.shapes[1].sphere->material.ambient = 1;
+	w.shapes[0].any->material.ambient = 1;
+	w.shapes[1].any->material.ambient = 1;
 	t_ray			r = create_ray(create_point(0, 0, 0.75), create_vector(0, 0, -1));
 	t_color			c = color_at(&w, r, 2);
-	cr_assert(cr_color_eq(c, w.shapes[1].sphere->material.color));
+	cr_assert(cr_color_eq(c, w.shapes[1].any->material.color));
 	clean_world(w);
 }

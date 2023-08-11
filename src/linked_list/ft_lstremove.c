@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 16:42:59 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/07 23:30:46 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 06:26:43 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstremove(t_lst **l, t_shape rm)
 	t_lst	*head;
 	t_lst	*tmp;
 
-	if (*l && rm.v && (*l)->shape.v == rm.v)
+	if (*l && rm.any && (*l)->shape.any == rm.any)
 	{
 		head = (*l)->next;
 		if (*l)
@@ -28,7 +28,7 @@ void	ft_lstremove(t_lst **l, t_shape rm)
 	head = *l;
 	while (head)
 	{
-		if (head->next && head->next->shape.v == rm.v)
+		if (head->next && head->next->shape.any == rm.any)
 		{
 			tmp = head->next->next;
 			if (head->next)

@@ -79,9 +79,9 @@ Test(Intersecting_a_cone_end_caps, On_x_0_y_0_z_minus_5_vector_0_1_0)
 
 	t_intersections	xs = (t_intersections){0};
 
-	cone.cone->minimum = -0.5;
-	cone.cone->maximum = 0.5;
-	cone.cone->closed = true;
+	cone.any->minimum = -0.5;
+	cone.any->maximum = 0.5;
+	cone.any->closed = true;
 	intersect_cone_caps(&xs, cone, ray);
 
 	cr_expect(eq(xs.amount, 0));
@@ -98,9 +98,9 @@ Test(Intersecting_a_cone_end_caps, On_x_0_y_0_z_minus_0_dot_25_vector_0_1_1)
 
 	t_intersections	xs = (t_intersections){0};
 
-	cone.cone->minimum = -0.5;
-	cone.cone->maximum = 0.5;
-	cone.cone->closed = true;
+	cone.any->minimum = -0.5;
+	cone.any->maximum = 0.5;
+	cone.any->closed = true;
 	intersect_cone_caps(&xs, cone, ray);
 
 	cr_expect(eq(xs.amount, 2));
@@ -117,9 +117,9 @@ Test(Intersecting_a_cone_end_caps, On_x_0_y_0_z_minus_0_dot_25_vector_0_1_0)
 
 	t_intersections	xs = (t_intersections){0};
 
-	cone.cone->minimum = -0.5;
-	cone.cone->maximum = 0.5;
-	cone.cone->closed = true;
+	cone.any->minimum = -0.5;
+	cone.any->maximum = 0.5;
+	cone.any->closed = true;
 	intersect_cone_caps(&xs, cone, ray);
 
 	cr_expect(eq(xs.amount, 4));

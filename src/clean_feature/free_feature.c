@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:16:00 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 01:26:58 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 06:26:55 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	clean_canvas(t_canvas *c)
 
 void	clean_shape(t_shape *obj)
 {
-	if (obj->v)
-		free(obj->v);
+	if (obj->any)
+		free(obj->any);
 }
 
 void	clean_world(t_world w)

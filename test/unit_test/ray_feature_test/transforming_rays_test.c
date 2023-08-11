@@ -27,7 +27,7 @@ Test(transforming_rays, scaling_a_ray)
 Test(transforming_rays, a_sphere_is_default_transformation)
 {
 	t_shape		shape = new_sphere();
-	cr_assert(cr_matrix_eq(shape.sphere->transform, create_identity_matrix()));
+	cr_assert(cr_matrix_eq(shape.any->transform, create_identity_matrix()));
 	clean_shape(&shape);
 }
 
@@ -37,7 +37,7 @@ Test(transforming_rays, changing_a_sphere_is_transformation)
 	t_matrix	t = translation(2, 3, 4);
 
 	set_transform(&shape, t);
-	cr_assert(cr_matrix_eq(shape.sphere->transform, t));
+	cr_assert(cr_matrix_eq(shape.any->transform, t));
 	clean_shape(&shape);
 }
 

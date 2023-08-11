@@ -6,6 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/08/11 07:06:23 by dapaulin         ###   ########.fr       */
 /*   Updated: 2023/08/10 21:52:40 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -26,9 +27,9 @@ t_world	default_world(void)
 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
 	w.shapes = malloc(sizeof(t_shape) * 10);
 	w.shapes[0] = new_sphere();
-	w.shapes[0].sphere->material.color = fill_color(0.8, 1, 0.6);
-	w.shapes[0].sphere->material.diffuse = 0.7;
-	w.shapes[0].sphere->material.specular = 0.2;
+	w.shapes[0].any->material.color = fill_color(0.8, 1, 0.6);
+	w.shapes[0].any->material.diffuse = 0.7;
+	w.shapes[0].any->material.specular = 0.2;
 	w.shapes[1] = new_sphere();
 	set_transform(&w.shapes[1], scaling(0.5, 0.5, 0.5));
 	return (w);

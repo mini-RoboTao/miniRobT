@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 10:11:19 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/09 13:10:48 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 06:34:49 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	intersect_caps(t_intersections *xs, t_shape cylinder, t_ray ray)
 	double			t;
 
 	intersect_cylinder(xs, cylinder, ray);
-	if (cylinder.cylinder->closed == false || fabs(ray.direction.y) <= EPSILON)
+	if (cylinder.any->closed == false || fabs(ray.direction.y) <= EPSILON)
 		return ;
-	t = (cylinder.cylinder->minimum - ray.position.y) / ray.direction.y;
+	t = (cylinder.any->minimum - ray.position.y) / ray.direction.y;
 	if (check_cap(ray, t))
 		intersections(xs, intersection(t, cylinder, xs), NULL);
-	t = (cylinder.cylinder->maximum - ray.position.y) / ray.direction.y;
+	t = (cylinder.any->maximum - ray.position.y) / ray.direction.y;
 	if (check_cap(ray, t))
 		intersections(xs, intersection(t, cylinder, xs), NULL);
 }

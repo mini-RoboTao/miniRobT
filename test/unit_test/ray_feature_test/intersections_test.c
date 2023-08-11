@@ -95,8 +95,8 @@ Test(intersections, intersect_sets_the_object_on_the_intersection)
 
 	intersect(&xs, shape, s_ray);
 	cr_assert(eq(xs.amount, 2));
-	cr_assert(cr_sphere_eq(xs.i->shape.sphere, shape.sphere));
-	cr_assert(cr_sphere_eq(xs.i->next->shape.sphere, shape.sphere));
+	cr_assert(cr_sphere_eq(xs.i->shape.any, shape.any));
+	cr_assert(cr_sphere_eq(xs.i->next->shape.any, shape.any));
 	clean_intersection_lst(&xs.i);
 	clean_shape(&shape);
 }
@@ -109,7 +109,7 @@ Test(intersections, an_intersection_encapsulates_t_and_shape)
 	t_intersection	*i = intersection(3.5, shape, XS_CONST);
 
 	cr_assert(epsilon_eq(flt, i->t, 3.5, EPSILON));
-	cr_assert(cr_sphere_eq(i->shape.sphere, shape.sphere));
+	cr_assert(cr_sphere_eq(i->shape.any, shape.any));
 	clean_shape(&shape);
 	if (i)
 		free(i);

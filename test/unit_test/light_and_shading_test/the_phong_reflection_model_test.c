@@ -28,7 +28,7 @@ Test(The_Phong_Reflection, A_sphere_has_a_default_material)
 	t_shape		shape = new_sphere();
 	t_material	material = new_material();
 
-	cr_assert(cr_material_eq(shape.sphere->material, material));
+	cr_assert(cr_material_eq(shape.any->material, material));
 
 	clean_shape(&shape);
 }
@@ -39,10 +39,10 @@ Test(The_Phong_Reflection, A_sphere_may_be_assigned_a_material)
 	t_material	material = new_material();
 
 	material.ambient = 1;
-	shape.sphere->material = material;
+	shape.any->material = material;
 
-	cr_assert(cr_material_eq(shape.sphere->material, material));
-	cr_assert(shape.sphere->material.ambient == 1);
+	cr_assert(cr_material_eq(shape.any->material, material));
+	cr_assert(shape.any->material.ambient == 1);
 
 	clean_shape(&shape);
 }

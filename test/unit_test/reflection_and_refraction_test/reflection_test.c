@@ -36,7 +36,7 @@ Test(reflection, the_reflected_color_for_a_reflective_material)
 	t_world			w = default_world();
 	t_shape			shape = new_plane();
 	set_transform(&shape, translation(0, -1, 0));
-	shape.plane->material.reflective = 0.5;
+	shape.any->material.reflective = 0.5;
 	w.amount_obj = 3;
 	w.shapes[2] = shape;
 	t_ray			ray = create_ray(create_point(0, 0, -3), create_vector(0, (sqrt(2))/2, (sqrt(2))/2));
@@ -54,7 +54,7 @@ Test(reflection, shade_hit_with_a_reflective_material)
 {
 	t_world			w = default_world();
 	t_shape			shape = new_plane();
-	shape.plane->material.reflective = 0.5;
+	shape.any->material.reflective = 0.5;
 	set_transform(&shape, translation(0, -1, 0));
 	w.amount_obj = 3;
 	w.shapes[2] = shape;
@@ -75,10 +75,10 @@ Test(reflection, color_at_with_mutually_reflective_surfaces)
 	w.shapes = malloc(sizeof(t_shape) * 2);
 	w.amount_obj = 2;
 	w.shapes[0] = new_plane();
-	w.shapes[0].plane->material.reflective = 1;
+	w.shapes[0].any->material.reflective = 1;
 	set_transform(&w.shapes[0], translation(0, -1, 0));
 	w.shapes[1] = new_plane();
-	w.shapes[1].plane->material.reflective = 1;
+	w.shapes[1].any->material.reflective = 1;
 	set_transform(&w.shapes[1], translation(0, 1, 0));
 
 	t_ray			ray = create_ray(create_point(0, 0, 0), create_vector(0, 1, 0));
@@ -90,7 +90,7 @@ Test(reflection, the_reflected_color_at_the_maximum_recursive_depth)
 {
 	t_world			w = default_world();
 	t_shape			shape = new_plane();
-	shape.plane->material.reflective = 0.5;
+	shape.any->material.reflective = 0.5;
 	set_transform(&shape, translation(0, -1, 0));
 	w.amount_obj = 3;
 	w.shapes[2] = shape;

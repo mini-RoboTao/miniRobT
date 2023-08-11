@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 02:42:12 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/10 20:33:11 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 06:32:57 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,16 @@
 t_shape	new_cube(void)
 {
 	t_shape		shape;
-	t_cube		*sh_cube;
 
 	shape = (t_shape){0};
-	sh_cube = malloc(sizeof(t_cube));
-	if (!sh_cube)
+	shape.any = malloc(sizeof(t_common_shape));
+	if (!shape.any)
 		return ((t_shape){0});
-	sh_cube->x = 0.0;
-	sh_cube->y = 0.0;
-	sh_cube->z = 0.0;
-	sh_cube->lenght = 1.0;
-	sh_cube->width = 1.0;
-	sh_cube->height = 1.0;
-	sh_cube->transform = create_identity_matrix();
-	sh_cube->material = new_material();
-	shape.v = sh_cube;
+	shape.any->x = 0.0;
+	shape.any->y = 0.0;
+	shape.any->z = 0.0;
+	shape.any->transform = create_identity_matrix();
+	shape.any->material = new_material();
 	shape.id = cube;
 	shape.intersect = intersect_cube;
 	shape.normal_at = normal_at_cube;
