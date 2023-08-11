@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:38:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 19:25:41 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:35:27 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_bool	define_sphere(char **params, t_world *world)
 	}
 	shape.any->material = new_material();
 	shape.any->material.color = convert_to_rgb(params[3], world);
-	//shape.any->material.color = sum_colors(shape.any->material.color, world->a_light);
 	ft_lstadd_back(&world->lst, ft_lstnew(shape));
 	return (true);
 }
@@ -41,7 +40,6 @@ t_bool	define_plane(char **params, t_world *world)
 	convert_normalize(params[2], &shape, world);
 	shape.any->material = new_material();
 	shape.any->material.color = convert_to_rgb(params[3], world);
-	//shape.any->material.color = sum_colors(shape.any->material.color, world->a_light);
 	ft_lstadd_back(&world->lst, ft_lstnew(shape));
 	return (true);
 }
@@ -68,7 +66,6 @@ t_bool	define_cylinder(char **params, t_world *world)
 	}
 	shape.any->material = new_material();
 	shape.any->material.color = convert_to_rgb(params[5], world);
-	//shape.any->material.color = sum_colors(shape.any->material.color, world->a_light);
 	ft_lstadd_back(&world->lst, ft_lstnew(shape));
 	return (true);
 }

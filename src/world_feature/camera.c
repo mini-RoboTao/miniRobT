@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:57:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 12:03:21 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:40:54 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ t_canvas	*render(t_world *w)
 		{
 			ray = ray_for_pixel(&w->camera, x, y);
 			color = color_at(w, ray, 2);
-			//printf("%s color at: %f %f %f %s\n", GREEN, color.red, color.green, color.blue, RESET_COLORS);
 			write_pixel(image, x, y, color);
 			x++;
 		}

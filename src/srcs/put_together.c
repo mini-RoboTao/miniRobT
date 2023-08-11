@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 19:27:38 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:40:41 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ t_shape	left_cylinder(void *v)
 // 	w.shapes[7] = left_cone_2(NULL);
 // 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
 // 	c = camera(WIDTH, HEIGHT, M_PI / 3);
-// 	c.transform = view_transformation(create_point(0, 1.5, -5), \
+// 	c.transform = view_transformation(create_point(0, 1.5, -5),
 // 	create_point(0, 1, 0), create_vector(0, 1, 0));
 // 	d->canvas = render(&c, &w);
 // }
@@ -148,7 +148,7 @@ t_shape	left_cylinder(void *v)
 // 	parser_file("./test.rt", &w);
 // 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
 // 	w.camera = camera(WIDTH, HEIGHT, M_PI / 3);
-// 	w.camera.transform = view_transformation(create_point(0, 1.5, -5), \
+// 	w.camera.transform = view_transformation(create_point(0, 1.5, -5),
 //  	create_point(0, 1, 0), create_vector(0, 1, 0));
 // 	printf("%sSPHERE %d %s\n", RED, w.lst->shape.id, RESET_COLORS);
 // 	d->canvas = render(&w);
@@ -169,7 +169,7 @@ t_shape	left_cylinder(void *v)
 // 	ft_lstadd_back(&w.lst, ft_lstnew(left_cone_2(NULL)));
 // 	w.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
 // 	w.camera = camera(WIDTH, HEIGHT, M_PI / 3);
-// 	w.camera.transform = view_transformation(create_point(0, 1.5, -5), \
+// 	w.camera.transform = view_transformation(create_point(0, 1.5, -5),
 // 	create_point(0, 1, 0), create_vector(0, 1, 0));
 // 	d->canvas = render(&w);
 // }
@@ -189,11 +189,21 @@ t_shape	left_cylinder(void *v)
 // 	//ft_lstadd_back(&w.lst, ft_lstnew(left_cone_2(NULL)));
 // 	w.light = point_light(create_point(-40, 0, 30), fill_color(0.7, 0.7, 0.7));
 // 	w.camera = camera(WIDTH, HEIGHT, M_PI / 2);
-// 	w.camera.transform = view_transformation(create_point(-50, 0, 20), \
+// 	w.camera.transform = view_transformation(create_point(-50, 0, 20),
 // 	create_point(0, 0, 0), create_vector(0, 1, 0));
 // 	d->canvas = render(&w);
 // }
 
+void	put_together(t_data *d)
+{
+	t_world		w;
+
+	w = (t_world){0};
+	ft_lstadd_back(&w.lst, ft_lstnew(make_floor(NULL)));
+	parser_file("test.rt", &w);
+	d->canvas = render(&w);
+}
+/* 
 void	put_together(t_data *d)
 {
 	t_world		w;
@@ -208,3 +218,4 @@ void	put_together(t_data *d)
 	// create_point(0, 1, 0), create_vector(0, 1, 0));
 	d->canvas = render(&w);
 }
+ */

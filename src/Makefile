@@ -74,7 +74,8 @@ SRC_DATA_VALIDATION					=					parser.c							\
 														axis_and_float_utils.c				\
 														rgb_utils.c							\
 														shape_define.c						\
-														define_light_and_cam.c
+														define_light_and_cam.c				\
+														normalize_utils.c
 SRC									=					minirt.c utils.c put_together.c objs.c aux_math.c	\
 														$(SRC_LINKED_LST) 									\
 														$(SRC_OBJECT_FEATURE) 								\

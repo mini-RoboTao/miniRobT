@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:45:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 19:26:47 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:38:00 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_bool	define_light(char **params, t_world *world)
 t_bool	define_camera(char **params, t_world *world)
 {
 	t_camera	cam;
-	t_obj	norm;
+	t_obj		norm;
 	double		fov;
 	double		scale;
 
