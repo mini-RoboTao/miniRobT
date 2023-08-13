@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normalize_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 01:00:53 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/12 20:42:44 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/13 16:14:34 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static t_bool	set_rotate(t_shape *shape, char **pieces)
 		|| (xyz[1] <= 1 && xyz[1] >= -1)
 		|| (xyz[2] <= 1 && xyz[2] >= -1))
 	{
-		set_transform2(shape, rotation_x(xyz[0] * (M_PI * 2)));
-		set_transform2(shape, rotation_y(xyz[1] * (M_PI * 2)));
-		set_transform2(shape, rotation_z(xyz[2] * (M_PI * 2)));
+		set_transform2(shape, rotation_x(xyz[0] * (M_PI)));
+		set_transform2(shape, rotation_y(xyz[1] * (M_PI)));
+		set_transform2(shape, rotation_z(xyz[2] * (M_PI)));
 		return (true);
 	}
 	return (false);

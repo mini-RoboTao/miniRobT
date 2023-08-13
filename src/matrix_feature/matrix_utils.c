@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 18:53:52 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/02 18:18:20 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:44:19 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ double	determinant(t_matrix m)
 	return (det);
 }
 
-double	minor(t_matrix m, int row, int col)
+double	minor_matrix(t_matrix m, int row, int col)
 {
 	double		res;
 	t_matrix	tmp;
@@ -44,7 +44,7 @@ double	cofactor(t_matrix m, int row, int col)
 {
 	double	res;
 
-	res = minor(m, row, col);
+	res = minor_matrix(m, row, col);
 	if ((row + col) % 2 == 0)
 		return (res);
 	return (-res);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_light_and_cam.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:45:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/12 22:27:31 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/13 16:10:47 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ t_bool	define_camera(char **params, t_world *world)
 		clean_parser_error(*world, params, "Number invalid");
 	fov = ft_atof(params[3]);
 	norm = convert_normalize_cam(params, world, 2);
-	cam = camera(WIDTH, HEIGHT, fov);
-	cam.transform = view_transformation(convert_point(params, world, 1), norm, create_vector(0, 1, 0));
+	cam = camera(WIDTH, HEIGHT, fov * (M_PI / 180));
+	cam.transform = view_transformation(convert_point(params, world, 1), create_point(0, 0, 0), norm);
 	world->camera = cam;
 	return (true);
 }

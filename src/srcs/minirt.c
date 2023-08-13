@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/13 00:28:18 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:41:30 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_close_win(t_data *data)
 	printf("Look the Robotão!\n");
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img.ptr);
-	mlx_destroy_display(data->mlx);
+	// mlx_destroy_display(data->mlx);
 	clean_canvas(data->canvas);
 	clean_world(data->world);
 	free(data->mlx);
