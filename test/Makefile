@@ -109,8 +109,8 @@ SRC								=			$(SRC_OBJ_FEATURE) 					\
 											$(SRC_SHAPES_FEATURE)				\
 											$(SRC_REFLECTIVE_AND_REFRACTION)	\
 											$(SRC_LINKED_LST)					\
-											$(SRC_PATTERNS_FEATURE)				\
-											$(SRC_DATA_VALIDATION)
+											$(SRC_PATTERNS_FEATURE)				
+#											$(SRC_DATA_VALIDATION)
 OBJ								=			$(patsubst %.c, $(PATH_OBJ)%.o, $(SRC))
 DEP								=			$(patsubst %.c, $(PATH_OBJ)%.d, $(SRC))
 EXEC_OUTS						=			$(wildcard $(DIR_OUTS)*)

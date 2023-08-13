@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/11 17:50:18 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:25:48 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,7 @@ typedef struct s_world
 	t_camera		camera;
 	t_color			a_light;
 	t_light			light;
+	int				fd;
 }					t_world;
 
 typedef struct s_canvas
@@ -223,6 +224,8 @@ typedef struct s_data {
 	t_img		img;
 	t_screen	screen;
 	t_canvas	*canvas;
+	t_world		world;
+	char		*file_name;
 }	t_data;
 
 t_shape		make_floor(void *v);

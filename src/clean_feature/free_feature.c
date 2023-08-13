@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:16:00 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 09:48:46 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/13 00:24:42 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,23 @@ void	clean_array(char **array)
 		}
 		free(array);
 	}
+}
+
+void	clean_parser_error(t_world world, char **params, char *errormsg)
+{
+	char *line;
+
+	clean_array(params);
+	line = get_next_line(world.fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(world.fd);
+	}
+	if (line)
+		free(line);
+	close(world.fd);
+	clean_world(world);
+	print_error(errormsg);
+	exit(42);
 }

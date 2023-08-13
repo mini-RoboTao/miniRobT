@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 01:00:53 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 19:44:18 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/12 20:54:22 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,50 +30,58 @@ t_bool	is_valid_float(char *str)
 	return (false);
 }
 
-t_matrix	convert_xyz(char *str, t_world *world)
+t_matrix	convert_xyz(char **str, t_world *world, int pos)
 {
-	int		i;
-	size_t	size;
-	char	**pieces;
+	int			i;
+	size_t		size;
+	char		**pieces;
+	t_matrix	mtx;
 
-	pieces = ft_split(str, ',');
+	pieces = ft_split(str[pos], ',');
 	size = ft_arraylen(pieces);
 	if (size != 3)
 	{
 		clean_array(pieces);
-		clean_world(*world);
-		exit (1);
+		clean_parser_error(*world, str, "error code: 99 - invalid quantity params");
 	}
 	while (i < size && is_valid_float(pieces[i]))
 		i++;
 	if (i == size)
-		return (translation(ft_atof(pieces[0]), \
-			ft_atof(pieces[1]), ft_atof(pieces[2])));
+	{		
+		mtx = translation(ft_atof(pieces[0]), \
+			ft_atof(pieces[1]), ft_atof(pieces[2]));
+		clean_array(pieces);
+		return (mtx);
+	}
 	clean_array(pieces);
-	clean_world(*world);
-	exit (1);
+	clean_parser_error(*world, str, "error code: 97 - invalid params");
+	return (mtx);
 }
 
-t_obj	convert_point(char *str, t_world *world)
+t_obj	convert_point(char **str, t_world *world, int pos)
 {
 	int		i;
 	size_t	size;
+	t_obj	point;
 	char	**pieces;
 
-	pieces = ft_split(str, ',');
+	pieces = ft_split(str[pos], ',');
 	size = ft_arraylen(pieces);
 	if (size != 3)
 	{
 		clean_array(pieces);
-		clean_world(*world);
-		exit (1);
+		clean_parser_error(*world, str, "error code: 21 - Invalid params format");
 	}
 	while (i < size && is_valid_float(pieces[i]))
 		i++;
 	if (i == size)
-		return (create_point(ft_atof(pieces[0]), \
-			ft_atof(pieces[1]), ft_atof(pieces[2])));
+	{
+		point = create_point(ft_atof(pieces[0]), \
+			ft_atof(pieces[1]), ft_atof(pieces[2]));
+		clean_array(pieces);
+		return (point);
+	}
 	clean_array(pieces);
-	clean_world(*world);
-	exit (1);
+	clean_parser_error(*world, str, "error code: 22 - Invalid param");
+	return ((t_obj){0});
 }

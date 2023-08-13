@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:38:20 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/11 04:20:18 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:39:33 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@
 # include "shape_feature.h"
 # include "reflection_and_refraction.h"
 # include "data_validation.h"
+# include "errors.h"
 
 #endif

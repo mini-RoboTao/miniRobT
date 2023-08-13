@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_objects.c                                     :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 11:07:36 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/05 17:12:24 by rotakesh         ###   ########.fr       */
+/*   Created: 2023/08/12 16:35:06 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/08/12 16:55:58 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	clean_shape(t_shape *obj)
+void	print_error(char *msg)
 {
-	if (obj->v)
-		free(obj->v);
-}
-
-void	clean_sphere(t_sphere *s)
-{
-	if (s)
-		free(s);
-}
-
-void	clean_ray_inter_shape(t_intersection **i, void **shape)
-{
-	clean_intersection_lst(i);
-	free(shape);
+	// write(2, &RED, 5);
+	write(2, "\n", 1);
+	perror(msg);
+	// write(2, RESET_COLORS, 5);
+	write(2, "\n", 1);
 }

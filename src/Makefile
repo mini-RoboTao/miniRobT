@@ -75,8 +75,15 @@ SRC_DATA_VALIDATION					=					parser.c							\
 														rgb_utils.c							\
 														shape_define.c						\
 														define_light_and_cam.c				\
-														normalize_utils.c
-SRC									=					minirt.c utils.c put_together.c objs.c aux_math.c	\
+														normalize_utils.c					\
+														data_validation.c					\
+														input_validation.c
+SRC									=					minirt.c											\
+														utils.c												\
+														put_together.c										\
+														objs.c												\
+														aux_math.c											\
+														errors.c											\
 														$(SRC_LINKED_LST) 									\
 														$(SRC_OBJECT_FEATURE) 								\
 														$(SRC_COLORS_FEATURE) 								\
@@ -128,6 +135,9 @@ $(NAME): $(PATH_OBJ) $(OBJ)
 	@			printf "$(GREEN)$(NAME) created$(RC)\n"
 
 -include $(DEP)
+
+v: all
+	valgrind --leak-check=full --show-leak-kinds=all ./miniRT $(VAR)
 
 clean:
 	@			rm -rf $(PATH_OBJ)

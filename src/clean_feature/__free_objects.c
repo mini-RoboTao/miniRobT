@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_feature.h                                    :+:      :+:    :+:   */
+/*   free_objects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 19:17:03 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/12 16:36:35 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/07/12 11:07:36 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/08/12 16:23:41 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLEAN_FEATURE_H
-# define CLEAN_FEATURE_H
+#include "minirt.h"
 
-# include "minirt.h"
+// nao esta sendo chamado no makefile
 
-void	clean_canvas(t_canvas *c);
-void	clean_shape(t_shape *obj);
-void	clean_world(t_world w);
-void	clean_array(char **array);
-void	clean_parser_error(t_world world, char **params, char *errormsg);
+void	clean_shape(t_shape *obj)
+{
+	if (obj->v)
+		free(obj->v);
+}
 
-#endif
+void	clean_sphere(t_sphere *s)
+{
+	if (s)
+		free(s);
+}
+
+void	clean_ray_inter_shape(t_intersection **i, void **shape)
+{
+	clean_intersection_lst(i);
+	free(shape);
+}

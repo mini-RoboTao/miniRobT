@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 19:40:41 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/12 22:19:54 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ t_shape	left_cylinder(void *v)
 // 	d->canvas = render(&w);
 // }
 
+
 // void	put_together(t_data *d)
 // {
 // 	t_world		w;
@@ -194,15 +195,45 @@ t_shape	left_cylinder(void *v)
 // 	d->canvas = render(&w);
 // }
 
-void	put_together(t_data *d)
-{
-	t_world		w;
+// A	0.9 255,255,255
+// C 0,1.5,-5 0,1,0 70
+// L -10,10,-10 0.0 0,0,0
+// sp	-0.5,1,0.5 1 222,10,222
+// sp	1.5,0.5,-0.5 0.5 255,0,0
+// sp	-1.5,0.33,-0.75 0.33 255,0,0
+// pl 0,0,5 0.0,-1,0 125,125,125
+// cy 0.25,0.33,-1 0.5,0.5,0.5 0.33 3 0,125,45% 
 
-	w = (t_world){0};
-	ft_lstadd_back(&w.lst, ft_lstnew(make_floor(NULL)));
-	parser_file("test.rt", &w);
-	d->canvas = render(&w);
-}
+
+// void	put_together(t_data *d)
+// {
+// 	t_world		w;
+
+// 	w = (t_world){0};
+// 	ft_lstadd_back(&w.lst, ft_lstnew(make_floor(NULL)));
+// 	ft_lstadd_back(&w.lst, ft_lstnew(middle_sphere(NULL)));
+// 	//ft_lstadd_back(&w.lst, ft_lstnew(right_sphere(NULL)));
+// 	//ft_lstadd_back(&w.lst, ft_lstnew(left_cylinder(NULL)));
+// 	//ft_lstadd_back(&w.lst, ft_lstnew(right_cube(NULL)));
+// 	//ft_lstadd_back(&w.lst, ft_lstnew(cap_cylinder(NULL)));
+// 	//ft_lstadd_back(&w.lst, ft_lstnew(left_cone(NULL)));
+// 	//ft_lstadd_back(&w.lst, ft_lstnew(left_cone_2(NULL)));
+// 	w.light = point_light(create_point(-40, 0, 30), fill_color(0.7, 0.7, 0.7));
+// 	w.camera = camera(WIDTH, HEIGHT, M_PI / 2);
+// 	w.camera.transform = view_transformation(create_point(-50, 0, 20),
+// 	create_point(0, 1, 0), create_vector(0, 1, 0));
+// 	d->canvas = render(&w);
+// }
+
+// void	put_together(t_data *d)
+// {
+// 	t_world		w;
+
+// 	w = (t_world){0};
+// 	ft_lstadd_back(&w.lst, ft_lstnew(make_floor(NULL)));
+// 	parser_file("test.rt", &w);
+// 	d->canvas = render(&w);
+// }
 /* 
 void	put_together(t_data *d)
 {
@@ -219,3 +250,84 @@ void	put_together(t_data *d)
 	d->canvas = render(&w);
 }
  */
+
+
+
+
+
+
+
+t_shape	make_floor2(void *v)
+{
+	t_shape		s3;
+
+	s3 = new_plane();
+	set_transform2(&s3, translation(0, 0, 5));
+	set_transform2(&s3, rotation_y(M_PI / 2));
+	s3.any->material = new_material();
+	s3.any->material.color = fill_color(0.5, 0.5, 0.5);
+	return (s3);
+	(void)v;
+}
+
+t_shape	make_sphere1(void *v)
+{
+	t_shape		s3;
+
+	s3 = new_sphere();
+	s3.any->transform = multiply_matrix(\
+									translation(-0.5, 1, 0.5), \
+									scaling(1, 1, 1), 4, 4);
+	s3.any->material = new_material();
+	s3.any->material.color = fill_color(0.8, 0.05, 0.8);
+	return (s3);
+	(void)v;
+}
+t_shape	make_sphere2(void *v)
+{
+	t_shape		s3;
+
+	s3 = new_sphere();
+	s3.any->transform = multiply_matrix(\
+									translation(1.5, 0.5, -0.5), \
+									scaling(0.5, 0.5, 0.5), 4, 4);
+	s3.any->material = new_material();
+	s3.any->material.color = fill_color(1, 0, 0);
+	return (s3);
+	(void)v;
+}
+t_shape	make_sphere3(void *v)
+{
+	t_shape		s3;
+
+	s3 = new_sphere();
+	s3.any->transform = multiply_matrix(\
+									translation(-1.5, 0.33, -0.75), \
+									scaling(0.33, 0.33, 0.33), 4, 4);
+	s3.any->material = new_material();
+	s3.any->material.color = fill_color(1, 0, 0);
+	return (s3);
+	(void)v;
+}
+
+void	put_together(t_data *data)
+{
+	t_world		w;
+
+	// data->canvas = generate_canvas(data->win_w, data->win_h);
+	w = (t_world){0};
+	// ft_lstadd_back(&w.lst, ft_lstnew(make_floor2(NULL)));
+	// ft_lstadd_back(&w.lst, ft_lstnew(make_sphere1(NULL)));
+	// ft_lstadd_back(&w.lst, ft_lstnew(make_sphere2(NULL)));
+	// ft_lstadd_back(&w.lst, ft_lstnew(make_sphere3(NULL)));
+	// ft_lstadd_back(&w.lst, ft_lstnew(left_cylinder(NULL)));
+	// ft_lstadd_back(&w.lst, ft_lstnew(right_cube(NULL)));
+	// ft_lstadd_back(&w.lst, ft_lstnew(cap_cylinder(NULL)));
+	// ft_lstadd_back(&w.lst, ft_lstnew(left_cone(NULL)));
+	// ft_lstadd_back(&w.lst, ft_lstnew(left_cone_2(NULL)));
+	// data->world.light = point_light(create_point(-10, 10, -10), fill_color(1, 1, 1));
+	// data->world.camera = camera(WIDTH, HEIGHT, M_PI / 3);
+	// data->world.camera.transform = view_transformation(create_point(0, 1.5, -5),
+	// create_point(0, 1, 0), create_vector(0, 1, 0));
+	data->canvas = render(&data->world);
+}
