@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_world.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 19:41:14 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/13 16:41:04 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_color	shade_hit(t_world *w, t_precomp *comps, int remaining)
 	lig.eyev = comps->eyev;
 	lig.normalv = comps->normalv;
 	lig.in_shadow = is_shadowed(w, comps->over_point);
-	surface = lighting(lig, comps->over_point);
+	surface = lighting(lig, comps->over_point, w->a_light);
 	refracted = refracted_color(*w, *comps, remaining);
 	reflected = reflected_color(*w, *comps, remaining);
 	material = comps->shape.any->material;

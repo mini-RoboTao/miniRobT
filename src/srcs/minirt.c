@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/13 15:41:30 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:23:29 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 comment when run in mac, because this function doesn't
 exist in mlx for mac. Also this function is used to
 clean display and memory on linux.
+	// mlx_destroy_display(data->mlx);
 */
 
 int	ft_close_win(t_data *data)

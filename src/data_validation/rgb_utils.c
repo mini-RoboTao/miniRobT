@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 00:11:17 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/12 19:15:16 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/13 16:58:46 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ static double	convert_each_rgb(char *input)
 	res = ft_atof(input);
 	if (res < 0 || res > 255)
 		return (-1);
-	return (1.0 / 255.0 * res);
+	if (res != 0)
+		res++;
+	return (1.0 / 256.0 * res);
 }
 
 t_color	convert_to_rgb(char **input, t_world *world, int pos)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:39:10 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/12 21:59:24 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/14 11:27:00 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ void	check_input_file(t_data *data, int ac, char **av)
 		data->file_name = av[1];
 		return ;
 	}
-	perror(RED"Pass a fuck arg"RESET_COLORS);
+	// perror(RED"Error\n");
+
+	// char *str = "\001\e[31m\002 Error\n";
+	// write(1, str, ft_strlen(str));
+	// perror(YELLOW"Invalid file"RESET_COLORS);
+	print_error("error code: 1 - Invalid file");
 	exit (-1);
 }

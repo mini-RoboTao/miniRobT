@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:45:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/13 16:10:47 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/15 10:55:41 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ t_bool	define_light(char **params, t_world *world)
 		intensity = ft_atof(params[2]);
 	color = convert_to_rgb(params, world, 3);
 	color = multiply_scalar_colors(color, intensity);
-	world->light = point_light(position, sum_colors(color, world->a_light));
+	world->light = point_light(position, color);
+	// world->light = point_light(position, sum_colors(color, world->a_light));
 	return (true);
 }
 
