@@ -37,7 +37,7 @@ Test(inverting_matrix, test_calculate_a_minor_of_a_matrix4x4)
 	m2x2 = find_submatrix(m3x3, 1, 0);
 	result = determinant(m2x2);
 	cr_assert(eq(exp1, result));
-	result = minor(m3x3, 1, 0);
+	result = minor_matrix(m3x3, 1, 0);
 	cr_assert(eq(exp1, result));
 }
 
@@ -49,9 +49,9 @@ Test(inverting_matrix, test_calculate_a_cofactor_of_a_matrix3x3)
 							{6, -1, 5},								\
 							}, .x = 3, .y = 3};
 
-	cr_assert(epsilon_eq(flt, -12, minor(m3x3, 0, 0), EPSILON));
+	cr_assert(epsilon_eq(flt, -12, minor_matrix(m3x3, 0, 0), EPSILON));
 	cr_assert(epsilon_eq(flt, -12, cofactor(m3x3, 0, 0), EPSILON));
-	cr_assert(epsilon_eq(flt, 25, minor(m3x3, 1, 0), EPSILON));
+	cr_assert(epsilon_eq(flt, 25, minor_matrix(m3x3, 1, 0), EPSILON));
 	cr_assert(epsilon_eq(flt, -25, cofactor(m3x3, 1, 0), EPSILON));
 }
 

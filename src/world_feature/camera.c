@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:57:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 19:40:54 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:29:25 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,25 @@ t_camera	camera(int hsize, int vsize, double fov)
 		.transform = create_identity_matrix()
 	};
 	calculate_pixel_cam(&c);
+	return (c);
+}
+
+t_camera	new_camera(t_define_cam define)
+{
+	t_camera	c;
+
+	c = (t_camera){
+		.hsize = define.hsize,
+		.vsize = define.vsize,
+		.field_of_view = define.fov,
+		.pixel_size = 0,
+		.half_width = 0,
+		.half_height = 0,
+		.transform = create_identity_matrix()
+	};
+	calculate_pixel_cam(&c);
+	c.transform = view_transformation(\
+	define.point, create_point(0, 0, 0), define.vector);
 	return (c);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:59:18 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/12 19:27:52 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/15 19:00:15 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ t_bool			define_cylinder(char **params, t_world *world);
 t_color			convert_to_rgb(char **input, t_world *world, int pos);
 
 // light and camera
-t_obj			convert_point(char **str, t_world *world, int pos);
-t_bool			define_ambient_light(char **params, t_world *world);
-t_bool			define_light(char **params, t_world *world);
-t_obj			convert_normalize_cam(char **str, t_world *world, int pos);
-t_bool			define_camera(char **params, t_world *world);
+t_obj				convert_point(char **str, t_world *world, int pos);
+t_define_a_light	define_ambient_light(char **params, t_world *world);
+t_define_light		define_light(char **params, t_world *world);
+t_obj				convert_normalize_cam(char **str, t_world *world, int pos);
+t_define_cam		define_camera(char **params, t_world *world);
 
 // Axis and float utils
 t_bool			is_valid_float(char *str);

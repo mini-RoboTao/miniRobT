@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normalize_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 01:00:53 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/13 16:14:34 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/15 15:14:27 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ static t_obj	aux_normalize_cam(char **pieces)
 	xyz[1] = ft_atof(pieces[1]);
 	xyz[2] = ft_atof(pieces[2]);
 	if ((xyz[0] <= 1 && xyz[0] >= -1)
-		|| (xyz[1] <= 1 && xyz[1] >= -1)
-		|| (xyz[2] <= 1 && xyz[2] >= -1))
-		return (create_point(xyz[0], xyz[1], xyz[2]));
-	return (create_point(42, 0, 0));
+		&& (xyz[1] <= 1 && xyz[1] >= -1)
+		&& (xyz[2] <= 1 && xyz[2] >= -1))
+		return (create_vector(xyz[0], xyz[1], xyz[2]));
+	return (create_vector(42, 0, 0));
 }
 
 t_obj	convert_normalize_cam(char **str, t_world *world, int pos)

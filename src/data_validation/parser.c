@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:52:56 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/12 22:15:41 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/15 16:54:55 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	insert_obj_in_world(char **params, t_world *world)
 	printf("%s QUANTAS VEZES ELE PASSA AQUI?????? %s%d%s **********************************************\n", YELLOW, GREEN, counter++, RESET_COLORS);
 	if (check_order_input(params, world))
 		return ;
-	// colocar o else
-	if (!ft_strncmp(*params, "sp", 3))
+	else if (!ft_strncmp(*params, "sp", 3))
 		define_sphere(params, world);
 	else if (!ft_strncmp(*params, "pl", 3))
 		define_plane(params, world);
@@ -30,7 +29,7 @@ void	insert_obj_in_world(char **params, t_world *world)
 	else if (!ft_strncmp(*params, "L", 2))
 		define_light(params, world);
 	else if (!ft_strncmp(*params, "C", 2))
-		define_camera(params, world);
+		world->camera = new_camera(define_camera(params, world));
 	else
 	{
 		printf("%sAQUIIIIIII%s\n\n", GREEN, RESET_COLORS);

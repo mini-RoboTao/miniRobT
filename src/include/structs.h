@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/13 16:40:46 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/15 18:56:38 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_screen
 }	t_screen;
 
 /*///////////////// Render Image //////////////////*/
+
+
 typedef struct s_obj {
 	double		x;
 	double		y;
@@ -56,6 +58,28 @@ typedef struct s_color
 	double		green;
 	double		blue;
 }	t_color;
+
+typedef struct s_define_cam
+{
+	double		fov;
+	t_obj		point;
+	t_obj		vector;
+	int			hsize;
+	int			vsize;
+}				t_define_cam;
+
+typedef struct s_define_light
+{
+	t_color		color;
+	double		intensity;
+	t_obj		position;
+}				t_define_light;
+
+typedef struct s_define_a_light
+{
+	t_color		color;
+	double		intensity;
+}				t_define_a_light;
 
 typedef struct s_pattern
 {

@@ -3,63 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   define_light_and_cam.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:45:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/15 10:55:41 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/15 19:22:47 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_bool	define_ambient_light(char **params, t_world *world)
+t_define_a_light	define_ambient_light(char **params, t_world *world)
 {
+	t_define_a_light	a_light;
 	double	scalar;
 
 	if (ft_arraylen(params) != 3)
 		clean_parser_error(*world, params, "error code: 57 - Invalid quantity arguments");
 	if (!is_valid_float(params[1]))
 		clean_parser_error(*world, params, "error code: 54 - Number invalid");
-	scalar = ft_atof(params[1]);
-	world->a_light = convert_to_rgb(params, world, 2);
-	world->a_light = multiply_scalar_colors(world->a_light, scalar);
-	return (true);
+	a_light.intensity = ft_atof(params[1]);
+	if (a_light.intensity < 0 || a_light.intensity > 1)
+		clean_parser_error(*world, params, "error code: 97 - Number out of range");	
+	a_light.color = convert_to_rgb(params, world, 2);
+	//world->a_light = convert_to_rgb(params, world, 2);
+	//world->a_light = multiply_scalar_colors(world->a_light, scalar);
+	return (a_light);
 }
 
-t_bool	define_light(char **params, t_world *world)
+t_define_light	define_light(char **params, t_world *world)
 {
-	t_color	color;
-	t_obj	position;
-	double	intensity;
+	t_define_light	light;
 
 	if (ft_arraylen(params) != 4)
 		clean_parser_error(*world, params, "error code: 60 - Invalid quantity arguments");
-	position = convert_point(params, world, 1);
-	if (is_valid_float(params[2]))
-		intensity = ft_atof(params[2]);
-	color = convert_to_rgb(params, world, 3);
-	color = multiply_scalar_colors(color, intensity);
-	world->light = point_light(position, color);
+	light.position = convert_point(params, world, 1);
+	if (!is_valid_float(params[2]))
+		clean_parser_error(*world, params, "error code: 01 - Number invalid");	
+	light.intensity = ft_atof(params[2]);
+	if (light.intensity < 0 || light.intensity > 1)
+		clean_parser_error(*world, params, "error code: 98 - Number out of range");	
+	light.color = convert_to_rgb(params, world, 3);
+	//color = multiply_scalar_colors(color, intensity);
+	//world->light = point_light(position, color);
 	// world->light = point_light(position, sum_colors(color, world->a_light));
-	return (true);
+	return (light);
 }
 
-t_bool	define_camera(char **params, t_world *world)
+t_define_cam	define_camera(char **params, t_world *world)
 {
-	t_camera	cam;
-	t_obj		norm;
-	double		fov;
-	double		scale;
+	t_define_cam	cam;
 
-	printf("CAMERAAAA\n");
 	if (ft_arraylen(params) != 4)
-		clean_parser_error(*world, params, "Invalid quantity arguments");
+		clean_parser_error(*world, params, "erro code: 11 - Invalid quantity arguments");
 	if (!is_valid_float(params[3]))
-		clean_parser_error(*world, params, "Number invalid");
-	fov = ft_atof(params[3]);
-	norm = convert_normalize_cam(params, world, 2);
-	cam = camera(WIDTH, HEIGHT, fov * (M_PI / 180));
-	cam.transform = view_transformation(convert_point(params, world, 1), create_point(0, 0, 0), norm);
-	world->camera = cam;
-	return (true);
+		clean_parser_error(*world, params, "error code: 23 - Number invalid");
+	cam.fov = ft_atof(params[3]);
+	if (cam.fov < 0 || cam.fov > 180)
+		clean_parser_error(*world, params, "error code: 24 - Number invalid");
+	cam.vector = convert_normalize_cam(params, world, 2);
+	cam.point = convert_point(params, world, 1);
+	cam.vsize = WIDTH;
+	cam.hsize = HEIGHT;
+	return (cam);
 }
