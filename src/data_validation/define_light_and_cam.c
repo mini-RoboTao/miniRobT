@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_light_and_cam.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:45:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/15 19:22:47 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 03:54:44 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ t_define_a_light	define_ambient_light(char **params, t_world *world)
 	a_light.intensity = ft_atof(params[1]);
 	if (a_light.intensity < 0 || a_light.intensity > 1)
 		clean_parser_error(*world, params, "error code: 97 - Number out of range");	
-	a_light.color = convert_to_rgb(params, world, 2);
+	// a_light.color = convert_to_rgb(params, world, 2);
+	a_light.color = multiply_scalar_colors(convert_to_rgb(params, world, 2), a_light.intensity);
 	//world->a_light = convert_to_rgb(params, world, 2);
 	//world->a_light = multiply_scalar_colors(world->a_light, scalar);
+	printf("define a_light: %f %f %f\n", a_light.color.red, a_light.color.green, a_light.color.blue);
 	return (a_light);
 }
 
@@ -46,6 +48,7 @@ t_define_light	define_light(char **params, t_world *world)
 	//color = multiply_scalar_colors(color, intensity);
 	//world->light = point_light(position, color);
 	// world->light = point_light(position, sum_colors(color, world->a_light));
+	printf("define light: %f %f %f\n", light.color.red, light.color.green, light.color.blue);
 	return (light);
 }
 

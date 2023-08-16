@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/15 21:04:51 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 03:28:12 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_close_win(t_data *data)
 	printf("Look the Robotão!\n");
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img.ptr);
-	// mlx_destroy_display(data->mlx);
+	mlx_destroy_display(data->mlx);
 	clean_canvas(data->canvas);
 	clean_world(data->world);
 	free(data->mlx);
@@ -106,10 +106,10 @@ int	main(int ac, char **av)
 	// // }
   
 	data.canvas = render(&data.world);
-	// data.win_w = WIDTH; 
-	// data.win_h = HEIGHT;
-	// data.win_name = "Mini-RobT";
-	// data.canvas = generate_canvas(WIDTH, HEIGHT);
+	data.win_w = WIDTH; 
+	data.win_h = HEIGHT;
+	data.win_name = "Mini-RobT";
+	data.canvas = generate_canvas(WIDTH, HEIGHT);
 	// put_together(&data);
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, data.win_w, data.win_h, data.win_name);
