@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/15 21:04:51 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 16:15:56 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,20 @@ int	main(int ac, char **av)
 
 	data = (t_data){0};
 	data_validation(&data, ac, av);
-	
+	data.canvas = render(&data.world);
+	data.mlx = mlx_init();
+	data.win = mlx_new_window(data.mlx, data.win_w, data.win_h, data.win_name);
+	data.img.ptr = mlx_new_image(data.mlx, data.win_w, data.win_h);
+	data.img.addr = mlx_get_data_addr(data.img.ptr, &data.img.bits_per_pixel, \
+	&data.img.line_lenght, &data.img.endian);
+	mlx_loop_hook(data.mlx, &ft_render_minirt, &data);
+	mlx_hook(data.win, 2, 1L << 0, &ft_key_hook, &data);
+	mlx_hook(data.win, 17, 0, &ft_close_win, &data);
+	mlx_loop(data.mlx);
+	return (0);
+}
+
+
 	// // t_lst *temp = data.world.lst;
 	// // while(temp)
 	// // {
@@ -104,23 +117,3 @@ int	main(int ac, char **av)
 	// // 	printf("%p\n", temp->shape);
 	// // 	temp = temp->next;
 	// // }
-  
-	data.canvas = render(&data.world);
-	// data.win_w = WIDTH; 
-	// data.win_h = HEIGHT;
-	// data.win_name = "Mini-RobT";
-	// data.canvas = generate_canvas(WIDTH, HEIGHT);
-	// put_together(&data);
-	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, data.win_w, data.win_h, data.win_name);
-	data.img.ptr = mlx_new_image(data.mlx, data.win_w, data.win_h);
-	data.img.addr = mlx_get_data_addr(data.img.ptr, &data.img.bits_per_pixel, \
-	&data.img.line_lenght, &data.img.endian);
-	mlx_loop_hook(data.mlx, &ft_render_minirt, &data);
-	mlx_hook(data.win, 2, 1L << 0, &ft_key_hook, &data);
-	mlx_hook(data.win, 17, 0, &ft_close_win, &data);
-	mlx_loop(data.mlx);
-	// clean_canvas(data.canvas);
-	// clean_world(data.world);
-	return (0);
-}

@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/15 22:57:02 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 14:01:56 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,11 +251,11 @@ typedef struct s_camera
 
 typedef struct s_world
 {
-	t_lst			*lst;
-	t_camera		camera;
-	t_color			a_light;
-	t_light			light;
-	int				fd;
+	t_lst					*lst;
+	t_camera				camera;
+	t_color					a_light;
+	t_light					light;
+	int						fd;
 }					t_world;
 
 typedef struct s_canvas

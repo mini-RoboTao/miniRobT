@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 22:11:05 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/15 23:30:41 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 19:10:26 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include "minirt.h"
 
 t_shape	test_shape(void);
+
+// Light
+void	fill_a_light(t_world *world, t_define_a_light al);
+void	fill_light(t_world *world, t_define_light l);
 
 // Sphere
 void	intersect_sphere(t_intersections *xs, t_shape shape, t_ray ray);
@@ -31,16 +35,16 @@ void	fill_plane(t_world *world, t_define_plane p);
 t_shape	new_plane(void);
 
 // Cube
-t_shape	new_cube(void);
-void	intersect_cube(t_intersections *xs, t_shape cube, t_ray ray);
 double	*check_axis(double origin, double direction);
+void	intersect_cube(t_intersections *xs, t_shape cube, t_ray ray);
 t_obj	normal_at_cube(t_shape cube, t_obj point);
+t_shape	new_cube(void);
 
 // Cylinder
-t_shape	new_cylinder(void);
-void	fill_cylinder(t_world *world, t_define_cylinder c);
 void	intersect_cylinder(t_intersections *xs, t_shape cylinder, t_ray ray);
 t_obj	normal_at_cylinder(t_shape cylinder, t_obj point);
+void	fill_cylinder(t_world *world, t_define_cylinder c);
+t_shape	new_cylinder(void);
 
 // Cap cylinder
 double	check_cap(t_ray ray, double t);

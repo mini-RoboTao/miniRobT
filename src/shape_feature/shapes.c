@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 21:14:38 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/15 23:36:31 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 19:08:17 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,3 @@ t_shape	test_shape(void)
 	shape.id = 1;
 	return (shape);
 }
-
-
-// void	fill_light(t_world *world, t_define_light l)
-// {
-// 	t_light		light;
-
-// 	light.intensity = 
-// 	world->light = light;	
-// }
-
-// void	fill_a_light(t_world *world, t_define_a_light al)
-// {
-// 	world->a_light = a_light;
-// }

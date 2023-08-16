@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:45:32 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/15 19:22:47 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:51:28 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 t_define_a_light	define_ambient_light(char **params, t_world *world)
 {
 	t_define_a_light	a_light;
-	double	scalar;
 
+	a_light = (t_define_a_light){0};
 	if (ft_arraylen(params) != 3)
 		clean_parser_error(*world, params, "error code: 57 - Invalid quantity arguments");
 	if (!is_valid_float(params[1]))
@@ -25,8 +25,6 @@ t_define_a_light	define_ambient_light(char **params, t_world *world)
 	if (a_light.intensity < 0 || a_light.intensity > 1)
 		clean_parser_error(*world, params, "error code: 97 - Number out of range");	
 	a_light.color = convert_to_rgb(params, world, 2);
-	//world->a_light = convert_to_rgb(params, world, 2);
-	//world->a_light = multiply_scalar_colors(world->a_light, scalar);
 	return (a_light);
 }
 
@@ -34,6 +32,7 @@ t_define_light	define_light(char **params, t_world *world)
 {
 	t_define_light	light;
 
+	light = (t_define_light){0};
 	if (ft_arraylen(params) != 4)
 		clean_parser_error(*world, params, "error code: 60 - Invalid quantity arguments");
 	light.position = convert_point(params, world, 1);
@@ -43,9 +42,6 @@ t_define_light	define_light(char **params, t_world *world)
 	if (light.intensity < 0 || light.intensity > 1)
 		clean_parser_error(*world, params, "error code: 98 - Number out of range");	
 	light.color = convert_to_rgb(params, world, 3);
-	//color = multiply_scalar_colors(color, intensity);
-	//world->light = point_light(position, color);
-	// world->light = point_light(position, sum_colors(color, world->a_light));
 	return (light);
 }
 
@@ -53,6 +49,9 @@ t_define_cam	define_camera(char **params, t_world *world)
 {
 	t_define_cam	cam;
 
+	cam = (t_define_cam){0};
+	cam.vsize = WIDTH;
+	cam.hsize = HEIGHT;
 	if (ft_arraylen(params) != 4)
 		clean_parser_error(*world, params, "erro code: 11 - Invalid quantity arguments");
 	if (!is_valid_float(params[3]))
@@ -60,9 +59,9 @@ t_define_cam	define_camera(char **params, t_world *world)
 	cam.fov = ft_atof(params[3]);
 	if (cam.fov < 0 || cam.fov > 180)
 		clean_parser_error(*world, params, "error code: 24 - Number invalid");
-	cam.vector = convert_normalize_cam(params, world, 2);
 	cam.point = convert_point(params, world, 1);
-	cam.vsize = WIDTH;
-	cam.hsize = HEIGHT;
+	cam.vector = convert_vector(params, world, 2);
+	if (!check_vector_normalize(cam.vector))
+		clean_parser_error(*world, params, "error code: 10 - Invalid param");
 	return (cam);
 }

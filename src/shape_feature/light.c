@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   data_validation.c                                  :+:      :+:    :+:   */
+/*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/12 14:37:25 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 19:18:27 by dapaulin         ###   ########.fr       */
+/*   Created: 2023/08/16 19:08:19 by dapaulin          #+#    #+#             */
+/*   Updated: 2023/08/16 19:09:08 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	data_validation(t_data *data, int ac, char **av)
+void	fill_a_light(t_world *world, t_define_a_light al)
 {
-	data->win_w = WIDTH;
-	data->win_h = HEIGHT;
-	data->win_name = "Mini-RobT";
-	check_input_file(data, ac, av);
-	parser_file(data->file_name, &data->world);
-	// put together is a function for test.
-	put_together(data);
+	world->a_light = multiply_scalar_colors(al.color, al.intensity);	
+}
+
+void	fill_light(t_world *world, t_define_light l)
+{
+	world->light = point_light(l.position, l.color);
 }

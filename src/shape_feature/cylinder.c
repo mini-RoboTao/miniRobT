@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 02:42:12 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/15 23:30:09 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 18:39:48 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ t_shape	new_cylinder(void)
 	shape.any->x = 0.0;
 	shape.any->y = 0.0;
 	shape.any->z = 0.0;
-	shape.any->minimum = -INFINITY;
 	shape.any->maximum = INFINITY;
-	shape.any->closed = false;
+	shape.any->minimum = -INFINITY;
+	shape.any->closed = true;
 	shape.any->transform = create_identity_matrix();
 	shape.any->material = new_material();
 	shape.id = cylinder;
@@ -39,11 +39,11 @@ void	fill_cylinder(t_world *world, t_define_cylinder c)
 	t_shape	cylinder;
 
 	cylinder = new_cylinder();
+	set_transform2(&cylinder, scaling(c.diameter, 1, c.diameter));
 	set_transform2(&cylinder, translation(c.point.x, c.point.y, c.point.z));
 	set_transform2(&cylinder, rotation_x(c.vector.x * M_PI));
 	set_transform2(&cylinder, rotation_y(c.vector.y * M_PI));
 	set_transform2(&cylinder, rotation_z(c.vector.z * M_PI));
-	set_transform2(&cylinder, scaling(c.diameter, 1, c.diameter));
 	cylinder.any->maximum = c.height / 2;
 	cylinder.any->minimum = -(c.height / 2);
 	cylinder.any->material = c.material;
