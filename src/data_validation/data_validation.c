@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:37:25 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/12 22:06:55 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:00:51 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	data_validation(t_data *data, int ac, char **av)
 	data->win_name = "Mini-RobT";
 	check_input_file(data, ac, av);
 	parser_file(data->file_name, &data->world);
+	/*
+		set_ambient_light();
+	*/
 	// printf("a.light\n");
 	// printf("%f\n", data->world.a_light.red);
 	// printf("%f\n", data->world.a_light.green);

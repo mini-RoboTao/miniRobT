@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:39:10 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/14 11:27:00 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/15 20:58:08 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,6 @@ int	check_extension(char const *s1, char const *set)
 	return (0);
 }
 
-int	check_label(char *label, char *tag, int *flag, t_world *w)
-{
-	if (ft_strncmp(label, tag, 2) && !*flag)
-		clean_parser_error(*w, NULL, "Order of objectos incorrect in file");
-	*flag = 1;
-	return (1);
-}
-
 int	check_order_input(char **params, t_world *world)
 {
 	static int	A;
@@ -55,14 +47,18 @@ int	check_order_input(char **params, t_world *world)
 
 	if (!*params || *params[0] == '#')
 		return (1);
-	if (A && C && L)
-		return (0);
-	if (check_label(*params, "A", &A, world))
-		return (0);
-	if (check_label(*params, "C", &C, world))
-		return (0); 
-	if (check_label(*params, "L", &L, world))
-		return (0);
+	if (!ft_strncmp(*params, "A", 2) && !A)
+		A += 42;
+	else if (!ft_strncmp(*params, "A", 2) && A)
+		clean_parser_error(*world, params, "Duplicate Ambient Light");
+	if (!ft_strncmp(*params, "C", 2) && !C)
+		C += 42;
+	else if (!ft_strncmp(*params, "C", 2) && C)
+		clean_parser_error(*world, params, "Duplicate Camera");
+	if (!ft_strncmp(*params, "L", 2) && !L)
+		L += 42;
+	else if (!ft_strncmp(*params, "L", 2) && L)
+		clean_parser_error(*world, params, "Duplicate Light");
 	return (0);
 }
 

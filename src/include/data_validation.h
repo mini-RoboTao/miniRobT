@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:59:18 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/15 19:00:15 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/15 22:59:53 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ void			check_input_file(t_data *data, int ac, char **av);
 void			data_validation(t_data *data, int ac, char **av);
 
 // Shape defines
-t_bool			define_sphere(char **params, t_world *world);
-t_bool			define_plane(char **params, t_world *world);
-t_bool			define_cylinder(char **params, t_world *world);
+t_define_sphere	define_sphere(char **params, t_world *world);
+t_define_plane	define_plane(char **params, t_world *world);
+t_define_cylinder			define_cylinder(char **params, t_world *world);
 
 // RGB utils
 t_color			convert_to_rgb(char **input, t_world *world, int pos);
 
 // light and camera
 t_obj				convert_point(char **str, t_world *world, int pos);
+t_obj				convert_vector(char **str, t_world *world, int pos);
 t_define_a_light	define_ambient_light(char **params, t_world *world);
 t_define_light		define_light(char **params, t_world *world);
 t_obj				convert_normalize_cam(char **str, t_world *world, int pos);
@@ -40,6 +41,7 @@ t_define_cam		define_camera(char **params, t_world *world);
 
 // Axis and float utils
 t_bool			is_valid_float(char *str);
+t_bool			check_vector_normalize(t_obj vector);
 t_matrix		convert_xyz(char **str, t_world *world, int pos);
 void			convert_normalize(char **str, t_shape *shape, t_world *world, int pos);
 

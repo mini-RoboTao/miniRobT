@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:30:50 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 07:38:47 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:28:21 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,19 @@ void	intersect_plane(t_intersections *xs, t_shape shape, t_ray ray)
 t_obj	normal_at_plane(t_shape shape, t_obj world_point)
 {
 	return (create_vector(0, 1, 0));
+}
+
+void	fill_plane(t_world *world, t_define_plane p)
+{
+	t_shape	plane;
+
+	plane = new_plane();
+	set_transform2(&plane, translation(p.point.x, p.point.y, p.point.z));
+	set_transform2(&plane, rotation_x(p.vector.x * M_PI));
+	set_transform2(&plane, rotation_y(p.vector.y * M_PI));
+	set_transform2(&plane, rotation_z(p.vector.z * M_PI));
+	plane.any->material = p.material;
+	ft_lstadd_back(&world->lst, ft_lstnew(plane));
 }
 
 t_shape	new_plane(void)

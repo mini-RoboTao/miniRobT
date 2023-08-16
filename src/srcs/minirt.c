@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/14 18:23:29 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:04:51 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	main(int ac, char **av)
 	// // 	temp = temp->next;
 	// // }
   
-	// // data.canvas = render(&dat a.world);
+	data.canvas = render(&data.world);
 	// data.win_w = WIDTH; 
 	// data.win_h = HEIGHT;
 	// data.win_name = "Mini-RobT";

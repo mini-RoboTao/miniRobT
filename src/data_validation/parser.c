@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:52:56 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/15 16:54:55 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:31:24 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	insert_obj_in_world(char **params, t_world *world)
 	if (check_order_input(params, world))
 		return ;
 	else if (!ft_strncmp(*params, "sp", 3))
-		define_sphere(params, world);
+		fill_sphere(world, define_sphere(params, world));
 	else if (!ft_strncmp(*params, "pl", 3))
-		define_plane(params, world);
+		fill_plane(world, define_plane(params, world));
 	else if (!ft_strncmp(*params, "cy", 3))
-		define_cylinder(params, world);
+		fill_cylinder(world, define_cylinder(params, world));
 	else if (!ft_strncmp(*params, "A", 2))
 		define_ambient_light(params, world);
 	else if (!ft_strncmp(*params, "L", 2))

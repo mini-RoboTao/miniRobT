@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/15 18:56:38 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/15 22:57:02 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,6 @@ typedef struct s_color
 	double		blue;
 }	t_color;
 
-typedef struct s_define_cam
-{
-	double		fov;
-	t_obj		point;
-	t_obj		vector;
-	int			hsize;
-	int			vsize;
-}				t_define_cam;
-
-typedef struct s_define_light
-{
-	t_color		color;
-	double		intensity;
-	t_obj		position;
-}				t_define_light;
-
-typedef struct s_define_a_light
-{
-	t_color		color;
-	double		intensity;
-}				t_define_a_light;
-
 typedef struct s_pattern
 {
 	t_color			a;
@@ -110,6 +88,54 @@ typedef struct s_ray
 }				t_ray;
 
 /************* Objects *************/
+
+typedef struct s_define_cam
+{
+	double		fov;
+	t_obj		point;
+	t_obj		vector;
+	int			hsize;
+	int			vsize;
+}				t_define_cam;
+
+typedef struct s_define_light
+{
+	t_color		color;
+	double		intensity;
+	t_obj		position;
+}				t_define_light;
+
+typedef struct s_define_a_light
+{
+	t_color		color;
+	double		intensity;
+}				t_define_a_light;
+
+typedef struct s_define_sphere
+{
+	t_obj		point;
+	double		diameter;
+	t_material	material;
+	t_matrix	transform;
+}				t_define_sphere;
+
+typedef struct s_define_plane
+{
+	t_obj		point;
+	t_obj		vector;
+	t_material	material;
+	t_matrix	transform;
+}				t_define_plane;
+
+typedef struct s_define_cylinder
+{
+	t_obj		point;
+	t_obj		vector;
+	double		diameter;
+	double		height;
+	t_material	material;
+	t_matrix	transform;
+}				t_define_cylinder;
 
 typedef struct s_common_shape
 {

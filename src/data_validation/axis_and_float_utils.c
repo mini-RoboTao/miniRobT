@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 01:00:53 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/12 20:54:22 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/15 22:35:06 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,44 @@ t_obj	convert_point(char **str, t_world *world, int pos)
 	}
 	clean_array(pieces);
 	clean_parser_error(*world, str, "error code: 22 - Invalid param");
+	return ((t_obj){0});
+}
+
+t_bool	check_vector_normalize(t_obj vector)
+{
+	if ((vector.x <= 1 && vector.x >= -1)
+		&& (vector.y <= 1 && vector.y >= -1)
+		&& (vector.z <= 1 && vector.z >= -1))
+	{
+		return (true);
+	}
+	return (false);
+}
+
+t_obj	convert_vector(char **str, t_world *world, int pos)
+{
+	int		i;
+	size_t	size;
+	t_obj	point;
+	char	**pieces;
+
+	pieces = ft_split(str[pos], ',');
+	size = ft_arraylen(pieces);
+	if (size != 3)
+	{
+		clean_array(pieces);
+		clean_parser_error(*world, str, "error code: 05 - Invalid params format");
+	}
+	while (i < size && is_valid_float(pieces[i]))
+		i++;
+	if (i == size)
+	{
+		point = create_vector(ft_atof(pieces[0]), \
+			ft_atof(pieces[1]), ft_atof(pieces[2]));
+		clean_array(pieces);
+		return (point);
+	}
+	clean_array(pieces);
+	clean_parser_error(*world, str, "error code: 06 - Invalid param");
 	return ((t_obj){0});
 }

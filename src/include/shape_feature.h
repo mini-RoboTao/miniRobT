@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape_feature.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 22:11:05 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/10 16:58:46 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:30:41 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ t_shape	test_shape(void);
 // Sphere
 void	intersect_sphere(t_intersections *xs, t_shape shape, t_ray ray);
 t_obj	normal_at_sphere(t_shape shape, t_obj world_point);
+void	fill_sphere(t_world *world, t_define_sphere s);
 t_shape	new_sphere(void);
 t_shape	glass_sphere(void);
 
 //Plane
 void	intersect_plane(t_intersections *xs, t_shape shape, t_ray ray);
 t_obj	normal_at_plane(t_shape shape, t_obj world_point);
+void	fill_plane(t_world *world, t_define_plane p);
 t_shape	new_plane(void);
 
 // Cube
@@ -36,6 +38,7 @@ t_obj	normal_at_cube(t_shape cube, t_obj point);
 
 // Cylinder
 t_shape	new_cylinder(void);
+void	fill_cylinder(t_world *world, t_define_cylinder c);
 void	intersect_cylinder(t_intersections *xs, t_shape cylinder, t_ray ray);
 t_obj	normal_at_cylinder(t_shape cylinder, t_obj point);
 

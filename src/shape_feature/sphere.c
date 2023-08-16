@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 15:20:58 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/11 06:30:36 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/15 22:44:23 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,17 @@ t_shape	new_sphere(void)
 	shape.intersect = intersect_sphere;
 	shape.normal_at = normal_at_sphere;
 	return (shape);
+}
+
+void	fill_sphere(t_world *world, t_define_sphere s)
+{
+	t_shape	sphere;
+
+	sphere = new_sphere();
+	set_transform2(&sphere, translation(s.point.x, s.point.y, s.point.z));
+	set_transform2(&sphere, scaling(s.diameter, s.diameter, s.diameter));
+	sphere.any->material = s.material;
+	ft_lstadd_back(&world->lst, ft_lstnew(sphere));
 }
 
 t_shape	glass_sphere(void)

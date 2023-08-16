@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 02:42:12 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/11 06:34:15 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:30:09 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,22 @@ t_shape	new_cylinder(void)
 	shape.intersect = intersect_caps;
 	shape.normal_at = normal_at_cylinder;
 	return (shape);
+}
+
+void	fill_cylinder(t_world *world, t_define_cylinder c)
+{
+	t_shape	cylinder;
+
+	cylinder = new_cylinder();
+	set_transform2(&cylinder, translation(c.point.x, c.point.y, c.point.z));
+	set_transform2(&cylinder, rotation_x(c.vector.x * M_PI));
+	set_transform2(&cylinder, rotation_y(c.vector.y * M_PI));
+	set_transform2(&cylinder, rotation_z(c.vector.z * M_PI));
+	set_transform2(&cylinder, scaling(c.diameter, 1, c.diameter));
+	cylinder.any->maximum = c.height / 2;
+	cylinder.any->minimum = -(c.height / 2);
+	cylinder.any->material = c.material;
+	ft_lstadd_back(&world->lst, ft_lstnew(cylinder));
 }
 
 static double	calculate_bhaskara(double *abc, t_ray ray)
