@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 00:11:17 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/16 04:00:51 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:46:35 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ static double	convert_each_rgb(char *input)
 	res = ft_atof(input);
 	if (res < 0 || res > 255)
 		return (-1);
-	// if (res != 0)
-	// 	res++;
 	return (1.0 / 256.0 * res);
 }
 
@@ -83,7 +81,7 @@ t_color	convert_to_rgb(char **input, t_world *world, int pos)
 	rgb.blue = convert_each_rgb(input_array[2]);
 	if (rgb.red < 0 || rgb.green < 0 || rgb.blue < 0)
 	{
-		clean_array(input_array);	
+		clean_array(input_array);
 		clean_parser_error(*world, input, "error code: 78 - Invalid color");
 	}
 	clean_array(input_array);

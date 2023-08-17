@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:39:10 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/15 20:58:08 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:48:52 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,31 @@ int	check_extension(char const *s1, char const *set)
 	return (0);
 }
 
-int	check_order_input(char **params, t_world *world)
+int	check_file_params(char **params, t_world *world, int check_end)
 {
-	static int	A;
-	static int	C;
-	static int	L;
+	static int	a_;
+	static int	c_;
+	static int	l_;
 
-	if (!*params || *params[0] == '#')
-		return (1);
-	if (!ft_strncmp(*params, "A", 2) && !A)
-		A += 42;
-	else if (!ft_strncmp(*params, "A", 2) && A)
-		clean_parser_error(*world, params, "Duplicate Ambient Light");
-	if (!ft_strncmp(*params, "C", 2) && !C)
-		C += 42;
-	else if (!ft_strncmp(*params, "C", 2) && C)
-		clean_parser_error(*world, params, "Duplicate Camera");
-	if (!ft_strncmp(*params, "L", 2) && !L)
-		L += 42;
-	else if (!ft_strncmp(*params, "L", 2) && L)
-		clean_parser_error(*world, params, "Duplicate Light");
+	if (check_end && (!a_ || !c_ || !l_))
+		clean_parser_error(*world, params, "One needed param don't exist");
+	else if (!check_end)
+	{
+		if (!*params || *params[0] == '#')
+			return (1);
+		if (!ft_strncmp(*params, "A", 2) && !a_)
+			a_ += 42;
+		else if (!ft_strncmp(*params, "A", 2) && a_)
+			clean_parser_error(*world, params, "Duplicate Ambient Light");
+		if (!ft_strncmp(*params, "C", 2) && !c_)
+			c_ += 42;
+		else if (!ft_strncmp(*params, "C", 2) && c_)
+			clean_parser_error(*world, params, "Duplicate Camera");
+		if (!ft_strncmp(*params, "L", 2) && !l_)
+			l_ += 42;
+		else if (!ft_strncmp(*params, "L", 2) && l_)
+			clean_parser_error(*world, params, "Duplicate Light");
+	}
 	return (0);
 }
 
@@ -69,11 +74,6 @@ void	check_input_file(t_data *data, int ac, char **av)
 		data->file_name = av[1];
 		return ;
 	}
-	// perror(RED"Error\n");
-
-	// char *str = "\001\e[31m\002 Error\n";
-	// write(1, str, ft_strlen(str));
-	// perror(YELLOW"Invalid file"RESET_COLORS);
 	print_error("error code: 1 - Invalid file");
 	exit (-1);
 }

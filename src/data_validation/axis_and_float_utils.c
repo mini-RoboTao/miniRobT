@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 01:00:53 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/15 22:35:06 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 21:39:44 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,34 +30,18 @@ t_bool	is_valid_float(char *str)
 	return (false);
 }
 
-t_matrix	convert_xyz(char **str, t_world *world, int pos)
+t_bool	check_vector_normalize(t_obj vector)
 {
-	int			i;
-	size_t		size;
-	char		**pieces;
-	t_matrix	mtx;
-
-	pieces = ft_split(str[pos], ',');
-	size = ft_arraylen(pieces);
-	if (size != 3)
+	if ((vector.x <= 1 && vector.x >= -1)
+		&& (vector.y <= 1 && vector.y >= -1)
+		&& (vector.z <= 1 && vector.z >= -1))
 	{
-		clean_array(pieces);
-		clean_parser_error(*world, str, "error code: 99 - invalid quantity params");
+		return (true);
 	}
-	while (i < size && is_valid_float(pieces[i]))
-		i++;
-	if (i == size)
-	{		
-		mtx = translation(ft_atof(pieces[0]), \
-			ft_atof(pieces[1]), ft_atof(pieces[2]));
-		clean_array(pieces);
-		return (mtx);
-	}
-	clean_array(pieces);
-	clean_parser_error(*world, str, "error code: 97 - invalid params");
-	return (mtx);
+	return (false);
 }
 
+// negar o pieces[2] corrige a direção do eixo Z
 t_obj	convert_point(char **str, t_world *world, int pos)
 {
 	int		i;
@@ -70,31 +54,21 @@ t_obj	convert_point(char **str, t_world *world, int pos)
 	if (size != 3)
 	{
 		clean_array(pieces);
-		clean_parser_error(*world, str, "error code: 21 - Invalid params format");
+		clean_parser_error(*world, str, \
+		"error code: 21 - Invalid params format");
 	}
 	while (i < size && is_valid_float(pieces[i]))
 		i++;
 	if (i == size)
 	{
-		point = create_point(ft_atof(pieces[0]), \
-			ft_atof(pieces[1]), ft_atof(pieces[2]));
+		point = create_point(ft_atof(pieces[0]), ft_atof(pieces[1]), \
+		-ft_atof(pieces[2]));
 		clean_array(pieces);
 		return (point);
 	}
 	clean_array(pieces);
 	clean_parser_error(*world, str, "error code: 22 - Invalid param");
 	return ((t_obj){0});
-}
-
-t_bool	check_vector_normalize(t_obj vector)
-{
-	if ((vector.x <= 1 && vector.x >= -1)
-		&& (vector.y <= 1 && vector.y >= -1)
-		&& (vector.z <= 1 && vector.z >= -1))
-	{
-		return (true);
-	}
-	return (false);
 }
 
 t_obj	convert_vector(char **str, t_world *world, int pos)

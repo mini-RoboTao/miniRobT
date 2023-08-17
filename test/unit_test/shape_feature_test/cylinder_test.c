@@ -153,6 +153,7 @@ Test(Intersecting_a_constrained_cylinder, On_x_0_y_1_dot_5_z_0)
 
 	cylinder.any->minimum = 1;
 	cylinder.any->maximum = 2;
+	cylinder.any->closed = false;
 
 	intersect_caps(&xs, cylinder, ray);
 	cr_expect(eq(xs.amount, 0));
@@ -249,7 +250,7 @@ Test(Intersecting_a_constrained_cylinder, On_x_0_y_1_dot_5_z_minus_2)
 Test(Cylinder, The_default_closed_value_for_a_cylinder)
 {
 	t_shape	cylinder = new_cylinder();
-
+	cylinder.any->closed = false;
 	cr_assert(eq(cylinder.any->closed, F));
 
 	clean_shape(&cylinder);

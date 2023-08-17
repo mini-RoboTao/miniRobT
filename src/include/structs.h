@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/16 03:39:04 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:46:18 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_screen
 }	t_screen;
 
 /*///////////////// Render Image //////////////////*/
-
 
 typedef struct s_obj {
 	double		x;
@@ -251,12 +250,11 @@ typedef struct s_camera
 
 typedef struct s_world
 {
-	t_lst			*lst;
-	t_camera		camera;
-	t_color			a_light;
-	double			a_light_intensity;
-	t_light			light;
-	int				fd;
+	t_lst					*lst;
+	t_camera				camera;
+	t_color					a_light;
+	t_light					light;
+	int						fd;
 }					t_world;
 
 typedef struct s_canvas

@@ -55,7 +55,8 @@ SRC_SHAPES_FEATURE					=					shapes.c							\
 														cylinder.c							\
 														cylinder_cap.c						\
 														cone.c								\
-														cone_cap.c
+														cone_cap.c							\
+														light.c
 SRC_REFLECTION_AND_REFRACTION		=					reflection.c						\
 														transparency_and_refraction.c
 SRC_LINKED_LST						=					ft_lstnew.c							\
@@ -75,7 +76,6 @@ SRC_DATA_VALIDATION					=					parser.c							\
 														rgb_utils.c							\
 														shape_define.c						\
 														define_light_and_cam.c				\
-														normalize_utils.c					\
 														data_validation.c					\
 														input_validation.c
 SRC									=					minirt.c											\
