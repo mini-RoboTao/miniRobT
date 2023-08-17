@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:52:56 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/17 11:17:08 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:52:44 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	parser_file(char *file_name, t_world *world)
 		clean_array(params);
 		params = parser_line(world->fd);
 	}
+	check_file_params(params, world, 1);
 	clean_array(params);
 	close (world->fd);
 }
