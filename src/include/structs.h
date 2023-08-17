@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/16 14:01:56 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 21:55:47 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_screen
 }	t_screen;
 
 /*///////////////// Render Image //////////////////*/
-
 
 typedef struct s_obj {
 	double		x;

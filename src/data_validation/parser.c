@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:52:56 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 19:23:11 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 21:36:12 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	insert_obj_in_world(char **params, t_world *world)
 {
-	static int counter;
+	static int	counter;
 
 	if (check_file_params(params, world, 0))
 		return ;
@@ -70,7 +70,7 @@ void	parser_file(char *file_name, t_world *world)
 		clean_array(params);
 		params = parser_line(world->fd);
 	}
-	//check_file_params(params, world, 1);
-	clean_array(params);	
+	check_file_params(params, world, 1);
+	clean_array(params);
 	close (world->fd);
 }

@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:59:37 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 19:26:32 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 21:57:37 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,6 +310,24 @@ t_shape	make_sphere3(void *v)
 	(void)v;
 }
 
+// void	put_together(t_data *data)
+// {
+// 	// ft_lstadd_back(&data->world.lst, ft_lstnew(make_floor2(NULL)));
+// 	// ft_lstadd_back(&data->world.lst, ft_lstnew(make_sphere1(NULL)));
+// 	// ft_lstadd_back(&data->world.lst, ft_lstnew(make_sphere2(NULL)));
+// 	// ft_lstadd_back(&data->world.lst, ft_lstnew(make_sphere3(NULL)));
+// 	// ft_lstadd_back(&data->world.lst, ft_lstnew(left_cylinder(NULL)));
+// 	// ft_lstadd_back(&data->world.lst, ft_lstnew(right_cube(NULL)));
+// 	// ft_lstadd_back(&data->world.lst, ft_lstnew(cap_cylinder(NULL)));
+// 	// ft_lstadd_back(&data->world.lst, ft_lstnew(left_cone(NULL)));
+// 	// ft_lstadd_back(&data->world.lst, ft_lstnew(left_cone_2(NULL)));
+// 	data->world.light = point_light(create_point(-10, 10, 10), fill_color(1, 1, 1));
+// 	data->world.camera = camera(WIDTH, HEIGHT, M_PI / 3);
+// 	data->world.camera.transform = view_transformation(create_point(0, 0, -5),
+// 	create_point(0, 0, 0), create_vector(0, 1, 0));
+// //	data->canvas = render(&data->world);
+// }
+
 void	put_together(t_data *data)
 {
 	// ft_lstadd_back(&data->world.lst, ft_lstnew(make_floor2(NULL)));
@@ -321,9 +339,9 @@ void	put_together(t_data *data)
 	// ft_lstadd_back(&data->world.lst, ft_lstnew(cap_cylinder(NULL)));
 	// ft_lstadd_back(&data->world.lst, ft_lstnew(left_cone(NULL)));
 	// ft_lstadd_back(&data->world.lst, ft_lstnew(left_cone_2(NULL)));
-	data->world.light = point_light(create_point(-10, 10, 10), fill_color(1, 1, 1));
+	// data->world.light = point_light(create_point(0, 2, -10), fill_color(1, 1, 1));
 	data->world.camera = camera(WIDTH, HEIGHT, M_PI / 3);
-	data->world.camera.transform = view_transformation(create_point(0, 0, -5),
+	data->world.camera.transform = view_transformation(create_point(-50, 0, -20),
 	create_point(0, 0, 0), create_vector(0, 1, 0));
 //	data->canvas = render(&data->world);
 }

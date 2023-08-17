@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:59:18 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 19:19:37 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 21:56:38 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "minirt.h"
 
 // Input Validation
-int					check_file_params(char **params, t_world *world, int check_end);
+int					check_file_params(char **params, t_world *world, \
+					int check_end);
 int					check_extension(char const *s1, char const *set);
 void				check_input_file(t_data *data, int ac, char **av);
 

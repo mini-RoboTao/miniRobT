@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 02:42:12 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/16 18:39:48 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 20:43:53 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@ void	fill_cylinder(t_world *world, t_define_cylinder c)
 	cylinder = new_cylinder();
 	set_transform2(&cylinder, scaling(c.diameter, 1, c.diameter));
 	set_transform2(&cylinder, translation(c.point.x, c.point.y, c.point.z));
-	set_transform2(&cylinder, rotation_x(c.vector.x * M_PI));
-	set_transform2(&cylinder, rotation_y(c.vector.y * M_PI));
-	set_transform2(&cylinder, rotation_z(c.vector.z * M_PI));
+	if (c.vector.x != 0)
+		set_transform2(&cylinder, rotation_x(c.vector.x * M_PI));
+	if (c.vector.y != 0)
+		set_transform2(&cylinder, rotation_y(c.vector.y * M_PI));
+	if (c.vector.z != 0)
+		set_transform2(&cylinder, rotation_z(c.vector.z * M_PI));
 	cylinder.any->maximum = c.height / 2;
 	cylinder.any->minimum = -(c.height / 2);
 	cylinder.any->material = c.material;

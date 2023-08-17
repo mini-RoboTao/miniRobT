@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:39:10 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 19:22:46 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/16 21:39:04 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,25 @@ int	check_extension(char const *s1, char const *set)
 
 int	check_file_params(char **params, t_world *world, int check_end)
 {
-	static int	A;
-	static int	C;
-	static int	L;
+	static int	a_;
+	static int	c_;
+	static int	l_;
 
-	// if (check_end && (!A || !C || !L))
-	// 	clean_parser_error(*world, params, "One needed param don't exist");
+	if (check_end && (!a_ || !c_ || !l_))
+		clean_parser_error(*world, params, "One needed param don't exist");
 	if (!*params || *params[0] == '#')
 		return (1);
-	if (!ft_strncmp(*params, "A", 2) && !A)
-		A += 42;
-	else if (!ft_strncmp(*params, "A", 2) && A)
+	if (!ft_strncmp(*params, "A", 2) && !a_)
+		a_ += 42;
+	else if (!ft_strncmp(*params, "A", 2) && a_)
 		clean_parser_error(*world, params, "Duplicate Ambient Light");
-	if (!ft_strncmp(*params, "C", 2) && !C)
-		C += 42;
-	else if (!ft_strncmp(*params, "C", 2) && C)
+	if (!ft_strncmp(*params, "C", 2) && !c_)
+		c_ += 42;
+	else if (!ft_strncmp(*params, "C", 2) && c_)
 		clean_parser_error(*world, params, "Duplicate Camera");
-	if (!ft_strncmp(*params, "L", 2) && !L)
-		L += 42;
-	else if (!ft_strncmp(*params, "L", 2) && L)
+	if (!ft_strncmp(*params, "L", 2) && !l_)
+		l_ += 42;
+	else if (!ft_strncmp(*params, "L", 2) && l_)
 		clean_parser_error(*world, params, "Duplicate Light");
 	return (0);
 }
