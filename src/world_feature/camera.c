@@ -6,13 +6,13 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:57:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 15:59:59 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:06:02 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	calculate_pixel_cam(t_camera *c)
+void	calculate_pixel_cam(t_camera *c)
 {
 	double	half_view;
 	double	aspect;
@@ -49,25 +49,7 @@ t_camera	camera(int hsize, int vsize, double fov)
 	return (c);
 }
 
-t_camera	new_camera(t_define_cam define)
-{
-	t_camera	c;
-
-	c = (t_camera){
-		.hsize = define.vsize,
-		.vsize = define.hsize,
-		.field_of_view = define.fov * (M_PI / 180),
-		.pixel_size = 0,
-		.half_width = 0,
-		.half_height = 0,
-		.transform = create_identity_matrix()
-	};
-	calculate_pixel_cam(&c);
-	c.transform = view_transformation(define.point, create_point(0, 0, 0), define.vector);
-	return (c);
-}
-
-static t_ray	calculate_ray_cam(t_camera *c, t_matrix inv_trans, \
+t_ray	calculate_ray_cam(t_camera *c, t_matrix inv_trans, \
 									double wx, double wy)
 {
 	t_obj	pixel;

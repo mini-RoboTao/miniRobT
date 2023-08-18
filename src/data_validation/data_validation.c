@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 14:37:25 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 21:36:35 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:14:22 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,3 @@ void	data_validation(t_data *data, int ac, char **av)
 	check_input_file(data, ac, av);
 	parser_file(data->file_name, &data->world);
 }
-	// // put together is a function for test.
-	// put_together(data);

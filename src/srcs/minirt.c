@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:36:58 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/16 16:15:56 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/17 22:49:57 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_close_win(t_data *data)
 	printf("Look the Robotão!\n");
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img.ptr);
-	// mlx_destroy_display(data->mlx);
+	mlx_destroy_display(data->mlx);
 	clean_canvas(data->canvas);
 	clean_world(data->world);
 	free(data->mlx);
@@ -91,29 +91,3 @@ int	main(int ac, char **av)
 	mlx_loop(data.mlx);
 	return (0);
 }
-
-
-	// // t_lst *temp = data.world.lst;
-	// // while(temp)
-	// // {
-	// // 	printf("%s PRINTING OBJECTS\n\n%s", CYAN, RESET_COLORS);
-	// // 	printf("%d\n", temp->shape.id);
-	// // 	printf("%f\n", temp->shape.any->x);
-	// // 	printf("%f\n", temp->shape.any->y);
-	// // 	printf("%f\n", temp->shape.any->z);
-	// // 	printf("%f\n", temp->shape.any->material.ambient);
-	// // 	for (int k = 0; k < 4; k++)
-	// // 	{
-	// // 		printf("[");
-	// // 		for (int l = 0; l < 4; l++)	
-	// // 			printf("%.3f ", temp->shape.any->transform.node[k][l]);
-	// // 		printf("]\n");
-	// // 	}
-	// // 	printf("%d\n", temp->shape.any->transform.x);
-	// // 	printf("%d\n", temp->shape.any->transform.x);
-	// // 	printf("%f\n", temp->shape.any->material.color.red);
-	// // 	printf("%f\n", temp->shape.any->material.color.green);
-	// // 	printf("%f\n", temp->shape.any->material.color.blue);
-	// // 	printf("%p\n", temp->shape);
-	// // 	temp = temp->next;
-	// // }

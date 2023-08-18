@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_phong_reflection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/13 18:51:39 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/17 22:53:46 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,10 @@ t_color	lighting(t_lighting lig, t_obj over_point, t_color a_light)
 	}
 	else
 		calculate_diffuse_specular(&data, &lig, lightv);
-	if (lig.light.intensity.red == 0 && lig.light.intensity.green == 0 && lig.light.intensity.blue == 0)
+	if (lig.light.intensity.red == 0 && \
+	lig.light.intensity.green == 0 && lig.light.intensity.blue == 0)
 		return (multiply_colors(color, a_light));
 	if (lig.in_shadow)
 		return (data.ambient);
-	// printf("COLORS:\n\n");
-	// printf("AMBIENT:\n%f\t%f\t%f\n", data.ambient.red, data.ambient.green, data.ambient.blue);
-	// printf("AMBIENT:\n%f\t%f\t%f\n", a_light.red, a_light.green, a_light.blue);
-	// return (multiply_colors(color, a_light));
-	// return (color);
 	return (sum_colors(sum_colors(data.ambient, data.diffuse), data.specular));
 }

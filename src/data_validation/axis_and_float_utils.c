@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 01:00:53 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 21:39:44 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:03:18 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ t_bool	check_vector_normalize(t_obj vector)
 	return (false);
 }
 
-// negar o pieces[2] corrige a direção do eixo Z
 t_obj	convert_point(char **str, t_world *world, int pos)
 {
 	int		i;
@@ -75,7 +74,7 @@ t_obj	convert_vector(char **str, t_world *world, int pos)
 {
 	int		i;
 	size_t	size;
-	t_obj	point;
+	t_obj	vector;
 	char	**pieces;
 
 	pieces = ft_split(str[pos], ',');
@@ -83,16 +82,18 @@ t_obj	convert_vector(char **str, t_world *world, int pos)
 	if (size != 3)
 	{
 		clean_array(pieces);
-		clean_parser_error(*world, str, "error code: 05 - Invalid params format");
+		clean_parser_error(*world, str, "error code: 05 - \
+		Invalid params format");
 	}
 	while (i < size && is_valid_float(pieces[i]))
 		i++;
 	if (i == size)
 	{
-		point = create_vector(ft_atof(pieces[0]), \
+		vector = create_vector(ft_atof(pieces[0]), \
 			ft_atof(pieces[1]), ft_atof(pieces[2]));
+		vector = object_normalize(vector);
 		clean_array(pieces);
-		return (point);
+		return (vector);
 	}
 	clean_array(pieces);
 	clean_parser_error(*world, str, "error code: 06 - Invalid param");

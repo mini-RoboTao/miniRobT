@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:38:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 20:23:20 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/17 22:51:45 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ t_define_sphere	define_sphere(char **params, t_world *world)
 
 	sphere = (t_define_sphere){0};
 	if (ft_arraylen(params) != 4)
-		clean_parser_error(*world, params, "error code: 73 - Invalid quantity arguments");
+		clean_parser_error(*world, params, "error code: 73 - \
+		Invalid quantity arguments");
 	sphere.point = convert_point(params, world, 1);
 	if (!is_valid_float(params[2]))
 		clean_parser_error(*world, params, "error code: 33 - Number invalid");
@@ -35,7 +36,8 @@ t_define_plane	define_plane(char **params, t_world *world)
 
 	plane = (t_define_plane){0};
 	if (ft_arraylen(params) != 4)
-		clean_parser_error(*world, params, "error code: 92 - Invalid quantity arguments");
+		clean_parser_error(*world, params, "error code: 92 - \
+		Invalid quantity arguments");
 	plane.point = convert_point(params, world, 1);
 	plane.vector = convert_vector(params, world, 2);
 	if (!check_vector_normalize(plane.vector))
@@ -52,7 +54,8 @@ t_define_cylinder	define_cylinder(char **params, t_world *world)
 
 	cylinder = (t_define_cylinder){0};
 	if (ft_arraylen(params) != 6)
-		clean_parser_error(*world, params, "error code: 99 - Invalid quantity arguments");
+		clean_parser_error(*world, params, "error code: 99 - \
+		Invalid quantity arguments");
 	cylinder.point = convert_point(params, world, 1);
 	cylinder.vector = convert_vector(params, world, 2);
 	if (!check_vector_normalize(cylinder.vector))

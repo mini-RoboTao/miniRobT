@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:16:00 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/15 12:52:23 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/17 22:51:15 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	clean_array(char **array)
 
 void	clean_parser_error(t_world world, char **params, char *errormsg)
 {
-	char *line;
+	char	*line;
 
 	clean_array(params);
 	line = get_next_line(world.fd);
