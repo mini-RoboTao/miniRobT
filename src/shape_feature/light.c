@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 19:08:19 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/17 22:47:53 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:27:12 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	fill_a_light(t_world *world, t_define_a_light al)
 {
-	world->a_light = multiply_scalar_colors(al.color, al.intensity);
+	world->a_light = al;
 }
 
 void	fill_light(t_world *world, t_define_light l)
 {
-	world->light = point_light(l.position, l.color);
+	world->light = point_light(l.position, multiply_scalar_colors(l.color, l.intensity));
 }
 
 t_camera	new_camera(t_define_cam define)

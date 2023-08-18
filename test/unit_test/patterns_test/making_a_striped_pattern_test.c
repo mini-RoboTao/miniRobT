@@ -81,9 +81,11 @@ Test(Making_a_striped_pattern, Lighting_with_a_pattern_applied)
 	lig2.normalv = normalv;
 	lig2.in_shadow = false;
 	lig2.shape = new_sphere();
+	t_define_a_light a_light = {0};
+	a_light.color = fill_color(0,0,0);
 
-	t_color		c1 = lighting(lig1, create_point(0, 0, 0), fill_color(0, 0, 0));
-	t_color		c2 = lighting(lig2, create_point(1, 1, 1), fill_color(0, 0, 0));
+	t_color		c1 = lighting(lig1, create_point(0, 0, 0), a_light);
+	t_color		c2 = lighting(lig2, create_point(1, 1, 1), a_light);
 
 	cr_expect(cr_color_eq(c1, white));
 	cr_expect(cr_color_eq(c2, black));

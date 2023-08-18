@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/17 22:53:46 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:27:53 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	calculate_diffuse_specular(t_lighting_data *data,
 	}
 }
 
-t_color	lighting(t_lighting lig, t_obj over_point, t_color a_light)
+t_color	lighting(t_lighting lig, t_obj over_point, t_define_a_light a_light)
 {
 	t_lighting_data	data;
 	t_obj			lightv;
@@ -79,9 +79,8 @@ t_color	lighting(t_lighting lig, t_obj over_point, t_color a_light)
 	}
 	else
 		calculate_diffuse_specular(&data, &lig, lightv);
-	if (lig.light.intensity.red == 0 && \
-	lig.light.intensity.green == 0 && lig.light.intensity.blue == 0)
-		return (multiply_colors(color, a_light));
+	if (lig.light.intensity.red == 0 && lig.light.intensity.green == 0 && lig.light.intensity.blue == 0)
+		return (multiply_colors(lig.material.color, multiply_scalar_colors(a_light.color, a_light.intensity)));
 	if (lig.in_shadow)
 		return (data.ambient);
 	return (sum_colors(sum_colors(data.ambient, data.diffuse), data.specular));
