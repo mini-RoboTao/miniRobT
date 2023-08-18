@@ -24,7 +24,7 @@ FLAG_W						=					-Wall -Wextra -Werror
 FLAG_LIBFT					=					-L $(PATH_LIBFT) -lft
 FLAG_EXTRA					=					 -g3 -O3 -MMD -MP
 ######################## SRCS ################################
-SRC_WORLD_FEATURE					=					handle_world_bonus.c						\
+SRC_WORLD_FEATURE					=					handle_world.c						\
 														view_transformation.c				\
 														camera.c
 SRC_LIGHT_AND_SHADING				=					normal_at.c							\
