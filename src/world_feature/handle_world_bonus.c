@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 18:11:08 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/17 23:34:02 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/18 06:15:18 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,42 +77,43 @@ t_precomp	prepare_computations(t_intersection *i, t_ray r, \
 	return (comps);
 }
 
-t_color	shade_hit(t_world *w, t_precomp *comps, int remaining)
-{
-	t_lighting		lig[2];
-	t_color			surface;
-	t_color			reflected;
-	t_color			refracted;
-	t_material		material;
+// t_color	shade_hit(t_world *w, t_precomp *comps, int remaining)
+// {
+// 	t_lighting		lig[2];
+// 	t_color			surface;
+// 	t_color			reflected;
+// 	t_color			refracted;
+// 	t_material		material;
 
-	lig[0] = (t_lighting){0};
-	lig[0].material = comps->shape.any->material;
-	lig[0].shape = comps->shape;
-	lig[0].light = w->light;
-	lig[0].point = comps->point;
-	lig[0].eyev = comps->eyev;
-	lig[0].normalv = comps->normalv;
-	lig[0].in_shadow = is_shadowed(w, comps->over_point);
-	surface = lighting(lig[0], comps->over_point, w->a_light);
+// 	lig[0] = (t_lighting){0};
+// 	lig[0].material = comps->shape.any->material;
+// 	lig[0].shape = comps->shape;
+// 	lig[0].light = w->light;
+// 	lig[0].point = comps->point;
+// 	lig[0].eyev = comps->eyev;
+// 	lig[0].normalv = comps->normalv;
+// 	lig[0].in_shadow = is_shadowed(w, comps->over_point);
+// 	surface = lighting(lig[0], comps->over_point, w->a_light);
 
-	lig[1] = (t_lighting){0};
-	lig[1].material = comps->shape.any->material;
-	lig[1].shape = comps->shape;
-	lig[1].light = point_light(create_point(10,10,10), fill_color(1,0,0));
-	lig[1].point = comps->point;
-	lig[1].eyev = comps->eyev;
-	lig[1].normalv = comps->normalv;
-	lig[1].in_shadow = is_shadowed(w, comps->over_point);
-	surface = sum_colors(surface, lighting(lig[1], comps->over_point, w->a_light));
-	
-	refracted = refracted_color(*w, *comps, remaining);
-	reflected = reflected_color(*w, *comps, remaining);
-	material = comps->shape.any->material;
-	if (material.reflective > 0 && material.transparency > 0)
-	{
-		return (sum_colors(sum_colors(surface, \
-			multiply_scalar_colors(reflected, schlick(*comps))), \
-			multiply_scalar_colors(refracted, (1 - schlick(*comps)))));
-	}
-	return (sum_colors(refracted, sum_colors(surface, reflected)));
-}
+// 	lig[1] = (t_lighting){0};
+// 	lig[1].material = comps->shape.any->material;
+// 	lig[1].shape = comps->shape;
+// 	lig[1].light = point_light(create_point(10,10,10), fill_color(1,0,0));
+// 	lig[1].point = comps->point;
+// 	lig[1].eyev = comps->eyev;
+// 	lig[1].normalv = comps->normalv;
+// 	lig[1].in_shadow = is_shadowed(w, comps->over_point);
+// 	surface = sum_colors(surface, lighting(lig[1],
+// 		comps->over_point, w->a_light));
+
+// 	refracted = refracted_color(*w, *comps, remaining);
+// 	reflected = reflected_color(*w, *comps, remaining);
+// 	material = comps->shape.any->material;
+// 	if (material.reflective > 0 && material.transparency > 0)
+// 	{
+// 		return (sum_colors(sum_colors(surface,
+// 			multiply_scalar_colors(reflected, schlick(*comps))),
+// 			multiply_scalar_colors(refracted, (1 - schlick(*comps)))));
+// 	}
+// 	return (sum_colors(refracted, sum_colors(surface, reflected)));
+// }

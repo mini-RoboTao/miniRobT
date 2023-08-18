@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_phong_reflection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/17 23:27:53 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/18 06:11:17 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ static void	calculate_diffuse_specular(t_lighting_data *data,
 	}
 }
 
+static void	fill_diff_specular(t_lighting_data *data)
+{
+	data->diffuse = fill_color(0, 0, 0);
+	data->specular = fill_color(0, 0, 0);
+}
+
 t_color	lighting(t_lighting lig, t_obj over_point, t_define_a_light a_light)
 {
 	t_lighting_data	data;
@@ -73,14 +79,13 @@ t_color	lighting(t_lighting lig, t_obj over_point, t_define_a_light a_light)
 	data.ambient = multiply_scalar_colors(data.eff_color, lig.material.ambient);
 	data.light_dot_normal = object_dot(lightv, lig.normalv);
 	if (data.light_dot_normal < 0)
-	{
-		data.diffuse = fill_color(0, 0, 0);
-		data.specular = fill_color(0, 0, 0);
-	}
+		fill_diff_specular(&data);
 	else
 		calculate_diffuse_specular(&data, &lig, lightv);
-	if (lig.light.intensity.red == 0 && lig.light.intensity.green == 0 && lig.light.intensity.blue == 0)
-		return (multiply_colors(lig.material.color, multiply_scalar_colors(a_light.color, a_light.intensity)));
+	if (lig.light.intensity.red == 0 && lig.light.intensity.green == 0
+		&& lig.light.intensity.blue == 0)
+		return (multiply_colors(lig.material.color,
+				multiply_scalar_colors(a_light.color, a_light.intensity)));
 	if (lig.in_shadow)
 		return (data.ambient);
 	return (sum_colors(sum_colors(data.ambient, data.diffuse), data.specular));

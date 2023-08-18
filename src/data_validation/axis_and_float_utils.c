@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 01:00:53 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/18 05:54:02 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/18 06:12:58 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ t_obj	convert_vector(char **str, t_world *world, int pos)
 	{
 		vector = create_vector(ft_atof(pieces[0]), \
 			ft_atof(pieces[1]), ft_atof(pieces[2]));
-		// vector = object_normalize(vector);
 		clean_array(pieces);
 		return (vector);
 	}
