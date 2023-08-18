@@ -13,8 +13,10 @@ Test(Shadows, Lighting_with_the_surface_in_shadow)
 	data.normalv	= create_vector(0, 0, -1);
 	data.light		= point_light(point, color);
 	data.in_shadow	= true;
+	t_define_a_light a_light = {0};
+	a_light.color = fill_color(0,0,0);
 
-	t_color result = lighting(data, create_point(0, 0, 0), fill_color(0, 0, 0));
+	t_color result = lighting(data, create_point(0, 0, 0), a_light);
 	cr_assert(cr_color_eq(result, res_color));
 }
 

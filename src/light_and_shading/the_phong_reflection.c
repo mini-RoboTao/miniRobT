@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/16 03:34:47 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/17 21:44:10 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	calculate_diffuse_specular(t_lighting_data *data,
 	}
 }
 
-t_color	lighting(t_lighting lig, t_obj over_point, t_color a_light)
+t_color	lighting(t_lighting lig, t_obj over_point, t_define_a_light a_light)
 {
 	t_lighting_data	data;
 	t_obj			lightv;
@@ -66,7 +66,8 @@ t_color	lighting(t_lighting lig, t_obj over_point, t_color a_light)
 	if (lig.material.pattern.validate)
 		color = pattern_at_shape(&lig.material.pattern, lig.shape, over_point);
 	else
-		color = multiply_colors(lig.material.color, a_light);
+		color = lig.material.color;
+		// color = multiply_colors(lig.material.color, a_light);
 	data.eff_color = multiply_colors(color, lig.light.intensity);
 	lightv = subtract_objects(lig.light.position, lig.point);
 	lightv = object_normalize(lightv);
@@ -80,7 +81,7 @@ t_color	lighting(t_lighting lig, t_obj over_point, t_color a_light)
 	else
 		calculate_diffuse_specular(&data, &lig, lightv);
 	if (lig.light.intensity.red == 0 && lig.light.intensity.green == 0 && lig.light.intensity.blue == 0)
-		return (multiply_colors(color, a_light));
+		return (multiply_colors(lig.material.color, multiply_scalar_colors(a_light.color, a_light.intensity)));
 	if (lig.in_shadow)
 		return (data.ambient);
 	// printf("COLORS:\n\n");

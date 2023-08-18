@@ -6,7 +6,7 @@
 /*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:39:08 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/17 20:46:18 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/17 21:23:28 by rotakesh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,7 +252,7 @@ typedef struct s_world
 {
 	t_lst					*lst;
 	t_camera				camera;
-	t_color					a_light;
+	t_define_a_light		a_light;
 	t_light					light;
 	int						fd;
 }					t_world;
