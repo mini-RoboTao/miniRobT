@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 02:42:12 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/16 20:43:53 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/18 18:37:14 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static double	calculate_bhaskara(double *abc, t_ray ray)
 {
 	double	disc;
 
-	abc[1] = 2 * ray.position.x * ray.direction.x + 2 * ray.position.z * \
-		ray.direction.z;
+	abc[1] = 	2 * ray.position.x * ray.direction.x + \
+				2 * ray.position.z * ray.direction.z;
 	abc[2] = pow(ray.position.x, 2) + pow(ray.position.z, 2) - 1;
 	disc = pow(abc[1], 2) - 4 * abc[0] * abc[2];
 	return (disc);

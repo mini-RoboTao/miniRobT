@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_phong_reflection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 02:48:06 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/18 06:38:47 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/18 15:29:59 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ t_color	lighting(t_lighting lig, t_obj over_point, t_define_a_light a_light)
 	if (lig.material.pattern.validate)
 		color = pattern_at_shape(&lig.material.pattern, lig.shape, over_point);
 	else
-		color = multiply_colors(lig.material.color, \
-			multiply_scalar_colors(a_light.color, a_light.intensity));
+		color = multiply_colors(lig.material.color, a_light.color);
 	data.eff_color = multiply_colors(color, lig.light.intensity);
 	lightv = subtract_objects(lig.light.position, lig.point);
 	lightv = object_normalize(lightv);

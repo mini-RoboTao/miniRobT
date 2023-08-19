@@ -79,6 +79,7 @@ SRC_DATA_VALIDATION					=					parser.c							\
 														data_validation.c					\
 														input_validation.c
 SRC									=					minirt.c											\
+														put_together.c										\
 														utils.c												\
 														objs.c												\
 														aux_math.c											\
