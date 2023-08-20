@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:30:50 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 20:12:13 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/19 21:33:01 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,7 @@ void	fill_plane(t_world *world, t_define_plane p)
 
 	plane = new_plane();
 	set_transform2(&plane, translation(p.point.x, p.point.y, p.point.z));
-	if (p.vector.x != 0)
-		set_transform2(&plane, rotation_x(p.vector.x * M_PI));
-	if (p.vector.y != 0)
-		set_transform2(&plane, rotation_y(p.vector.y * M_PI));
-	if (p.vector.z != 0)
-		set_transform2(&plane, rotation_z(p.vector.z * M_PI));
+	rotate_xyz(&plane, p.vector);
 	plane.any->material = p.material;
 	ft_lstadd_back(&world->lst, ft_lstnew(plane));
 }

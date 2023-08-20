@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 16:59:18 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/16 21:56:38 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/19 19:03:49 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define DATA_VALIDATION_H
 
 # include "minirt.h"
+
+double				arctan(double p1, double p2);
+void				rotate_xyz(t_shape *shape, t_obj point);
 
 // Input Validation
 int					check_file_params(char **params, t_world *world, \

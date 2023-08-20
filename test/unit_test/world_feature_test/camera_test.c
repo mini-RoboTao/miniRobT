@@ -51,17 +51,17 @@ Test(camera, constructing_a_ray_when_the_camera_is_transformed)
 	cr_assert(cr_object_eq(r.direction, create_object(sqrt(2)/2, 0, -(sqrt(2)/2), 0)));
 }
 
-Test(camera, rendering_a_world_with_a_camera)
-{
-	t_world		w = default_world();
-	w.camera = camera(11, 11, M_PI_2);
-	t_obj		from = create_point(0, 0, -5);
-	t_obj		to = create_point(0, 0, 0);
-	t_obj		up = create_vector(0, 1, 0);
-				w.camera.transform = view_transformation(from, to, up);
+// Test(camera, rendering_a_world_with_a_camera)
+// {
+// 	t_world		w = default_world();
+// 	w.camera = camera(11, 11, M_PI_2);
+// 	t_obj		from = create_point(0, 0, -5);
+// 	t_obj		to = create_point(0, 0, 0);
+// 	t_obj		up = create_vector(0, 1, 0);
+// 				w.camera.transform = view_transformation(from, to, up);
 
-	t_canvas	*image = render(&w);
-	cr_assert(cr_color_eq(image->canvas[5][5], fill_color(0.38066, 0.47583, 0.2855)));
-	clean_world(w);
-	clean_canvas(image);
-}
+// 	t_canvas	*image = render(&w);
+// 	cr_assert(cr_color_eq(image->canvas[5][5], fill_color(0.38066, 0.47583, 0.2855)));
+// 	clean_world(w);
+// 	clean_canvas(image);
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 19:08:19 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/18 06:12:11 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/19 21:55:27 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ t_camera	new_camera(t_define_cam define)
 		.transform = create_identity_matrix()
 	};
 	calculate_pixel_cam(&c);
+	define.vector.z = -define.vector.z;
 	c.transform = view_transformation(define.point, \
-		create_point(0, 0, 0), define.vector);
+		define.vector, create_vector(0, 1, 0));
 	return (c);
 }

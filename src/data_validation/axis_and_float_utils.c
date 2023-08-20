@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   axis_and_float_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rotakesh <rotakesh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 01:00:53 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/18 06:12:58 by rotakesh         ###   ########.fr       */
+/*   Updated: 2023/08/19 22:07:48 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

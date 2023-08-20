@@ -77,9 +77,9 @@ SRC_DATA_VALIDATION					=					parser.c							\
 														shape_define.c						\
 														define_light_and_cam.c				\
 														data_validation.c					\
-														input_validation.c
+														input_validation.c					\
+														arctan.c
 SRC									=					minirt.c											\
-														put_together.c										\
 														utils.c												\
 														objs.c												\
 														aux_math.c											\

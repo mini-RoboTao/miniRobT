@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:57:28 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/17 23:06:02 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/19 15:33:08 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ t_canvas	*render(t_world *w)
 
 	y = 0;
 	image = generate_canvas(w->camera.hsize, w->camera.vsize);
-	printf("%s AQUI %f %s\n", YELLOW, w->camera.vsize, RESET_COLORS);
 	while (y < w->camera.vsize - 1)
 	{
 		x = 0;

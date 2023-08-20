@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:53:42 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/07 14:48:02 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/19 20:39:52 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ t_matrix	view_transformation(t_obj from, t_obj to, t_obj up)
 	t_obj		true_up;
 	t_matrix	m;
 
-	forward = object_normalize(subtract_objects(to, from));
+	// forward = object_normalize(subtract_objects(to, from));
+	forward = to;
 	normalize_up = object_normalize(up);
 	left = object_cross_product(forward, normalize_up);
 	true_up = object_cross_product(left, forward);
