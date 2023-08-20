@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:53:42 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/19 20:39:52 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/19 22:28:58 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ static t_matrix	run_transform(t_obj left, t_obj true_up, \
 	translation(-from.x, -from.y, -from.z), 4, 4));
 }
 
+// Removed this line below from the function view_transformation
+// because the camera in .rt file send a normalized vector
+// 
+// forward = object_normalize(subtract_objects(to, from));
 t_matrix	view_transformation(t_obj from, t_obj to, t_obj up)
 {
 	t_obj		forward;
@@ -41,7 +45,6 @@ t_matrix	view_transformation(t_obj from, t_obj to, t_obj up)
 	t_obj		true_up;
 	t_matrix	m;
 
-	// forward = object_normalize(subtract_objects(to, from));
 	forward = to;
 	normalize_up = object_normalize(up);
 	left = object_cross_product(forward, normalize_up);

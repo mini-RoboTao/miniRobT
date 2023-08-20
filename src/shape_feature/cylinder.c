@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 02:42:12 by rotakesh          #+#    #+#             */
-/*   Updated: 2023/08/19 20:13:10 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/19 22:26:52 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	fill_cylinder(t_world *world, t_define_cylinder c)
 	set_transform2(&cylinder, translation(c.point.x, c.point.y, c.point.z));
 	rotate_xyz(&cylinder, c.vector);
 	set_transform2(&cylinder, scaling(c.diameter, 1, c.diameter));
-
 	cylinder.any->maximum = (c.height / 2);
 	cylinder.any->minimum = -(c.height / 2);
 	cylinder.any->material = c.material;

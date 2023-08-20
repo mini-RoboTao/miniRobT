@@ -6,7 +6,7 @@
 /*   By: dapaulin <dapaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 17:13:43 by dapaulin          #+#    #+#             */
-/*   Updated: 2023/08/19 22:16:44 by dapaulin         ###   ########.fr       */
+/*   Updated: 2023/08/19 22:26:43 by dapaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	object_eq(t_obj a, t_obj b)
 {
-	return	(fabs(a.x - b.x) < EPSILON && \
+	return (fabs(a.x - b.x) < EPSILON && \
 			fabs(a.y - b.y) < EPSILON && \
 			fabs(a.z - b.z) < EPSILON && \
 			a.w == b.w);
